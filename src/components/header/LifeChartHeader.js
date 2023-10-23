@@ -1,8 +1,16 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {GrLanguage} from 'react-icons/gr';
 import "../../output.css";
 import {Languages} from "../../constants/languages";
+import i18n from "i18next";
 const LifeChartHeader = () => {
+
+    const [language, setLanguage] = useState('en');
+
+    useEffect(() => {
+            i18n.changeLanguage(language).then(r => console.log('Language changed to ' + language));
+    }, [language]);
+
     return (
         <div className="navbar rounded-lg">
             <div className="navbar-start">
@@ -19,7 +27,11 @@ const LifeChartHeader = () => {
                                 {
                                     Languages.map((language, index) => {
                                         return (
-                                            <a key={index} className="dropdown-item text-sm">{language.label}</a>
+                                            <a key={index} className="dropdown-item text-sm"
+                                               onClick={() => setLanguage(language.value)}
+                                            >
+                                                {language.label}
+                                            </a>
                                         );
                                     })
                                 }
