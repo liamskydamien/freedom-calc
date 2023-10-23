@@ -60,6 +60,7 @@ body {
   margin: 0;
   /* 1 */
   line-height: inherit;
+  height: 100%;
   /* 2 */
 }
 
@@ -1090,6 +1091,7 @@ video {
 
 html {
   -webkit-tap-highlight-color: transparent;
+  height: 100%;
 }
 
 *, ::before, ::after {
