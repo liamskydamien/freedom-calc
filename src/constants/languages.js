@@ -5,7 +5,7 @@ export const Languages = [
     },
     {
         "label": "Tiếng Việt",
-        "value": "vi"
+        "value": "vn"
     },
     {
         "label": "Deutsch",
