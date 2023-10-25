@@ -1,5 +1,5 @@
 
-import EnterUserDetails from "../../components/userdetails/EnterUserDetails";
+import EnterUserDetails from "../../../components/userdetails/EnterUserDetails";
 
 const EnterUserDetailsPage = () => {
     return (

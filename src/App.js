@@ -1,4 +1,4 @@
-import LifeChart from "./pages/lifechart";
+import LifeChart from "./pages/lifechart/lifechart";
 import LifeChartHeader from "./components/header/LifeChartHeader"
 import "./i18n.ts";
 
