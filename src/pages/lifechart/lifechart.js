@@ -9,7 +9,7 @@ const LifeChart = () => {
                 <div className="lifechartPage">
                     <EnterUserDetailsPage/>
                 </div>
-                <div className="lifeChartNavigation">
+                <div className="lifeChartNavigation sidebar-footer">
                     <NavigationLifeChart/>
                 </div>
             </div>
