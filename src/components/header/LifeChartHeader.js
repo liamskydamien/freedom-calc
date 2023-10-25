@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react';
 import {MdLanguage, MdOutlineNightsStay, MdSunny} from 'react-icons/md';
-import "../../output.css";
 import {Languages} from "../../constants/languages";
 import i18n from "i18next";
 import useDarkmode from "../../hooks/useDarkmode";
