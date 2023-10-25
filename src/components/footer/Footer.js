@@ -6,8 +6,9 @@ const Footer = () => {
             <NavigationLifeChart/>
         <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">
             <a href="https://github.com/liamskydamien/freedom-calc" class="hover:underline"> © 2023 FreedomCalc</a>
-            <p className="font-thin text-xs">Created by:
-                Liam Hess, Nhật Nguyên & Hải Nam</p>
+            <p className="font-thin text-xs text-left">
+                Liam Hess, Nhật Nguyên & Hải Nam
+            </p>
         </span>
         </footer>
     );
