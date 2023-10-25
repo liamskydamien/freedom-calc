@@ -27,9 +27,7 @@ const LifeChart = () => {
                             <PointOfFinancialFreedomPage/>
                         :
                             <OptimisationPage/>
-
                     }
-                    <EnterUserDetailsPage/>
                 </div>
             </div>
         </div>

@@ -5,17 +5,13 @@ const Stepper = (active) => {
     const { i18n, t } = useTranslation();
 
     const setStep = (step) => {
-        console.log(active, step)
         if (active.active === step){
-            console.log("active")
             return "step-active"
         }
         else if (active > step){
-            console.log("done")
             return "step-done"
         }
         else {
-            console.log("else")
             return ""
         }
     }
