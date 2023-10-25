@@ -1,3 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    height: 100%;
+}
+
+html {
+    height: 100%;
+}
+
+/*
+    * Remove the following CSS rules from src/index.css:
+    *
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,4 +27,6 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+ */
 
