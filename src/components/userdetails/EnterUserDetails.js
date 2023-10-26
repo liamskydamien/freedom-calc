@@ -1,14 +1,23 @@
 import {useTranslation} from "react-i18next";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import InputContext from "../../context/userinputs/InputContext";
 
 const EnterUserDetails = () => {
+
     const {t} = useTranslation();
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [gender, setGender] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [expectedAge, setExpectedAge] = useState('');
-    const [currency, setCurrency] = useState('');
+    const {personalData} = useContext(InputContext);
+    const {firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        gender,
+        setGender,
+        dateOfBirth,
+        setDateOfBirth,
+        expectedAge,
+        setExpectedAge,
+        currency,
+        setCurrency} = personalData;
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);
@@ -32,10 +41,6 @@ const EnterUserDetails = () => {
 
     const currencyChangeHandler = (event) => {
         setCurrency(event.target.value);
-    }
-
-    const setGenderActive = (expected) => {
-       return expected === gender ? 'dropdown-item text-sm dropdown-active' : 'dropdown-item text-sm'
     }
 
     return (
@@ -69,6 +74,7 @@ const EnterUserDetails = () => {
                             <label className="form-label">{t('date_of_birth')}</label>
                             <input className="input w-auto"
                                    type="date"
+                                   value={dateOfBirth}
                                    onChange={dateOfBirthChangeHandler}>
                             </input>
                         </div>
@@ -76,6 +82,7 @@ const EnterUserDetails = () => {
                             <label className="form-label">{t('expected_age')}</label>
                             <input className="input max-w-full"
                                    type="number"
+                                   value={expectedAge}
                                    onChange={expectedAgeChangeHandler}>
                             </input>
                         </div>
