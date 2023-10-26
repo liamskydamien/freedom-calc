@@ -19,23 +19,23 @@ const Stepper = (active) => {
         <ol className="steps">
             <li className={`step step-primary ${setStep(1)} overflow-hidden`}>
                 <div className="step-circle">1</div>
-                <h3 className="stepTitle">{t('Personal Information')}</h3>
+                <h3 className="stepTitle">{t('personal_information')}</h3>
             </li>
             <li className={`step step-primary ${setStep(2)} overflow-hidden`}>
                 <div className="step-circle">2</div>
-                <h3 className="stepTitle">{t('Starting Capital')}</h3>
+                <h3 className="stepTitle">{t('starting_capital')}</h3>
             </li>
             <li className={`step step-primary ${setStep(3)} overflow-hidden`}>
                 <div className="step-circle">3</div>
-                <h3 className="stepTitle">{t('Income & Costs')}</h3>
+                <h3 className="stepTitle">{t('income_costs')}</h3>
             </li>
             <li className={`step step-primary ${setStep(4)} overflow-hidden`}>
                 <div className="step-circle">4</div>
-                <h3 className="stepTitle">{t('Point of Financial-Freedom')}</h3>
+                <h3 className="stepTitle">{t('pof')}</h3>
             </li>
             <li className={`step step-primary ${setStep(5)} overflow-hidden`}>
                 <div className="step-circle">5</div>
-                <h3 className="stepTitle">{t('Optimisation')}</h3>
+                <h3 className="stepTitle">{t('optimisation')}</h3>
             </li>
         </ol>
     );

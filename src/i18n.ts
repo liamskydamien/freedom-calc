@@ -24,6 +24,10 @@ i18n.use(initReactI18next).init({
                 eur: 'Euro',
                 vnd: 'Vietnamese Dong',
                 save_and_proceed: 'Save and Proceed',
+                starting_capital: 'Starting Capital',
+                income_costs: 'Income and Costs',
+                pof: 'Point of Financial Freedom',
+                optimisation: 'Optimisation',
             }
         },
         de: {
@@ -41,6 +45,10 @@ i18n.use(initReactI18next).init({
                 eur: 'Euro',
                 vnd: 'Vietnamesischer Dong',
                 save_and_proceed: 'Speichern und fortfahren',
+                starting_capital: 'Startkapital',
+                income_costs: 'Einkommen und Kosten',
+                pof: 'Punkt der finanziellen Freiheit',
+                optimisation: 'Optimierung',
             }
         },
         vn: {
@@ -57,7 +65,11 @@ i18n.use(initReactI18next).init({
                 currency: 'Tiền Tệ',
                 eur: 'Euro',
                 vnd: 'Đồng Việt Nam',
-                save_and_proceed: 'Lưu và Tiếp Tục'
+                save_and_proceed: 'Lưu và Tiếp Tục',
+                starting_capital: 'Vốn Ban Đầu',
+                income_costs: 'Thu Nhập và Chi Phí',
+                pof: 'Điểm Tự Do Tài Chính',
+                optimisation: 'Tối Ưu Hóa',
             }
         }
     },
