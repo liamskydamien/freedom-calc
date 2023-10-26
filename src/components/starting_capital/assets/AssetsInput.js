@@ -44,7 +44,7 @@ const AssetsInput = ({assets, t}) => {
             </div>
             {
                 activeTab === 1 ?
-                    <LiquidAssetsInput t={t}/>
+                    <LiquidAssetsInput t={t} setLiquidCapital={assets.setLiquidCapital}/>
                     :
                     <h2>Not implemented yet</h2>
             }

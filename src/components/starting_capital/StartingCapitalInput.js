@@ -1,10 +1,12 @@
 import {useTranslation} from "react-i18next";
-import {useState} from "react";
+import {useContext, useState} from "react";
 import AssetsInput from "./assets/AssetsInput";
 import PassivaInputs from "./passiva/PassivaInputs";
+import InputContext from "../../context/userinputs/InputContext";
 
 const StartingCapitalInput = () => {
     const { t } = useTranslation();
+    const {assets, liabilities} = useContext(InputContext);
     const [active, setActive] = useState(1);
     return (
         <div className="flex-col card p-5 max-w-fit">
@@ -27,7 +29,7 @@ const StartingCapitalInput = () => {
             </div>
             {
                 active === 1 ?
-                    <AssetsInput t={t} assets={{}} />
+                    <AssetsInput t={t} assets={assets} />
                     :
                     <PassivaInputs/>
             }
