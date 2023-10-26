@@ -1,0 +1,25 @@
+const LiquidAssetsInput = ({ setLiquidCapital, t }) => {
+    return (
+        <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
+            <div className="form-group">
+                <div className="form-field">
+                    <label className="form-label">{t('cash')}</label>
+                    <input placeholder="Type here" type="text" className="input max-w-full" />
+                </div>
+                <div className="form-field">
+                    <label className="form-label">{t('pension fund')}</label>
+                    <div className="form-control">
+                        <input placeholder="Type here" type="text" className="input max-w-full" />
+                    </div>
+                </div>
+                <div className="form-field">
+                    <label className="form-label">{t('precious_metals')}</label>
+                    <div className="form-control">
+                        <input placeholder="Type here" type="text" className="input max-w-full" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+export default LiquidAssetsInput;
