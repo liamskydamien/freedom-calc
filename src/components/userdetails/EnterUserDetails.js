@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import {useContext, useState} from "react";
+import {useContext} from "react";
 import InputContext from "../../context/userinputs/InputContext";
 
 const EnterUserDetails = () => {
@@ -10,13 +10,10 @@ const EnterUserDetails = () => {
         setFirstName,
         lastName,
         setLastName,
-        gender,
         setGender,
-        dateOfBirth,
         setDateOfBirth,
         expectedAge,
         setExpectedAge,
-        currency,
         setCurrency} = personalData;
 
     const firstNameChangeHandler = (event) => {
@@ -74,7 +71,6 @@ const EnterUserDetails = () => {
                             <label className="form-label">{t('date_of_birth')}</label>
                             <input className="input w-auto"
                                    type="date"
-                                   value={dateOfBirth}
                                    onChange={dateOfBirthChangeHandler}>
                             </input>
                         </div>
