@@ -40,40 +40,40 @@ const EnterUserDetails = () => {
 
     return (
         <div className="w-auto flex-col card p-5">
-            <h1 className="text-xl font-bold">{t('Personal Information')}</h1>
+            <h1 className="text-xl font-bold">{t('personal_information')}</h1>
             <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
                 <div className="form-group">
                     <div className="form-field">
-                        <label className="form-label">{t('Firstname')}</label>
-                        <input placeholder={t('Type_Here')}
+                        <label className="form-label">{t('firstname')}</label>
+                        <input placeholder={t('type_here')}
                                className="input max-w-full"
                                value={firstName}
                                onChange={firstNameChangeHandler}/>
                     </div>
                     <div className="form-field">
-                        <label className="form-label">{t('Surname')}</label>
-                        <input placeholder={t('Type_Here')}
+                        <label className="form-label">{t('surname')}</label>
+                        <input placeholder={t('type_here')}
                                className="input max-w-full"
                                value={lastName}
                                onChange={lastNameChangeHandler}/>
                     </div>
                     <div className="form-field">
-                        <label className="form-label">{t('Gender')}</label>
+                        <label className="form-label">{t('gender')}</label>
                         <select className="select max-w-full" onChange={genderChangeHandler}>
-                            <option>{t('Female')}</option>
-                            <option>{t('Male')}</option>
+                            <option>{t('female')}</option>
+                            <option>{t('male')}</option>
                         </select>
                     </div>
                     <div className="form-field flex-row max-w-full">
                         <div className="w-auto">
-                            <label className="form-label">{t('Date of Birth')}</label>
+                            <label className="form-label">{t('date_of_birth')}</label>
                             <input className="input w-auto"
                                    type="date"
                                    onChange={dateOfBirthChangeHandler}>
                             </input>
                         </div>
                         <div className="max-w-full">
-                            <label className="form-label">{t('Expected Age')}</label>
+                            <label className="form-label">{t('expected_age')}</label>
                             <input className="input max-w-full"
                                    type="number"
                                    onChange={expectedAgeChangeHandler}>
@@ -81,14 +81,14 @@ const EnterUserDetails = () => {
                         </div>
                     </div>
                     <div className="form-field">
-                        <label className="form-label">{t('Currency')}</label>
+                        <label className="form-label">{t('currency')}</label>
                         <select className="select max-w-full" onChange={currencyChangeHandler}>
-                            <option>{t('Euro')}</option>
-                            <option>{t('Vietnamese Dong')}</option>
+                            <option>{t('eur')}</option>
+                            <option>{t('vnd')}</option>
                         </select>
                     </div>
                     <div className="form-field">
-                        <button className="btn btn-primary">{t('Save & Proceed')}</button>
+                        <button className="btn btn-primary">{t('save_and_proceed')}</button>
                     </div>
                 </div>
             </div>
