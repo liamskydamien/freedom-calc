@@ -1,7 +1,9 @@
+import StartingCapitalInput from "../../../components/starting_capital/StartingCapitalInput";
+
 const StartingCapitalPage = () => {
     return (
     <div>
-      <h1>Starting Capital</h1>
+      <StartingCapitalInput />
     </div>
   )
 }
