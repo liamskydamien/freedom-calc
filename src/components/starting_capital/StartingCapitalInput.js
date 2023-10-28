@@ -33,9 +33,6 @@ const StartingCapitalInput = () => {
                     :
                     <PassivaInputs/>
             }
-            <div className="form-field">
-                <button className="btn btn-primary">{t('save_and_proceed')}</button>
-            </div>
         </div>
     )
 }
