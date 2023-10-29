@@ -4,12 +4,11 @@ export const useCalculateCosts = ({annualCosts, inflationRate, timeframe}) => {
 
     let remainingCosts = []; // Array of remaining costs for each year
     let totalCosts = annualCosts.reduce((sum, cost) => sum + cost, 0); // Total cost over the timeframe
-    remainingCosts.push(totalCosts); // Add the total cost to the array
 
-    for (let year = 1; year <= timeframe; year++) { // For each year
-        annualCosts = annualCosts.map(cost => cost * (1 + inflationRate)); // Increase the annual costs by the inflation rate
-        totalCosts -= annualCosts.reduce((sum, cost) => sum + cost, 0); // Subtract the annual costs from the total cost
-        remainingCosts.push(totalCosts); // Add the remaining cost to the array
+    for (let year = 0; year < timeframe; year++) { // For each year
+        totalCosts = totalCosts * (1 + inflationRate); // Calculate the new annual costs
+        totalCosts -= annualCosts[year]; // Subtract the annual costs from the total cost
+        remainingCosts.push(Math.round(totalCosts)); // Add the remaining cost to the array as a rounded number
     }
 
     return remainingCosts;

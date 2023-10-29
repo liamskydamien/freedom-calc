@@ -13,14 +13,13 @@ export const useCalculateWealth = ({assetGroups, annualInvestments, timeframe, i
     return {wealth, assetGrowth};
 }
 
-function calculateIncreasePerAssetGroup(assetGroup, annualInvestment, timeframe, investmentWeight) {
+export const calculateIncreasePerAssetGroup = ({assetGroup, annualInvestment, timeframe, investmentWeight}) => {
     const assetGrowth = []; // Array of asset growth for each year
     const {growthRate, startingValue} = assetGroup; // Destructure the asset object
 
-    for (let year = 0; year <= timeframe; year++) { // For each year
+    for (let year = 0; year < timeframe; year++) { // For each year
         assetGrowth.push(
-            (startingValue * Math.pow(1 + growthRate, year)) + // Calculate the compound interest
-            (annualInvestment[year] * investmentWeight)); // Add the new Investment
+            (startingValue * Math.pow(1 + growthRate, year)) + (annualInvestment[year] * investmentWeight)); // Calculate the asset growth
     }
 
     return assetGrowth;
