@@ -1,5 +1,5 @@
 /* import useCalculateCosts */
-import {useCalculateCosts} from "../../hooks/calculations/useCalculateCosts";
+import {useCalculateCosts} from "../../calculations/useCalculateCosts";
 
 const useCalculateCost = useCalculateCosts;
 /* Test the useCalculateCosts hook */
@@ -29,5 +29,5 @@ describe('testing useCalculateCosts', () => {
         expect(() => useCalculateCost({annualCosts, inflationRate, timeframe})).toThrowError();
     }
     );
-    
+
 });
