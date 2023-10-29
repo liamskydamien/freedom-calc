@@ -1,4 +1,4 @@
-const useCalculateCosts = ({annualCosts, inflationRate, timeframe}) => {
+export const useCalculateCosts = ({annualCosts, inflationRate, timeframe}) => {
     // Calculate the total cost over the timeframe
     // Return an array starting with the total cost and then subtracting the annual costs for each year.
 
