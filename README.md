@@ -1,3 +1,28 @@
+# Mathemtical Foundations Life-Chart
+## How to calculate the Point of Financial Freedom (PFF)
+The PFF is the point where you could live off of your current wealth.
+$$ \[ PFF := \{ x \mid \text{Wealth}(x) = \text{Cost}(x) \} \] $$
+
+## How to calculate the Wealth(x)?
+The wealth is the sum of all assets. Important for that is that the wealth increases over time passively and actively.
+The passive growth comes from the interest rate of the assets. The active growth comes from investing into the assets using your Free-Cashflow.
+The wealth is calculated by the following formula:
+$$ The wealth \( V(t) \) at time \( t \) is calculated as the sum of the values of all asset classes. For each asset class \( i \), the value \( V_i(t) \) at time \( t \) is calculated as follows:
+
+\[ V_i(t+1) = V_i(t) \cdot (1 + \alpha_i) + C \cdot \beta_i \]
+
+where
+- \( \alpha_i \) is the growth rate of asset class \( i \),
+- \( \beta_i \) is the proportion of the annual free cash flow allocated to asset class \( i \),
+- \( C \) is the annual free cash flow.
+
+The total wealth \( V(t) \) at time \( t \) is the sum of the values of all asset classes:
+
+\[ V(t+1) = \sum_{i=1}^{n} \left( V_i(t) \cdot (1 + \alpha_i) + C \cdot \beta_i \right) \]
+
+where \( n \) is the number of asset classes.
+$$
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
