@@ -1,4 +1,4 @@
-import {AssetGroup} from "../models/AssetGroup";
+import {AssetGroup} from "../models/typescript/AssetGroup";
 import {calculateIncreasePerAssetGroup} from "../calculations/typescript/useCalculateWealth";
 import {useEffect, useState} from "react";
 
