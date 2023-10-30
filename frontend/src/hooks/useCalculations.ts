@@ -1,5 +1,5 @@
 import {AssetGroup} from "../models/AssetGroup";
-import {calculateIncreasePerAssetGroup} from "../calculations/useCalculateWealth";
+import {calculateIncreasePerAssetGroup} from "../calculations/typescript/useCalculateWealth";
 import {useEffect, useState} from "react";
 
 export const useCalculations = (assetName: string, startingCapital: number) => {

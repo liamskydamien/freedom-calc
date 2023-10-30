@@ -1,5 +1,5 @@
-import {InvestmentWeights} from "../models/InvestmentWeights";
-import {AssetGroup} from "../models/AssetGroup";
+import {InvestmentWeights} from "../../models/InvestmentWeights";
+import {AssetGroup} from "../../models/AssetGroup";
 
 export const useCalculateWealth = (assetGroups: AssetGroup[],
                                    annualInvestments: number[],

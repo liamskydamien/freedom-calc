@@ -1,4 +1,4 @@
-import {calculateIncreasePerAssetGroup, useCalculateWealth} from "../../calculations/useCalculateWealth";
+import {calculateIncreasePerAssetGroup, useCalculateWealth} from "../../calculations/typescript/useCalculateWealth";
 import {AssetGroup} from "../../models/AssetGroup";
 import {InvestmentWeights} from "../../models/InvestmentWeights";
 
