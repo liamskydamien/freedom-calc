@@ -1,5 +1,6 @@
 import {useState} from "react";
 import LiquidAssetsInput from "./liquid_assets/LiquidAssetsInput";
+import RealEstateInput from "./realestate/RealEstateInput";
 
 const AssetsInput = ({assets, t}) => {
     const [activeTab, setActiveTab] = useState(1);
@@ -40,6 +41,10 @@ const AssetsInput = ({assets, t}) => {
                     <LiquidAssetsInput t={t}
                                        setLiquidCapital={assets.setLiquidCapital}
                                        setPreciousMetals={assets.setPreciousMetals}/>
+                    :
+                activeTab === 2 ?
+                    <RealEstateInput t={t}
+                                         setRealEstate={assets.setRealEstate}/>
                     :
                     <h2>Not implemented yet</h2>
             }
