@@ -36,7 +36,7 @@ export const InputContextProvider = ({children}) => {
     const [other, setOther] = useState(0.0);
     const [preciousMetals, setPreciousMetals] = useState(0.0);
     const [cryptoCurrency, setCryptoCurrency] = useState(0.0);
-    const [corporateParticipation, setCorporateParticipation] = useState(0.0);
+    //const [corporateParticipation, setCorporateParticipation] = useState(0.0);
 
     const assets = {
         liquidCapital,
@@ -47,8 +47,6 @@ export const InputContextProvider = ({children}) => {
         setStocks,
         other,
         setOther,
-        corporateParticipation,
-        setCorporateParticipation,
         preciousMetals,
         setPreciousMetals,
         cryptoCurrency,
