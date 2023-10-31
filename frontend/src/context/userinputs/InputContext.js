@@ -29,11 +29,13 @@ export const InputContextProvider = ({children}) => {
     };
 
     // Starting Capital
-        // Assets
+    // Assets
     const [liquidCapital, setLiquidCapital] = useState(0.0);
     const [realEstate, setRealEstate] = useState(0.0);
     const [stocks, setStocks] = useState(0.0);
     const [other, setOther] = useState(0.0);
+    const [preciousMetals, setPreciousMetals] = useState(0.0);
+    const [cryptoCurrency, setCryptoCurrency] = useState(0.0);
     const [corporateParticipation, setCorporateParticipation] = useState(0.0);
 
     const assets = {
@@ -46,16 +48,27 @@ export const InputContextProvider = ({children}) => {
         other,
         setOther,
         corporateParticipation,
-        setCorporateParticipation
+        setCorporateParticipation,
+        preciousMetals,
+        setPreciousMetals,
+        cryptoCurrency,
+        setCryptoCurrency
     }
         // Liabilities
     const [liablities, setLiablities] = useState(0.0);
     const [provision, setProvision] = useState(0.0);
+    const [reservedForConsumption, setReservedForConsumption] = useState(0.0);
+    const [reservedForPension, setReservedForPension] = useState(0.0);
+
     const liabilities = {
         liablities,
         setLiablities,
         provision,
-        setProvision
+        setProvision,
+        reservedForConsumption,
+        setReservedForConsumption,
+        reservedForPension,
+        setReservedForPension
     }
 
     // Income and Costs
