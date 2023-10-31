@@ -10,7 +10,7 @@ const StartingCapitalInput = () => {
     const [active, setActive] = useState(1);
     return (
         <div className="flex-col card p-5 max-w-fit">
-            <h1 className="text-xl font-bold">{t('personal_information')}</h1>
+            <h1 className="text-xl font-bold">{t('starting_capital')}</h1>
             <div className="tabs">
                 <input type="radio"
                        id="tab-4"

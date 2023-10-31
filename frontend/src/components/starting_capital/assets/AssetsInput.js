@@ -32,19 +32,14 @@ const AssetsInput = ({assets, t}) => {
                        id="tab-12"
                        name="tab-4"
                        className="tab-toggle"
-                       onClick={() => setActiveTab(3)} />
-                <label htmlFor="tab-12" className="tab tab-pill">{t('corporate')}</label>
-
-                <input type="radio"
-                       id="tab-12"
-                       name="tab-4"
-                       className="tab-toggle"
                        onClick={() => setActiveTab(4)} />
                 <label htmlFor="tab-13" className="tab tab-pill">{t('other_assets')}</label>
             </div>
             {
                 activeTab === 1 ?
-                    <LiquidAssetsInput t={t} setLiquidCapital={assets.setLiquidCapital}/>
+                    <LiquidAssetsInput t={t}
+                                       setLiquidCapital={assets.setLiquidCapital}
+                                       setPreciousMetals={assets.setPreciousMetals}/>
                     :
                     <h2>Not implemented yet</h2>
             }
