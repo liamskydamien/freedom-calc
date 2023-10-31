@@ -1,6 +1,6 @@
-import {calculateIncreasePerAssetGroup, useCalculateWealth} from "../../calculations/typescript/useCalculateWealth";
-import {AssetGroup} from "../../models/typescript/AssetGroup";
-import {InvestmentWeights} from "../../models/typescript/InvestmentWeights";
+import {calculateIncreasePerAssetGroup, useCalculateWealth} from "../../calculations/useCalculateWealth";
+import {AssetGroup} from "../../models/AssetGroup";
+import {InvestmentWeights} from "../../models/InvestmentWeights";
 
 /* Test the useCalculateWealth hook */
 

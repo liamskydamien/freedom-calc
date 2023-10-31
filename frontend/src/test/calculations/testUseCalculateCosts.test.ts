@@ -1,5 +1,5 @@
 /* import useCalculateCosts */
-import {useCalculateCosts} from "../../calculations/typescript/useCalculateCosts";
+import {useCalculateCosts} from "../../calculations/useCalculateCosts";
 
 const useCalculateCost = useCalculateCosts;
 /* Test the useCalculateCosts hook */

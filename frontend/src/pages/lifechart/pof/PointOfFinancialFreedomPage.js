@@ -1,7 +1,7 @@
-import {useCalculateWealth} from "../../../calculations/compiled/useCalculateWealth";
-import {AssetGroup} from "../../../models/compiled/AssetGroup";
-import {InvestmentWeights} from "../../../models/compiled/InvestmentWeights";
-import {useState} from "react";
+import {useCalculateWealth} from "../../../dist/calculations/useCalculateWealth";
+import {AssetGroup} from "../../../dist/models/AssetGroup";
+import {InvestmentWeights} from "../../../dist/models/InvestmentWeights";
+import {useEffect, useState} from "react";
 
 const PointOfFinancialFreedomPage = () => {
     const [increasePerAssetGroup, setIncreasePerAssetGroup] = useState([]);
@@ -10,7 +10,10 @@ const PointOfFinancialFreedomPage = () => {
     ];
     const investmentWeights = new InvestmentWeights(0.2, 0.2, 0.2, 0.2, 0.2, 0);
     const wealth = useCalculateWealth(assetGroups, [100,100,100], 3, investmentWeights).wealth;
-    setIncreasePerAssetGroup(wealth);
+
+    useEffect(() => {
+        setIncreasePerAssetGroup(wealth);
+    }, []);
 
     return (
         <div>
