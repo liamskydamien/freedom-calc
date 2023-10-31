@@ -4,6 +4,7 @@ import RealEstateInput from "./realestate/RealEstateInput";
 import StockAssetInput from "./stocks/StockAssetInput";
 import CryptoCurrencyInput from "./crypto_currency/CryptoCurrencyInput";
 import InsuranceInput from "./insurance/InsuranceInput";
+import OtherAssetsInput from "./other/OtherAssetsInput";
 
 const AssetsInput = ({assets, t}) => {
     const [activeTab, setActiveTab] = useState(1);
@@ -54,6 +55,7 @@ const AssetsInput = ({assets, t}) => {
                 <label htmlFor="insurance" className="tab tab-pill">{t('insurance')}</label>
 
             </div>
+            <div>
             {
                 activeTab === 1 ?
                     <LiquidAssetsInput t={t}
@@ -69,10 +71,12 @@ const AssetsInput = ({assets, t}) => {
                                      setStocks={assets.setStocks}/>
                     :
                 activeTab === 4 ?
-                    <CryptoCurrencyInput t={t} setCryptoCurrency={assets.setCryptoCurrency}/>
+                    <CryptoCurrencyInput t={t}
+                                         setCryptoCurrency={assets.setCryptoCurrency}/>
                     :
                 activeTab === 5 ?
-                    <h2>Not implemented yet</h2>
+                    <OtherAssetsInput t={t}
+                                      setOtherAssets={assets.setOther}/>
                     :
                 activeTab === 6 ?
                     <InsuranceInput t={t} setInsurance={assets.setInsurance}
@@ -81,8 +85,9 @@ const AssetsInput = ({assets, t}) => {
                     :
                     <h2>{t('404')}</h2>
             }
-        </>
-    );
+            </div>
+            </>
+    )
 }
 
 export default AssetsInput;
