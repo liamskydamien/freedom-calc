@@ -12,7 +12,7 @@ const RealEstateInput = ({ setRealEstate , t }) => {
 
     useEffect(() => {
         updateRealEstate();
-    }, [occupiedProperties, rentedProperties, commercialProperties, forest, agriculturalLand, realEstateFunds, other]);
+    }, [occupiedProperties, rentedProperties, commercialProperties, forest, agriculturalLand, realEstateFunds, other, setRealEstate]);
 
     const updateRealEstate = () => {
         setRealEstate(occupiedProperties + rentedProperties + commercialProperties + forest + agriculturalLand + realEstateFunds + other);

@@ -7,7 +7,7 @@ const CryptoCurrencyInput = ({t, setCryptoCurrency}) =>{
 
     useEffect(() => {
         updateCryptoCurrency();
-    }, [bitcoin, ethereum, other]);
+    }, [bitcoin, ethereum, other, setCryptoCurrency]);
     const updateCryptoCurrency = () => {
         setCryptoCurrency(bitcoin + ethereum + other);
     }

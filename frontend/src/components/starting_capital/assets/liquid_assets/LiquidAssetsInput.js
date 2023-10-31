@@ -9,11 +9,11 @@ const LiquidAssetsInput = ({ setLiquidCapital , setPreciousMetals , t }) => {
 
     useEffect(() => {
         updateLiquidCapital();
-    }, [cash, savingsAccount]);
+    }, [cash, savingsAccount, setLiquidCapital]);
 
     useEffect(() => {
         updatePreciousMetals();
-    }, [gold, otherPreciousMetals]);
+    }, [gold, otherPreciousMetals, setPreciousMetals]);
 
     const cashChangeHandler = (event) => {
         setCash(event.target.value);

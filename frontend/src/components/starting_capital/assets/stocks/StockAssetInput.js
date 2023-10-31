@@ -12,7 +12,7 @@ const StockAssetInput = ({setStocks, t}) => {
 
     useEffect(() => {
         updateStocks();
-    }, [singleStocks, fund, etf, derivative, activeCorporateParticipation, passiveCorporateParticipation, other]);
+    }, [singleStocks, fund, etf, derivative, activeCorporateParticipation, passiveCorporateParticipation, other, setStocks]);
 
     const updateStocks = () => {
         setStocks(singleStocks + fund + etf + derivative + activeCorporateParticipation + passiveCorporateParticipation + other);

@@ -3,6 +3,7 @@ import LiquidAssetsInput from "./liquid_assets/LiquidAssetsInput";
 import RealEstateInput from "./realestate/RealEstateInput";
 import StockAssetInput from "./stocks/StockAssetInput";
 import CryptoCurrencyInput from "./crypto_currency/CryptoCurrencyInput";
+import InsuranceInput from "./insurance/InsuranceInput";
 
 const AssetsInput = ({assets, t}) => {
     const [activeTab, setActiveTab] = useState(1);
@@ -73,7 +74,12 @@ const AssetsInput = ({assets, t}) => {
                 activeTab === 5 ?
                     <h2>Not implemented yet</h2>
                     :
-                    <></>
+                activeTab === 6 ?
+                    <InsuranceInput t={t} setInsurance={assets.setInsurance}
+                                    setPension={assets.setPensionInsurance}
+                                    setBuildingSavingsContract={assets.setBuildingSavingContract}/>
+                    :
+                    <h2>{t('404')}</h2>
             }
         </>
     );
