@@ -8,52 +8,66 @@ import OtherAssetsInput from "./other/OtherAssetsInput";
 
 const AssetsInput = ({assets, t}) => {
     const [activeTab, setActiveTab] = useState(1);
+
+    const checkForActiveTab = (tab) => {
+        return tab === activeTab ? "tab-active" : "";
+    }
+
     return (
         <>
             <div className="tabs gap-1">
                 <input type="radio"
-                       id="liquid-assets"
-                       name="liquid-assets-tab"
+                       id="tab-liquid-assets"
+                       name="tab-4"
                        className="tab-toggle"
                        defaultChecked
-                       onClick={() => setActiveTab(1)}/>
-                <label htmlFor="liquid-assets" className="tab tab-pill">{t('liquid_assets')}</label>
+                       onClick={() => setActiveTab(1)}
+                />
+                <label htmlFor="tab-liquid-assets"
+                       className="tab tab-pill">
+                        {t('liquid_assets')}
+                </label>
 
                 <input type="radio"
-                       id="real-estate"
-                       name="real-estate-tab"
+                       id="tab-real-estate"
+                       name="tab-4"
                        className="tab-toggle"
                        onClick={() => setActiveTab(2)} />
-                <label htmlFor="real-estate" className="tab tab-pill">{t('realestate')}</label>
+                <label htmlFor="tab-real-estate"
+                       className="tab tab-pill">{t('realestate')}</label>
 
                 <input type="radio"
-                       id="corporate"
-                       name="corporate-tab"
+                       id="tab-corporate"
+                       name="tab-4"
                        className="tab-toggle"
                        onClick={() => setActiveTab(3)} />
-                <label htmlFor="corporate" className="tab tab-pill">{t('stocks')}</label>
+                <label htmlFor="tab-corporate"
+                       className="tab tab-pill">{t('stocks')}</label>
 
                 <input type="radio"
-                          id="crypto"
-                          name="crypto-tab"
-                          className="tab-toggle"
-                          onClick={() => setActiveTab(4)} />
-                <label htmlFor="crypto" className="tab tab-pill">{t('crypto_currency')}</label>
+                       id="tab-crypto"
+                       name="tab-4"
+                       className="tab-toggle"
+                       onClick={() => setActiveTab(4)} />
+                <label htmlFor="tab-crypto"
+                       className="tab tab-pill">{t('crypto_currency')}</label>
 
                 <input type="radio"
-                       id="other-assets"
-                       name="other-assets-tab"
+                       id="tab-other-assets"
+                       name="tab-4"
                        className="tab-toggle"
                        onClick={() => setActiveTab(5)} />
-                <label htmlFor="other-assets" className="tab tab-pill">{t('other_assets')}</label>
+                <label htmlFor="tab-other-assets"
+                       className="tab tab-pill">
+                    {t('other_assets')}</label>
 
                 <input type="radio"
-                       id="insurance"
-                       name="insurance-tab"
+                       id="tab-insurance"
+                       name="tab-4"
                        className="tab-toggle"
                        onClick={() => setActiveTab(6)} />
-                <label htmlFor="insurance" className="tab tab-pill">{t('insurance')}</label>
-
+                <label htmlFor="tab-insurance"
+                       className="tab tab-pill">{t('insurance')}</label>
             </div>
             <div>
             {
@@ -86,6 +100,7 @@ const AssetsInput = ({assets, t}) => {
                     <h2>{t('404')}</h2>
             }
             </div>
+
             </>
     )
 }
