@@ -6,12 +6,14 @@ import IncomeCostsPage from "./income_costs/IncomeCostsPage";
 import PointOfFinancialFreedomPage from "./pof/PointOfFinancialFreedomPage";
 import OptimisationPage from "./optimisation/OptimisationPage";
 import StartingCapitalPage from "./startingPoint/StartingCapitalPage";
+import {InputContextProvider} from "../../context/userinputs/InputContext";
 const LifeChart = () => {
     const navigationContext = useContext(NavigationContext);
     const {navigation} = navigationContext;
     return (
         <div className="ml-10 mr-10 mt-3 mb-5">
             <div className="lifechartLayout">
+                <InputContextProvider>
                 <div className="lifechartPage">
                     {
                         navigation === 1 ?
@@ -29,6 +31,7 @@ const LifeChart = () => {
                             <OptimisationPage/>
                     }
                 </div>
+                </InputContextProvider>
             </div>
         </div>
     )

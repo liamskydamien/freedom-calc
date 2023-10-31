@@ -6,15 +6,7 @@ const EnterUserDetails = () => {
 
     const {t} = useTranslation();
     const {personalData} = useContext(InputContext);
-    const {firstName,
-        setFirstName,
-        lastName,
-        setLastName,
-        setGender,
-        setDateOfBirth,
-        expectedAge,
-        setExpectedAge,
-        setCurrency} = personalData;
+    const {firstName, setFirstName, lastName, setLastName, setGender, setDateOfBirth, expectedAge, setExpectedAge, setCurrency} = personalData;
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);
