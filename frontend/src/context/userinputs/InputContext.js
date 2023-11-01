@@ -62,20 +62,14 @@ export const InputContextProvider = ({children}) => {
         setPensionInsurance
     }
         // Liabilities
-    const [liablities, setLiablities] = useState(0.0);
-    const [provision, setProvision] = useState(0.0);
-    const [reservedForConsumption, setReservedForConsumption] = useState(0.0);
-    const [reservedForPension, setReservedForPension] = useState(0.0);
+    const [liabilities, setLiabilities] = useState(0.0);
+    const [reservedCapital, setReservedCapital] = useState(0.0);
 
-    const liabilities = {
-        liablities,
-        setLiablities,
-        provision,
-        setProvision,
-        reservedForConsumption,
-        setReservedForConsumption,
-        reservedForPension,
-        setReservedForPension
+    const passiva = {
+        liabilities,
+        setLiabilities,
+        reservedCapital,
+        setReservedCapital
     }
 
     // Income and Costs
@@ -105,7 +99,7 @@ export const InputContextProvider = ({children}) => {
         removeCost
     }
 
-    const value = {personalData, assets, liabilities, incomeCosts};
+    const value = {personalData, assets, passiva, incomeCosts};
     return (
         <InputContext.Provider value={value}>
             {children}

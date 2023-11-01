@@ -9,10 +9,6 @@ import OtherAssetsInput from "./other/OtherAssetsInput";
 const AssetsInput = ({assets, t}) => {
     const [activeTab, setActiveTab] = useState(1);
 
-    const checkForActiveTab = (tab) => {
-        return tab === activeTab ? "tab-active" : "";
-    }
-
     return (
         <>
             <div className="tabs gap-1">
@@ -100,7 +96,6 @@ const AssetsInput = ({assets, t}) => {
                     <h2>{t('404')}</h2>
             }
             </div>
-
             </>
     )
 }

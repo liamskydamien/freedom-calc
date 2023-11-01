@@ -6,7 +6,7 @@ import InputContext from "../../context/userinputs/InputContext";
 
 const StartingCapitalInput = () => {
     const { t } = useTranslation();
-    const {assets, liabilities} = useContext(InputContext);
+    const {assets, passiva} = useContext(InputContext);
     const [active, setActive] = useState(1);
     return (
         <div className="flex-col card p-5 max-w-fit">
@@ -31,7 +31,7 @@ const StartingCapitalInput = () => {
                 active === 1 ?
                     <AssetsInput t={t} assets={assets} />
                     :
-                    <PassivaInputs/>
+                    <PassivaInputs t={t} passiva={passiva}/>
             }
         </div>
     )
