@@ -1,4 +1,11 @@
+import {useEffect, useState} from "react";
+
 const PassivaTab = ({t, passiva}) => {
+    const [total, setTotal] = useState(0.0);
+    useEffect(() => {
+        setTotal(passiva.liabilities + passiva.reservedCapital);
+    }, [passiva]);
+
     return (
         <div>
             <h2 className="text-lg">{t('passiva')}</h2>
@@ -13,20 +20,21 @@ const PassivaTab = ({t, passiva}) => {
                     <tbody>
                     <tr>
                         <th>{t('liability')}</th>
-                        <td>Cy Ganderton</td>
+                        <td>{passiva.liabilities}</td>
                     </tr>
                     <tr>
                         <th>{t('reserved_equity')}</th>
-                        <td>Hart Hagerty</td>
+                        <td>{passiva.reservedCapital}</td>
                     </tr>
                     </tbody>
                 </table>
             </div>
-            <div className="divider"></div>
             <table className="table-zebra table">
                 <thead>
-                <th>{t('total')}</th>
-                <th>1214444</th>
+                <tr>
+                    <th>{t('total')}</th>
+                    <th>{total}</th>
+                </tr>
                 </thead>
             </table>
         </div>

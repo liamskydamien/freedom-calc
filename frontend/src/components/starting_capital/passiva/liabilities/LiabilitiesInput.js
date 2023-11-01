@@ -7,7 +7,11 @@ const LiabilitiesInput = ({t, setLiabilities}) => {
     const [provisions, setProvisions] = useState(0.0);
 
     const updateLiabilities = () => {
-        setLiabilities(objectRelatedLiabilities + nonObjectRelatedLiabilities + otherLiabilities + provisions);
+        setLiabilities(parseFloat(objectRelatedLiabilities)
+            + parseFloat(nonObjectRelatedLiabilities)
+            + parseFloat(otherLiabilities)
+            + parseFloat(provisions)
+        );
     }
 
     useEffect(() => {

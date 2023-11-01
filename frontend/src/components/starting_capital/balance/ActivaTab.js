@@ -47,11 +47,12 @@ const ActivaTab = ({t, assets}) => {
                     </tbody>
                 </table>
             </div>
-            <div className="divider"></div>
             <table className="table-zebra table">
                 <thead>
+                <tr>
                     <th>{t('total')}</th>
                     <th>{total}</th>
+                </tr>
                 </thead>
             </table>
         </div>

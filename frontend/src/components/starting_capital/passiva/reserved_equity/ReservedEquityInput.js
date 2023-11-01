@@ -1,12 +1,19 @@
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const ReservedEquityInput = ({ t, setReservedEquity }) => {
     const [reservedEquityForPensionProvision, setReservedEquityForPensionProvision] = useState(0);
     const [reservedEquityForConsumption, setReservedEquityForConsumption] = useState(0);
     const [reservedEquityForOther, setReservedEquityForOther] = useState(0);
 
+
+    useEffect(() => {
+        updateReservedEquity();
+    }, [setReservedEquity, reservedEquityForConsumption, reservedEquityForPensionProvision, reservedEquityForOther]);
     const updateReservedEquity = () => {
-        setReservedEquity(reservedEquityForPensionProvision + reservedEquityForConsumption + reservedEquityForOther);
+        setReservedEquity(parseFloat(reservedEquityForPensionProvision)
+            + parseFloat(reservedEquityForConsumption)
+            + parseFloat(reservedEquityForOther)
+        );
     }
 
     const reservedEquityForPensionProvisionChangeHandler = (event) => {

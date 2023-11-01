@@ -8,7 +8,7 @@ const InsuranceInput = ({t, setInsurance, setPension, setBuildingSavingsContract
 
     useEffect(() => {
         updateInsurance();
-    }, [lifeInsurance, other, setInsurance]);
+    }, [lifeInsurance, other, setInsurance, buildingSavingContract, pensionInsurance]);
 
     useEffect(() => {
         updatePensionInsurance();

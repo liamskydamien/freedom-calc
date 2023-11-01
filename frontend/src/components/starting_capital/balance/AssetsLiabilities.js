@@ -10,7 +10,7 @@ const AssetsLiabilities = ({t}) => {
         <div className="max-w-full">
             <div className="flex">
                 <ActivaTab t={t} assets={assets} />
-                <PassivaTab t={t} />
+                <PassivaTab t={t} passiva={passiva}/>
             </div>
         </div>
     )
