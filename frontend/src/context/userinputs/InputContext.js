@@ -36,7 +36,10 @@ export const InputContextProvider = ({children}) => {
     const [other, setOther] = useState(0.0);
     const [preciousMetals, setPreciousMetals] = useState(0.0);
     const [cryptoCurrency, setCryptoCurrency] = useState(0.0);
-    const [corporateParticipation, setCorporateParticipation] = useState(0.0);
+    const [insurance, setInsurance] = useState(0.0);
+    const [pensionInsurance, setPensionInsurance] = useState(0.0);
+    const [buildingSavingContract, setBuildingSavingContract] = useState(0.0);
+    //const [corporateParticipation, setCorporateParticipation] = useState(0.0);
 
     const assets = {
         liquidCapital,
@@ -47,28 +50,26 @@ export const InputContextProvider = ({children}) => {
         setStocks,
         other,
         setOther,
-        corporateParticipation,
-        setCorporateParticipation,
         preciousMetals,
         setPreciousMetals,
         cryptoCurrency,
-        setCryptoCurrency
+        setCryptoCurrency,
+        insurance,
+        setInsurance,
+        buildingSavingContract,
+        setBuildingSavingContract,
+        pensionInsurance,
+        setPensionInsurance
     }
         // Liabilities
-    const [liablities, setLiablities] = useState(0.0);
-    const [provision, setProvision] = useState(0.0);
-    const [reservedForConsumption, setReservedForConsumption] = useState(0.0);
-    const [reservedForPension, setReservedForPension] = useState(0.0);
+    const [liabilities, setLiabilities] = useState(0.0);
+    const [reservedCapital, setReservedCapital] = useState(0.0);
 
-    const liabilities = {
-        liablities,
-        setLiablities,
-        provision,
-        setProvision,
-        reservedForConsumption,
-        setReservedForConsumption,
-        reservedForPension,
-        setReservedForPension
+    const passiva = {
+        liabilities,
+        setLiabilities,
+        reservedCapital,
+        setReservedCapital
     }
 
     // Income and Costs
@@ -98,7 +99,7 @@ export const InputContextProvider = ({children}) => {
         removeCost
     }
 
-    const value = {personalData, assets, liabilities, incomeCosts};
+    const value = {personalData, assets, passiva, incomeCosts};
     return (
         <InputContext.Provider value={value}>
             {children}

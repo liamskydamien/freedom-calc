@@ -1,9 +1,11 @@
 import StartingCapitalInput from "../../../components/starting_capital/StartingCapitalInput";
+import BalanceSheet from "../../../components/starting_capital/balance/BalanceSheet";
 
 const StartingCapitalPage = () => {
     return (
-    <div>
-      <StartingCapitalInput />
+    <div className="flex">
+        <StartingCapitalInput />
+        <BalanceSheet />
     </div>
   )
 }
