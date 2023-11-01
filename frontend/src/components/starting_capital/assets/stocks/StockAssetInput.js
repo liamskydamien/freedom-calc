@@ -15,7 +15,14 @@ const StockAssetInput = ({setStocks, t}) => {
     }, [singleStocks, fund, etf, derivative, activeCorporateParticipation, passiveCorporateParticipation, other, setStocks]);
 
     const updateStocks = () => {
-        setStocks(singleStocks + fund + etf + derivative + activeCorporateParticipation + passiveCorporateParticipation + other);
+        setStocks(parseFloat(singleStocks)
+            + parseFloat(fund)
+            + parseFloat(etf)
+            + parseFloat(derivative)
+            + parseFloat(activeCorporateParticipation)
+            + parseFloat(passiveCorporateParticipation)
+            + parseFloat(other)
+        );
     }
 
     const singleStocksChangeHandler = (event) => {

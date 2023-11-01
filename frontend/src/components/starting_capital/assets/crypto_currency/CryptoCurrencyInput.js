@@ -9,7 +9,10 @@ const CryptoCurrencyInput = ({t, setCryptoCurrency}) =>{
         updateCryptoCurrency();
     }, [bitcoin, ethereum, other, setCryptoCurrency]);
     const updateCryptoCurrency = () => {
-        setCryptoCurrency(bitcoin + ethereum + other);
+        setCryptoCurrency(parseFloat(bitcoin)
+            + parseFloat(ethereum)
+            + parseFloat(other)
+        );
     }
 
     const bitcoinChangeHandler = (event) => {

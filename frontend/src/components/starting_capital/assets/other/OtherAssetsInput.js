@@ -12,7 +12,12 @@ const OtherAssetsInput = ({t, setOtherAssets}) => {
     }, [art, jewelry, collectibles, claims, other, setOther]);
 
     const updateOther = () => {
-        setOtherAssets(art + jewelry + collectibles + claims + other);
+        setOtherAssets(parseFloat(art)
+            + parseFloat(jewelry)
+            + parseFloat(collectibles)
+            + parseFloat(claims)
+            + parseFloat(other)
+        );
     }
 
     const artChangeHandler = (event) => {

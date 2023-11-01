@@ -1,4 +1,4 @@
-const PassivaTab = ({t}) => {
+const PassivaTab = ({t, passiva}) => {
     return (
         <div>
             <h2 className="text-lg">{t('passiva')}</h2>

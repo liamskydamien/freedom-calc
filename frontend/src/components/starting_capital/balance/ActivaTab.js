@@ -1,4 +1,13 @@
-const ActivaTab = ({t}) => {
+import {AssetGroup} from "../../../models/AssetGroup";
+import {useEffect, useState} from "react";
+
+const ActivaTab = ({t, assets}) => {
+
+    const [total, setTotal] = useState(0.0);
+    useEffect(() => {
+        setTotal(assets.liquidCapital + assets.preciousMetals + assets.stocks + assets.cryptoCurrency + assets.insurance + assets.other);
+    }, [assets]);
+
     return (
         <div>
             <h2 className="text-lg">{t('activa')}</h2>
@@ -13,27 +22,27 @@ const ActivaTab = ({t}) => {
                     <tbody>
                     <tr>
                         <th>{t('liquid_assets')}</th>
-                        <td>Cy Ganderton</td>
+                        <td>{assets.liquidCapital}</td>
                     </tr>
                     <tr>
                         <th>{t('precious_metals')}</th>
-                        <td>Hart Hagerty</td>
+                        <td>{assets.preciousMetals}</td>
                     </tr>
                     <tr>
                         <th>{t('corporate_assets')}</th>
-                        <td>Brice Swyre</td>
+                        <td>{assets.stocks}</td>
                     </tr>
                     <tr>
                         <th>{t('crypto_currency')}</th>
-                        <td>Brice Swyre</td>
+                        <td>{assets.cryptoCurrency}</td>
                     </tr>
                     <tr>
                         <th>{t('insurance')}</th>
-                        <td>Brice Swyre</td>
+                        <td>{assets.insurance}</td>
                     </tr>
                     <tr>
                         <th>{t('other')}</th>
-                        <td>Brice Swyre</td>
+                        <td>{assets.other}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -42,7 +51,7 @@ const ActivaTab = ({t}) => {
             <table className="table-zebra table">
                 <thead>
                     <th>{t('total')}</th>
-                    <th>1214444</th>
+                    <th>{total}</th>
                 </thead>
             </table>
         </div>

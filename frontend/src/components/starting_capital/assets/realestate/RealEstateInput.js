@@ -15,7 +15,14 @@ const RealEstateInput = ({ setRealEstate , t }) => {
     }, [occupiedProperties, rentedProperties, commercialProperties, forest, agriculturalLand, realEstateFunds, other, setRealEstate]);
 
     const updateRealEstate = () => {
-        setRealEstate(occupiedProperties + rentedProperties + commercialProperties + forest + agriculturalLand + realEstateFunds + other);
+        setRealEstate(parseFloat(occupiedProperties)
+            + parseFloat(rentedProperties)
+            + parseFloat(commercialProperties)
+            + parseFloat(forest)
+            + parseFloat(agriculturalLand)
+            + parseFloat(realEstateFunds)
+            + parseFloat(other)
+        );
     }
 
     const occupiedPropertiesChangeHandler = (event) => {

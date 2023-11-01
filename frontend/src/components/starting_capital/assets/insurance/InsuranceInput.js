@@ -18,7 +18,10 @@ const InsuranceInput = ({t, setInsurance, setPension, setBuildingSavingsContract
         updateBuildingSavingsContract();
     }, [buildingSavingContract, setBuildingSavingsContract]);
     const updateInsurance = () => {
-        setInsurance(buildingSavingContract + lifeInsurance + pensionInsurance + other);
+        setInsurance(parseFloat(buildingSavingContract)
+            + parseFloat(lifeInsurance)
+            + parseFloat(pensionInsurance)
+            + parseFloat(other));
     }
 
     const updatePensionInsurance = () => {

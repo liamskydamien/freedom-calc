@@ -24,11 +24,13 @@ const LiquidAssetsInput = ({ setLiquidCapital , setPreciousMetals , t }) => {
     }
 
     const updateLiquidCapital = () => {
-        setLiquidCapital(cash + savingsAccount);
+        setLiquidCapital(parseFloat(cash)
+            + parseFloat(savingsAccount));
     }
 
     const updatePreciousMetals = () => {
-        setPreciousMetals(gold + otherPreciousMetals);
+        setPreciousMetals(parseFloat(gold)
+            + parseFloat(otherPreciousMetals));
     }
 
     const savingAccountChangeHandler = (event) => {
