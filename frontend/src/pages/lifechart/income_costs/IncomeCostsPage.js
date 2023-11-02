@@ -1,7 +1,13 @@
+import IncomeAndCosts from "../../../components/income_costs/IncomeAndCosts";
+import {useTranslation} from "react-i18next";
+
 const IncomeCostsPage = () => {
+
+    const {t} = useTranslation();
+
     return (
         <div>
-            <h1>Income and Costs</h1>
+            <IncomeAndCosts t={t} />
         </div>
     );
 }
