@@ -25,7 +25,7 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
     }
 
     return (
-        <div>
+        <div className="flex justify-center">
             <label className="btn btn-primary" htmlFor="modal-3">{t('new_life_phase')}</label>
             <input className="modal-state" id="modal-3" type="checkbox"  onChange={() => {clear()}}/>
             <div className="modal">

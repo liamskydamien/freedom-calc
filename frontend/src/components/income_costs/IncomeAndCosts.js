@@ -25,7 +25,7 @@ const IncomeAndCosts = ({t, lifephase}) => {
     return (
         <div className="flex-col card p-5 max-w-full">
             <div className="flex flex-row justify-between">
-                <h1 className="text-xl font-bold">{t('starting_capital')}</h1>
+                <h1 className="text-xl font-bold">{t('life_phases')}</h1>
             </div>
             <div className="tabs gap-1">
                 {

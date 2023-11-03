@@ -13,8 +13,10 @@ const IncomeCostsPage = () => {
     return (
         <div>
             <SelectedLifePhaseContextProvider>
-                <IncomeAndCosts t={t} lifephase={lifephase}/>
-                <SelectLifePhase t={t} lifephase={lifephase}/>
+                <div className="flex flex-col gap-4 max-w-fit">
+                    <IncomeAndCosts t={t} lifephase={lifephase}/>
+                    <SelectLifePhase t={t} lifephase={lifephase}/>
+                </div>
             </SelectedLifePhaseContextProvider>
         </div>
     );
