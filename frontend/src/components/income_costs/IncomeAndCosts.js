@@ -1,14 +1,17 @@
 import {LifePhase} from "../../models/LifePhase";
 import NewLifePhaseModal from "./modal/NewLifePhaseModal";
+import {useState} from "react";
 
 const IncomeAndCosts = ({t, lifephase}) => {
 
-    const {phase, setPhase} = lifephase;
+    const {phases, setPhases} = lifephase;
+
+    const [startAge, setStartAge] = useState(0);
 
     const addPhase = (name, endAge, income, expenses) => {
-        const startAge = phase.length === 0 ? 0 : phase[phase.length - 1].toAge
         const newPhase = new LifePhase(name, startAge, endAge, income, expenses);
-        setPhase(...phase, newPhase);
+        setPhases(...phases, newPhase);
+        setStartAge(endAge + 1);
     }
 
     return (
@@ -20,7 +23,7 @@ const IncomeAndCosts = ({t, lifephase}) => {
                 <input type="radio" id="tab-10" name="tab-4" className="tab-toggle" checked />
                 <label htmlFor="tab-10" className="tab tab-pill">Tab 1</label>
             </div>
-            <NewLifePhaseModal addPhase={addPhase} startAge={0} t={t}/>
+            <NewLifePhaseModal addPhase={addPhase} startAge={startAge} t={t}/>
         </div>
     )
 }

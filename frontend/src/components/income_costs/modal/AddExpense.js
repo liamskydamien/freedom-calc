@@ -30,7 +30,7 @@ const AddExpense = ({ t, setExpense, setStatus}) => {
     }
 
     const taxesChangeHandler = (event) => {
-        setTaxes(event.target.value);
+        setTaxes(parseFloat(event.target.value));
     }
 
     const rentChangeHandler = (event) => {

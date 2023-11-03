@@ -6,7 +6,7 @@ import InputContext from "../../../context/userinputs/InputContext";
 const IncomeCostsPage = () => {
 
     const {t} = useTranslation();
-    const lifephase = useContext(InputContext);
+    const {lifephase} = useContext(InputContext);
 
     return (
         <div>
