@@ -29,7 +29,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
                                required
                                onChange={nameChangeHandler}/>
                     </div>
-                    <div className="flex ">
+                    <div className="flex gap-4 mb-3">
                         <div className="form-field">
                             <label className="form-label">{t('start_of_phase')}</label>
                             <input value={startAge}
