@@ -21,10 +21,10 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
 
     return (
         <div>
-            <label className="btn btn-primary" htmlFor="modal-1">{t('new_life_phase')}</label>
-            <input className="modal-state" id="modal-1" type="checkbox"  onChange={() => {clear()}}/>
+            <label className="btn btn-primary" htmlFor="modal-3">{t('new_life_phase')}</label>
+            <input className="modal-state" id="modal-3" type="checkbox"  onChange={() => {clear()}}/>
             <div className="modal">
-                <label className="modal-overlay" htmlFor="modal-1"></label>
+                <label className="modal-overlay" htmlFor="modal-3"></label>
                 <div className="modal-content flex flex-col gap-5 max-w-full">
                     <label htmlFor="modal-1" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
                     <h2 className="text-xl">Add a new Life Phase</h2>
@@ -59,8 +59,8 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                 <h3>{t('income')}: {income}</h3>
                                 <h3>{t('expenses')}: {expense}</h3>
                                 <div className="flex gap-3">
-                                    <button className="btn btn-primary" onClick={() => {addPhase(name, endAge, income, expense)}}>{t('save')}</button>
-                                    <button className="btn" onClick={() => {clear()}}>{t('cancel')}</button>
+                                    <button className="btn btn-block">{t('cancel')}</button>
+                                    <button className="btn btn-primary btn-block modal-close">{t('save')}</button>
                                 </div>
                             </div>
                     }

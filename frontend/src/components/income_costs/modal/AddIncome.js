@@ -105,8 +105,8 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
                     </div>
                 </div>
                 <div className="flex gap-3">
-                    <button className="btn btn-primary" onClick={addIncomeHandler}>{t('save_proceed')}</button>
-                    <button className="btn" onClick={backHandler}>{t('back')}</button>
+                    <button className="btn btn-primary btn-block" onClick={addIncomeHandler}>{t('save_proceed')}</button>
+                    <button className="btn btn-block" onClick={backHandler}>{t('back')}</button>
                 </div>
             </div>
         </div>

@@ -20,7 +20,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
         <div>
             <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
                 <div className="form-group">
-                    <h3 className="text-sm font-bold pb-0">{t('cash_reserve')}</h3>
+                    <h3 className="text-sm font-bold pb-0">{t('new_lifephase')}</h3>
                     <div className="form-field">
                         <label className="form-label">{t('name_of_phase')}</label>
                         <input value={name}
@@ -48,8 +48,8 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
                 </div>
             </div>
             <div className="flex gap-3">
-                <button className="btn btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
-                <button className="btn" onClick={clearHandler}>{t('cancel_clear')}</button>
+                <button className="btn btn-block btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
+                <button className="btn btn-block" onClick={clearHandler}>{t('cancel_clear')}</button>
             </div>
         </div>
     )
