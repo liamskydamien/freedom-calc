@@ -1,8 +1,7 @@
-import {useState} from "react";
 import {Income} from "../../../models/Income";
 
 const AddIncome = ({ t, setIncome, setStatus}) => {
-
+    //TODO: Integrate useRef do clear inputs
     const [dependent, setDependent] = useState(0.0);
     const [selfemployed, setSelfemployed] = useState(0.0);
     const [rentingIncome, setRentingIncome] = useState(0.0);
@@ -16,7 +15,7 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
         setStatus("costs");
     }
 
-    const back = () => {
+    const backHandler = () => {
         setDependent(0.0);
         setSelfemployed(0.0);
         setRentingIncome(0.0);
@@ -53,7 +52,7 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
     return (
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
-                <h3 className="text-sm font-bold pb-0">{t('cash_reserve')}</h3>
+                <h2 className="text-sm font-bold pb-0">{t('income')}</h2>
                 <div className="form-field">
                     <label className="form-label">{t('dependent')}</label>
                     <input value={dependent}
@@ -68,9 +67,8 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
                            className="input max-w-full"
                            onChange={selfemployedChangeHandler}/>
                 </div>
-                <h3 className="text-sm font-bold pb-0">{t('rentingIncome')}</h3>
                 <div className="form-field">
-                    <label className="form-label">{t('gold')}</label>
+                    <label className="form-label">{t('rentingIncome')}</label>
                     <div className="form-control">
                         <input value={rentingIncome}
                                type="number"
@@ -107,7 +105,7 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
                 </div>
                 <div className="flex gap-3">
                     <button className="btn btn-primary" onClick={addIncomeHandler}>{t('save_proceed')}</button>
-                    <button className="btn" onClick={back}>{t('back')}</button>
+                    <button className="btn" onClick={backHandler}>{t('back')}</button>
                 </div>
             </div>
         </div>

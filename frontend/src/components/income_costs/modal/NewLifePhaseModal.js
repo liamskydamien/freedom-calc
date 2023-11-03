@@ -21,7 +21,7 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
     return (
         <div>
             <label className="btn btn-primary" htmlFor="modal-1">{t('new_life_phase')}</label>
-            <input className="modal-state" id="modal-1" type="checkbox"  onChange={() => {console.log("changed")}}/>
+            <input className="modal-state" id="modal-1" type="checkbox"  onChange={() => {clear()}}/>
             <div className="modal">
                 <label className="modal-overlay" htmlFor="modal-1"></label>
                 <div className="modal-content flex flex-col gap-5 max-w-full">
@@ -39,7 +39,10 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                            startAge={startAge} />
                             :
                         status === "income" ?
-                            <AddIncome t={t} setIncome={setIncome}/>
+                            <AddIncome t={t}
+                                       setIncome={setIncome}
+                                       setStatus={setStatus}
+                            />
                             :
                         status === "costs" ?
                             <h2>Costs</h2>

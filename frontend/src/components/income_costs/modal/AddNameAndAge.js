@@ -24,7 +24,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
                     <div className="form-field">
                         <label className="form-label">{t('name_of_phase')}</label>
                         <input value={name}
-                               type="number"
+                               type="text"
                                className="input max-w-full"
                                onChange={nameChangeHandler}/>
                     </div>
