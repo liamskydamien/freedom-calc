@@ -57,17 +57,73 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                             :
                         status === "summary" &&
                             <div>
-                                <h2>{t('summary')}</h2>
-                                <h3>{t('name_of_phase')}: {name}</h3>
-                                <h3>{t('start_of_phase')}: {startAge}</h3>
-                                <h3>{t('end_of_phase')}: {endAge}</h3>
-                                <h3>{t('income')}: {income}</h3>
-                                <h3>{t('expenses')}: {expense}</h3>
-                                <div className="flex gap-3">
+                                <h3 className="text-sm font-bold pb-0">{t('summary')}</h3>
+                                <div className="flex flex-col gap-1.5 mb-3">
+                                <div className="flex justify-between">
+                                    <div className="flex mt-auto mb-auto">
+                                        <p className="mb-0">{t('name_of_phase')}</p>
+                                    </div>
+                                    <input value={name}
+                                           type="text"
+                                           className="input max-w-fit"
+                                           readOnly
+                                           disabled
+                                           />
+                                </div>
+
+                                <div className="flex justify-between">
+                                    <div className="flex mt-auto mb-auto">
+                                        <p className="mb-0">{t('start_of_phase')}</p>
+                                    </div>
+                                    <input value={startAge}
+                                           type="number"
+                                           className="input max-w-fit"
+                                           readOnly
+                                           disabled
+                                    />
+                                </div>
+
+                                <div className="flex justify-between">
+                                    <div className="flex mt-auto mb-auto">
+                                        <p className="mb-0">{t('end_of_phase')}</p>
+                                    </div>
+                                    <input value={endAge}
+                                           type="number"
+                                           className="input max-w-fit"
+                                           readOnly
+                                           disabled
+                                    />
+                                </div>
+
+                                <div className="flex justify-between">
+                                    <div className="flex mt-auto mb-auto">
+                                        <p className="mb-0">{t('income')}</p>
+                                    </div>
+                                    <input value={income}
+                                           type="number"
+                                           className="input max-w-fit"
+                                           readOnly
+                                           disabled
+                                    />
+                                </div>
+
+                                <div className="flex justify-between">
+                                    <div className="flex mt-auto mb-auto">
+                                        <p className="mb-0">{t('expenses')}</p>
+                                    </div>
+                                    <input value={expense}
+                                           type="number"
+                                           className="input max-w-fit"
+                                           readOnly
+                                           disabled
+                                    />
+                                </div>
+                                </div>
+                                <div className="flex gap-4">
                                     <label className="btn btn-primary btn-block" htmlFor="modal-3" onClick={addPhaseHandler}>{t('save')}</label>
                                     <label className="btn btn-block" htmlFor="modal-3" onClick={clear}>{t('cancel')}</label>
                                 </div>
-                            </div>
+                        </div>
                     }
                 </div>
             </div>

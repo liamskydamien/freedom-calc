@@ -50,7 +50,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
             </div>
             <div className="flex gap-3">
                 {
-                    name !== "" && endAge !== 0 ?
+                    name !== "" && endAge > startAge ?
                     <button className="btn btn-block btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
                         :
                     <button className="btn btn-block btn-primary" disabled>{t('save_proceed')}</button>
