@@ -10,8 +10,8 @@ const IncomeAndCosts = ({t, lifephase}) => {
 
     const addPhase = (name, endAge, income, expenses) => {
         const newPhase = new LifePhase(name, startAge, endAge, income, expenses);
-        setPhases(...phases, newPhase);
-        setStartAge(endAge + 1);
+        setPhases([...phases, newPhase]);
+        setStartAge(parseInt(endAge) + 1);
     }
 
     return (
@@ -20,8 +20,25 @@ const IncomeAndCosts = ({t, lifephase}) => {
                 <h1 className="text-xl font-bold">{t('starting_capital')}</h1>
             </div>
             <div className="tabs gap-1">
-                <input type="radio" id="tab-10" name="tab-4" className="tab-toggle" checked />
-                <label htmlFor="tab-10" className="tab tab-pill">Tab 1</label>
+                {
+                    phases.length > 0 &&
+                    phases.map((phase) => {
+                       return( <div>
+                                    <input type="radio"
+                                           id={`tab-${phase.name}`}
+                                           name="tab-4"
+                                           className="tab-toggle"
+                                           checked
+                                           readOnly
+                                           key={`tab-${phase.name}-${phase.toAge}`}/>
+                                    <label htmlFor={`tab-${phase.name}`}
+                                           className="tab tab-pill">
+                                        {phase.name}
+                                    </label>
+                        </div>
+                       )
+                    })
+                }
             </div>
             <NewLifePhaseModal addPhase={addPhase} startAge={startAge} t={t}/>
         </div>

@@ -8,15 +8,20 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
     const [income, setIncome] = useState(0.0);
     const [expense, setExpense] = useState(0.0);
     const [name, setName] = useState("");
-    const [endAge, setEndAge] = useState(0);
+    const [endAge, setEndAge] = useState(0.0);
     const [status, setStatus] = useState("name");
 
     const clear = () => {
         setName("");
-        setEndAge(0);
+        setEndAge(0.0);
         setStatus("name");
         setIncome(0.0);
         setExpense(0.0);
+    }
+
+    const addPhaseHandler = () => {
+        addPhase(name, endAge, income, expense);
+        clear();
     }
 
     return (
@@ -59,7 +64,7 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                 <h3>{t('income')}: {income}</h3>
                                 <h3>{t('expenses')}: {expense}</h3>
                                 <div className="flex gap-3">
-                                    <label className="btn btn-primary btn-block" htmlFor="modal-3" onClick={addPhase}>{t('save')}</label>
+                                    <label className="btn btn-primary btn-block" htmlFor="modal-3" onClick={addPhaseHandler}>{t('save')}</label>
                                     <label className="btn btn-block" htmlFor="modal-3" onClick={clear}>{t('cancel')}</label>
                                 </div>
                             </div>

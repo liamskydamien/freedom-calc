@@ -5,7 +5,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
     }
 
     const endAgeChangeHandler = (event) => {
-        setEndAge(event.target.value);
+        setEndAge(parseInt(event.target.value));
     }
 
     const submitHandler = () => {
