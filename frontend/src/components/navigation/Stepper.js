@@ -1,7 +1,6 @@
 import {useTranslation} from "react-i18next";
 import "./stepper.css"
-import {useEffect} from "react";
-const Stepper = (active) => {
+const Stepper = ({active}) => {
     const { i18n, t } = useTranslation();
 
     const setStep = (step) => {
@@ -17,23 +16,23 @@ const Stepper = (active) => {
     }
     return (
         <ol className="steps">
-            <li className={`step step-primary ${setStep(1)} overflow-hidden`}>
+            <li className={`step step-primary ${setStep('personal_information')} overflow-hidden`}>
                 <div className="step-circle">1</div>
                 <h3 className="stepTitle">{t('personal_information')}</h3>
             </li>
-            <li className={`step step-primary ${setStep(2)} overflow-hidden`}>
+            <li className={`step step-primary ${setStep('starting_capital')} overflow-hidden`}>
                 <div className="step-circle">2</div>
                 <h3 className="stepTitle">{t('starting_capital')}</h3>
             </li>
-            <li className={`step step-primary ${setStep(3)} overflow-hidden`}>
+            <li className={`step step-primary ${setStep('income_costs')} overflow-hidden`}>
                 <div className="step-circle">3</div>
                 <h3 className="stepTitle">{t('income_costs')}</h3>
             </li>
-            <li className={`step step-primary ${setStep(4)} overflow-hidden`}>
+            <li className={`step step-primary ${setStep('pof')} overflow-hidden`}>
                 <div className="step-circle">4</div>
                 <h3 className="stepTitle">{t('pof')}</h3>
             </li>
-            <li className={`step step-primary ${setStep(5)} overflow-hidden`}>
+            <li className={`step step-primary ${setStep('optimisation')} overflow-hidden`}>
                 <div className="step-circle">5</div>
                 <h3 className="stepTitle">{t('optimisation')}</h3>
             </li>

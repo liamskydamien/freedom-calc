@@ -1,6 +1,6 @@
 import NavigationLifeChart from "../navigation/NavigationLifeChart";
 
-const Footer = () => {
+const Footer = ({active, navigationAllowed}) => {
     return (
         <footer className="left-0 z-99999 w-full p-4 shadow md:flex md:items-center md:justify-between md:p-6 bg-backgroundSecondary">
             <NavigationLifeChart/>

@@ -1,12 +1,13 @@
 import {useTranslation} from "react-i18next";
-import {useContext} from "react";
+import {useContext, useState} from "react";
 import InputContext from "../../context/userinputs/InputContext";
 
 const EnterUserDetails = () => {
 
     const {t} = useTranslation();
     const {personalData} = useContext(InputContext);
-    const {firstName, setFirstName, lastName, setLastName, setGender, setDateOfBirth, expectedAge, setExpectedAge, setCurrency} = personalData;
+    const {firstName, setFirstName, lastName, setLastName, setGender, setAge, expectedAge, setExpectedAge, setCurrency} = personalData;
+    const [dateOfBirth, setDateOfBirth] = useState(new Date());
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);
@@ -32,6 +33,25 @@ const EnterUserDetails = () => {
         setCurrency(event.target.value);
     }
 
+    const calculateAge = (dateOfBirth) => {
+        dateOfBirth = new Date(dateOfBirth);
+        const today = new Date();
+        let age = today.getFullYear() - dateOfBirth.getFullYear();
+        const month = today.getMonth() - dateOfBirth.getMonth();
+        if (month < 0 || (month === 0 && today.getDate() < dateOfBirth.getDate())) {
+            age--;
+        }
+        return age;
+    }
+
+    const submitHandler = (event) => {
+        setAge(calculateAge(dateOfBirth));
+        event.preventDefault();
+        console.log(personalData);
+    }
+
+
+
     return (
         <div className="w-auto flex-col card p-5">
             <h1 className="text-xl font-bold">{t('personal_information')}</h1>
@@ -42,6 +62,7 @@ const EnterUserDetails = () => {
                         <input placeholder={t('type_here')}
                                className="input max-w-full"
                                value={firstName}
+                               required={true}
                                onChange={firstNameChangeHandler}/>
                     </div>
                     <div className="form-field">
@@ -49,6 +70,7 @@ const EnterUserDetails = () => {
                         <input placeholder={t('type_here')}
                                className="input max-w-full"
                                value={lastName}
+                               required={true}
                                onChange={lastNameChangeHandler}/>
                     </div>
                     <div className="form-field">
@@ -63,6 +85,7 @@ const EnterUserDetails = () => {
                             <label className="form-label">{t('date_of_birth')}</label>
                             <input className="input w-auto"
                                    type="date"
+                                   required={true}
                                    onChange={dateOfBirthChangeHandler}>
                             </input>
                         </div>
@@ -70,6 +93,7 @@ const EnterUserDetails = () => {
                             <label className="form-label">{t('expected_age')}</label>
                             <input className="input max-w-full"
                                    type="number"
+                                   required={true}
                                    value={expectedAge}
                                    onChange={expectedAgeChangeHandler}>
                             </input>
