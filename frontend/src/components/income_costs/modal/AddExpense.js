@@ -13,9 +13,20 @@ const AddExpense = ({ t, setExpense, setStatus}) => {
     const [maintenance, setMaintenance] = useState(0.0);
    const addExpenseHandler = () => {
        const expense = new Expenses(taxes, rent ,consumption, socialSecurity ,maintenance, insurance, interest, otherCosts);
-       setExpense(expense);
+       setExpense(calculateExpense(expense));
          setStatus("summary");
    }
+
+    const calculateExpense = (expense) => {
+        return parseFloat(expense.taxes) +
+            parseFloat(expense.rent) +
+            parseFloat(expense.consumption) +
+            parseFloat(expense.socialSecurity) +
+            parseFloat(expense.maintenance) +
+            parseFloat(expense.insurance) +
+            parseFloat(expense.interest) +
+            parseFloat(expense.otherCosts);
+    }
 
     const backHandler = () => {
         setTaxes(0.0);

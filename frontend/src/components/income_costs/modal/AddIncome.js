@@ -12,8 +12,17 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
 
     const addIncomeHandler = () => {
         const income = new Income(dependent, selfemployed, rentingIncome, capitalIncome, pension, otherIncome);
-        setIncome(income);
+        setIncome(calculateIncome(income));
         setStatus("expense");
+    }
+
+    const calculateIncome = (income) => {
+        return parseFloat(income.dependent) +
+            parseFloat(income.selfemployed) +
+            parseFloat(income.rentingIncome) +
+            parseFloat(income.capitalIncome) +
+            parseFloat(income.pension) +
+            parseFloat(income.otherIncome);
     }
 
     const backHandler = () => {

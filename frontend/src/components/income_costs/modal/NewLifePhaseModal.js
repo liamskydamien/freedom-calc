@@ -51,7 +51,18 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                         setExpense={setExpense}/>
                             :
                         status === "summary" &&
-                            <h2>Not implemented</h2>
+                            <div>
+                                <h2>{t('summary')}</h2>
+                                <h3>{t('name_of_phase')}: {name}</h3>
+                                <h3>{t('start_of_phase')}: {startAge}</h3>
+                                <h3>{t('end_of_phase')}: {endAge}</h3>
+                                <h3>{t('income')}: {income}</h3>
+                                <h3>{t('expenses')}: {expense}</h3>
+                                <div className="flex gap-3">
+                                    <button className="btn btn-primary" onClick={() => {addPhase(name, endAge, income, expense)}}>{t('save')}</button>
+                                    <button className="btn" onClick={() => {clear()}}>{t('cancel')}</button>
+                                </div>
+                            </div>
                     }
                 </div>
             </div>
