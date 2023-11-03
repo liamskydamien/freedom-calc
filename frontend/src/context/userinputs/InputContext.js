@@ -1,4 +1,5 @@
 import {createContext, useState} from "react";
+import {LifePhase} from "../../models/LifePhase";
 
 const InputContext = createContext({});
 export default InputContext;
@@ -73,33 +74,11 @@ export const InputContextProvider = ({children}) => {
     }
 
     // Income and Costs
-    const [incomes, setIncomes] = useState([]);
-    const [costs, setCosts] = useState([]);
-    const appendIncome = (income) => {
-        setIncomes([...incomes, income]);
-    }
-    const appendCost = (cost) => {
-        setCosts([...costs, cost]);
-    }
+    const [phases, setPhases] = useState([]);
 
-    const removeIncome = (income) => {
-        setIncomes(incomes.filter((item) => item.id !== income.id));
-    }
+    const lifephase = {phases, setPhases};
 
-    const removeCost = (cost) => {
-        setCosts(costs.filter((item) => item.id !== cost.id));
-    }
-
-    const incomeCosts = {
-        incomes,
-        costs,
-        appendIncome,
-        appendCost,
-        removeIncome,
-        removeCost
-    }
-
-    const value = {personalData, assets, passiva, incomeCosts};
+    const value = {personalData, assets, passiva, lifephase};
     return (
         <InputContext.Provider value={value}>
             {children}
