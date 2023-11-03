@@ -1,8 +1,11 @@
-import {useState} from "react";
+import {useContext, useState} from "react";
+import {LifePhase} from "../../models/LifePhase";
+import InputContext from "../../context/userinputs/InputContext";
 
-const IncomeAndCosts = ({t}) => {
+const IncomeAndCosts = ({t, lifephase}) => {
 
-    const [phases, setPhases] = useState([])
+    const {phase, setPhase} = lifephase;
+
 
     return (
         <div className="flex-col card p-5 max-w-full">
