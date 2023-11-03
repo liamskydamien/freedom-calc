@@ -1,4 +1,3 @@
-import {Income} from "../../../models/Income";
 import {useState} from "react";
 import {Expenses} from "../../../models/Expenses";
 
@@ -131,4 +130,4 @@ const AddExpense = ({ t, setExpense, setStatus}) => {
     )
 }
 
-export default AddIncome;
+export default AddExpense;

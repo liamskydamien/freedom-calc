@@ -1,11 +1,12 @@
 import AddIncome from "./AddIncome";
 import {useState} from "react";
 import AddNameAndAge from "./AddNameAndAge";
+import AddExpense from "./AddExpense";
 
 const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
 
     const [income, setIncome] = useState(0.0);
-    const [costs, setCosts] = useState(0.0);
+    const [expense, setExpense] = useState(0.0);
     const [name, setName] = useState("");
     const [endAge, setEndAge] = useState(0);
     const [status, setStatus] = useState("name");
@@ -15,7 +16,7 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
         setEndAge(0);
         setStatus("name");
         setIncome(0.0);
-        setCosts(0.0);
+        setExpense(0.0);
     }
 
     return (
@@ -44,9 +45,12 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                        setStatus={setStatus}
                             />
                             :
-                        status === "costs" ?
-                            <h2>Costs</h2>
+                        status === "expense" ?
+                            <AddExpense t={t}
+                                        setStatus={setStatus}
+                                        setExpense={setExpense}/>
                             :
+                        status === "summary" &&
                             <h2>Not implemented</h2>
                     }
                 </div>

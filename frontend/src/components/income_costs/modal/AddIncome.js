@@ -1,4 +1,5 @@
 import {Income} from "../../../models/Income";
+import {useState} from "react";
 
 const AddIncome = ({ t, setIncome, setStatus}) => {
     //TODO: Integrate useRef do clear inputs
@@ -12,7 +13,7 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
     const addIncomeHandler = () => {
         const income = new Income(dependent, selfemployed, rentingIncome, capitalIncome, pension, otherIncome);
         setIncome(income);
-        setStatus("costs");
+        setStatus("expense");
     }
 
     const backHandler = () => {
