@@ -1,13 +1,20 @@
-import {useTranslation} from "react-i18next";
-import {useContext, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import InputContext from "../../context/userinputs/InputContext";
 
-const EnterUserDetails = () => {
+const EnterUserDetails = ({t, setAllowNavigation}) => {
 
-    const {t} = useTranslation();
     const {personalData} = useContext(InputContext);
     const {firstName, setFirstName, lastName, setLastName, setGender, setAge, expectedAge, setExpectedAge, setCurrency} = personalData;
     const [dateOfBirth, setDateOfBirth] = useState(new Date());
+
+    useEffect(() => {
+        if (firstName !== "" && lastName !== "" && expectedAge !== "" && dateOfBirth !== null) {
+            setAllowNavigation(true);
+        }
+        else {
+            setAllowNavigation(false);
+        }
+    }, [firstName, lastName, expectedAge, dateOfBirth]);
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);
@@ -23,6 +30,7 @@ const EnterUserDetails = () => {
 
     const dateOfBirthChangeHandler = (event) => {
         setDateOfBirth(event.target.value);
+        setAge(calculateAge(dateOfBirth));
     }
 
     const expectedAgeChangeHandler = (event) => {
@@ -45,7 +53,6 @@ const EnterUserDetails = () => {
     }
 
     const submitHandler = (event) => {
-        setAge(calculateAge(dateOfBirth));
         event.preventDefault();
         console.log(personalData);
     }

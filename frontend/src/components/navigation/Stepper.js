@@ -16,7 +16,7 @@ const Stepper = ({active}) => {
     }
     return (
         <ol className="steps">
-            <li className={`step step-primary ${setStep('personal_information')} overflow-hidden`}>
+            <li className={`step step-primary ${setStep('/')} overflow-hidden`}>
                 <div className="step-circle">1</div>
                 <h3 className="stepTitle">{t('personal_information')}</h3>
             </li>

@@ -6,32 +6,18 @@ import IncomeCostsPage from "./income_costs/IncomeCostsPage";
 import PointOfFinancialFreedomPage from "./pof/PointOfFinancialFreedomPage";
 import OptimisationPage from "./optimisation/OptimisationPage";
 import StartingCapitalPage from "./startingPoint/StartingCapitalPage";
-import {InputContextProvider} from "../../context/userinputs/InputContext";
+import {Route, Routes} from "react-router-dom";
 const LifeChart = () => {
-    const navigationContext = useContext(NavigationContext);
-    const {navigation} = navigationContext;
     return (
         <div className="ml-10 mr-10 mt-3 mb-5">
             <div className="lifechartLayout">
-                <InputContextProvider>
-                <div className="lifechartPage">
-                    {
-                        navigation === 1 ?
-                            <EnterUserDetailsPage/>
-                        :
-                        navigation === 2 ?
-                            <StartingCapitalPage/>
-                        :
-                        navigation === 3 ?
-                            <IncomeCostsPage/>
-                        :
-                        navigation === 4 ?
-                            <PointOfFinancialFreedomPage/>
-                        :
-                            <OptimisationPage/>
-                    }
-                </div>
-                </InputContextProvider>
+                <Routes>
+                    <Route path="/" element={<EnterUserDetailsPage/>}/>
+                    <Route path="/starting_capital" element={<StartingCapitalPage/>}/>
+                    <Route path="/income_costs" element={<IncomeCostsPage/>}/>
+                    <Route path="/pof" element={<PointOfFinancialFreedomPage/>}/>
+                    <Route path="/optimisation" element={<OptimisationPage/>}/>
+                </Routes>
             </div>
         </div>
     )

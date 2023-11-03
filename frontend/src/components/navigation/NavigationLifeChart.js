@@ -17,16 +17,16 @@ const NavigationLifeChart = ({active, navigationAllowed}) => {
             case 'optimisation':
                 return '/optimisation';
             default:
-                return 'personal_information';
+                return '/';
         }
     }
 
     const determinePreviousStep = () => {
         switch (active) {
             case 'personal_information':
-                return '/personal_information';
+                return '/';
             case 'starting_capital':
-                return '/personal_information';
+                return '/';
             case 'income_costs':
                 return '/starting_capital';
             case 'pof':
@@ -34,7 +34,7 @@ const NavigationLifeChart = ({active, navigationAllowed}) => {
             case 'optimisation':
                 return '/pof';
             default:
-                return '/personal_information';
+                return '/';
         }
     }
 
