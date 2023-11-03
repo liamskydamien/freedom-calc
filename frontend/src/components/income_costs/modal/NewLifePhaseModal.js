@@ -26,7 +26,7 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
             <div className="modal">
                 <label className="modal-overlay" htmlFor="modal-3"></label>
                 <div className="modal-content flex flex-col gap-5 max-w-full">
-                    <label htmlFor="modal-1" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
+                    <label htmlFor="modal-3" className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</label>
                     <h2 className="text-xl">Add a new Life Phase</h2>
                     {
                         status === "name" ?
@@ -59,8 +59,8 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                 <h3>{t('income')}: {income}</h3>
                                 <h3>{t('expenses')}: {expense}</h3>
                                 <div className="flex gap-3">
-                                    <button className="btn btn-block">{t('cancel')}</button>
-                                    <button className="btn btn-primary btn-block modal-close">{t('save')}</button>
+                                    <label className="btn btn-primary btn-block" htmlFor="modal-3" onClick={addPhase}>{t('save')}</label>
+                                    <label className="btn btn-block" htmlFor="modal-3" onClick={clear}>{t('cancel')}</label>
                                 </div>
                             </div>
                     }
