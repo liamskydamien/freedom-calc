@@ -26,6 +26,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
                         <input value={name}
                                type="text"
                                className="input max-w-full"
+                               required
                                onChange={nameChangeHandler}/>
                     </div>
                     <div className="flex ">
@@ -48,7 +49,12 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
                 </div>
             </div>
             <div className="flex gap-3">
-                <button className="btn btn-block btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
+                {
+                    name !== "" && endAge !== 0 ?
+                    <button className="btn btn-block btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
+                        :
+                    <button className="btn btn-block btn-primary" disabled>{t('save_proceed')}</button>
+                }
                 <button className="btn btn-block" onClick={clearHandler}>{t('cancel_clear')}</button>
             </div>
         </div>
