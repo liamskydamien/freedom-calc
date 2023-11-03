@@ -1,0 +1,58 @@
+const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, startAge}) => {
+
+    const nameChangeHandler = (event) => {
+        setName(event.target.value);
+    }
+
+    const endAgeChangeHandler = (event) => {
+        setEndAge(event.target.value);
+    }
+
+    const submitHandler = () => {
+        setStatus("income");
+    }
+
+    const clearHandler = () => {
+        clear();
+    }
+
+    return (
+        <div>
+            <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
+                <div className="form-group">
+                    <h3 className="text-sm font-bold pb-0">{t('cash_reserve')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('name_of_phase')}</label>
+                        <input value={name}
+                               type="number"
+                               className="input max-w-full"
+                               onChange={nameChangeHandler}/>
+                    </div>
+                    <div className="flex ">
+                        <div className="form-field">
+                            <label className="form-label">{t('start_of_phase')}</label>
+                            <input value={startAge}
+                                   type="number"
+                                   className="input max-w-full"
+                                   disabled
+                            />
+                        </div>
+                        <div className="form-field">
+                            <label className="form-label">{t('end_of_phase')}</label>
+                            <input value={endAge}
+                                   type="number"
+                                   className="input max-w-full"
+                                   onChange={endAgeChangeHandler}/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div className="flex gap-3">
+                <button className="btn btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
+                <button className="btn" onClick={clearHandler}>{t('cancel_clear')}</button>
+            </div>
+        </div>
+    )
+}
+
+export default AddNameAndAge;
