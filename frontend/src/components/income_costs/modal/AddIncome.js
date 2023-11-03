@@ -12,17 +12,8 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
 
     const addIncomeHandler = () => {
         const income = new Income(dependent, selfemployed, rentingIncome, capitalIncome, pension, otherIncome);
-        setIncome(calculateIncome(income));
+        setIncome(income.getTotalIncome());
         setStatus("expense");
-    }
-
-    const calculateIncome = (income) => {
-        return parseFloat(income.dependent) +
-            parseFloat(income.selfemployed) +
-            parseFloat(income.rentingIncome) +
-            parseFloat(income.capitalIncome) +
-            parseFloat(income.pension) +
-            parseFloat(income.otherIncome);
     }
 
     const backHandler = () => {
@@ -36,27 +27,27 @@ const AddIncome = ({ t, setIncome, setStatus}) => {
     }
 
     const dependentChangeHandler = (event) => {
-        setDependent(event.target.value);
+        setDependent(parseFloat(event.target.value));
     }
 
     const selfemployedChangeHandler = (event) => {
-        setSelfemployed(event.target.value);
+        setSelfemployed(parseFloat(event.target.value));
     }
 
     const rentingIncomeChangeHandler = (event) => {
-        setRentingIncome(event.target.value);
+        setRentingIncome(parseFloat(event.target.value));
     }
 
     const capitalIncomeChangeHandler = (event) => {
-        setCapitalIncome(event.target.value);
+        setCapitalIncome(parseFloat(event.target.value));
     }
 
     const pensionChangeHandler = (event) => {
-        setPension(event.target.value);
+        setPension(parseFloat(event.target.value));
     }
 
     const otherIncomeChangeHandler = (event) => {
-        setOtherIncome(event.target.value);
+        setOtherIncome(parseFloat(event.target.value));
     }
 
     return (

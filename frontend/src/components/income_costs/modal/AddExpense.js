@@ -13,20 +13,9 @@ const AddExpense = ({ t, setExpense, setStatus}) => {
     const [maintenance, setMaintenance] = useState(0.0);
    const addExpenseHandler = () => {
        const expense = new Expenses(taxes, rent ,consumption, socialSecurity ,maintenance, insurance, interest, otherCosts);
-       setExpense(calculateExpense(expense));
-         setStatus("summary");
+       setExpense(expense.getTotalExpenses());
+       setStatus("summary");
    }
-
-    const calculateExpense = (expense) => {
-        return parseFloat(expense.taxes) +
-            parseFloat(expense.rent) +
-            parseFloat(expense.consumption) +
-            parseFloat(expense.socialSecurity) +
-            parseFloat(expense.maintenance) +
-            parseFloat(expense.insurance) +
-            parseFloat(expense.interest) +
-            parseFloat(expense.otherCosts);
-    }
 
     const backHandler = () => {
         setTaxes(0.0);
@@ -45,31 +34,31 @@ const AddExpense = ({ t, setExpense, setStatus}) => {
     }
 
     const rentChangeHandler = (event) => {
-        setRent(event.target.value);
+        setRent(parseFloat(event.target.value));
     }
 
     const consumptionChangeHandler = (event) => {
-        setConsumption(event.target.value);
+        setConsumption(parseFloat(event.target.value));
     }
 
     const insuranceChangeHandler = (event) => {
-        setInsurance(event.target.value);
+        setInsurance(parseFloat(event.target.value));
     }
 
     const otherCostsChangeHandler = (event) => {
-        setOtherCosts(event.target.value);
+        setOtherCosts(parseFloat(event.target.value));
     }
 
     const interestChangeHandler = (event) => {
-        setInterest(event.target.value);
+        setInterest(parseFloat(event.target.value));
     }
 
     const socialSecurityChangeHandler = (event) => {
-        setSocialSecurity(event.target.value);
+        setSocialSecurity(parseFloat(event.target.value));
     }
 
     const maintenanceChangeHandler = (event) => {
-        setMaintenance(event.target.value);
+        setMaintenance(parseFloat(event.target.value));
     }
 
     return (
