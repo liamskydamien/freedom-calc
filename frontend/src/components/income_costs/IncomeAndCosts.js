@@ -1,10 +1,13 @@
 import {LifePhase} from "../../models/LifePhase";
 import NewLifePhaseModal from "./modal/NewLifePhaseModal";
-import {useState} from "react";
+import {useContext, useState} from "react";
+import SelectedLifePhaseContext from "../../context/lifephase/SelectedLifePhaseContext";
 
 const IncomeAndCosts = ({t, lifephase}) => {
 
     const {phases, setPhases} = lifephase;
+
+    const {setSelectedLifePhase} = useContext(SelectedLifePhaseContext);
 
     const [startAge, setStartAge] = useState(0);
 
@@ -12,6 +15,11 @@ const IncomeAndCosts = ({t, lifephase}) => {
         const newPhase = new LifePhase(name, startAge, endAge, income, expenses);
         setPhases([...phases, newPhase]);
         setStartAge(parseInt(endAge) + 1);
+        setSelectedLifePhase(newPhase);
+    }
+
+    const selectPhaseHandler = (phase) => {
+        setSelectedLifePhase(phase);
     }
 
     return (
@@ -32,7 +40,8 @@ const IncomeAndCosts = ({t, lifephase}) => {
                                            readOnly
                                            key={`tab-${phase.name}-${phase.toAge}`}/>
                                     <label htmlFor={`tab-${phase.name}`}
-                                           className="tab tab-pill">
+                                           className="tab tab-pill"
+                                           onClick={() => {selectPhaseHandler(phase)}}>
                                         {phase.name}
                                     </label>
                         </div>

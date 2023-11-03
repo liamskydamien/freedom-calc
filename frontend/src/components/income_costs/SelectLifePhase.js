@@ -8,9 +8,10 @@ const SelectLifePhase = ({t}) => {
     return (
         <div className="card">
             <div className="card-body">
+                <h2 className="text-xl font-bold">{t('selected_lifephase')}</h2>
                 {
                     selectedLifePhase ?
-                    <div className="flex flex-col gap-1.5 mb-3">
+                    <div className="flex flex-col gap-1.5">
                         <div className="flex justify-between">
                             <div className="flex mt-auto mb-auto">
                                 <p className="mb-0">{t('name_of_phase')}</p>
@@ -63,7 +64,7 @@ const SelectLifePhase = ({t}) => {
                             <div className="flex mt-auto mb-auto">
                                 <p className="mb-0">{t('expenses')}</p>
                             </div>
-                            <input value={selectedLifePhase.expense}
+                            <input value={selectedLifePhase.expenses}
                                    type="number"
                                    className="input max-w-fit"
                                    readOnly
