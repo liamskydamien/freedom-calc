@@ -10,9 +10,9 @@ import NavigationContext from "../../../context/navigationContext/NavigationCont
 const IncomeCostsPage = () => {
 
     const {t} = useTranslation();
-    const {lifephase} = useContext(InputContext);
+    const {lifephase, expectedAge} = useContext(InputContext);
     const activePage = "/income_costs";
-    const {setActive, allowAccess} = useContext(NavigationContext);
+    const {setActive, allowAccess, setIncomeCosts} = useContext(NavigationContext);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(true);
 
@@ -26,6 +26,23 @@ const IncomeCostsPage = () => {
             navigate('/starting_capital');
         }
     }, [allowAccess, activePage]);
+
+    useEffect(() => {
+        if (lifephase.phases.length !== 0) {
+            const {phases} = lifephase;
+            const lifePhase = phases[phases.length - 1];
+            const {toAge} = lifePhase;
+            if (toAge === expectedAge) {
+                setIncomeCosts(true);
+            }
+            else {
+                setIncomeCosts(false);
+            }
+        }
+        else {
+            setIncomeCosts(false);
+        }
+    }, [lifephase, expectedAge, setIncomeCosts]);
 
     return (
         <div>

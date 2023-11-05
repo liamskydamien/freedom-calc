@@ -12,6 +12,7 @@ export const InputContextProvider = ({children}) => {
     const [gender, setGender] = useState("female");
     const [age,setAge] = useState(0);
     const [expectedAge, setExpectedAge] = useState(0);
+    const [dateOfBirth, setDateOfBirth] = useState(null);
     const [currency, setCurrency] = useState('');
 
     const personalData = {
@@ -26,7 +27,9 @@ export const InputContextProvider = ({children}) => {
         expectedAge,
         setExpectedAge,
         currency,
-        setCurrency
+        setCurrency,
+        dateOfBirth,
+        setDateOfBirth
     };
 
     // Starting Capital

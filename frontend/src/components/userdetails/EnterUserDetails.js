@@ -12,15 +12,15 @@ const EnterUserDetails = ({t, setPersonalData}) => {
         setAge,
         expectedAge,
         setExpectedAge,
-        setCurrency} = personalData;
-    const startDate = {};
-    const [dateOfBirth, setDateOfBirth] = useState(startDate);
+        setCurrency,
+        dateOfBirth,
+        setDateOfBirth} = personalData;
 
     useEffect(() => {
         if (firstName !== "" &&
             lastName !== "" &&
             checkAge(expectedAge) &&
-            dateOfBirth !== startDate) {
+            dateOfBirth !== null) {
             console.log("allow");
             setPersonalData(true);
         }

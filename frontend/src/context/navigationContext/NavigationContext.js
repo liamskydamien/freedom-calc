@@ -15,6 +15,7 @@ export const NavigationContextProvider = ({children}) => {
 
         console.log("allowAccess", page);
         console.log("personalData", personalData);
+        console.log("incomeCosts", incomeCosts);
 
         switch (page) {
             case '/':
