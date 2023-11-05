@@ -6,6 +6,7 @@ import {SelectedLifePhaseContextProvider} from "../../../context/lifephase/Selec
 import SelectLifePhase from "../../../components/income_costs/SelectLifePhase";
 import {useNavigate} from "react-router-dom";
 import NavigationContext from "../../../context/navigationContext/NavigationContext";
+import {useCalculateAge} from "../../../dist/calculations/useCalculateAge";
 
 const IncomeCostsPage = () => {
 
