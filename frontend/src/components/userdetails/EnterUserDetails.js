@@ -1,20 +1,32 @@
 import {useContext, useEffect, useState} from "react";
 import InputContext from "../../context/userinputs/InputContext";
 
-const EnterUserDetails = ({t, setAllowNavigation}) => {
+const EnterUserDetails = ({t, setPersonalData}) => {
 
     const {personalData} = useContext(InputContext);
-    const {firstName, setFirstName, lastName, setLastName, setGender, setAge, expectedAge, setExpectedAge, setCurrency} = personalData;
-    const [dateOfBirth, setDateOfBirth] = useState(null);
+    const {firstName,
+        setFirstName,
+        lastName,
+        setLastName,
+        setGender,
+        setAge,
+        expectedAge,
+        setExpectedAge,
+        setCurrency} = personalData;
+    const startDate = {};
+    const [dateOfBirth, setDateOfBirth] = useState(startDate);
 
     useEffect(() => {
-        if (firstName !== "" && lastName !== "" && checkAge(expectedAge) && dateOfBirth !== null) {
-            console.log("Allow navigation");
-            setAllowNavigation(true);
+        if (firstName !== "" &&
+            lastName !== "" &&
+            checkAge(expectedAge) &&
+            dateOfBirth !== startDate) {
+            console.log("allow");
+            setPersonalData(true);
         }
         else {
-            console.log("Disallow navigation");
-            setAllowNavigation(false);
+            console.log("disallow");
+            setPersonalData(false);
         }
     }, [firstName, lastName, expectedAge, dateOfBirth]);
 
@@ -99,6 +111,7 @@ const EnterUserDetails = ({t, setAllowNavigation}) => {
                             <input className="input w-auto"
                                    type="date"
                                    required={true}
+                                   value={dateOfBirth}
                                    onChange={dateOfBirthChangeHandler}>
                             </input>
                         </div>

@@ -12,16 +12,20 @@ export const NavigationContextProvider = ({children}) => {
     const [incomeCosts, setIncomeCosts] = useState(false);
 
     const allowAccess = (page) => {
+
+        console.log("allowAccess", page);
+        console.log("personalData", personalData);
+
         switch (page) {
             case '/':
                 return true;
-            case 'starting_capital':
+            case '/starting_capital':
                 return personalData;
-            case 'income_costs':
+            case '/income_costs':
                 return personalData;
-            case 'pof':
+            case '/pof':
                 return personalData && incomeCosts;
-            case 'optimisation':
+            case '/optimisation':
                 return personalData && incomeCosts;
             default:
                 return false;

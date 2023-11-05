@@ -20,16 +20,16 @@ const StartingCapitalPage = () => {
             setLoading(false);
         }
         else {
-            navigate('/starting_capital');
+            navigate('/');
         }
     }, [allowAccess, activePage]);
 
     return (
-    <div className="flex">
+    <div>
         {
             loading ? <div className="spinner-simple"></div>
             :
-            <div>
+            <div className="flex">
                 <StartingCapitalInput />
                 <BalanceSheet />
             </div>

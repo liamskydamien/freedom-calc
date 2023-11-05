@@ -23,7 +23,7 @@ const IncomeCostsPage = () => {
             setLoading(false);
         }
         else {
-            navigate('/');
+            navigate('/starting_capital');
         }
     }, [allowAccess, activePage]);
 

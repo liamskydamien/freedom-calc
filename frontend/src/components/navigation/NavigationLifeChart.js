@@ -2,19 +2,19 @@ import Stepper from "./Stepper";
 import {MdKeyboardArrowLeft, MdKeyboardArrowRight} from "react-icons/md";
 import {useNavigate} from "react-router-dom";
 
-const NavigationLifeChart = ({active, navigationAllowed}) => {
+const NavigationLifeChart = ({active}) => {
     const navigate = useNavigate();
     const determineNextStep = () => {
         switch (active) {
             case '/':
                 return '/starting_capital';
-            case 'starting_capital':
+            case '/starting_capital':
                 return '/income_costs';
-            case 'income_costs':
+            case '/income_costs':
                 return '/pof';
-            case 'pof':
+            case '/pof':
                 return '/optimisation';
-            case 'optimisation':
+            case '/optimisation':
                 return '/optimisation';
             default:
                 return '/';
@@ -39,9 +39,7 @@ const NavigationLifeChart = ({active, navigationAllowed}) => {
     }
 
     const handleNavigate = () => {
-        if (navigationAllowed) {
-            navigate(determineNextStep());
-        }
+        navigate(determineNextStep());
     }
 
     const handleBack = () => {
