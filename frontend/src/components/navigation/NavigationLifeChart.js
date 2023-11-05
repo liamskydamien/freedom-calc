@@ -1,19 +1,49 @@
 import Stepper from "./Stepper";
-import {useContext, useState} from "react";
 import {MdKeyboardArrowLeft, MdKeyboardArrowRight} from "react-icons/md";
-import NavigationContext from "../../context/navigationContext/NavigationContext";
+import {useNavigate} from "react-router-dom";
 
-const NavigationLifeChart = () => {
-    const navigationContext = useContext(NavigationContext);
-    const {navigation, setNavigation} = navigationContext;
-
-    const handleNavigation = (val) => {
-        console.log(navigation);
-        const newNavigation = navigation + val;
-        console.log(newNavigation);
-        if (!(newNavigation > 5) && !(newNavigation < 1)) {
-            setNavigation(newNavigation);
+const NavigationLifeChart = ({active}) => {
+    const navigate = useNavigate();
+    const determineNextStep = () => {
+        switch (active) {
+            case '/':
+                return '/starting_capital';
+            case '/starting_capital':
+                return '/income_costs';
+            case '/income_costs':
+                return '/pof';
+            case '/pof':
+                return '/optimisation';
+            case '/optimisation':
+                return '/optimisation';
+            default:
+                return '/';
         }
+    }
+
+    const determinePreviousStep = () => {
+        switch (active) {
+            case 'personal_information':
+                return '/';
+            case 'starting_capital':
+                return '/';
+            case 'income_costs':
+                return '/starting_capital';
+            case 'pof':
+                return '/income_costs';
+            case 'optimisation':
+                return '/pof';
+            default:
+                return '/';
+        }
+    }
+
+    const handleNavigate = () => {
+        navigate(determineNextStep());
+    }
+
+    const handleBack = () => {
+        navigate(determinePreviousStep())
     }
 
     return (
@@ -21,14 +51,14 @@ const NavigationLifeChart = () => {
             <label className="btn btn-ghost flex cursor-pointer px-0">
                 <a className="reactIcons">
                     <MdKeyboardArrowLeft size="32"
-                                         onClick={() => handleNavigation(-1)}/>
+                                         onClick={handleBack}/>
                 </a>
             </label>
-            <Stepper active={navigation} />
+            <Stepper active={active} />
             <label className="btn btn-ghost flex cursor-pointer px-0">
                 <a className="reactIcons">
                     <MdKeyboardArrowRight size="32"
-                                          onClick={() => handleNavigation(1)}/>
+                                          onClick={handleNavigate}/>
                 </a>
             </label>
         </div>

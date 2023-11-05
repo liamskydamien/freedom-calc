@@ -9,9 +9,10 @@ export const InputContextProvider = ({children}) => {
     // Personal Data
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [gender, setGender] = useState('');
-    const [dateOfBirth, setDateOfBirth] = useState('');
-    const [expectedAge, setExpectedAge] = useState('');
+    const [gender, setGender] = useState("female");
+    const [age,setAge] = useState(0);
+    const [expectedAge, setExpectedAge] = useState(0);
+    const [dateOfBirth, setDateOfBirth] = useState(null);
     const [currency, setCurrency] = useState('');
 
     const personalData = {
@@ -21,12 +22,14 @@ export const InputContextProvider = ({children}) => {
         setLastName,
         gender,
         setGender,
-        dateOfBirth,
-        setDateOfBirth,
+        age,
+        setAge,
         expectedAge,
         setExpectedAge,
         currency,
-        setCurrency
+        setCurrency,
+        dateOfBirth,
+        setDateOfBirth
     };
 
     // Starting Capital

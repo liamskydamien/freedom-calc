@@ -2,17 +2,22 @@ import {LifePhase} from "../../models/LifePhase";
 import NewLifePhaseModal from "./modal/NewLifePhaseModal";
 import {useContext, useState} from "react";
 import SelectedLifePhaseContext from "../../context/lifephase/SelectedLifePhaseContext";
+import {useCalculateAge} from "../../calculations/useCalculateAge";
 
-const IncomeAndCosts = ({t, lifephase}) => {
+const IncomeAndCosts = ({t, lifephase, expectedAge, age}) => {
 
     const {phases, setPhases} = lifephase;
 
     const {setSelectedLifePhase} = useContext(SelectedLifePhaseContext);
 
-    const [startAge, setStartAge] = useState(0);
+    const [startAge, setStartAge] = useState(age);
 
     const addPhase = (name, endAge, income, expenses) => {
-        const newPhase = new LifePhase(name, startAge, endAge, income, expenses);
+        const newPhase = new LifePhase(name,
+            startAge,
+            endAge,
+            income,
+            expenses);
         setPhases([...phases, newPhase]);
         setStartAge(parseInt(endAge) + 1);
         setSelectedLifePhase(newPhase);
@@ -49,7 +54,10 @@ const IncomeAndCosts = ({t, lifephase}) => {
                     })
                 }
             </div>
-            <NewLifePhaseModal addPhase={addPhase} startAge={startAge} t={t}/>
+            <NewLifePhaseModal addPhase={addPhase}
+                               startAge={startAge}
+                               t={t}
+                               expectedAge={expectedAge}/>
         </div>
     )
 }
