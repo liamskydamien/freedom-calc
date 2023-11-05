@@ -5,16 +5,22 @@ const EnterUserDetails = ({t, setAllowNavigation}) => {
 
     const {personalData} = useContext(InputContext);
     const {firstName, setFirstName, lastName, setLastName, setGender, setAge, expectedAge, setExpectedAge, setCurrency} = personalData;
-    const [dateOfBirth, setDateOfBirth] = useState(new Date());
+    const [dateOfBirth, setDateOfBirth] = useState(null);
 
     useEffect(() => {
-        if (firstName !== "" && lastName !== "" && expectedAge !== "" && dateOfBirth !== null) {
+        if (firstName !== "" && lastName !== "" && checkAge(expectedAge) && dateOfBirth !== null) {
+            console.log("Allow navigation");
             setAllowNavigation(true);
         }
         else {
+            console.log("Disallow navigation");
             setAllowNavigation(false);
         }
     }, [firstName, lastName, expectedAge, dateOfBirth]);
+
+    const checkAge = (age) => {
+        return age > 0 && age > calculateAge(dateOfBirth);
+    }
 
     const firstNameChangeHandler = (event) => {
         setFirstName(event.target.value);

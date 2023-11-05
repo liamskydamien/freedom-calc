@@ -9,7 +9,7 @@ export const InputContextProvider = ({children}) => {
     // Personal Data
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
-    const [gender, setGender] = useState("");
+    const [gender, setGender] = useState("female");
     const [age,setAge] = useState(0);
     const [expectedAge, setExpectedAge] = useState(0);
     const [currency, setCurrency] = useState('');
