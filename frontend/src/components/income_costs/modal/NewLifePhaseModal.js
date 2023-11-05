@@ -3,17 +3,17 @@ import {useState} from "react";
 import AddNameAndAge from "./AddNameAndAge";
 import AddExpense from "./AddExpense";
 
-const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
+const NewLifePhaseModal = ({ addPhase, startAge , t, expectedAge}) => {
 
     const [income, setIncome] = useState(0.0);
     const [expense, setExpense] = useState(0.0);
     const [name, setName] = useState("");
-    const [endAge, setEndAge] = useState(0.0);
+    const [endAge, setEndAge] = useState(expectedAge);
     const [status, setStatus] = useState("name");
 
     const clear = () => {
         setName("");
-        setEndAge(0.0);
+        setEndAge(expectedAge);
         setStatus("name");
         setIncome(0.0);
         setExpense(0.0);
@@ -42,7 +42,9 @@ const NewLifePhaseModal = ({ addPhase, startAge , t}) => {
                                            setEndAge={setEndAge}
                                            setStatus={setStatus}
                                            clear={clear}
-                                           startAge={startAge} />
+                                           startAge={startAge}
+                                           expectedAge={expectedAge}
+                            />
                             :
                         status === "income" ?
                             <AddIncome t={t}

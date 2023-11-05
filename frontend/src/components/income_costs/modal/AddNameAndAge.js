@@ -1,4 +1,4 @@
-const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, startAge}) => {
+const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, startAge, expectedAge}) => {
 
     const nameChangeHandler = (event) => {
         setName(event.target.value);
@@ -42,6 +42,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
                             <label className="form-label">{t('end_of_phase')}</label>
                             <input value={endAge}
                                    type="number"
+                                   placeholder={expectedAge}
                                    className="input max-w-full"
                                    onChange={endAgeChangeHandler}/>
                         </div>
@@ -50,7 +51,7 @@ const AddNameAndAge = ({t, name, setName, endAge, setEndAge, setStatus, clear, s
             </div>
             <div className="flex gap-3">
                 {
-                    name !== "" && endAge > startAge ?
+                    name !== "" && endAge > startAge && endAge <= expectedAge ?
                     <button className="btn btn-block btn-primary" onClick={submitHandler}>{t('save_proceed')}</button>
                         :
                     <button className="btn btn-block btn-primary" disabled>{t('save_proceed')}</button>

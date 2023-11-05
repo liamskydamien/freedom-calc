@@ -13,8 +13,6 @@ export const NavigationContextProvider = ({children}) => {
 
     const allowAccess = (page) => {
 
-        console.log("allowAccess", page);
-        console.log("personalData", personalData);
         console.log("incomeCosts", incomeCosts);
 
         switch (page) {

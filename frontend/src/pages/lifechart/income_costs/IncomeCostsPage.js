@@ -10,7 +10,8 @@ import NavigationContext from "../../../context/navigationContext/NavigationCont
 const IncomeCostsPage = () => {
 
     const {t} = useTranslation();
-    const {lifephase, expectedAge} = useContext(InputContext);
+    const {lifephase, personalData} = useContext(InputContext);
+    const {expectedAge, age} = personalData;
     const activePage = "/income_costs";
     const {setActive, allowAccess, setIncomeCosts} = useContext(NavigationContext);
     const navigate = useNavigate();
@@ -52,7 +53,11 @@ const IncomeCostsPage = () => {
                     <div>
                         <SelectedLifePhaseContextProvider>
                             <div className="flex flex-col gap-4 max-w-fit">
-                                <IncomeAndCosts t={t} lifephase={lifephase}/>
+                                <IncomeAndCosts t={t}
+                                                lifephase={lifephase}
+                                                expectedAge={expectedAge}
+                                                age={age}
+                                />
                                 <SelectLifePhase t={t} lifephase={lifephase}/>
                             </div>
                         </SelectedLifePhaseContextProvider>

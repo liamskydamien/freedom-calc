@@ -52,7 +52,7 @@ const EnterUserDetails = ({t, setPersonalData}) => {
     }
 
     const expectedAgeChangeHandler = (event) => {
-        setExpectedAge(event.target.value);
+        setExpectedAge(parseInt(event.target.value));
     }
 
     const currencyChangeHandler = (event) => {
