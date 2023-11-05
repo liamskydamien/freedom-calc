@@ -1,7 +1,9 @@
 import {useCalculateWealth} from "../../../dist/calculations/useCalculateWealth";
 import {AssetGroup} from "../../../dist/models/AssetGroup";
 import {InvestmentWeights} from "../../../dist/models/InvestmentWeights";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
+import NavigationContext from "../../../context/navigationContext/NavigationContext";
+import {useNavigate} from "react-router-dom";
 
 const PointOfFinancialFreedomPage = () => {
     const [increasePerAssetGroup, setIncreasePerAssetGroup] = useState([]);
@@ -11,9 +13,25 @@ const PointOfFinancialFreedomPage = () => {
     const investmentWeights = new InvestmentWeights(0.2, 0.2, 0.2, 0.2, 0.2, 0);
     const wealth = useCalculateWealth(assetGroups, [100,100,100], 3, investmentWeights).wealth;
 
+    const activePage = "/pof";
+    const {setActive, allowAccess} = useContext(NavigationContext);
+    const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        setLoading(true);
+        if (allowAccess(activePage)) {
+            setActive(activePage);
+            setLoading(false);
+        }
+        else {
+            navigate('/income_costs');
+        }
+    }, [allowAccess, activePage]);
+
     useEffect(() => {
         setIncreasePerAssetGroup(wealth);
-    }, []);
+    }, [wealth]);
 
     return (
         <div>

@@ -8,7 +8,27 @@ export const NavigationContextProvider = ({children}) => {
     const [active, setActive] = useState('/');
     const [navigationAllowed, setNavigationAllowed] = useState(false);
 
-    const value = { active, setActive, navigationAllowed, setNavigationAllowed };
+    const [personalData, setPersonalData] = useState(false);
+    const [incomeCosts, setIncomeCosts] = useState(false);
+
+    const allowAccess = (page) => {
+        switch (page) {
+            case '/':
+                return true;
+            case 'starting_capital':
+                return personalData;
+            case 'income_costs':
+                return personalData;
+            case 'pof':
+                return personalData && incomeCosts;
+            case 'optimisation':
+                return personalData && incomeCosts;
+            default:
+                return false;
+        }
+    }
+
+    const value = { active, setActive, navigationAllowed, setNavigationAllowed, setPersonalData, setIncomeCosts, allowAccess};
 
     return (
         <NavigationContext.Provider value={value}>

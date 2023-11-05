@@ -6,7 +6,7 @@ const NavigationLifeChart = ({active, navigationAllowed}) => {
     const navigate = useNavigate();
     const determineNextStep = () => {
         switch (active) {
-            case 'personal_information':
+            case '/':
                 return '/starting_capital';
             case 'starting_capital':
                 return '/income_costs';
