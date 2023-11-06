@@ -11,9 +11,9 @@ const LifeLineChart = ({wealth}) => {
             <LineChart width={800} height={400} data={graph}>
                 <XAxis dataKey="age"/>
                 <YAxis/>
-                <Line type="monotone" dataKey="wealth" stroke="#8884d8" strokeWidth={3} connectNulls={true}/>
-                <Line type="monotone" dataKey="costs" stroke="#82ca9d" strokeWidth={3} connectNulls={true}/>
-                <ReferenceDot x={pof.x} y={pof.y} r={10} fill="red" stroke="none"/>
+                <Line dot={false} type="monotone" dataKey="wealth" stroke="blue" strokeWidth={3} connectNulls={true}/>
+                <Line dot={false} type="monotone" dataKey="costs" stroke="red" strokeWidth={3} connectNulls={true}/>
+                <ReferenceDot x={pof.x + 18} y={pof.y} r={10} fill="green" stroke="none"/>
                 <Tooltip />
                 <Legend />
             </LineChart>
