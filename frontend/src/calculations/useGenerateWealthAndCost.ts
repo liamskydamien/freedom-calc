@@ -31,25 +31,18 @@ export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
     const annualCostEachPhase :number[] = lifephases.map( (lifephase) => {
         return lifephase.expenses.getTotalExpenses();
     });
-    console.log(annualCostEachPhase);
 
     const annualCosts = useStretchArray(annualCostEachPhase, timeBetweenEachPhase);
-    console.log(annualCosts);
 
     const cost :number[] = useCalculateCosts(annualCosts, inflationRate, timeframe);
-    console.log(cost);
-
-    // Interpolate Values
-    const interpolatedWealth = calculateInterpolatedArray(wealth, 12);
-    const interpolatedCost = calculateInterpolatedArray(cost, 12);
 
 
     // Calculate POF
-    const pof : Point | null = useCalculatePOF(interpolatedWealth, interpolatedCost);
+    const pof : Point | null = useCalculatePOF(wealth, cost);
 
     return {
-        wealth: interpolatedWealth,
-        cost: interpolatedCost,
+        wealth: wealth,
+        cost: cost,
         pof: pof
     };
 }
