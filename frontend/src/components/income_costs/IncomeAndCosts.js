@@ -2,7 +2,6 @@ import {LifePhase} from "../../models/LifePhase";
 import NewLifePhaseModal from "./modal/NewLifePhaseModal";
 import {useContext, useState} from "react";
 import SelectedLifePhaseContext from "../../context/lifephase/SelectedLifePhaseContext";
-import {useCalculateAge} from "../../calculations/useCalculateAge";
 
 const IncomeAndCosts = ({t, lifephase, expectedAge, age}) => {
 
