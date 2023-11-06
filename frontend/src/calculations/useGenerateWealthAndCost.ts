@@ -31,11 +31,12 @@ export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
     const annualCostEachPhase :number[] = lifephases.map( (lifephase) => {
         return lifephase.expenses.getTotalExpenses();
     });
+    console.log(annualCostEachPhase);
 
     const annualCosts = useStretchArray(annualCostEachPhase, timeBetweenEachPhase);
-    console.log(annualCosts)
+    console.log(annualCosts);
 
-    const cost :number[] = useCalculateCosts(annualCosts, timeframe, inflationRate);
+    const cost :number[] = useCalculateCosts(annualCosts, inflationRate, timeframe);
     console.log(cost);
 
     // Interpolate Values
