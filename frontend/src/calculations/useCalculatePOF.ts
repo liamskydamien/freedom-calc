@@ -1,13 +1,10 @@
-type Point = {
-    x: number;
-    y: number;
-};
+import {Point} from "../models/Point";
 
 export const useCalculatePOF = (wealth : number[], costs : number[]) : Point | null => {
     if (wealth.length !== costs.length) {
         return null;
     }
-    let pof : Point | null = null;
+    let pof : Point = {x: 0, y: 0};
 
     const wealthStart = wealth[0];
     const costStart = costs[0];
@@ -22,12 +19,6 @@ export const useCalculatePOF = (wealth : number[], costs : number[]) : Point | n
                 break;
             }
         }
-    }
-    else {
-        pof = {
-            x: 0,
-            y: 0
-        };
     }
     return pof;
 }

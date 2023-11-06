@@ -15,8 +15,11 @@ export class LifePhase{
         this.income = income;
         this.expenses = expenses;
     }
-
     calculateNetIncome(): number {
         return this.income.getTotalIncome() - this.expenses.getTotalExpenses();
+    }
+
+    calculateTimeframe(): number {
+        return this.toAge - this.fromAge;
     }
 }

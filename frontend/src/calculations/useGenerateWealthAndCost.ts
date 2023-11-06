@@ -1,0 +1,54 @@
+import {AssetGroup} from "../models/AssetGroup";
+import {LifePhase} from "../models/LifePhase";
+import {useCalculateWealth} from "./useCalculateWealth";
+import {InvestmentWeights} from "../models/InvestmentWeights";
+import {useCalculateCosts} from "./useCalculateCosts";
+import {calculateInterpolatedArray} from "./useInterpolateArray";
+import {useCalculatePOF} from "./useCalculatePOF";
+import {Point} from "../models/Point";
+import {useStretchArray} from "./useStretchArray";
+
+export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
+                                  lifephases: LifePhase[],
+                                  timeframe: number,
+                                  investmentWeights: InvestmentWeights,
+                                  inflationRate: number) => {
+
+    const freeCashflowPerPhase = lifephases.map( (lifephase) => {
+        return lifephase.calculateNetIncome();
+    });
+
+    const timeBetweenEachPhase = lifephases.map( (lifephase) => {
+        return lifephase.calculateTimeframe();
+    });
+
+    const freeCashflow : number[] = useStretchArray(freeCashflowPerPhase, timeBetweenEachPhase)
+
+    // Calculate Wealth
+    const wealth : number[] = useCalculateWealth(assetGroups, freeCashflow, timeframe, investmentWeights);
+
+    // Calculate Costs
+    const annualCostEachPhase :number[] = lifephases.map( (lifephase) => {
+        return lifephase.expenses.getTotalExpenses();
+    });
+
+    const annualCosts = useStretchArray(annualCostEachPhase, timeBetweenEachPhase);
+    console.log(annualCosts)
+
+    const cost :number[] = useCalculateCosts(annualCosts, timeframe, inflationRate);
+    console.log(cost);
+
+    // Interpolate Values
+    const interpolatedWealth = calculateInterpolatedArray(wealth, 12);
+    const interpolatedCost = calculateInterpolatedArray(cost, 12);
+
+
+    // Calculate POF
+    const pof : Point | null = useCalculatePOF(interpolatedWealth, interpolatedCost);
+
+    return {
+        wealth: interpolatedWealth,
+        cost: interpolatedCost,
+        pof: pof
+    };
+}

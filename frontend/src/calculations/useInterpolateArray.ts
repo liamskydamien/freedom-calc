@@ -13,10 +13,8 @@ export const calculateInterpolatedArray = (array: number[], steps: number) => {
         else {
             interpolatedArray.push(array[i]);
         }
-        console.log(interpolatedArray);
         interpolationPerArray.push(interpolatedArray);
     }
-    console.log(interpolationPerArray);
     return interpolationPerArray.flat();
 }
 
