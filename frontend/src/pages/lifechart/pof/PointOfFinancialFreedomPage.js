@@ -4,6 +4,7 @@ import {InvestmentWeights} from "../../../dist/models/InvestmentWeights";
 import {useContext, useEffect, useState} from "react";
 import NavigationContext from "../../../context/navigationContext/NavigationContext";
 import {useNavigate} from "react-router-dom";
+import LifeLineChart from "../../../components/pof/pof_chart/LifeLineChart";
 
 const PointOfFinancialFreedomPage = () => {
     const [increasePerAssetGroup, setIncreasePerAssetGroup] = useState([]);
@@ -27,16 +28,13 @@ const PointOfFinancialFreedomPage = () => {
         else {
             navigate('/income_costs');
         }
-    }, [allowAccess, activePage]);
-
-    useEffect(() => {
-        setIncreasePerAssetGroup(wealth);
-    }, [wealth]);
+    }, [allowAccess, activePage, setActive, navigate]);
 
     return (
         <div>
             <h1>Point of Financial Freedom</h1>
             <h2>{increasePerAssetGroup.toString()}</h2>
+            <LifeLineChart wealth={wealth}/>
         </div>
     )
 }

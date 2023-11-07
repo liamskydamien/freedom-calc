@@ -4,7 +4,7 @@ import {AssetGroup} from "../models/AssetGroup";
 export const useCalculateWealth = (assetGroups: AssetGroup[],
                                    annualInvestments: number[],
                                    timeframe: number,
-                                   investmentWeights: InvestmentWeights) :object  => {
+                                   investmentWeights: InvestmentWeights) :number[]  => {
     const wealth: number[] = []; // Array of wealth for each year
     const assetGrowth :number[][] = []; // Array of all asset groups growth for each year
 
@@ -13,7 +13,7 @@ export const useCalculateWealth = (assetGroups: AssetGroup[],
     });
 
     wealth.push(...assetGrowth.reduce((a, b) => a.map((v, i) => v + b[i]))); // Add all asset growths together to get wealth
-    return {wealth, assetGrowth};
+    return wealth;
 }
 
 export const calculateIncreasePerAssetGroup = (assetGroup: AssetGroup,
