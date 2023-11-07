@@ -1,15 +1,15 @@
 export class Progress{
     personalInformation: boolean;
     startingCapital: boolean;
-    incomeCosts: boolean;
-    lifePhases: boolean;
+    lifephases: boolean;
+    pof: boolean;
     optimisation: boolean;
 
     constructor() {
         this.personalInformation = false;
         this.startingCapital = false;
-        this.incomeCosts = false;
-        this.lifePhases = false;
+        this.lifephases = false;
+        this.pof = false;
         this.optimisation = false;
     }
 
@@ -29,20 +29,20 @@ export class Progress{
         this.startingCapital = startingCapital;
     }
 
-    isIncomeCosts(): boolean {
-        return this.incomeCosts;
+    isPof(): boolean {
+        return this.pof;
     }
 
-    setIncomeCosts(incomeCosts: boolean): void {
-        this.incomeCosts = incomeCosts;
+    setPof(pof: boolean): void {
+        this.pof = pof;
     }
 
-    isLifePhases(): boolean {
-        return this.lifePhases;
+    isLifephases(): boolean {
+        return this.lifephases;
     }
 
-    setLifePhases(lifePhases: boolean): void {
-        this.lifePhases = lifePhases;
+    setLifephases(lifephases: boolean): void {
+        this.lifephases = lifephases;
     }
 
     isOptimisation(): boolean {

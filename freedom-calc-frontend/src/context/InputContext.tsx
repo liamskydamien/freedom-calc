@@ -13,7 +13,7 @@ export const InputContextProvider = (children: string | number | boolean | React
     // Starting Capital
     const [startingCapital, setStartingCapital] = useState(StartingCapital);
 
-    // Income and Costs
+    // Life Phases
     const [phases, setPhases] = useState(Phases);
 
     const value = {personalInformation, startingCapital, phases, setPersonalInformation, setStartingCapital, setPhases};
