@@ -3,8 +3,7 @@ import {PersonalInformation} from "../models/personalinformation/PersonalInforma
 import {StartingCapital} from "../models/startingcapital/StartingCapital";
 import {Phases} from "../models/lifephases/Phases";
 
-const InputContext = createContext({});
-export default InputContext;
+export const InputContext = createContext({});
 
 export const InputContextProvider = (children: string | number | boolean | ReactElement<any, string | JSXElementConstructor<any>> | Iterable<ReactNode> | ReactPortal | null | undefined) => {
 
