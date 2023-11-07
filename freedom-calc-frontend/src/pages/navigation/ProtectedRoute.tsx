@@ -24,7 +24,7 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({ children, step, redirec
                 return progress.personalInformation;
             case "starting_capital":
                 return progress.startingCapital;
-            case "income_costs":
+            case "lifephases":
                 return progress.lifephases;
             case "pof":
                 return progress.pof;

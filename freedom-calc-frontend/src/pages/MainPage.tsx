@@ -15,9 +15,21 @@ export const MainPage = () => {
                                 <div>P2</div>
                             </ProtectedRoute>
                         }/>
-                        <Route path="/income_costs" element={<div>P3</div>}/>
-                        <Route path="/pof" element={<div>P4</div>}/>
-                        <Route path="/optimisation" element={<div>P5</div>}/>
+                        <Route path="/lifephases" element={
+                            <ProtectedRoute redirectTo="/starting_capital" step="starting_capital">
+                                <div>P3</div>
+                            </ProtectedRoute>
+                        }/>
+                        <Route path="/pof" element={
+                            <ProtectedRoute redirectTo="/lifephases" step="lifephases">
+                                <div>P4</div>
+                            </ProtectedRoute>
+                        }/>
+                        <Route path="/optimisation" element={
+                            <ProtectedRoute redirectTo="/pof" step="pof">
+                                <div>P5</div>
+                            </ProtectedRoute>
+                        }/>
                     </Routes>
                 </ProgressContextProvider>
             </div>
