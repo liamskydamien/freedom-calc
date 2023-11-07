@@ -1,7 +1,7 @@
-import {LifePhase} from "../../models/LifePhase";
-import {AssetGroup} from "../../models/AssetGroup";
-import {Income} from "../../models/Income";
-import {Expenses} from "../../models/Expenses";
+import {LifePhase} from "../../models/lifephases/LifePhase";
+import {AssetGroup} from "../../models/startingcapital/AssetGroup";
+import {Income} from "../../models/lifephases/Income";
+import {Expenses} from "../../models/lifephases/Expenses";
 import {InvestmentWeights} from "../../models/InvestmentWeights";
 import {useGenerateWealthAndCost} from "../../calculations/useGenerateWealthAndCost";
 

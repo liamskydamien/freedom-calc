@@ -1,5 +1,5 @@
-import {AssetGroup} from "../models/AssetGroup";
-import {LifePhase} from "../models/LifePhase";
+import {AssetGroup} from "../models/startingcapital/AssetGroup";
+import {LifePhase} from "../models/lifephases/LifePhase";
 import {useCalculateWealth} from "./useCalculateWealth";
 import {InvestmentWeights} from "../models/InvestmentWeights";
 import {useCalculateCosts} from "./useCalculateCosts";
