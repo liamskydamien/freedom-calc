@@ -10,7 +10,7 @@
 }
 
 .enterUserDetailsImage{
-    background-image: url("../../../assets/pictures/pexels-pixabay-53621.jpg");
+    background-image: url("../../../../../freedom-calc-frontend/src/assets/pictures/pexels-pixabay-53621.jpg");
     background-repeat: no-repeat;  /* This will prevent the image from repeating */
     background-position: center;  /* This will center the image */;
     background-size: cover;
