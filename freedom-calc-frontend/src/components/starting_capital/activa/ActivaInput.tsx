@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import CryptoCurrencyInput from "./CryptoCurrencyInput";
 import StockInput from "./StockInput";
-import RealestateInput from "./RealestateInput";
+import RealestateInput from "./RealEstateInput";
 import LiquidAssetInput from "./LiquidAssetInput";
 import OtherAssetsInput from "./OtherAssetsInput";
 import {GROWTH_RATE} from "../../../constants/assets/growthrate";
@@ -95,7 +95,9 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
                                   preciousMetals={preciousMetals} />
                 :
                     activeTab === 2 ?
-                        <RealestateInput />
+                        <RealestateInput t={t}
+                                         realestate={realestate}
+                                         valid={valid}/>
                 :
                     activeTab === 3 ?
                         <StockInput />
