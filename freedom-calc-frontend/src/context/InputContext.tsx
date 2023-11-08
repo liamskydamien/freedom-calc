@@ -17,7 +17,7 @@ type InputContextProviderProps = {
 export const InputContextProvider : React.FC<InputContextProviderProps> = ({children}) => {
 
     // Personal Data
-   const [personalInformation, setPersonalInformation] = useState(new PersonalInformation("", "", new Date(), 0, "", ""));
+   const [personalInformation, setPersonalInformation] = useState(new PersonalInformation("", "",new Date(), 0, "female", "EUR €"));
 
     // Starting Capital
     const [startingCapital, setStartingCapital] = useState(new StartingCapital([new AssetGroup("", 0, 0)], 0));
