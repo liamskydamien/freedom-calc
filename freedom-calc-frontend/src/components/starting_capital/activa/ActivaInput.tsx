@@ -47,40 +47,40 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
                 </label>
 
                 <input type="radio"
-                id="tab-real-estate"
-                name="tab-4"
-                className="tab-toggle"
-                onClick={() => setActiveTab(2)} />
+                    id="tab-real-estate"
+                    name="tab-4"
+                    className="tab-toggle"
+                    onClick={() => setActiveTab(2)} />
                 <label htmlFor="tab-real-estate"
                 className="tab tab-pill">
                     {t('realestate')}
                 </label>
 
                 <input type="radio"
-                id="tab-corporate"
-                name="tab-4"
-                className="tab-toggle"
-                onClick={() => setActiveTab(3)} />
+                    id="tab-corporate"
+                    name="tab-4"
+                    className="tab-toggle"
+                    onClick={() => setActiveTab(3)} />
                 <label htmlFor="tab-corporate"
                     className="tab tab-pill">
                     {t('stocks')}
                 </label>
 
                 <input type="radio"
-                id="tab-crypto"
-                name="tab-4"
-                className="tab-toggle"
-                onClick={() => setActiveTab(4)} />
+                    id="tab-crypto"
+                    name="tab-4"
+                    className="tab-toggle"
+                    onClick={() => setActiveTab(4)} />
                 <label htmlFor="tab-crypto"
                 className="tab tab-pill">
                     {t('crypto_currency')}
                 </label>
 
                 <input type="radio"
-                id="tab-other-assets"
-                name="tab-4"
-                className="tab-toggle"
-                onClick={() => setActiveTab(5)} />
+                    id="tab-other-assets"
+                    name="tab-4"
+                    className="tab-toggle"
+                    onClick={() => setActiveTab(5)} />
                 <label htmlFor="tab-other-assets"
                 className="tab tab-pill">
                     {t('other_assets')}
@@ -100,7 +100,9 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
                                          valid={valid}/>
                 :
                     activeTab === 3 ?
-                        <StockInput />
+                        <StockInput t={t}
+                                    stocks={stocks}
+                                    valid={valid} />
                 :
                     activeTab === 4 ?
                         <CryptoCurrencyInput cryptoCurrency={cryptoCurrency}
