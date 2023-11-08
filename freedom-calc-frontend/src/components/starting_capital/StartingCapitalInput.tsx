@@ -38,6 +38,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                     :
                    <div/>
             }
+            <button className="btn btn-primary mt-4" onClick={() => {}}>{t('save_starting_capital')}</button>
         </div>
     )
 }
