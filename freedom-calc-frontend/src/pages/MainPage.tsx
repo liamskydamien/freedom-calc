@@ -2,6 +2,7 @@ import {Route, Routes} from "react-router";
 import ProtectedRoute from "./navigation/ProtectedRoute";
 import ProgressContextProvider, {ProgressContext} from "../context/ProgressContext";
 import React from "react";
+import UserDetails from "./UserDetails";
 
 export const MainPage = () => {
     return (
@@ -9,7 +10,7 @@ export const MainPage = () => {
             <div className="lifechartLayout">
                 <ProgressContextProvider>
                     <Routes>
-                        <Route path="/" element={<div>P1</div>}/>
+                        <Route path="/" element={<UserDetails/>}/>
                         <Route path="/starting_capital" element={
                             <ProtectedRoute redirectTo="/" step="personal_information">
                                 <div>P2</div>

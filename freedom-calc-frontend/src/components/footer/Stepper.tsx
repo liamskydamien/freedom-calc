@@ -1,6 +1,13 @@
 import {useTranslation} from "react-i18next";
-import "./stepper.css"
-const Stepper = (active: number) => {
+import "./custom_styles/stepper.css"
+import React from "react";
+
+// Define the shape of the props
+type StepperProps = {
+    active: number;
+}
+
+const Stepper : React.FC<StepperProps> = ({active}) => {
     const { t } = useTranslation();
 
     const setStep = (step: number) => {
@@ -20,7 +27,7 @@ const Stepper = (active: number) => {
                 {
                     setStep(1) === "step-active" ?
                         <div>
-                            <div className="step-circle-active">1</div>
+                            <div className="step-circle">1</div>
                         </div>
                     :
                     setStep(1) === "step-done" ?
@@ -38,7 +45,7 @@ const Stepper = (active: number) => {
                 {
                     setStep(2) === "step-active" ?
                         <div>
-                            <div className="step-circle-active">2</div>
+                            <div className="step-circle">2</div>
                         </div>
                         :
                         setStep(2) === "step-done" ?
@@ -56,7 +63,7 @@ const Stepper = (active: number) => {
                 {
                     setStep(3) === "step-active" ?
                         <div>
-                            <div className="step-circle-active">3</div>
+                            <div className="step-circle">3</div>
                         </div>
                         :
                         setStep(3) === "step-done" ?
@@ -74,7 +81,7 @@ const Stepper = (active: number) => {
                 {
                     setStep(4) === "step-active" ?
                         <div>
-                            <div className="step-circle-active">4</div>
+                            <div className="step-circle">4</div>
                         </div>
                         :
                         setStep(4) === "step-done" ?
@@ -92,7 +99,7 @@ const Stepper = (active: number) => {
                 {
                     setStep(5) === "step-active" ?
                         <div>
-                            <div className="step-circle-active">5</div>
+                            <div className="step-circle">5</div>
                         </div>
                         :
                         setStep(5) === "step-done" ?
