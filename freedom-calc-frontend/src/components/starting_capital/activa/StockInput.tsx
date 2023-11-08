@@ -39,7 +39,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setSingleStocks(value);
+            setSingleStocks(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -52,7 +52,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setFund(value);
+            setFund(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -65,7 +65,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setEtf(value);
+            setEtf(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -78,7 +78,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setDerivative(value);
+            setDerivative(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -91,7 +91,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setActiveCorporateParticipation(value);
+            setActiveCorporateParticipation(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -104,7 +104,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setPassiveCorporateParticipation(value);
+            setPassiveCorporateParticipation(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -117,7 +117,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value);
+            setOther(value === '' ? 0 : parseFloat(value));
         }
     }
 

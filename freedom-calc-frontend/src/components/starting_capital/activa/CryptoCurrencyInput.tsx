@@ -23,7 +23,7 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurr
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setBitcoin(value);
+            setBitcoin(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -31,7 +31,7 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurr
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setEthereum(value);
+            setEthereum(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -39,7 +39,7 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurr
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value);
+            setOther(value === '' ? 0 : parseFloat(value));
         }
     }
 

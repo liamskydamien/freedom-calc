@@ -11,17 +11,18 @@ type ActivaInputProps = {
     assets: AssetGroup[],
     setAssets: (assets: AssetGroup[]) => void,
     valid: boolean,
-    setActiva: (valid: boolean) => void
+    setActiva: (valid: boolean) => void,
+    activaValid: boolean
 }
 
-const ActivaInput : React.FC<ActivaInputProps> = ({setActiva,t, assets, setAssets, valid}) => {
+const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, assets, setAssets, valid}) => {
     const [activeTab, setActiveTab] = useState(1);
 
-    const cryptoCurrency = assets.find(asset => asset.name === "cryptoCurrency") as AssetGroup;
+    const cryptoCurrency = assets.find(asset => asset.name === "crypto") as AssetGroup;
     const stocks = assets.find(asset => asset.name === "stocks") as AssetGroup;
     const realestate = assets.find(asset => asset.name === "realestate") as AssetGroup;
-    const liquidAssets = assets.find(asset => asset.name === "liquidAssets") as AssetGroup;
-    const otherAssets = assets.find(asset => asset.name === "otherAssets") as AssetGroup;
+    const liquidAssets = assets.find(asset => asset.name === "cash") as AssetGroup;
+    const otherAssets = assets.find(asset => asset.name === "other") as AssetGroup;
     const preciousMetals = assets.find(asset => asset.name === "preciousMetals") as AssetGroup;
 
     /**
@@ -94,7 +95,7 @@ const ActivaInput : React.FC<ActivaInputProps> = ({setActiva,t, assets, setAsset
     <div>
             {
                 activeTab === 1 ?
-                <LiquidAssetInput valid={valid}
+                <LiquidAssetInput valid={activaValid}
                                   t={t}
                                   cash={liquidAssets}
                                   preciousMetals={preciousMetals} />
@@ -102,30 +103,30 @@ const ActivaInput : React.FC<ActivaInputProps> = ({setActiva,t, assets, setAsset
                     activeTab === 2 ?
                         <RealestateInput t={t}
                                          realestate={realestate}
-                                         valid={valid}/>
+                                         valid={activaValid}/>
                 :
                     activeTab === 3 ?
                         <StockInput t={t}
                                     stocks={stocks}
-                                    valid={valid} />
+                                    valid={activaValid} />
                 :
                     activeTab === 4 ?
                         <CryptoCurrencyInput cryptoCurrency={cryptoCurrency}
                                              t={t}
-                                             valid={valid}/>
+                                             valid={activaValid}/>
                 :
                     activeTab === 5 ?
                         <OtherAssetsInput t={t}
                                           other={otherAssets}
-                                          valid={valid}/>
+                                          valid={activaValid}/>
                 :
             <h2>{t('404')}</h2>
         }
         {
-            valid ?
+            activaValid ?
                 <button className="btn btn-success mt-4 btn-block" disabled>{t('save_activa')}</button>
                 :
-                <button className="btn btn-success mt-4 btn-block" onClick={() => {}}>{t('save_activa')}</button>
+                <button className="btn btn-success mt-4 btn-block" onClick={() => {saveHandler()}}>{t('save_activa')}</button>
         }
         </div>
     </>

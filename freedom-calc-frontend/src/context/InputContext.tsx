@@ -1,8 +1,7 @@
-import React, {createContext, JSXElementConstructor, ReactElement, ReactNode, ReactPortal, useState} from "react";
+import React, {createContext, useState} from "react";
 import {PersonalInformation} from "../models/personalinformation/PersonalInformation";
 import {StartingCapital} from "../models/startingcapital/StartingCapital";
 import {Phases} from "../models/lifephases/Phases";
-import {AssetGroup} from "../models/startingcapital/AssetGroup";
 import {LifePhase} from "../models/lifephases/LifePhase";
 import {Income} from "../models/lifephases/Income";
 import {Expenses} from "../models/lifephases/Expenses";

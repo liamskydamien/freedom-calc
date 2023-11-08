@@ -37,7 +37,7 @@ const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({t, other, valid}) =
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setCollectibles(value);
+            setCollectibles(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -49,7 +49,7 @@ const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({t, other, valid}) =
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setArt(value);
+            setArt(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -61,7 +61,7 @@ const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({t, other, valid}) =
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setClaims(value);
+            setClaims(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -73,7 +73,7 @@ const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({t, other, valid}) =
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setInsurance(value);
+            setInsurance(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -86,7 +86,7 @@ const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({t, other, valid}) =
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOtherAssets(value);
+            setOtherAssets(value === '' ? 0 : parseFloat(value));
         }
     }
 

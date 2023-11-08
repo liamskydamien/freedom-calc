@@ -51,7 +51,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setSavings(value);
+            setSavings(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -63,7 +63,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setChecking(value);
+            setChecking(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -75,7 +75,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value);
+            setOther(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -87,7 +87,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setGold(value);
+            setGold(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -99,7 +99,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOtherMetals(value);
+            setOtherMetals(value === '' ? 0 : parseFloat(value));
         }
     }
 

@@ -40,7 +40,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOccupiedProperties(value);
+            setOccupiedProperties(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -53,7 +53,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setRentedProperties(value);
+            setRentedProperties(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -66,7 +66,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setCommercialProperties(value);
+            setCommercialProperties(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -79,7 +79,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setForest(value);
+            setForest(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -92,7 +92,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setAgriculturalLand(value);
+            setAgriculturalLand(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -105,7 +105,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setRealEstateFunds(value);
+            setRealEstateFunds(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -118,7 +118,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value);
+            setOther(value === '' ? 0 : parseFloat(value));
         }
     }
 

@@ -49,7 +49,8 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                                 assets={assets}
                                 setAssets={setAssets}
                                 valid={valid}
-                                setActiva={setActivaSet}/>
+                                setActiva={setActivaSet}
+                                activaValid={activaSet}/>
                     :
                    <div/>
             }
