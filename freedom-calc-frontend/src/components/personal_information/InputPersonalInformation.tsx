@@ -60,16 +60,20 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
      * @param event
      */
     const dateOfBirthChangeHandler = (event: { target: { value: any; }; }) => {
-        setBirthDate(event.target.value);
+        setBirthDate(new Date(event.target.value));
     }
 
     /**
      * Handles the change of the expected age
      * @param event
      */
-    const expectedAgeChangeHandler = (event: { target: { value: string; }; }) => {
-        setExpectedAge(parseInt(event.target.value));
-    }
+    const expectedAgeChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setExpectedAge(value);
+        }
+    };
 
     /**
      * Handles the change of the currency
@@ -231,7 +235,7 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
                                     <input className="input w-auto"
                                            type="date"
                                            required={true}
-                                           value={birthDate.toLocaleString()}
+                                           value={birthDate.toISOString().slice(0, 10)}
                                            disabled={true}>
                                     </input>
                                 </div>
@@ -241,7 +245,7 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
                                     <input className="input w-auto"
                                            type="date"
                                            required={true}
-                                           value={birthDate.toLocaleString()}
+                                           value={birthDate.toISOString().slice(0, 10)}
                                            onChange={dateOfBirthChangeHandler}>
                                     </input>
                                 </div>

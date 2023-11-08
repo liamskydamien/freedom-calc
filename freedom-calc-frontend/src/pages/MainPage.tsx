@@ -2,10 +2,11 @@ import {Route, Routes, useLocation} from "react-router";
 import ProtectedRoute from "./navigation/ProtectedRoute";
 import ProgressContextProvider from "../context/ProgressContext";
 import React, {useEffect, useState} from "react";
-import UserDetails from "./UserDetails";
+import PersonalInformation from "./PersonalInformation";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
 import {InputContextProvider} from "../context/InputContext";
+import StartingCapital from "./StartingCapital";
 
 export const MainPage = () => {
 
@@ -41,10 +42,10 @@ export const MainPage = () => {
                 <ProgressContextProvider>
                     <InputContextProvider>
                     <Routes>
-                        <Route path="/" element={<UserDetails/>}/>
+                        <Route path="/" element={<PersonalInformation/>}/>
                         <Route path="/starting_capital" element={
                             <ProtectedRoute redirectTo="/" step="personal_information">
-                                <div>P2</div>
+                                <StartingCapital/>
                             </ProtectedRoute>
                         }/>
                         <Route path="/lifephases" element={

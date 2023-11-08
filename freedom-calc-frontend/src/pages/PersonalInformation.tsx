@@ -1,6 +1,6 @@
 import {useTranslation} from "react-i18next";
 import InputPersonalInformation from "../components/personal_information/InputPersonalInformation";
-const UserDetails = () => {
+const PersonalInformation = () => {
 
     const {t} = useTranslation();
 
@@ -15,4 +15,4 @@ const UserDetails = () => {
     )
 }
 
-export default UserDetails;
+export default PersonalInformation;
