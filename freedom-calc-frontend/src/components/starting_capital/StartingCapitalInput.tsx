@@ -12,6 +12,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
     const {startingCapital, setStartingCapital} : InputContextProviderState = useContext(InputContext);
     const [active, setActive] = useState(1);
     const [assets, setAssets] = useState(startingCapital.assetGroups);
+    const [valid, setValid] = useState(false);
 
     return (
         <div className="flex-col card p-5">
@@ -34,7 +35,10 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
             </div>
             {
                 active === 1 ?
-                   <ActivaInput t={t} assets={assets}/>
+                   <ActivaInput t={t}
+                                assets={assets}
+                                setAssets={setAssets}
+                                valid={false}/>
                     :
                    <div/>
             }
