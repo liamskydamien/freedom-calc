@@ -1,5 +1,5 @@
 import {useTranslation} from "react-i18next";
-import Stepper from "../components/footer/Stepper";
+import InputPersonalInformation from "../components/personal_information/InputPersonalInformation";
 const UserDetails = () => {
 
     const {t} = useTranslation();
@@ -7,6 +7,7 @@ const UserDetails = () => {
     return (
         <>
             <div className="enterUserDetailsLayout">
+                <InputPersonalInformation t={t} />
                 <div className="enterUserDetailsImage shadow-lg rounded max-w-full max-h-full"/>
             </div>
         </>

@@ -5,6 +5,7 @@ import React, {useEffect, useState} from "react";
 import UserDetails from "./UserDetails";
 import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
+import {InputContextProvider} from "../context/InputContext";
 
 export const MainPage = () => {
 
@@ -38,6 +39,7 @@ export const MainPage = () => {
             <Header/>
             <div className="ml-10 mr-10 mt-3 mb-5">
                 <ProgressContextProvider>
+                    <InputContextProvider>
                     <Routes>
                         <Route path="/" element={<UserDetails/>}/>
                         <Route path="/starting_capital" element={
@@ -61,6 +63,7 @@ export const MainPage = () => {
                             </ProtectedRoute>
                         }/>
                     </Routes>
+                    </InputContextProvider>
                 </ProgressContextProvider>
                 </div>
                 <Footer active={active} />
