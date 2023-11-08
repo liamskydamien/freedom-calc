@@ -47,40 +47,60 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
      * Updates the assets array with the new values
      * @param event
      */
-    const savingsChangeHandler = (event: { target: { value: string; }; }) => {
-        setSavings(parseFloat(event.target.value));
+    const savingsChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setSavings(value);
+        }
     }
 
     /**
      * Updates the assets array with the new values
      * @param event
      */
-    const checkingChangeHandler = (event: { target: { value: string; }; }) => {
-        setChecking(parseFloat(event.target.value));
+    const checkingChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setChecking(value);
+        }
     }
 
     /**
      * Updates the assets array with the new values
      * @param event
      */
-    const otherChangeHandler = (event: { target: { value: string; }; }) => {
-        setOther(parseFloat(event.target.value));
+    const otherChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setOther(value);
+        }
     }
 
     /**
      * Updates the assets array with the new values
      * @param event
      */
-    const goldChangeHandler = (event: { target: { value: string; }; }) => {
-        setGold(parseFloat(event.target.value));
+    const goldChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setGold(value);
+        }
     }
 
     /**
      * Updates the assets array with the new values
      * @param event
      */
-    const otherMetalsChangeHandler = (event: { target: { value: string; }; }) => {
-        setOtherMetals(parseFloat(event.target.value));
+    const otherMetalsChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setOtherMetals(value);
+        }
     }
 
     return (

@@ -19,16 +19,28 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurr
         cryptoCurrency.startingValue = bitcoin + ethereum + other;
     }
 
-    const bitcoinChangeHandler = (event: { target: { value: string; }; }) => {
-        setBitcoin(parseFloat(event.target.value));
+    const bitcoinChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setBitcoin(value);
+        }
     }
 
-    const ethereumChangeHandler = (event: { target: { value: string; }; }) => {
-        setEthereum(parseFloat(event.target.value));
+    const ethereumChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setEthereum(value);
+        }
     }
 
-    const otherChangeHandler = (event: { target: { value: string; }; }) => {
-        setOther(parseFloat(event.target.value));
+    const otherChangeHandler = (event: { target: { value: any; }; }) => {
+        const value = event.target.value;
+        // This will allow only numbers and empty string to be set
+        if (value === '' || /^[0-9\b]+$/.test(value)) {
+            setOther(value);
+        }
     }
 
     return (
