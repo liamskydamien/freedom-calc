@@ -5,30 +5,35 @@ import StockInput from "./StockInput";
 import RealestateInput from "./RealEstateInput";
 import LiquidAssetInput from "./LiquidAssetInput";
 import OtherAssetsInput from "./OtherAssetsInput";
-import {GROWTH_RATE} from "../../../constants/assets/growthrate";
 
 type ActivaInputProps = {
     t: any,
     assets: AssetGroup[],
     setAssets: (assets: AssetGroup[]) => void,
-    valid: boolean
+    valid: boolean,
+    setActiva: (valid: boolean) => void
 }
 
-const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid}) => {
+const ActivaInput : React.FC<ActivaInputProps> = ({setActiva,t, assets, setAssets, valid}) => {
     const [activeTab, setActiveTab] = useState(1);
 
-    const cryptoCurrency = new AssetGroup("cryptoCurrency", GROWTH_RATE.crypto, 0.0);
-    const stocks = new AssetGroup("stocks", GROWTH_RATE.stocks, 0.0);
-    const realestate = new AssetGroup("realestate", GROWTH_RATE.realestate, 0.0);
-    const liquidAssets = new AssetGroup("liquidAssets", GROWTH_RATE.cash, 0.0);
-    const otherAssets = new AssetGroup("otherAssets", GROWTH_RATE.other, 0.0);
-    const preciousMetals = new AssetGroup("preciousMetals", GROWTH_RATE.preciousMetals, 0.0);
+    const cryptoCurrency = assets.find(asset => asset.name === "cryptoCurrency") as AssetGroup;
+    const stocks = assets.find(asset => asset.name === "stocks") as AssetGroup;
+    const realestate = assets.find(asset => asset.name === "realestate") as AssetGroup;
+    const liquidAssets = assets.find(asset => asset.name === "liquidAssets") as AssetGroup;
+    const otherAssets = assets.find(asset => asset.name === "otherAssets") as AssetGroup;
+    const preciousMetals = assets.find(asset => asset.name === "preciousMetals") as AssetGroup;
 
     /**
      * Updates the assets array with the new values
      */
     const updateAssets = () => {
         setAssets([cryptoCurrency, stocks, realestate, liquidAssets, otherAssets, preciousMetals]);
+    }
+
+    const saveHandler = () => {
+        updateAssets();
+        setActiva(true);
     }
 
     return (
