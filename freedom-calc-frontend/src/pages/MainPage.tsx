@@ -4,6 +4,7 @@ import ProgressContextProvider from "../context/ProgressContext";
 import React, {useEffect, useState} from "react";
 import UserDetails from "./UserDetails";
 import Footer from "../components/footer/Footer";
+import Header from "../components/header/Header";
 
 export const MainPage = () => {
 
@@ -34,6 +35,7 @@ export const MainPage = () => {
 
     return (
         <div>
+            <Header/>
             <div className="ml-10 mr-10 mt-3 mb-5">
                 <ProgressContextProvider>
                     <Routes>
