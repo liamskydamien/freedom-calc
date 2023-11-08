@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import CryptoCurrencyInput from "./CryptoCurrencyInput";
 import StockInput from "./StockInput";
-import InsuranceInput from "./InsuranceInput";
 import RealestateInput from "./RealestateInput";
 import LiquidAssetInput from "./LiquidAssetInput";
 import OtherAssetsInput from "./OtherAssetsInput";
@@ -94,24 +93,23 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
                                   t={t}
                                   cash={liquidAssets}
                                   preciousMetals={preciousMetals} />
-        :
-            activeTab === 2 ?
-                <RealestateInput />
-        :
-            activeTab === 3 ?
-                <StockInput />
-        :
-            activeTab === 4 ?
-                <CryptoCurrencyInput cryptoCurrency={cryptoCurrency}
-                                     t={t}
-                                     valid={valid}/>
-        :
-            activeTab === 5 ?
-                <OtherAssetsInput />
-        :
-            activeTab === 6 ?
-                <InsuranceInput />
-        :
+                :
+                    activeTab === 2 ?
+                        <RealestateInput />
+                :
+                    activeTab === 3 ?
+                        <StockInput />
+                :
+                    activeTab === 4 ?
+                        <CryptoCurrencyInput cryptoCurrency={cryptoCurrency}
+                                             t={t}
+                                             valid={valid}/>
+                :
+                    activeTab === 5 ?
+                        <OtherAssetsInput t={t}
+                                          other={otherAssets}
+                                          valid={valid}/>
+                :
             <h2>{t('404')}</h2>
         }
         {
