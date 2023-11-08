@@ -171,13 +171,32 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
                                        onChange={lastNameChangeHandler}/>
                             </div>
                     }
-                    <div className="form-field">
-                        <label className="form-label">{t('gender')}</label>
-                        <select className="select max-w-full" onChange={genderChangeHandler}>
-                            <option>{t('female')}</option>
-                            <option>{t('male')}</option>
-                        </select>
-                    </div>
+                    {
+                        valid ?
+                            gender === "Female" || gender === "Nữ" || gender === "Frau" ?
+                                <div className="form-field">
+                                    <label className="form-label">{t('gender')}</label>
+                                    <select className="select max-w-full" onChange={genderChangeHandler} disabled={true}>
+                                        <option>{t('female')}</option>
+                                    </select>
+                                </div>
+                                :
+                                <div className="form-field">
+                                    <label className="form-label">{t('gender')}</label>
+                                    <select className="select max-w-full" onChange={genderChangeHandler} disabled={true}>
+                                        <option>{t('male')}</option>
+                                    </select>
+                                </div>
+                            :
+                            <div className="form-field">
+                                <label className="form-label">{t('gender')}</label>
+                                <select className="select max-w-full" onChange={genderChangeHandler}>
+                                    <option>{t('female')}</option>
+                                    <option>{t('male')}</option>
+                                </select>
+                            </div>
+
+                    }
                     <div className="form-field flex-row max-w-full">
                         {
                             valid ?
@@ -224,13 +243,31 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
                                 </div>
                         }
                     </div>
-                    <div className="form-field">
-                        <label className="form-label">{t('currency')}</label>
-                        <select className="select max-w-full" onChange={currencyChangeHandler}>
-                            <option>EUR €</option>
-                            <option>VND ₫</option>
-                        </select>
-                    </div>
+                    {
+                        valid ?
+                            currency === "EUR €" ?
+                                <div className="form-field">
+                                    <label className="form-label">{t('currency')}</label>
+                                    <select className="select max-w-full" onChange={currencyChangeHandler} disabled={true}>
+                                        <option>EUR €</option>
+                                    </select>
+                                </div>
+                                :
+                                <div className="form-field">
+                                    <label className="form-label">{t('currency')}</label>
+                                    <select className="select max-w-full" onChange={currencyChangeHandler} disabled={true}>
+                                        <option>VND ₫</option>
+                                    </select>
+                                </div>
+                            :
+                            <div className="form-field">
+                                <label className="form-label">{t('currency')}</label>
+                                <select className="select max-w-full" onChange={currencyChangeHandler}>
+                                    <option>EUR €</option>
+                                    <option>VND ₫</option>
+                                </select>
+                            </div>
+                    }
                     <div className="form-field">
                         <button className="btn btn-primary"
                                 onClick={submitHandler}>{t('save_and_proceed')}</button>
