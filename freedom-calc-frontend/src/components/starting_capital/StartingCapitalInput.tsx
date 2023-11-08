@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {InputContext} from "../../context/InputContext";
 import {InputContextProviderState} from "../../models/InputContextProviderState";
+import ActivaInput from "./activa/ActivaInput";
 
 type StartingCapitalInputProps = {
     t: any
@@ -10,6 +11,8 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
     // @ts-ignore
     const {startingCapital, setStartingCapital} : InputContextProviderState = useContext(InputContext);
     const [active, setActive] = useState(1);
+    const [assets, setAssets] = useState(startingCapital.assetGroups);
+
     return (
         <div className="flex-col card p-5">
             <h1 className="text-xl font-bold">{t('starting_capital')}</h1>
@@ -31,7 +34,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
             </div>
             {
                 active === 1 ?
-                    <div/>
+                   <ActivaInput t={t} assets={assets}/>
                     :
                    <div/>
             }
