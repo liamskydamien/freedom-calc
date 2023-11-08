@@ -4,19 +4,20 @@ import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 type CryptoCurrencyInputProps = {
     t: any,
     cryptoCurrency: AssetGroup
-    valid: boolean
+    valid: boolean,
+    cryptoStates: {}
 }
 
-const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurrency, valid}) =>{
-    const [bitcoin, setBitcoin] = useState(0.0);
-    const [ethereum, setEthereum] = useState(0.0);
-    const [other, setOther] = useState(0.0);
+const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({cryptoStates ,t, cryptoCurrency, valid}) =>{
+
+    // @ts-ignore
+    const {bitcoin, ethereum, otherCryptos, setBitcoin, setEthereum, setOtherCryptos} = cryptoStates;
 
     useEffect(() => {
         updateCryptoCurrency();
-    }, [bitcoin, ethereum, other]);
+    }, [bitcoin, ethereum, otherCryptos]);
     const updateCryptoCurrency = () => {
-        cryptoCurrency.startingValue = bitcoin + ethereum + other;
+        cryptoCurrency.startingValue = bitcoin + ethereum + otherCryptos;
     }
 
     const bitcoinChangeHandler = (event: { target: { value: any; }; }) => {
@@ -39,7 +40,7 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurr
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value === '' ? 0 : parseFloat(value));
+            setOtherCryptos(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -74,7 +75,7 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({t, cryptoCurr
                                     </div>
                                     <div className="form-field">
                                         <label className="form-label">{t('other')}</label>
-                                        <input value={other}
+                                        <input value={otherCryptos}
                                                type="number"
                                                className="input max-w-full"
                                                onChange={otherChangeHandler}/>

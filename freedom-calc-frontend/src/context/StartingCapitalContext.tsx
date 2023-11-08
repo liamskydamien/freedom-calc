@@ -1,10 +1,19 @@
 import React, {createContext, useState} from "react";
 
-export const StartingCapitalContext = createContext({});
+export const StartingCapitalContext = createContext({
+    activa: {},
+    passiva: {}
+});
 
 type StartingCapitalProviderProps = {
     children: React.ReactNode
 }
+
+type ReturnValue = {
+    activa: {},
+    passiva: {}
+}
+
 const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({children}) => {
     // Activa Context
     /* Other */
@@ -52,13 +61,13 @@ const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({child
     const [reservedEquityForOther, setReservedEquityForOther] = useState(0);
 
     // Grouping of all the States
-    const crypto = {
-        bitcoin: bitcoin,
-        ethereum: ethereum,
-        otherCryptos: otherCryptos,
-        setBitcoin: setBitcoin,
-        setEthereum: setEthereum,
-        setOtherCryptos: setOtherCryptos,
+    const crypto  = {
+        bitcoin,
+        ethereum,
+        otherCryptos,
+        setBitcoin,
+        setEthereum,
+        setOtherCryptos,
     }
 
     const cash = {
@@ -145,12 +154,12 @@ const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({child
     }
 
     const activa = {
-        crypto: crypto,
-        cash: cash,
-        preciousMetals: preciousMetals,
-        realEstate: realEstate,
-        stocks: stocks,
-        other: other,
+        crypto,
+        cash,
+        preciousMetals,
+        realEstate,
+        stocks,
+        other,
     }
 
     const passiva = {
@@ -158,7 +167,7 @@ const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({child
         reservedEquity: reservedEquity,
     }
 
-    const startingcapitalStates = {
+    const startingcapitalStates : ReturnValue = {
         activa: activa,
         passiva: passiva,
     }

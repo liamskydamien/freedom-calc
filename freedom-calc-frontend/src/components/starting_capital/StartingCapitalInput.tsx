@@ -2,6 +2,7 @@ import React, {useContext, useEffect, useState} from "react";
 import {InputContext} from "../../context/InputContext";
 import {InputContextProviderState} from "../../models/InputContextProviderState";
 import ActivaInput from "./activa/ActivaInput";
+import StartingCapitalProvider from "../../context/StartingCapitalContext";
 
 type StartingCapitalInputProps = {
     t: any
@@ -43,6 +44,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                        onClick={() => setActive(2)} />
                 <label htmlFor="tab-5" className="tab tab-bordered px-6 pr-16 pl-16">{t('passiva')}</label>
             </div>
+            <StartingCapitalProvider>
             {
                 active === 1 ?
                    <ActivaInput t={t}
@@ -54,6 +56,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                     :
                    <div/>
             }
+            </StartingCapitalProvider>
             {
                 !valid ?
                     <button className="btn mt-4 btn-primary" disabled>{t('save_starting_capital')}</button>

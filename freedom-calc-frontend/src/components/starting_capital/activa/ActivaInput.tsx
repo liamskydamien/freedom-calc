@@ -1,10 +1,11 @@
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import CryptoCurrencyInput from "./CryptoCurrencyInput";
 import StockInput from "./StockInput";
 import RealestateInput from "./RealEstateInput";
 import LiquidAssetInput from "./LiquidAssetInput";
 import OtherAssetsInput from "./OtherAssetsInput";
+import {StartingCapitalContext} from "../../../context/StartingCapitalContext";
 
 type ActivaInputProps = {
     t: any,
@@ -18,12 +19,18 @@ type ActivaInputProps = {
 const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, assets, setAssets, valid}) => {
     const [activeTab, setActiveTab] = useState(1);
 
+    const startingcapitalStates = useContext(StartingCapitalContext);
+    const activaStates = startingcapitalStates.activa;
+
+    // @ts-ignore
+    const {crypto, stocks, realestate, liquidAssets, otherAssets, preciousMetals} = activaStates;
+
     const cryptoCurrency = assets.find(asset => asset.name === "crypto") as AssetGroup;
-    const stocks = assets.find(asset => asset.name === "stocks") as AssetGroup;
-    const realestate = assets.find(asset => asset.name === "realestate") as AssetGroup;
-    const liquidAssets = assets.find(asset => asset.name === "cash") as AssetGroup;
-    const otherAssets = assets.find(asset => asset.name === "other") as AssetGroup;
-    const preciousMetals = assets.find(asset => asset.name === "preciousMetals") as AssetGroup;
+    const stockAsset = assets.find(asset => asset.name === "stocks") as AssetGroup;
+    const realestateAsset = assets.find(asset => asset.name === "realestate") as AssetGroup;
+    const liquidAsset = assets.find(asset => asset.name === "cash") as AssetGroup;
+    const otherAsset = assets.find(asset => asset.name === "other") as AssetGroup;
+    const preciousMetalsAsset = assets.find(asset => asset.name === "preciousMetals") as AssetGroup;
 
     /**
      * Updates the assets array with the new values
@@ -37,6 +44,8 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
         setActiva(true);
     }
 
+    // @ts-ignore
+    // @ts-ignore
     return (
         <>
             <div className="tabs gap-1">
@@ -97,27 +106,28 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
                 activeTab === 1 ?
                 <LiquidAssetInput valid={activaValid}
                                   t={t}
-                                  cash={liquidAssets}
-                                  preciousMetals={preciousMetals} />
+                                  cash={liquidAsset}
+                                  preciousMetals={preciousMetalsAsset} />
                 :
                     activeTab === 2 ?
                         <RealestateInput t={t}
-                                         realestate={realestate}
+                                         realestate={realestateAsset}
                                          valid={activaValid}/>
                 :
                     activeTab === 3 ?
                         <StockInput t={t}
-                                    stocks={stocks}
+                                    stocks={stockAsset}
                                     valid={activaValid} />
                 :
                     activeTab === 4 ?
                         <CryptoCurrencyInput cryptoCurrency={cryptoCurrency}
                                              t={t}
-                                             valid={activaValid}/>
+                                             valid={activaValid}
+                                             cryptoStates={crypto}/>
                 :
                     activeTab === 5 ?
                         <OtherAssetsInput t={t}
-                                          other={otherAssets}
+                                          other={otherAsset}
                                           valid={activaValid}/>
                 :
             <h2>{t('404')}</h2>
