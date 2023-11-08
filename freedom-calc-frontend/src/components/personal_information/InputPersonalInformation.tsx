@@ -85,10 +85,14 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
      */
     const submitHandler = (event: { preventDefault: () => void; }) => {
         event.preventDefault();
-        if (checkPersonalInformation()) {
+        if (checkPersonalInformation() && checkAge()) {
             updatePersonalInformation();
             updateProgressPersonal();
             navigate('/starting_capital')
+        }
+        else {
+            //TODO: Add error Modal
+            alert("Please check your input!");
         }
     }
 
@@ -123,6 +127,28 @@ const InputPersonalInformation : React.FC<InputPersonalInformationProps> = ({t})
             && gender !== "";
         console.log("Form is valid: ", check);
         return check;
+    }
+
+    /**
+     * Checks if the age is valid meaning that the expected age is greater than the current age
+     */
+    const checkAge = () => {
+        return expectedAge > 0 && expectedAge > getAge();
+    }
+
+    /**
+     * Calculates the current age
+     */
+    const getAge = () : number => {
+            if (birthDate.getMonth() > new Date().getMonth())
+                return new Date().getFullYear() - birthDate.getFullYear() - 1;
+            else if (birthDate.getMonth() === new Date().getMonth())
+                if (birthDate.getDate() > new Date().getDate())
+                    return new Date().getFullYear() - birthDate.getFullYear() - 1;
+                else
+                    return new Date().getFullYear() - birthDate.getFullYear();
+            else
+                return new Date().getFullYear() - birthDate.getFullYear();
     }
 
     return (
