@@ -1,13 +1,40 @@
-import {Route, Routes} from "react-router";
+import {Route, Routes, useLocation} from "react-router";
 import ProtectedRoute from "./navigation/ProtectedRoute";
-import ProgressContextProvider, {ProgressContext} from "../context/ProgressContext";
-import React from "react";
+import ProgressContextProvider from "../context/ProgressContext";
+import React, {useEffect, useState} from "react";
 import UserDetails from "./UserDetails";
+import Footer from "../components/footer/Footer";
 
 export const MainPage = () => {
+
+    const [active, setActive] = useState(1);
+    const location = useLocation();
+
+    useEffect(() => {
+        const getActive = () => {
+            const path = location.pathname;
+            switch (path) {
+                case "/":
+                    return 1;
+                case "/starting_capital":
+                    return 2;
+                case "/lifephases":
+                    return 3;
+                case "/pof":
+                    return 4;
+                case "/optimisation":
+                    return 5;
+                default:
+                    return 1;
+            }
+        }
+
+        setActive(getActive());
+    }, [location]);
+
     return (
-        <div className="ml-10 mr-10 mt-3 mb-5">
-            <div className="lifechartLayout">
+        <div>
+            <div className="ml-10 mr-10 mt-3 mb-5">
                 <ProgressContextProvider>
                     <Routes>
                         <Route path="/" element={<UserDetails/>}/>
@@ -33,7 +60,8 @@ export const MainPage = () => {
                         }/>
                     </Routes>
                 </ProgressContextProvider>
-            </div>
+                </div>
+                <Footer active={active} />
         </div>
 )
 }
