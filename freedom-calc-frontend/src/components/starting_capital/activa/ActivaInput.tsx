@@ -26,13 +26,6 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
     const preciousMetals = new AssetGroup("preciousMetals", GROWTH_RATE.preciousMetals, 0.0);
 
     /**
-     * Updates the assets array when the values change
-     */
-    useEffect(() => {
-        updateAssets();
-    }, [cryptoCurrency, stocks, realestate, liquidAssets, otherAssets, preciousMetals]);
-
-    /**
      * Updates the assets array with the new values
      */
     const updateAssets = () => {
@@ -97,7 +90,10 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
     <div>
             {
                 activeTab === 1 ?
-                <LiquidAssetInput />
+                <LiquidAssetInput valid={valid}
+                                  t={t}
+                                  cash={liquidAssets}
+                                  preciousMetals={preciousMetals} />
         :
             activeTab === 2 ?
                 <RealestateInput />
@@ -118,7 +114,13 @@ const ActivaInput : React.FC<ActivaInputProps> = ({t, assets, setAssets, valid})
         :
             <h2>{t('404')}</h2>
         }
-    </div>
+        {
+            valid ?
+                <button className="btn btn-success mt-4 btn-block" disabled>{t('save_activa')}</button>
+                :
+                <button className="btn btn-success mt-4 btn-block" onClick={() => {}}>{t('save_activa')}</button>
+        }
+        </div>
     </>
 )
 }

@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import {InputContext} from "../../context/InputContext";
 import {InputContextProviderState} from "../../models/InputContextProviderState";
 import ActivaInput from "./activa/ActivaInput";
@@ -13,6 +13,16 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
     const [active, setActive] = useState(1);
     const [assets, setAssets] = useState(startingCapital.assetGroups);
     const [valid, setValid] = useState(false);
+    const [activaSet, setActivaSet] = useState(false);
+    const [passivaSet, setPassivaSet] = useState(false);
+
+    useEffect(() => {
+        if (activaSet && passivaSet) {
+            setValid(true);
+        } else {
+            setValid(false);
+        }
+    }, [activaSet, passivaSet]);
 
     return (
         <div className="flex-col card p-5">
@@ -38,11 +48,17 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                    <ActivaInput t={t}
                                 assets={assets}
                                 setAssets={setAssets}
-                                valid={false}/>
+                                valid={valid}/>
                     :
                    <div/>
             }
-            <button className="btn btn-primary mt-4" onClick={() => {}}>{t('save_starting_capital')}</button>
+            {
+                !valid ?
+                    <button className="btn mt-4 btn-primary" disabled>{t('save_starting_capital')}</button>
+                    :
+                    <button className="btn btn-primary mt-4" onClick={() => {}}>{t('save_starting_capital')}</button>
+            }
+
         </div>
     )
 }
