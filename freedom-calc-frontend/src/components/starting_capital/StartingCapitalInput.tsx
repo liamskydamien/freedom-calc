@@ -1,15 +1,23 @@
 import React, {useContext, useEffect, useState} from "react";
 import {InputContext} from "../../context/InputContext";
 import {InputContextProviderState} from "../../models/InputContextProviderState";
+import {StartingCapital} from "../../models/startingcapital/StartingCapital";
 import ActivaInput from "./activa/ActivaInput";
 import StartingCapitalProvider from "../../context/StartingCapitalContext";
 import PassivaInput from "./passiva/PassivaInput";
+import {ProgressContext} from "../../context/ProgressContext";
+import {useNavigate} from "react-router";
 
 type StartingCapitalInputProps = {
     t: any
 }
 
 const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
+
+    // Import Hooks
+    const navigate = useNavigate();
+
+    const {progress, updateProgress} = useContext(ProgressContext);
 
     const {startingCapital, setStartingCapital} : InputContextProviderState = useContext(InputContext);
     const [active, setActive] = useState(1);
@@ -26,6 +34,28 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
             setValid(false);
         }
     }, [activaSet, passivaSet]);
+
+    const submitHandler = () => {
+        upddateStartingCapital();
+        updateProgressStartingCapital();
+        navigate('/lifephases');
+    }
+
+    /**
+     * Update the progress of the personal information
+     */
+    const updateProgressStartingCapital = () => {
+        progress.setStartingCapital(true);
+        updateProgress(progress);
+    }
+
+    /**
+     * Update the progress of the personal information
+     */
+    const upddateStartingCapital = () => {
+        const newStartingCapital = new StartingCapital(assets, passiva);
+        setStartingCapital(newStartingCapital);
+    }
 
     return (
         <div className="flex-col card p-5">
@@ -70,7 +100,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                 !valid ?
                     <button className="btn mt-4 btn-primary" disabled>{t('save_starting_capital')}</button>
                     :
-                    <button className="btn btn-primary mt-4" onClick={() => {}}>{t('save_starting_capital')}</button>
+                    <button className="btn btn-primary mt-4" onClick={() => {submitHandler()}}>{t('save_starting_capital')}</button>
             }
 
         </div>
