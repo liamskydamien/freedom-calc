@@ -1,6 +1,6 @@
 import React, {useContext, useState} from "react";
 import {StartingCapitalContext} from "../../../context/StartingCapitalContext";
-import {ActivaState, PassivaState} from "../../../models/types/AssetContextTypes";
+import {PassivaState} from "../../../models/types/AssetContextTypes";
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import LiabilitiesInput from "./LiabilitiesInput";
 import ReservedEquityInput from "./ReservedEquityInput";
@@ -9,11 +9,12 @@ type PassivaInputProps = {
     t: any,
     passiva: AssetGroup[]
     valid: boolean,
+    passivaValid: boolean,
     setLiabilitiesValid: (valid: boolean) => void,
     setPassiva: (liabilites: AssetGroup[]) => void,
 }
 
-const PassivaInputs : React.FC<PassivaInputProps> = ({setLiabilitiesValid, valid, setPassiva ,passiva, t}) => {
+const PassivaInputs : React.FC<PassivaInputProps> = ({passivaValid,setLiabilitiesValid, valid, setPassiva ,passiva, t}) => {
     const [activeTab, setActiveTab] = useState(1);
     const startingcapitalStates = useContext(StartingCapitalContext);
     const passivaStates = startingcapitalStates.passiva as PassivaState;
@@ -21,6 +22,21 @@ const PassivaInputs : React.FC<PassivaInputProps> = ({setLiabilitiesValid, valid
 
     const liabilitiesGroup = passiva.find(asset => asset.name === "liabilities") as AssetGroup;
     const reservedEquityGroup = passiva.find(asset => asset.name === "reservedEquity") as AssetGroup;
+
+    /**
+     * Updates the assets array with the new values
+     */
+    const updateAssets = () => {
+        setPassiva([liabilitiesGroup, reservedEquityGroup]);
+    }
+
+    /**
+     * Saves the liabilities
+     */
+    const saveHandler = () => {
+        updateAssets();
+        setLiabilitiesValid(true);
+    }
 
     return (
         <>
@@ -61,6 +77,12 @@ const PassivaInputs : React.FC<PassivaInputProps> = ({setLiabilitiesValid, valid
                                                  reservedEquityState={reservedEquity}/>
                             :
                             <h2>{t('404')}</h2>
+                }
+                {
+                    passivaValid ?
+                        <button className="btn btn-success mt-4 btn-block" disabled>{t('save_activa')}</button>
+                        :
+                        <button className="btn btn-success mt-4 btn-block" onClick={() => {saveHandler()}}>{t('save_passiva')}</button>
                 }
             </div>
         </>

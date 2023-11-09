@@ -58,6 +58,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                    />
                     :
                    <PassivaInput t={t}
+                                 passivaValid={passivaSet}
                                  passiva={passiva}
                                  valid={valid}
                                  setLiabilitiesValid={setPassivaSet}
