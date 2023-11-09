@@ -1,21 +1,19 @@
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import React, {useEffect, useState} from "react";
+import {CashState, PreciousMetalsState} from "../../../models/types/AssetContextTypes";
 
 type LiquidAssetsInput = {
     t: any,
     cash: AssetGroup,
     preciousMetals: AssetGroup,
     valid: boolean,
-    liquidAssetStates: {},
-    preciousMetalsStates: {}
+    liquidAssetStates: CashState,
+    preciousMetalsStates: PreciousMetalsState
 }
 
 const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({liquidAssetStates, preciousMetalsStates,t, cash,preciousMetals, valid}) =>{
 
-    // @ts-ignore
     const {savings, checking, otherLiquidAssets, setSavings, setChecking, setOtherLiquidAssets} = liquidAssetStates;
-
-    // @ts-ignore
     const {gold, otherMetals, setGold, setOtherMetals} = preciousMetalsStates;
 
     /**

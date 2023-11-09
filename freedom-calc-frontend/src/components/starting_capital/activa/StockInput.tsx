@@ -1,26 +1,23 @@
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import {useEffect, useState} from "react";
+import {StockState} from "../../../models/types/AssetContextTypes";
 
 type StockInputProps = {
     t: any,
     stocks: AssetGroup
-    valid: boolean
+    valid: boolean,
+    stockStates: StockState
 }
 
-const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
-    const [singleStocks, setSingleStocks] = useState(0.0);
-    const [fund, setFund] = useState(0.0);
-    const [etf, setEtf] = useState(0.0);
-    const [derivative, setDerivative] = useState(0.0);
-    const [activeCorporateParticipation, setActiveCorporateParticipation] = useState(0.0);
-    const [passiveCorporateParticipation, setPassiveCorporateParticipation] = useState(0.0);
-    const [other, setOther] = useState(0.0);
+const StockInput : React.FC<StockInputProps> = ({stockStates ,t, stocks, valid}) =>{
+
+    const {singleStocks, fund, etf, derivative, activeCorporateParticipation, passiveCorporateParticipation, otherStocks, setSingleStocks, setFund, setEtf, setDerivative, setActiveCorporateParticipation, setPassiveCorporateParticipation, setOtherStocks} = stockStates;
 
     /**
      * Updates the assets array with the new values
      */
     const updateStocks = () => {
-        stocks.startingValue = singleStocks + fund + etf + derivative + activeCorporateParticipation + passiveCorporateParticipation + other;
+        stocks.startingValue = singleStocks + fund + etf + derivative + activeCorporateParticipation + passiveCorporateParticipation + otherStocks;
     }
 
     /**
@@ -28,7 +25,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
      */
     useEffect(() => {
         updateStocks();
-    }, [singleStocks, fund, etf, derivative, activeCorporateParticipation, passiveCorporateParticipation, other]);
+    }, [singleStocks, fund, etf, derivative, activeCorporateParticipation, passiveCorporateParticipation, otherStocks]);
 
     /**
      * Updates the assets array with the new values
@@ -117,7 +114,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value === '' ? 0 : parseFloat(value));
+            setOtherStocks(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -183,7 +180,7 @@ const StockInput : React.FC<StockInputProps> = ({t, stocks, valid}) =>{
                             <h3 className="text-sm font-bold mt-2">{t('other')}</h3>
                             <div className="form-field">
                                 <label className="form-label">{t('other')}</label>
-                                <input value={other}
+                                <input value={otherStocks}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherChangeHandler}/>

@@ -1,20 +1,17 @@
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import {useEffect, useState} from "react";
+import {OtherState} from "../../../models/types/AssetContextTypes";
 
 type OtherAssetsInputProps = {
     t: any,
     other: AssetGroup
-    valid: boolean
+    valid: boolean,
+    otherAssetStates: OtherState
 }
 
-const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({t, other, valid}) =>{
+const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({otherAssetStates ,t, other, valid}) =>{
 
-    const [collectibles, setCollectibles] = useState(0.0);
-    const [art, setArt] = useState(0.0);
-    const [claims, setClaims] = useState(0.0);
-    const [insurance, setInsurance] = useState(0.0);
-    const [otherAssets, setOtherAssets] = useState(0.0);
-
+    const {collectibles, art, claims, insurance, otherAssets, setCollectibles, setArt, setClaims, setInsurance, setOtherAssets} = otherAssetStates;
     /**
      * Updates the assets array with the new values
      */
