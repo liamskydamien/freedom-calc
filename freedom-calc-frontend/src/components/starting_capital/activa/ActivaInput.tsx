@@ -104,7 +104,9 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
     <div>
             {
                 activeTab === 1 ?
-                <LiquidAssetInput valid={activaValid}
+                <LiquidAssetInput liquidAssetStates={liquidAssets}
+                                  preciousMetalsStates={preciousMetals}
+                                  valid={activaValid}
                                   t={t}
                                   cash={liquidAsset}
                                   preciousMetals={preciousMetalsAsset} />
