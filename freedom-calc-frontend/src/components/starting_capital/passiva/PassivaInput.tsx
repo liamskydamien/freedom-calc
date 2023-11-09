@@ -3,6 +3,7 @@ import {StartingCapitalContext} from "../../../context/StartingCapitalContext";
 import {ActivaState, PassivaState} from "../../../models/types/AssetContextTypes";
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
 import LiabilitiesInput from "./LiabilitiesInput";
+import ReservedEquityInput from "./ReservedEquityInput";
 
 type PassivaInputProps = {
     t: any,
@@ -54,7 +55,10 @@ const PassivaInputs : React.FC<PassivaInputProps> = ({setLiabilitiesValid, valid
                                           liabilitiesValid={valid}/>
                         :
                         activeTab === 2 ?
-                            <></>
+                            <ReservedEquityInput t={t}
+                                                 reservedEquity={reservedEquityGroup}
+                                                 liabilitiesValid={valid}
+                                                 reservedEquityState={reservedEquity}/>
                             :
                             <h2>{t('404')}</h2>
                 }
