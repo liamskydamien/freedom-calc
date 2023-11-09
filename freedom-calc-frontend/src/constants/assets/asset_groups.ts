@@ -9,3 +9,8 @@ export const ASSET_GROUPS : AssetGroup[] = [
     new AssetGroup("preciousMetals", GROWTH_RATE.preciousMetals, 0.0),
     new AssetGroup("other", GROWTH_RATE.other, 0.0)
 ]
+
+export const PASSIVA_GROUP : AssetGroup[] = [
+    new AssetGroup("liabilities",0.0, 0.0),
+    new AssetGroup("reservedEquity", 0.0, 0.0),
+]

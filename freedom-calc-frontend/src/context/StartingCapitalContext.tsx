@@ -8,10 +8,7 @@ import {
     StockState
 } from "../models/types/AssetContextTypes";
 
-export const StartingCapitalContext = createContext({
-    aktiva: {},
-    passiva: {}
-});
+export const StartingCapitalContext = createContext({} as StartingCapitalProviderState);
 
 type StartingCapitalProviderProps = {
     children: React.ReactNode

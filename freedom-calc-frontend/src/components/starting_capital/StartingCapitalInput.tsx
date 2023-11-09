@@ -9,7 +9,7 @@ type StartingCapitalInputProps = {
 }
 
 const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
-    // @ts-ignore
+
     const {startingCapital, setStartingCapital} : InputContextProviderState = useContext(InputContext);
     const [active, setActive] = useState(1);
     const [assets, setAssets] = useState(startingCapital.assetGroups);
