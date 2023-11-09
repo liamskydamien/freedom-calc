@@ -1,16 +1,16 @@
 import {useEffect, useState} from "react";
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
+import {CryptoState} from "../../../models/types/AssetContextTypes";
 
 type CryptoCurrencyInputProps = {
     t: any,
     cryptoCurrency: AssetGroup
     valid: boolean,
-    cryptoStates: {}
+    cryptoStates: CryptoState
 }
 
 const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({cryptoStates ,t, cryptoCurrency, valid}) =>{
 
-    // @ts-ignore
     const {bitcoin, ethereum, otherCryptos, setBitcoin, setEthereum, setOtherCryptos} = cryptoStates;
 
     useEffect(() => {

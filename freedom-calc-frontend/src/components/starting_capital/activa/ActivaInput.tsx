@@ -6,6 +6,7 @@ import RealestateInput from "./RealEstateInput";
 import LiquidAssetInput from "./LiquidAssetInput";
 import OtherAssetsInput from "./OtherAssetsInput";
 import {StartingCapitalContext} from "../../../context/StartingCapitalContext";
+import {ActivaState, PassivaState, StartingCapitalProviderState} from "../../../models/types/AssetContextTypes";
 
 type ActivaInputProps = {
     t: any,
@@ -20,10 +21,9 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
     const [activeTab, setActiveTab] = useState(1);
 
     const startingcapitalStates = useContext(StartingCapitalContext);
-    const activaStates = startingcapitalStates.activa;
+    const activaStates = startingcapitalStates.aktiva as ActivaState;
 
-    // @ts-ignore
-    const {crypto, stocks, realestate, liquidAssets, otherAssets, preciousMetals} = activaStates;
+    const {crypto, stock, realEstate, cash, other, preciousMetals} = activaStates;
 
     const cryptoCurrency = assets.find(asset => asset.name === "crypto") as AssetGroup;
     const stockAsset = assets.find(asset => asset.name === "stocks") as AssetGroup;
@@ -36,7 +36,7 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
      * Updates the assets array with the new values
      */
     const updateAssets = () => {
-        setAssets([cryptoCurrency, stocks, realestate, liquidAssets, otherAssets, preciousMetals]);
+        setAssets([cryptoCurrency, stockAsset, realestateAsset, liquidAsset, otherAsset, preciousMetalsAsset]);
     }
 
     const saveHandler = () => {
@@ -44,8 +44,6 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
         setActiva(true);
     }
 
-    // @ts-ignore
-    // @ts-ignore
     return (
         <>
             <div className="tabs gap-1">
@@ -104,18 +102,22 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
     <div>
             {
                 activeTab === 1 ?
-                <LiquidAssetInput valid={activaValid}
+                <LiquidAssetInput liquidAssetStates={cash}
+                                  preciousMetalsStates={preciousMetals}
+                                  valid={activaValid}
                                   t={t}
                                   cash={liquidAsset}
                                   preciousMetals={preciousMetalsAsset} />
                 :
                     activeTab === 2 ?
                         <RealestateInput t={t}
+                                         realEstateStates={realEstate}
                                          realestate={realestateAsset}
                                          valid={activaValid}/>
                 :
                     activeTab === 3 ?
                         <StockInput t={t}
+                                    stockStates={stock}
                                     stocks={stockAsset}
                                     valid={activaValid} />
                 :
@@ -127,6 +129,7 @@ const ActivaInput : React.FC<ActivaInputProps> = ({activaValid,setActiva,t, asse
                 :
                     activeTab === 5 ?
                         <OtherAssetsInput t={t}
+                                          otherAssetStates={other}
                                           other={otherAsset}
                                           valid={activaValid}/>
                 :

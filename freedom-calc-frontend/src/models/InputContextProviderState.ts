@@ -2,7 +2,7 @@ import {PersonalInformation} from "./personalinformation/PersonalInformation";
 import {StartingCapital} from "./startingcapital/StartingCapital";
 import {Phases} from "./lifephases/Phases";
 
-export type InputContextProviderState = {
+export type InputContextProviderState =     {
     personalInformation: PersonalInformation;
     startingCapital: StartingCapital;
     phases: Phases;

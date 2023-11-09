@@ -1,17 +1,17 @@
 import React, {createContext, useState} from "react";
+import {
+    ActivaState,
+    CashState,
+    CryptoState, LiabilitiesState, OtherState, PassivaState,
+    PreciousMetalsState,
+    RealEstateState, ReservedEquityState, StartingCapitalProviderState,
+    StockState
+} from "../models/types/AssetContextTypes";
 
-export const StartingCapitalContext = createContext({
-    activa: {},
-    passiva: {}
-});
+export const StartingCapitalContext = createContext({} as StartingCapitalProviderState);
 
 type StartingCapitalProviderProps = {
     children: React.ReactNode
-}
-
-type ReturnValue = {
-    activa: {},
-    passiva: {}
 }
 
 const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({children}) => {
@@ -61,7 +61,7 @@ const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({child
     const [reservedEquityForOther, setReservedEquityForOther] = useState(0);
 
     // Grouping of all the States
-    const crypto  = {
+    const crypto : CryptoState = {
         bitcoin,
         ethereum,
         otherCryptos,
@@ -70,105 +70,105 @@ const StartingCapitalProvider : React.FC<StartingCapitalProviderProps> = ({child
         setOtherCryptos,
     }
 
-    const cash = {
-        savings: savings,
-        checking: checking,
-        otherLiquidAssets: otherLiquidAssets,
-        setSavings: setSavings,
-        setChecking: setChecking,
-        setOtherLiquidAssets: setOtherLiquidAssets,
+    const cash : CashState = {
+         savings,
+         checking,
+         otherLiquidAssets,
+         setSavings,
+         setChecking,
+         setOtherLiquidAssets,
     }
 
-    const preciousMetals = {
-        gold: gold,
-        otherMetals: otherMetals,
-        setGold: setGold,
-        setOtherMetals: setOtherMetals,
+    const preciousMetals : PreciousMetalsState = {
+        gold,
+        otherMetals,
+        setGold,
+        setOtherMetals,
     }
 
-    const realEstate = {
-        occupiedProperties: occupiedProperties,
-        rentedProperties: rentedProperties,
-        commercialProperties: commercialProperties,
-        forest: forest,
-        agriculturalLand: agriculturalLand,
-        realEstateFunds: realEstateFunds,
-        otherRealEstate: otherRealEstate,
-        setOccupiedProperties: setOccupiedProperties,
-        setRentedProperties: setRentedProperties,
-        setCommercialProperties: setCommercialProperties,
-        setForest: setForest,
-        setAgriculturalLand: setAgriculturalLand,
-        setRealEstateFunds: setRealEstateFunds,
-        setOtherRealEstate: setOtherRealEstate,
+    const realEstate: RealEstateState = {
+        occupiedProperties,
+        rentedProperties,
+        commercialProperties,
+        forest,
+        agriculturalLand,
+        realEstateFunds,
+        otherRealEstate,
+        setOccupiedProperties,
+        setRentedProperties,
+        setCommercialProperties,
+        setForest,
+        setAgriculturalLand,
+        setRealEstateFunds,
+        setOtherRealEstate,
     }
 
-    const stocks = {
-        singleStocks: singleStocks,
-        fund: fund,
-        etf: etf,
-        derivative: derivative,
-        activeCorporateParticipation: activeCorporateParticipation,
-        passiveCorporateParticipation: passiveCorporateParticipation,
-        otherStocks: otherStocks,
-        setSingleStocks: setSingleStocks,
-        setFund: setFund,
-        setEtf: setEtf,
-        setDerivative: setDerivative,
-        setActiveCorporateParticipation: setActiveCorporateParticipation,
-        setPassiveCorporateParticipation: setPassiveCorporateParticipation,
-        setOtherStocks: setOtherStocks,
+    const stocks : StockState = {
+        singleStocks,
+        fund,
+        etf,
+        derivative,
+        activeCorporateParticipation,
+        passiveCorporateParticipation,
+        otherStocks,
+        setSingleStocks,
+        setFund,
+        setEtf,
+        setDerivative,
+        setActiveCorporateParticipation,
+        setPassiveCorporateParticipation,
+        setOtherStocks,
     }
 
-    const other = {
-        collectibles: collectibles,
-        art: art,
-        claims: claims,
-        insurance: insurance,
-        otherAssets: otherAssets,
-        setCollectibles: setCollectibles,
-        setArt: setArt,
-        setClaims: setClaims,
-        setInsurance: setInsurance,
-        setOtherAssets: setOtherAssets,
+    const other : OtherState = {
+        collectibles,
+        art,
+        claims,
+        insurance,
+        otherAssets,
+        setCollectibles,
+        setArt,
+        setClaims,
+        setInsurance,
+        setOtherAssets,
     }
 
-    const liabilities = {
-        objectRelatedLiabilities: objectRelatedLiabilities,
-        nonObjectRelatedLiabilities: nonObjectRelatedLiabilities,
-        otherLiabilities: otherLiabilities,
-        provisions: provisions,
-        setObjectRelatedLiabilities: setObjectRelatedLiabilities,
-        setNonObjectRelatedLiabilities: setNonObjectRelatedLiabilities,
-        setOtherLiabilities: setOtherLiabilities,
-        setProvisions: setProvisions,
+    const liabilities : LiabilitiesState = {
+        objectRelatedLiabilities,
+        nonObjectRelatedLiabilities,
+        otherLiabilities,
+        provisions,
+        setObjectRelatedLiabilities,
+        setNonObjectRelatedLiabilities,
+        setOtherLiabilities,
+        setProvisions,
     }
 
-    const reservedEquity = {
-        reservedEquityForPensionProvision: reservedEquityForPensionProvision,
-        reservedEquityForConsumption: reservedEquityForConsumption,
-        reservedEquityForOther: reservedEquityForOther,
-        setReservedEquityForPensionProvision: setReservedEquityForPensionProvision,
-        setReservedEquityForConsumption: setReservedEquityForConsumption,
-        setReservedEquityForOther: setReservedEquityForOther,
+    const reservedEquity : ReservedEquityState = {
+        reservedEquityForPensionProvision,
+        reservedEquityForConsumption,
+        reservedEquityForOther,
+        setReservedEquityForPensionProvision,
+        setReservedEquityForConsumption,
+        setReservedEquityForOther,
     }
 
-    const activa = {
-        crypto,
-        cash,
-        preciousMetals,
-        realEstate,
-        stocks,
-        other,
+    const activa : ActivaState = {
+        crypto : crypto,
+        cash: cash,
+        preciousMetals: preciousMetals,
+        realEstate: realEstate,
+        stock: stocks,
+        other: other,
     }
 
-    const passiva = {
-        liabilities: liabilities,
-        reservedEquity: reservedEquity,
+    const passiva : PassivaState = {
+        liabilities : liabilities,
+        reservedEquity : reservedEquity,
     }
 
-    const startingcapitalStates : ReturnValue = {
-        activa: activa,
+    const startingcapitalStates : StartingCapitalProviderState = {
+        aktiva: activa,
         passiva: passiva,
     }
 

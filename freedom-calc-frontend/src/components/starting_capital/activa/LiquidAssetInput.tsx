@@ -1,25 +1,26 @@
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
-import {useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
+import {CashState, PreciousMetalsState} from "../../../models/types/AssetContextTypes";
 
 type LiquidAssetsInput = {
     t: any,
     cash: AssetGroup,
     preciousMetals: AssetGroup,
-    valid: boolean
+    valid: boolean,
+    liquidAssetStates: CashState,
+    preciousMetalsStates: PreciousMetalsState
 }
 
-const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals, valid}) =>{
-    const [savings, setSavings] = useState(0.0);
-    const [checking, setChecking] = useState(0.0);
-    const [other, setOther] = useState(0.0);
-    const [gold, setGold] = useState(0.0);
-    const [otherMetals, setOtherMetals] = useState(0.0);
+const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({liquidAssetStates, preciousMetalsStates,t, cash,preciousMetals, valid}) =>{
+
+    const {savings, checking, otherLiquidAssets, setSavings, setChecking, setOtherLiquidAssets} = liquidAssetStates;
+    const {gold, otherMetals, setGold, setOtherMetals} = preciousMetalsStates;
 
     /**
      * Updates the assets array with the new values
      */
     const updateCash = () => {
-        cash.startingValue = savings + checking + other;
+        cash.startingValue = savings + checking + otherLiquidAssets;
     }
 
     /**
@@ -34,7 +35,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
      */
     useEffect(() => {
         updateCash();
-    }, [savings, checking, other]);
+    }, [savings, checking, otherLiquidAssets]);
 
     /**
      * Updates the assets array with the new values
@@ -75,7 +76,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
         const value = event.target.value;
         // This will allow only numbers and empty string to be set
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value === '' ? 0 : parseFloat(value));
+            setOtherLiquidAssets(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -144,7 +145,7 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({t, cash,preciousMetals,
                             </div>
                             <div className="form-field">
                                 <label className="form-label">{t('other')}</label>
-                                <input value={other}
+                                <input value={otherLiquidAssets}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherChangeHandler}/>

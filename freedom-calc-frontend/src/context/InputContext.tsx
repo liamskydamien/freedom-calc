@@ -6,9 +6,9 @@ import {LifePhase} from "../models/lifephases/LifePhase";
 import {Income} from "../models/lifephases/Income";
 import {Expenses} from "../models/lifephases/Expenses";
 import {InputContextProviderState} from "../models/InputContextProviderState";
-import {ASSET_GROUPS} from "../constants/assets/asset_groups";
+import {ASSET_GROUPS, PASSIVA_GROUP} from "../constants/assets/asset_groups";
 
-export const InputContext = createContext({});
+export const InputContext = createContext({} as InputContextProviderState);
 
 type InputContextProviderProps = {
     children: React.ReactNode;
@@ -20,7 +20,7 @@ export const InputContextProvider : React.FC<InputContextProviderProps> = ({chil
    const [personalInformation, setPersonalInformation] = useState(new PersonalInformation("", "",new Date(), 0, "female", "EUR €"));
 
     // Starting Capital
-    const [startingCapital, setStartingCapital] = useState(new StartingCapital(ASSET_GROUPS, 0));
+    const [startingCapital, setStartingCapital] = useState(new StartingCapital(ASSET_GROUPS, PASSIVA_GROUP));
 
     // Life Phases
     const [phases, setPhases] = useState(new Phases(

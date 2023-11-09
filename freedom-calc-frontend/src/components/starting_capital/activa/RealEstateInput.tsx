@@ -1,27 +1,23 @@
 import {AssetGroup} from "../../../models/startingcapital/AssetGroup";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
+import {RealEstateState} from "../../../models/types/AssetContextTypes";
 
 type RealEstateInput = {
     t: any,
     realestate: AssetGroup
-    valid: boolean
+    valid: boolean,
+    realEstateStates: RealEstateState
 }
 
-const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
+const RealEstateInput : React.FC<RealEstateInput> = ({realEstateStates,t, realestate, valid}) =>{
 
-    const [occupiedProperties, setOccupiedProperties] = useState(0.0);
-    const [rentedProperties, setRentedProperties] = useState(0.0);
-    const [commercialProperties, setCommercialProperties] = useState(0.0);
-    const [forest, setForest] = useState(0.0);
-    const [agriculturalLand, setAgriculturalLand] = useState(0.0);
-    const [realEstateFunds, setRealEstateFunds] = useState(0.0);
-    const [other, setOther] = useState(0.0);
+    const {occupiedProperties, rentedProperties, commercialProperties, forest, agriculturalLand, realEstateFunds, otherRealEstate, setOccupiedProperties, setRentedProperties, setCommercialProperties, setForest, setAgriculturalLand, setRealEstateFunds, setOtherRealEstate} = realEstateStates;
 
     /**
      * Updates the assets array with the new values
      */
     const updateRealEstate = () => {
-        realestate.startingValue = occupiedProperties + rentedProperties + commercialProperties + forest + agriculturalLand + realEstateFunds + other;
+        realestate.startingValue = occupiedProperties + rentedProperties + commercialProperties + forest + agriculturalLand + realEstateFunds + otherRealEstate;
     }
 
     /**
@@ -29,7 +25,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
      */
     useEffect(() => {
         updateRealEstate();
-    }, [occupiedProperties, rentedProperties, commercialProperties, forest, agriculturalLand, realEstateFunds, other]);
+    }, [occupiedProperties, rentedProperties, commercialProperties, forest, agriculturalLand, realEstateFunds, otherRealEstate]);
 
     /**
      * Updates the assets array with the new values
@@ -118,7 +114,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
         // This will allow only numbers and empty string to be set
 
         if (value === '' || /^[0-9\b]+$/.test(value)) {
-            setOther(value === '' ? 0 : parseFloat(value));
+            setOtherRealEstate(value === '' ? 0 : parseFloat(value));
         }
     }
 
@@ -184,7 +180,7 @@ const RealEstateInput : React.FC<RealEstateInput> = ({t, realestate, valid}) =>{
                             <h3 className="text-sm font-bold mt-2">{t('other')}</h3>
                             <div className="form-field">
                                 <label className="form-label">{t('other')}</label>
-                                <input value={other}
+                                <input value={otherRealEstate}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherChangeHandler}/>

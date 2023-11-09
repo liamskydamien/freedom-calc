@@ -3,16 +3,18 @@ import {InputContext} from "../../context/InputContext";
 import {InputContextProviderState} from "../../models/InputContextProviderState";
 import ActivaInput from "./activa/ActivaInput";
 import StartingCapitalProvider from "../../context/StartingCapitalContext";
+import PassivaInput from "./passiva/PassivaInput";
 
 type StartingCapitalInputProps = {
     t: any
 }
 
 const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
-    // @ts-ignore
+
     const {startingCapital, setStartingCapital} : InputContextProviderState = useContext(InputContext);
     const [active, setActive] = useState(1);
     const [assets, setAssets] = useState(startingCapital.assetGroups);
+    const [passiva, setPassiva] = useState(startingCapital.liabilities);
     const [valid, setValid] = useState(false);
     const [activaSet, setActivaSet] = useState(false);
     const [passivaSet, setPassivaSet] = useState(false);
@@ -52,9 +54,16 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
                                 setAssets={setAssets}
                                 valid={valid}
                                 setActiva={setActivaSet}
-                                activaValid={activaSet}/>
+                                activaValid={activaSet}
+                   />
                     :
-                   <div/>
+                   <PassivaInput t={t}
+                                 passivaValid={passivaSet}
+                                 passiva={passiva}
+                                 valid={valid}
+                                 setLiabilitiesValid={setPassivaSet}
+                                 setPassiva={setPassiva}
+                   />
             }
             </StartingCapitalProvider>
             {
