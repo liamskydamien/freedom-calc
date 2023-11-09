@@ -19,3 +19,5 @@ export const SelectedLifePhaseContextProvider : React.FC<SelectedLifePhaseContex
         </SelectedLifePhaseContext.Provider>
     )
 }
+
+export default SelectedLifePhaseContextProvider;
