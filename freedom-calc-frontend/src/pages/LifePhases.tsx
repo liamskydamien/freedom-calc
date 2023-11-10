@@ -4,9 +4,14 @@ import {InputContext} from "../context/InputContext";
 import {useContext, useEffect, useState} from "react";
 import {SelectedLifePhaseContextProvider} from "../context/SelectedLifePhaseContext";
 import ShowSelectedLifePhase from "../components/lifephases/ShowSelectedLifePhase";
+import {useNavigate} from "react-router";
+import {ProgressContext} from "../context/ProgressContext";
 
 const LifePhases = () => {
     const {t} = useTranslation();
+    const navigate = useNavigate();
+    const {progress,updateProgress} = useContext(ProgressContext)
+
     const {phases, setPhases, personalInformation} = useContext(InputContext);
     const [valid, setValid] = useState(false);
 
@@ -28,6 +33,23 @@ const LifePhases = () => {
         })
     }
 
+
+    /**
+     * Saves the input and proceeds to the next page
+     */
+    const saveAndProceed = () => {
+        updateLifePhaseProgress();
+        navigate("/pof");
+    }
+
+    /**
+     * Updates the progress context to indicate that the user has entered life phases
+     */
+    const updateLifePhaseProgress = () => {
+        progress.lifephases = true;
+        updateProgress(progress);
+    }
+
     return (
         <div>
             <SelectedLifePhaseContextProvider>
@@ -42,7 +64,7 @@ const LifePhases = () => {
                     {
                         valid ?
                             <div className="flex justify-center">
-                                <button className="btn btn-primary btn-block">{t('save_and_proceed')}</button>
+                                <button className="btn btn-primary btn-block" onClick={saveAndProceed}>{t('save_and_proceed')}</button>
                             </div>
                             :
                             <div className="flex flex-col gap-2">
