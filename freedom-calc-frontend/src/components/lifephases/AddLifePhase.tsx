@@ -24,7 +24,7 @@ const AddLifePhase : React.FC<AddLifePhaseProps>= ({t, lifephase, expectedAge, a
     const {phases, setPhases} = lifephase;
 
     const selectedLifePhaseContext : LifePhaseContextType  = useContext(SelectedLifePhaseContext);
-    const {setSelectedLifePhase} = selectedLifePhaseContext;
+    const setSelectedLifePhase : (phase: LifePhase) => void = selectedLifePhaseContext.setSelectedLifePhase;
 
     const [startAge, setStartAge] = useState(age);
 
@@ -36,8 +36,13 @@ const AddLifePhase : React.FC<AddLifePhaseProps>= ({t, lifephase, expectedAge, a
             expenses);
         setPhases(new Phases([...phases.phase, newPhase]));
         setStartAge(parseInt(endAge) + 1);
+        setSelectedLifePhase(newPhase);
     }
 
+    /**
+     * Selects a phase and sets it as the selected phase
+     * @param phase the phase to be selected
+     */
     const selectPhaseHandler = (phase : LifePhase) => {
         setSelectedLifePhase(phase);
     }
@@ -60,8 +65,8 @@ const AddLifePhase : React.FC<AddLifePhaseProps>= ({t, lifephase, expectedAge, a
                     readOnly
                     key={`tab-${phase.name}-${phase.toAge}`}/>
                     <label htmlFor={`tab-${phase.name}`}
-                    className="tab tab-pill"
-                    onClick={() => {selectPhaseHandler(phase)}}>
+                        className="tab tab-pill"
+                        onClick={() => selectPhaseHandler(phase)}>
                     {phase.name}
                     </label>
                     </div>
