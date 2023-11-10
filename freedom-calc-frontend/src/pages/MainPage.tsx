@@ -7,6 +7,7 @@ import Footer from "../components/footer/Footer";
 import Header from "../components/header/Header";
 import {InputContextProvider} from "../context/InputContext";
 import StartingCapital from "./StartingCapital";
+import LifePhases from "./LifePhases";
 
 export const MainPage = () => {
 
@@ -50,7 +51,7 @@ export const MainPage = () => {
                         }/>
                         <Route path="/lifephases" element={
                             <ProtectedRoute redirectTo="/starting_capital" step="starting_capital">
-                                <div>P3</div>
+                                <LifePhases/>
                             </ProtectedRoute>
                         }/>
                         <Route path="/pof" element={
