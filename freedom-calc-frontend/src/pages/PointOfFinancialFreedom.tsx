@@ -1,13 +1,13 @@
-import AchievePOF from "../components/pof/AchievePOF";
-import InputExpectedGrowth from "../components/pof/InputExpectedGrowth";
-import GraphPoF from "../components/pof/GraphPoF";
+import PoF from "../components/pof/PoF";
+import {useTranslation} from "react-i18next";
 
 const PointOfFinancialFreedom = () => {
+
+    const {t} = useTranslation();
+
     return (
         <div>
-            <InputExpectedGrowth/>
-            <AchievePOF/>
-            <GraphPoF/>
+            <PoF t={t}/>
         </div>
     )
 }

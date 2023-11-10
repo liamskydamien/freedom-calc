@@ -2,7 +2,7 @@ import {LifePhase} from "../../models/lifephases/LifePhase";
 import {AssetGroup} from "../../models/startingcapital/AssetGroup";
 import {Income} from "../../models/lifephases/Income";
 import {Expenses} from "../../models/lifephases/Expenses";
-import {InvestmentWeights} from "../../models/InvestmentWeights";
+import {InvestmentWeights} from "../../models/pof/InvestmentWeights";
 import {useGenerateWealthAndCost} from "../../calculations/useGenerateWealthAndCost";
 
 describe('testing calculateWealthAndCost', () => {
