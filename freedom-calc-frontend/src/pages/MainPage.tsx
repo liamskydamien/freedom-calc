@@ -8,6 +8,7 @@ import Header from "../components/header/Header";
 import {InputContextProvider} from "../context/InputContext";
 import StartingCapital from "./StartingCapital";
 import LifePhases from "./LifePhases";
+import PointOfFinancialFreedom from "./PointOfFinancialFreedom";
 
 export const MainPage = () => {
 
@@ -56,7 +57,7 @@ export const MainPage = () => {
                         }/>
                         <Route path="/pof" element={
                             <ProtectedRoute redirectTo="/lifephases" step="lifephases">
-                                <div>P4</div>
+                                <PointOfFinancialFreedom/>
                             </ProtectedRoute>
                         }/>
                         <Route path="/optimisation" element={
