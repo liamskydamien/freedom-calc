@@ -16,10 +16,11 @@ type AddLifePhaseProps = {
     t: any,
     lifephase: LifePhaseWrapper,
     expectedAge: number,
-    age: number
+    age: number,
+    valid: boolean
 }
 
-const AddLifePhase : React.FC<AddLifePhaseProps>= ({t, lifephase, expectedAge, age}) => {
+const AddLifePhase : React.FC<AddLifePhaseProps>= ({valid ,t, lifephase, expectedAge, age}) => {
 
     const {phases, setPhases} = lifephase;
 
@@ -78,6 +79,7 @@ const AddLifePhase : React.FC<AddLifePhaseProps>= ({t, lifephase, expectedAge, a
                             startAge={startAge}
                             t={t}
                             expectedAge={expectedAge}
+                            valid={valid}
         />
     </div>
 )
