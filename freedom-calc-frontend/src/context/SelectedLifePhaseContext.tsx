@@ -2,7 +2,7 @@ import React, {createContext, useState} from "react";
 import {LifePhase} from "../models/lifephases/LifePhase";
 import {LifePhaseContextType} from "../models/types/LifePhaseContextTypes";
 
-export const SelectedLifePhaseContext = createContext({});
+export const SelectedLifePhaseContext = createContext({} as LifePhaseContextType);
 
 type SelectedLifePhaseContextProviderProps = {
     children: React.ReactNode;
