@@ -22,11 +22,11 @@ export const calculateIncreasePerAssetGroup = (assetGroup: AssetGroup,
                                                investmentWeight: number) : number[] => {
     const assetGrowth: number[] = []; // Array of asset growth for each year
     const growthRate: number = assetGroup.growthRate; // Growth rate of the asset group
-    let assetValue = assetGroup.startingValue; // Set the asset value to the starting value
+    let assetValue = assetGroup.startingValue / 1000; // Set the asset value to the starting value of the asset group and reduce it by a factor of 1000
 
-    for (let year = 0; year < timeframe; year++) { // For each year
+    for (let year = 0; year <= timeframe; year++) { // For each year
         assetValue += assetValue >= 0 ? assetValue * growthRate : 0 // Calculate the asset value through the compound interest formula
-        assetValue += (annualInvestment[year] * investmentWeight); // Calculate the asset value with the annual investment
+        assetValue += ((annualInvestment[year] / 1000) * investmentWeight); // Calculate the asset value with the annual investment
         assetGrowth.push(Math.round(assetValue)); // Push the asset value to the asset growth array
     }
 

@@ -42,6 +42,7 @@ const PoF : React.FC<PoFProps>= ({t}) => {
                 <GraphPoF t={t}
                           graph={graph}
                           pof={pof}
+                          startingAge={personalInformation.getAge()}
                           theme={theme}/>
                 <AchievePOF/>
             </div>

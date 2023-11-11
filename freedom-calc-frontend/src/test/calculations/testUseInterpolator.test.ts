@@ -1,4 +1,4 @@
-import {calculateInterpolatedArray} from "../../calculations/useInterpolateArray";
+import {calculateInterpolatedArray} from "../../calculations/utility/useInterpolateArray";
 
 describe('testing useInterpolateArray', () => {
     test('useInterpolateArray (positive)', () => {

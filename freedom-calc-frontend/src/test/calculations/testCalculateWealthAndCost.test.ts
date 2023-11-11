@@ -38,7 +38,7 @@ describe('testing calculateWealthAndCost', () => {
         const inflationRate = 0.02;
         const investmentWeights = new InvestmentWeights(0.2, 0.5, 0.3, 0,0,0);
 
-        const {wealth, cost, pof} = useGenerateWealthAndCost(assetGroups, lifephases, timeframe, investmentWeights, inflationRate);
+        const {wealth, cost, pof} = useGenerateWealthAndCost(assetGroups, lifephases, timeframe, 1, investmentWeights, inflationRate);
         console.log('Accumulated Wealth: ', wealth);
         console.log('Accumulated Costs: ', cost);
         console.log('POF: ', pof);

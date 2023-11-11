@@ -15,9 +15,10 @@ type GraphPoFProps = {
     theme: string;
     pof: Point | null;
     graph: any[];
+    startingAge: number;
 }
 
-const GraphPoF : React.FC<GraphPoFProps> = ({t, graph, pof, theme}) => {
+const GraphPoF : React.FC<GraphPoFProps> = ({t, graph, pof, theme, startingAge}) => {
 
     return (
         <div className="card max-w-fit p-5">
@@ -38,7 +39,7 @@ const GraphPoF : React.FC<GraphPoFProps> = ({t, graph, pof, theme}) => {
                       stroke={theme === 'light' ? COLORS.light.costs : COLORS.dark.costs}
                       strokeWidth={3}
                       connectNulls={true}/>
-                <ReferenceDot x={pof ? pof.x + 18 : 0}
+                <ReferenceDot x={pof ? pof.x + startingAge : 0}
                               y={pof ? pof.y : 0}
                               r={10}
                               fill={theme === 'light' ? COLORS.light.pof : COLORS.dark.pof}
