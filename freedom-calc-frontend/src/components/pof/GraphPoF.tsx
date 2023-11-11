@@ -3,54 +3,49 @@ import {Income} from "../../models/lifephases/Income";
 import {Expenses} from "../../models/lifephases/Expenses";
 import {LifePhase} from "../../models/lifephases/LifePhase";
 import {InvestmentWeights} from "../../models/pof/InvestmentWeights";
-import {Legend, Line, LineChart, ReferenceDot, Tooltip, XAxis, YAxis} from "recharts";
+import {Bar, ComposedChart, Legend, Line, LineChart, ReferenceDot, Tooltip, XAxis, YAxis} from "recharts";
 import {useCalculateLifeLine} from "../../hooks/useCalculateLifeLine";
+import useDarkmode from "../../hooks/useDarkmode";
+import {COLORS} from "../../constants/colors/colors";
+import {Point} from "../../models/Point";
+import React from "react";
 
-const GraphPoF = () => {
-    const assetGroups = [
-        new AssetGroup("preciousMetals", 0.05, 1000),
-        new AssetGroup("stocks", 0.05, 1000),
-        new AssetGroup("cash", 0.05, 1000)
-    ]
+type GraphPoFProps = {
+    t: any;
+    theme: string;
+    pof: Point | null;
+    graph: any[];
+}
 
-    const incomes = [
-        new Income( 1000, 0, 0, 0, 0, 0),
-        new Income( 2000, 0, 0, 0, 0, 0),
-        new Income( 3000, 0, 0, 0, 0, 0),
-        new Income(0, 0, 0, 0, 1000, 0),
-    ]
-    const expenses = [
-        new Expenses(100, 500, 300, 0, 0, 0, 0, 0),
-        new Expenses(200, 560, 400, 0, 0, 0, 0, 0),
-        new Expenses(300, 0, 1000, 0, 0, 0, 500, 0),
-        new Expenses(100, 0, 800, 100, 2000, 0, 0, 0),
-    ]
-
-    const lifephases = [
-        new LifePhase("education", 18,25, incomes[0], expenses[0]),
-        new LifePhase("work", 26,35, incomes[1], expenses[1]),
-        new LifePhase("family", 36,65, incomes[2], expenses[2]),
-        new LifePhase("retirement", 66,100, incomes[3], expenses[3]),
-    ]
-
-    const timeframe = 82;
-    const inflationRate = 0.02;
-    const investmentWeights = new InvestmentWeights(0.2, 0.5, 0.3, 0,0,0);
-
-    const {pof, graph} = useCalculateLifeLine(assetGroups, lifephases, timeframe, inflationRate, investmentWeights, 18);
+const GraphPoF : React.FC<GraphPoFProps> = ({t, graph, pof, theme}) => {
 
     return (
         <div className="card max-w-fit p-5">
             <h1>Life Line Chart</h1>
-            <LineChart width={800} height={400} data={graph}>
+            <ComposedChart width={850} height={400} data={graph}>
                 <XAxis dataKey="age"/>
                 <YAxis/>
-                <Line dot={false} type="monotone" dataKey="wealth" stroke="blue" strokeWidth={3} connectNulls={true}/>
-                <Line dot={false} type="monotone" dataKey="costs" stroke="red" strokeWidth={3} connectNulls={true}/>
-                <ReferenceDot x={pof ? pof.x + 18 : 0} y={pof ? pof.y : 0} r={10} fill="green" stroke="none"/>
+                <Bar dataKey="wealth" barSize={20} fill="#413ea0" />
+                <Line dot={false}
+                      type="monotone"
+                      dataKey="wealth"
+                      stroke={theme === 'light' ? COLORS.light.wealth : COLORS.dark.wealth}
+                      strokeWidth={3}
+                      connectNulls={true}/>
+                <Line dot={false}
+                      type="monotone"
+                      dataKey="costs"
+                      stroke={theme === 'light' ? COLORS.light.costs : COLORS.dark.costs}
+                      strokeWidth={3}
+                      connectNulls={true}/>
+                <ReferenceDot x={pof ? pof.x + 18 : 0}
+                              y={pof ? pof.y : 0}
+                              r={10}
+                              fill={theme === 'light' ? COLORS.light.pof : COLORS.dark.pof}
+                              stroke="none"/>
                 <Tooltip />
                 <Legend />
-            </LineChart>
+            </ComposedChart>
         </div>
     )
 }
