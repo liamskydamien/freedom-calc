@@ -1,4 +1,4 @@
-import {useCreateGraph} from '../../calculations/useCreateGraph';
+import {useCreateGraph} from '../../calculations/utility/useCreateGraph';
 
 /* Test the useCreateGraph hook */
 describe('testing useCreateGraph', () => {
@@ -24,7 +24,7 @@ describe('testing useCreateGraph', () => {
                 }
             ];
 
-        const result = useCreateGraph(wealth, costs, startAge);
+        const result = useCreateGraph(wealth, costs, [],[],startAge);
         expect(result).toEqual(expectedResult);
   });
   test('useCreateGraph (negative)', () => {
@@ -49,7 +49,7 @@ describe('testing useCreateGraph', () => {
                 }
             ];
 
-        const result = useCreateGraph(wealth, costs, startAge);
+        const result = useCreateGraph(wealth, costs,[],[], startAge);
         expect(result).toEqual(expectedResult);
   });
 })

@@ -26,7 +26,8 @@ const GraphPoF : React.FC<GraphPoFProps> = ({t, graph, pof, theme, startingAge})
             <ComposedChart width={850} height={400} data={graph}>
                 <XAxis dataKey="age"/>
                 <YAxis/>
-                <Bar dataKey="wealth" barSize={20} fill="#413ea0" />
+                <Bar dataKey="ciGraph" stackId="a" fill="#FF84d8" hide={true} />
+                <Bar dataKey="wealth" stackId="a" fill="#8884d8" hide={true}/>
                 <Line dot={false}
                       type="monotone"
                       dataKey="wealth"

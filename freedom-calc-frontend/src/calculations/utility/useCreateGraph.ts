@@ -1,5 +1,7 @@
 export const useCreateGraph = (wealth : number[],
                                costs : number[],
+                               ciGraph : number[],
+                               wealthGraph : number[],
                                startAge : number) : any[] => {
     const graphData = [];
 
@@ -7,7 +9,9 @@ export const useCreateGraph = (wealth : number[],
         graphData.push({
             age: i + startAge,
             wealth: wealth[i],
-            costs: costs[i]
+            costs: costs[i],
+            wealthGraph: wealthGraph[i],
+            ciGraph: ciGraph[i]
         });
     }
     return graphData;

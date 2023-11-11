@@ -38,13 +38,13 @@ const PoF : React.FC<PoFProps>= ({t}) => {
                                         investmentAllocation={investmentAllocation}
                                         setInvestmentAllocation={setInvestmentAllocation}/>
             </div>
-            <div>
+            <div className="flex flex-col gap-2">
                 <GraphPoF t={t}
                           graph={graph}
                           pof={pof}
                           startingAge={personalInformation.getAge()}
                           theme={theme}/>
-                <AchievePOF/>
+                <AchievePOF t={t} pof={pof}/>
             </div>
         </div>
     )

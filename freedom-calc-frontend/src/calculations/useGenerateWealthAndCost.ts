@@ -24,8 +24,8 @@ export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
         return lifephase.calculateTimeframe();
     });
 
+    // Calculate Free Cashflow
     const freeCashflow : number[] = useStretchArray(freeCashflowPerPhase, timeBetweenEachPhase)
-    console.log(freeCashflow);
 
     // Calculate Wealth
     const wealth : number[] = useCalculateWealth(assetGroups, freeCashflow, realTimeframe, investmentWeights);
@@ -45,6 +45,7 @@ export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
 
     return {
         wealth: wealth,
+        freeCashflow: freeCashflow,
         cost: cost,
         pof: pof
     };

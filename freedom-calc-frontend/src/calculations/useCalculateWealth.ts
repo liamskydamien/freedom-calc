@@ -13,6 +13,7 @@ export const useCalculateWealth = (assetGroups: AssetGroup[],
     });
 
     wealth.push(...assetGrowth.reduce((a, b) => a.map((v, i) => v + b[i]))); // Add all asset growths together to get wealth
+
     return wealth;
 }
 
