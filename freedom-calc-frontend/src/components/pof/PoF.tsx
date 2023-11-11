@@ -16,14 +16,18 @@ const PoF : React.FC<PoFProps>= ({t}) => {
     const [investmentAllocation, setInvestmentAllocation] = useState(INVESTMENT_ALLOCATION);
 
     return (
-        <div>
-            <CalculationInformation expectedGrowth={expectedGrowth}
-                                    setExpectedGrowth={setExpectedGrowth}
-                                    t={t}
-                                    investmentAllocation={investmentAllocation}
-                                    setInvestmentAllocation={setInvestmentAllocation}/>
-            <AchievePOF/>
-            <GraphPoF/>
+        <div className="flex gap-2">
+            <div>
+                <CalculationInformation expectedGrowth={expectedGrowth}
+                                        setExpectedGrowth={setExpectedGrowth}
+                                        t={t}
+                                        investmentAllocation={investmentAllocation}
+                                        setInvestmentAllocation={setInvestmentAllocation}/>
+            </div>
+            <div>
+                <GraphPoF/>
+                <AchievePOF/>
+            </div>
         </div>
     )
 }

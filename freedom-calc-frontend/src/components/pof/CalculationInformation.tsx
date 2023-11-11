@@ -37,6 +37,19 @@ const CalculationInformation : React.FC<CalculationInformationProps> = ({t, setI
         setShowAssetAllocation(!showAssetAllocation);
     }
 
+    /**
+     * Handles the submit of the new values
+     */
+    const handleCalculate = () => {
+        setExpectedGrowth(new ExpectedGrowth(inflationRate / 100, expectedGrowthRate / 100));
+        const total = cash + stocks + realEstate + preciousMetals + other + crypto;
+        if (total !== 100) {
+            alert(t('investment_allocation_error'))
+        } else {
+            setInvestmentAllocation(new InvestmentWeights(cash / 100, stocks / 100, realEstate / 100, preciousMetals / 100, other / 100, crypto / 100));
+        }
+    }
+
     return (
         <div className="flex flex-col gap-2">
             <InputExpectedGrowth t={t}
@@ -63,7 +76,7 @@ const CalculationInformation : React.FC<CalculationInformationProps> = ({t, setI
                 />
             }
             <div className="card max-w-md">
-                <button className="btn btn-primary max-w-full" onClick={() => {}}>{t('recalculate_pof')}</button>
+                <button className="btn btn-primary max-w-full" onClick={() => {handleCalculate()}}>{t('recalculate_pof')}</button>
             </div>
         </div>
     )
