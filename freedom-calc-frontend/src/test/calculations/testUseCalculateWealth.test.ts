@@ -1,6 +1,6 @@
 import {calculateIncreasePerAssetGroup, useCalculateWealth} from "../../calculations/useCalculateWealth";
 import {AssetGroup} from "../../models/startingcapital/AssetGroup";
-import {InvestmentWeights} from "../../models/InvestmentWeights";
+import {InvestmentWeights} from "../../models/pof/InvestmentWeights";
 
 /* Test the useCalculateWealth hook */
 
