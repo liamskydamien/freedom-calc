@@ -6,6 +6,7 @@ import {SelectedLifePhaseContextProvider} from "../context/SelectedLifePhaseCont
 import ShowSelectedLifePhase from "../components/lifephases/ShowSelectedLifePhase";
 import {useNavigate} from "react-router";
 import {ProgressContext} from "../context/ProgressContext";
+import LifePhaseGraph from "../components/lifephases/LifePhaseGraph";
 
 const LifePhases = () => {
     const {t} = useTranslation();
@@ -51,7 +52,7 @@ const LifePhases = () => {
     }
 
     return (
-        <div>
+        <div className="flex flex-row gap-2">
             <SelectedLifePhaseContextProvider>
                 <div className="flex flex-col max-w-fit gap-2">
                     <AddLifePhase t={t}
@@ -81,6 +82,9 @@ const LifePhases = () => {
                     }
                 </div>
             </SelectedLifePhaseContextProvider>
+            <div>
+                <LifePhaseGraph t={t}/>
+            </div>
         </div>
     )
 }

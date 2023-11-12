@@ -7,6 +7,7 @@ import {Income} from "../models/lifephases/Income";
 import {Expenses} from "../models/lifephases/Expenses";
 import {InputContextProviderState} from "../models/InputContextProviderState";
 import {ASSET_GROUPS, PASSIVA_GROUP} from "../constants/assets/asset_groups";
+import {LIFEPHASE} from "../constants/assets/lifephases";
 
 export const InputContext = createContext({} as InputContextProviderState);
 
@@ -23,10 +24,7 @@ export const InputContextProvider : React.FC<InputContextProviderProps> = ({chil
     const [startingCapital, setStartingCapital] = useState(new StartingCapital(ASSET_GROUPS, PASSIVA_GROUP));
 
     // Life Phases
-    const [phases, setPhases] = useState(new Phases(
-        [new LifePhase("", 0, 0,
-                    new Income(0,0,0,0,0,0),
-                    new Expenses(0, 0,0,0,0,0,0,0))]));
+    const [phases, setPhases] = useState(LIFEPHASE);
 
     const value : InputContextProviderState = {personalInformation, startingCapital, phases, setPersonalInformation, setStartingCapital, setPhases};
 

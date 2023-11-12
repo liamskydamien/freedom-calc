@@ -6,6 +6,7 @@ import {useCalculateCosts} from "./useCalculateCosts";
 import {useCalculatePOF} from "./useCalculatePOF";
 import {Point} from "../models/Point";
 import {useStretchArray} from "./utility/useStretchArray";
+import {filterOutDefaultPhases} from "./utility/useFilterOutDefaultPhase";
 
 export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
                                   lifephases: LifePhase[],
@@ -15,12 +16,13 @@ export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
                                   inflationRate: number) => {
 
     const realTimeframe = timeframe - statingAge ;
+    const filteredPhases = filterOutDefaultPhases(lifephases);
 
-    const freeCashflowPerPhase = lifephases.map( (lifephase) => {
+    const freeCashflowPerPhase = filteredPhases.map( (lifephase) => {
         return lifephase.calculateNetIncome();
     });
 
-    const timeBetweenEachPhase = lifephases.map( (lifephase) => {
+    const timeBetweenEachPhase = filteredPhases.map( (lifephase) => {
         return lifephase.calculateTimeframe();
     });
 
@@ -31,7 +33,7 @@ export const useGenerateWealthAndCost = (assetGroups: AssetGroup[],
     const wealth : number[] = useCalculateWealth(assetGroups, freeCashflow, realTimeframe, investmentWeights);
 
     // Calculate Costs
-    const annualCostEachPhase :number[] = lifephases.map( (lifephase) => {
+    const annualCostEachPhase :number[] = filteredPhases.map( (lifephase) => {
         return lifephase.expenses.getTotalExpenses();
     });
 
