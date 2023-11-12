@@ -6,6 +6,7 @@ import {Expenses} from "../../models/lifephases/Expenses";
 import {LifePhaseContextType} from "../../models/types/LifePhaseContextTypes";
 import NewLifePhaseModal from "./modal/NewLifePhaseModal";
 import {Phases} from "../../models/lifephases/Phases";
+import {filterOutDefaultPhases} from "../../calculations/utility/useFilterOutDefaultPhase";
 
 type LifePhaseWrapper = {
     phases: Phases,
@@ -55,8 +56,8 @@ const AddLifePhase : React.FC<AddLifePhaseProps>= ({valid ,t, lifephase, expecte
     </div>
     <div className="tabs gap-1">
         {
-            phases.phase.length > 0 &&
-                phases.phase.map((phase : LifePhase) => {
+            !phases.isEmpty() ?
+                filterOutDefaultPhases(phases.phase).map((phase : LifePhase) => {
                     return( <div>
                         <input type="radio"
                     id={`tab-${phase.name}`}
@@ -73,6 +74,10 @@ const AddLifePhase : React.FC<AddLifePhaseProps>= ({valid ,t, lifephase, expecte
                     </div>
                 )
                 })
+                :
+                <div className="flex flex-row justify-center">
+                    <p>{t('no_life_phases')}</p>
+                </div>
         }
         </div>
         <NewLifePhaseModal addPhase={addPhase}
