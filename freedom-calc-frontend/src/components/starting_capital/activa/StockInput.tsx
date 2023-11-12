@@ -122,71 +122,116 @@ const StockInput : React.FC<StockInputProps> = ({stockStates ,t, stocks, valid})
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
                 <h3 className="text-sm font-bold mt-2">{t('stocks')}</h3>
-                {
-                    valid ?
-                        <div className="form-field">
-                            <label className="form-label">{t('stocks_total')}</label>
-                            <input value={stocks.startingValue}
-                                   type="number"
-                                   className="input max-w-full"
-                                   disabled={true}/>
-                        </div>
-                        :
-                        <div>
-                            <div className="form-field">
-                                <label className="form-label">{t('single_stocks')}</label>
+                <div>
+                    <div className="form-field">
+                        <label className="form-label">{t('single_stocks')}</label>
+                        {
+                            valid ?
+                                <input value={singleStocks}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={singleStocks}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={singleStocksChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('stock_funds')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('fund')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('stock_funds')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('fund')}</label>
+                        {
+                            valid ?
+                                <input value={fund}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={fund}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={fundChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('etf')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('etf')}</label>
+                        {
+                            valid ?
+                                <input value={etf}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={etf}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={etfChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('derivative')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('derivative')}</label>
+                        {
+                            valid ?
+                                <input value={derivative}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={derivative}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={derivativeChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('corporate_participation')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('active_corporate_participation')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('corporate_participation')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('active_corporate_participation')}</label>
+                        {
+                            valid ?
+                                <input value={activeCorporateParticipation}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={activeCorporateParticipation}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={activeCorporateParticipationChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('passive_corporate_participation')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('passive_corporate_participation')}</label>
+                        {
+                            valid ?
+                                <input value={passiveCorporateParticipation}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={passiveCorporateParticipation}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={passiveCorporateParticipationChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('other')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('other')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('other')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('other')}</label>
+                        {
+                            valid ?
+                                <input value={otherStocks}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={otherStocks}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherChangeHandler}/>
-                            </div>
-                        </div>
-                }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     )

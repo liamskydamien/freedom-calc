@@ -122,71 +122,116 @@ const RealEstateInput : React.FC<RealEstateInput> = ({realEstateStates,t, reales
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
                 <h3 className="text-sm font-bold mt-2">{t('realestate')}</h3>
-                {
-                    valid ?
-                        <div className="form-field">
-                            <label className="form-label">{t('realestate')}</label>
-                            <input value={realestate.startingValue}
-                                   type="number"
-                                   className="input max-w-full"
-                                   disabled={true}/>
-                        </div>
-                        :
-                        <div>
-                            <div className="form-field">
-                                <label className="form-label">{t('occupied_properties')}</label>
+                <div>
+                    <div className="form-field">
+                        <label className="form-label">{t('occupied_properties')}</label>
+                        {
+                            valid ?
+                                <input value={occupiedProperties}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={occupiedProperties}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={occupiedPropertiesChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('rented_properties')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('rented_properties')}</label>
+                        {
+                            valid ?
+                                <input value={rentedProperties}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={rentedProperties}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={rentedPropertiesChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('commercial_properties')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('commercial_properties')}</label>
+                        {
+                            valid ?
+                                <input value={commercialProperties}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={commercialProperties}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={commercialPropertiesChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('agricultural_land_forest')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('forest')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('agricultural_land_forest')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('forest')}</label>
+                        {
+                            valid ?
+                                <input value={forest}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={forest}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={forestChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('agricultural_land')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('agricultural_land')}</label>
+                        {
+                            valid ?
+                                <input value={agriculturalLand}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={agriculturalLand}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={agriculturalLandChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('funds')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('real_estate_funds')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('funds')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('real_estate_funds')}</label>
+                        {
+                            valid ?
+                                <input value={realEstateFunds}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={realEstateFunds}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={realEstateFundsChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('other')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('other')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('other')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('other')}</label>
+                        {
+                            valid ?
+                                <input value={otherRealEstate}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={otherRealEstate}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherChangeHandler}/>
-                            </div>
-                        </div>
-                }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     )

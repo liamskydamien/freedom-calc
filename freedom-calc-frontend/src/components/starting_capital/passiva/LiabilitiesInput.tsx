@@ -63,40 +63,53 @@ const LiabilitiesInput : React.FC<LiabilitiesInputProps> = ({liabilitiesValid, l
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
                 <h3 className="text-sm font-bold mt-2">{t('liabilities')}</h3>
-                {
-                    liabilitiesValid ?
-                        <div className="form-field">
-                            <label className="form-label">{t('liabilities_total')}</label>
-                            <input value={liabilities.startingValue}
-                                   type="number"
-                                   className="input max-w-full"
-                                   disabled={true}/>
-                        </div>
-                        :
-                        <div>
-                            <div className="form-field">
-                                <label className="form-label">{t('object_related_liabilities')}</label>
+                <div>
+                    <div className="form-field">
+                        <label className="form-label">{t('object_related_liabilities')}</label>
+                        {
+                            liabilitiesValid ?
+                                <input value={objectRelatedLiabilities}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={objectRelatedLiabilities}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={objectRelatedLiabilitiesChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('non_object_related_liabilities')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('non_object_related_liabilities')}</label>
+                        {
+                            liabilitiesValid ?
+                                <input value={nonObjectRelatedLiabilities}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={nonObjectRelatedLiabilities}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={nonObjectRelatedLiabilitiesChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('other_liabilities')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('other_liabilities')}</label>
+                        {
+                            liabilitiesValid ?
+                                <input value={otherLiabilities}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={otherLiabilities}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherLiabilitiesChangeHandler}/>
+                        }
                             </div>
                         </div>
-                }
                     </div>
                     </div>
     )

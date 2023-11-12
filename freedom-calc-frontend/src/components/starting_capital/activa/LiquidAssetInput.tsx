@@ -107,66 +107,85 @@ const LiquidAssetInput : React.FC<LiquidAssetsInput> = ({liquidAssetStates, prec
     return (
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
-                {
-                    valid ?
-                        <div>
-                            <h3 className="text-sm font-bold">{t('liquid_assets')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('cash')}</label>
-                                <input value={cash.startingValue}
+                <div>
+                    <h3 className="text-sm font-bold mt-2">{t('cash')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('checking')}</label>
+                        {
+                            valid ?
+                                <input value={checking}
                                        type="number"
                                        className="input max-w-full"
                                        disabled={true}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('preciousMetals')}</label>
-                                <input value={preciousMetals.startingValue}
-                                       type="number"
-                                       className="input max-w-full"
-                                       disabled={true}/>
-                            </div>
-                        </div>
-                        :
-                        <div>
-                            <h3 className="text-sm font-bold mt-2">{t('cash')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('checking')}</label>
+                                :
                                 <input value={checking}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={checkingChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('savings')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('savings')}</label>
+                        {
+                            valid ?
+                                <input value={savings}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={savings}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={savingsChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('other')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('other')}</label>
+                        {
+                            valid ?
+                                <input value={otherLiquidAssets}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={otherLiquidAssets}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherChangeHandler}/>
-                            </div>
-                            <h3 className="text-sm font-bold mt-2">{t('preciousMetals')}</h3>
-                            <div className="form-field">
-                                <label className="form-label">{t('gold')}</label>
+                        }
+                    </div>
+                    <h3 className="text-sm font-bold mt-2">{t('preciousMetals')}</h3>
+                    <div className="form-field">
+                        <label className="form-label">{t('gold')}</label>
+                        {
+                            valid ?
+                                <input value={gold}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={gold}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={goldChangeHandler}/>
-                            </div>
-                            <div className="form-field">
-                                <label className="form-label">{t('other')}</label>
+                        }
+                    </div>
+                    <div className="form-field">
+                        <label className="form-label">{t('other')}</label>
+                        {
+                            valid ?
+                                <input value={otherMetals}
+                                       type="number"
+                                       className="input max-w-full"
+                                       disabled={true}/>
+                                :
                                 <input value={otherMetals}
                                        type="number"
                                        className="input max-w-full"
                                        onChange={otherMetalsChangeHandler}/>
-                            </div>
-                        </div>
-                }
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     )

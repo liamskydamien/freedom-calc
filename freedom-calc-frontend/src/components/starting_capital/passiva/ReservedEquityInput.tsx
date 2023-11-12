@@ -55,41 +55,53 @@ const ReservedEquityInput : React.FC<ReservedEquityInputProps> = ({liabilitiesVa
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
                 <h3 className="text-sm font-bold mt-2">{t('reserved_equity')}</h3>
-                {
-                    liabilitiesValid ?
-                            <div className="form-field">
-                                <label className="form-label">{t('reserved_equity_total')}</label>
-                                <input value={reservedEquity.startingValue}
-                                       type="number"
-                                       className="input max-w-full"
-                                       disabled={true}/>
-                            </div>
-                        :
-                        <></>
-                }
                 <div className="form-field">
                     <label className="form-label">{t('reserved_equity_for_consumption')}</label>
-                    <input value={reservedEquityForConsumption}
-                           type="number"
-                           className="input max-w-full"
-                           onChange={reservedEquityForConsumptionChangeHandler}/>
+                    {
+                        liabilitiesValid ?
+                            <input value={reservedEquityForConsumption}
+                                   type="number"
+                                   className="input max-w-full"
+                                   disabled={true}/>
+                            :
+                            <input value={reservedEquityForConsumption}
+                                   type="number"
+                                   className="input max-w-full"
+                                   onChange={reservedEquityForConsumptionChangeHandler}/>
+                    }
                 </div>
                 <div className="form-field">
                     <label className="form-label">{t('reserved_equity_for_pension_provision')}</label>
-                    <input value={reservedEquityForPensionProvision}
-                           type="number"
-                           className="input max-w-full"
-                           onChange={reservedEquityForPensionProvisionChangeHandler}/>
+                    {
+                        liabilitiesValid ?
+                            <input value={reservedEquityForPensionProvision}
+                                   type="number"
+                                   className="input max-w-full"
+                                   disabled={true}/>
+                            :
+                            <input value={reservedEquityForPensionProvision}
+                                   type="number"
+                                   className="input max-w-full"
+                                   onChange={reservedEquityForPensionProvisionChangeHandler}/>
+                    }
                 </div>
                 <div className="form-field">
                     <label className="form-label">{t('reserved_equity_for_other')}</label>
-                    <input value={reservedEquityForOther}
-                           type="number"
-                           className="input max-w-full"
-                           onChange={reservedEquityForPensionProvisionChangeHandler} />
+                    {
+                        liabilitiesValid ?
+                            <input value={reservedEquityForOther}
+                                   type="number"
+                                   className="input max-w-full"
+                                   disabled={true}/>
+                            :
+                            <input value={reservedEquityForOther}
+                                   type="number"
+                                   className="input max-w-full"
+                                   onChange={reservedEquityForOtherChangeHandler}/>
+                    }
                 </div>
             </div>
-</div>
+        </div>
     )
 
 }
