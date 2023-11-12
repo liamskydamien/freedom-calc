@@ -2,6 +2,7 @@ import React, {useContext} from "react";
 import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from "recharts";
 import {InputContext} from "../../context/InputContext";
 import {useCreateBarChart} from "../../calculations/useCreateBarChart";
+import {COLORS} from "../../constants/colors/colors";
 
 type LifePhaseGraphProps = {
     t: any
@@ -35,8 +36,8 @@ const LifePhaseGraph : React.FC<LifePhaseGraphProps> = ({t}) => {
                     <YAxis />
                     <Tooltip />
                     <Legend />
-                    <Bar dataKey="income" fill="#8884d8" />
-                    <Bar dataKey="expenses" fill="#ffc658" />
+                    <Bar dataKey="income" fill={COLORS.dark.wealth} />
+                    <Bar dataKey="expenses" fill={COLORS.dark.costs} />
                 </BarChart>
             </div>
         </div>
