@@ -28,6 +28,7 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
     const [passivaSet, setPassivaSet] = useState(false);
 
     useEffect(() => {
+        checkForExistingData();
         if (activaSet && passivaSet) {
             setValid(true);
         } else {
@@ -55,6 +56,21 @@ const StartingCapitalInput : React.FC<StartingCapitalInputProps> = ({t}) => {
     const upddateStartingCapital = () => {
         const newStartingCapital = new StartingCapital(assets, passiva);
         setStartingCapital(newStartingCapital);
+    }
+
+    /**
+     * Checks if there is already data in the context
+     */
+    const checkForExistingData = () => {
+        progress.startingCapital && setActiveStates();
+    }
+
+    /**
+     * Sets the active states to true
+     */
+    const setActiveStates = () => {
+        setPassivaSet(true);
+        setActivaSet(true);
     }
 
     return (
