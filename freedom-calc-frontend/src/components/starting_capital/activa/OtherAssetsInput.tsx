@@ -91,54 +91,83 @@ const OtherAssetsInput : React.FC<OtherAssetsInputProps> = ({otherAssetStates ,t
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
                 <h3 className="text-sm font-bold mt-2">{t('other_assets')}</h3>
-                {
-                    valid ?
-                        <div className="form-field">
-                            <label className="form-label">{t('other_assets')}</label>
-                            <input value={other.startingValue}
-                                   type="number"
-                                   className="input max-w-full"
-                                   disabled={true}/>
-                        </div>
-                        :
                         <div>
                             <div className="form-field">
                                 <label className="form-label">{t('art')}</label>
-                                <input value={art}
-                                       type="number"
-                                       className="input max-w-full"
-                                       onChange={artChangeHandler}/>
+                                {
+                                    valid ?
+                                        <input value={art}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={art}
+                                               type="number"
+                                               className="input max-w-full"
+                                               onChange={artChangeHandler}/>
+                                }
                             </div>
                             <div className="form-field">
                                 <label className="form-label">{t('collectibles')}</label>
-                                <input value={collectibles}
-                                       type="number"
-                                       className="input max-w-full"
-                                       onChange={collectiblesChangeHandler}/>
+                                {
+                                    valid ?
+                                        <input value={collectibles}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={collectibles}
+                                               type="number"
+                                               className="input max-w-full"
+                                               onChange={collectiblesChangeHandler}/>
+                                }
                             </div>
                             <div className="form-field">
                                 <label className="form-label">{t('claims')}</label>
-                                <input value={claims}
-                                       type="number"
-                                       className="input max-w-full"
-                                       onChange={claimsChangeHandler}/>
+                                {
+                                    valid ?
+                                        <input value={claims}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={claims}
+                                               type="number"
+                                               className="input max-w-full"
+                                               onChange={claimsChangeHandler}/>
+                                }
                             </div>
                             <div className="form-field">
                                 <label className="form-label">{t('insurance')}</label>
-                                <input value={insurance}
-                                       type="number"
-                                       className="input max-w-full"
-                                       onChange={insuranceChangeHandler}/>
+                                {
+                                    valid ?
+                                        <input value={insurance}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={insurance}
+                                               type="number"
+                                               className="input max-w-full"
+                                               onChange={insuranceChangeHandler}/>
+                                }
                             </div>
                             <div className="form-field">
                                 <label className="form-label">{t('other_assets')}</label>
-                                <input value={otherAssets}
-                                       type="number"
-                                       className="input max-w-full"
-                                       onChange={otherAssetsChangeHandler}/>
+                                {
+                                    valid ?
+                                        <input value={otherAssets}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={otherAssets}
+                                               type="number"
+                                               className="input max-w-full"
+                                               onChange={otherAssetsChangeHandler}/>
+                                }
                             </div>
                         </div>
-                }
             </div>
         </div>
     )

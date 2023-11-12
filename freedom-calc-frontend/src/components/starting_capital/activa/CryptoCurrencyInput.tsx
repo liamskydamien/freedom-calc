@@ -48,40 +48,53 @@ const CryptoCurrencyInput : React.FC<CryptoCurrencyInputProps> = ({cryptoStates 
         <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
             <div className="form-group">
                 <h3 className="text-sm font-bold mt-2">{t('crypto_currency')}</h3>
-                {
-                    valid ?
+                      <div>
                             <div className="form-field">
-                                <label className="form-label">{t('crypto_currency_total')}</label>
-                                <input value={cryptoCurrency.startingValue}
-                                       type="number"
-                                       className="input max-w-full"
-                                       disabled={true}/>
-                            </div>
-                        :
-                              <div>
-                                    <div className="form-field">
-                                        <label className="form-label">{t('bitcoin')}</label>
-                                            <input value={bitcoin}
+                                <label className="form-label">{t('bitcoin')}</label>
+                                {
+                                    valid ?
+                                        <input value={bitcoin}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={bitcoin}
                                                type="number"
                                                className="input max-w-full"
                                                onChange={bitcoinChangeHandler}/>
-                                    </div>
-                                    <div className="form-field">
-                                        <label className="form-label">{t('ethereum')}</label>
-                                            <input value={ethereum}
+                                }
+                            </div>
+                            <div className="form-field">
+                                <label className="form-label">{t('ethereum')}</label>
+                                {
+                                    valid ?
+                                        <input value={ethereum}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
+                                        <input value={ethereum}
                                                type="number"
                                                className="input max-w-full"
                                                onChange={ethereumChangeHandler}/>
-                                    </div>
-                                    <div className="form-field">
-                                        <label className="form-label">{t('other')}</label>
+                                }
+                            </div>
+                            <div className="form-field">
+                                <label className="form-label">{t('other')}</label>
+                                {
+                                    valid ?
+                                        <input value={otherCryptos}
+                                               type="number"
+                                               className="input max-w-full"
+                                               disabled={true}/>
+                                        :
                                         <input value={otherCryptos}
                                                type="number"
                                                className="input max-w-full"
                                                onChange={otherChangeHandler}/>
-                                    </div>
-                              </div>
-                }
+                                }
+                            </div>
+                      </div>
             </div>
         </div>
     )

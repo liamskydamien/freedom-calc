@@ -1,6 +1,7 @@
 import React, {useContext, useState} from "react";
 import {InputContext} from "../../context/InputContext";
 import StartingCapitalGraph from "./showcase/StartingCapitalGraph";
+import BalanceSheet from "./showcase/BalanceSheet";
 
 type StartingCapitalDisplayProps = {
     t: any
@@ -21,7 +22,7 @@ const StartingCapitalDisplay : React.FC<StartingCapitalDisplayProps> = ({t}) => 
                     <div className="tabs">
                         <div className="flex flex-row gap-2">
                             <button className={`tab tab-pill ${active === 1 ? 'tab-active' : ''}`}
-                                    onClick={() => setActive(1)}>{t('total_capital')}</button>
+                                    onClick={() => setActive(1)}>{t('balance_sheet')}</button>
                             <button className={`tab tab-pill ${active === 2 ? 'tab-active' : ''}`}
                                     onClick={() => setActive(2)}>{t('activa')}</button>
                             <button className={`tab tab-pill ${active === 3 ? 'tab-active' : ''}`}
@@ -29,23 +30,27 @@ const StartingCapitalDisplay : React.FC<StartingCapitalDisplayProps> = ({t}) => 
                             </div>
                     </div>
                 </div>
-                <div className="flex justify-between">
-                    <h2 className="text-lg font-bold">{t('total_capital')}</h2>
-                    <input className="input" type="number" disabled={true} value={startingCapital ? startingCapital.getTotalCapital() : 0}/>
-                </div>
+                {
+                    active === 1 &&
+                        <div className="flex flex-col justify-center">
+                            <h2 className="text-lg font-bold text-left">{t('balance_sheet')}</h2>
+                            <BalanceSheet totalCapital={startingCapital.getTotalCapital()}
+                                          t={t}
+                                          assets={assetGroups}
+                                          passiva={liabilities} />
+                        </div>
+                }
                 {
                     active === 2 &&
                         <div className="flex flex-col justify-center">
-                            <h2 className="text-lg font-bold">{t('activa')}</h2>
-                            <p>{t('activa_description')}</p>
+                            <h2 className="text-lg font-bold text-left">{t('activa')}</h2>
                             <StartingCapitalGraph t={t} data={startingCapital ? startingCapital.assetGroups : []}/>
                         </div>
                 }
                 {
                     active === 3 &&
                     <div className="flex flex-col justify-center">
-                        <h2 className="text-lg font-bold">{t('activa')}</h2>
-                        <p>{t('activa_description')}</p>
+                        <h2 className="text-lg font-bold text-left">{t('passiva')}</h2>
                         <StartingCapitalGraph t={t} data={startingCapital ? startingCapital.liabilities : []}/>
                     </div>
                 }
