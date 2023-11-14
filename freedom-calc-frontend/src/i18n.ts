@@ -144,9 +144,22 @@ i18n.use(initReactI18next).init({
                 cancel: 'Cancel',
                 all_phases_successfully_set: "All Phases Successfully Set",
 
-                income_costs: 'Income and Costs',
+                //Point of Freedom Page
                 pof: 'Point of Financial Freedom',
+                inflationrate: "Inflation Rate",
+                expectedgrowth: "Expected Growth",
+                pof_title: "Point of Financial Freedom",
+                pof_achieved: "Point of Financial Freedom achieved at the age of",
+                pof_achieved_age: "",
+                recalculate_pof: "Recalculate PoF",
+
+                //Custom Asset
+                enter_custom_asset_allocation: "Custom Asset Allocation",
+                precious_metals: "Precious Metals",
+                real_estate: "Real Estate",
+
                 optimisation: 'Optimization',
+                income_costs: 'Income and Costs',
             }
         },
 
@@ -245,7 +258,7 @@ i18n.use(initReactI18next).init({
                 //Life Phases Page
                 lifephases: 'Lebensphasen',
                 life_phases: 'Lebensphasen',
-                no_life_phases: 'Lebenspasen Nummber',
+                no_life_phases: 'Lebenspasen Nummer',
                 new_life_phase: 'Neue Lebenspasen',
                 selected_lifephase: 'Ausgewählte Lebensphase',
                 name_of_phase: 'Lebensphase Name',
@@ -285,8 +298,21 @@ i18n.use(initReactI18next).init({
                 cancel: 'Stornieren',
                 all_phases_successfully_set: "Alle Phasen erfolgreich eingestellt",
 
-                income_costs: 'Einkommen und Kosten',
+                //Point of Freedom Page
                 pof: 'Punkt der finanziellen Freiheit',
+                inflationrate: "Inflationsrate",
+                expectedgrowth: "Erwartetes Wachstum",
+                pof_title: "Punkt der finanziellen Freiheit",
+                pof_achieved: "Punkt der finanziellen Freiheit erreicht im Alter von",
+                pof_achieved_age: "",
+                recalculate_pof: "PoF neu berechnen",
+
+                //Custom Asset
+                enter_custom_asset_allocation: "Benutzerdefinierte Vermögenszuteilung",
+                precious_metals: "Edelmetalle",
+                real_estate: "Immobilie",
+
+                income_costs: 'Einkommen und Kosten',
                 optimisation: 'Optimierung',
             }
         },
@@ -319,7 +345,7 @@ i18n.use(initReactI18next).init({
                 checking: 'Tiền Hiện Có',
                 savings: 'Tiết Kiệm',
                 other: 'Khác',
-                preciousMetals: 'Kim Loại Hiếm',
+                preciousMetals: 'Kim Loại Quý',
                 gold: 'Vàng',
 
                 //Real Estate
@@ -385,20 +411,62 @@ i18n.use(initReactI18next).init({
                 //Life Phases Page
                 lifephases: 'Giai Đoạn Cuộc Sống',
                 life_phases: 'Giai Đoạn Cuộc Sống',
-                no_life_phases: 'Number of Life Phases',
-                new_life_phase: 'New Life Phase',
-                selected_lifephase: 'Selected Lifephase',
-                name_of_phase: 'Phase Name',
-                start_of_phase: 'Phase Start',
-                end_of_phase: 'Phase End',
-                income: 'Income',
-                expenses: 'Expenses',
-                life_phase_graph: "Life Phase Graph",
-                create_lifephases_first: "Create Life Phases First",
+                no_life_phases: 'Số Giai Đoạn Cuộc Sống',
+                new_life_phase: 'Giai Đoạn Sống Mới',
+                selected_lifephase: 'Giai Đoạn Sống Đang Chọn',
+                name_of_phase: 'Tên Giai Đoạn',
+                start_of_phase: 'Giai Đoạn Bắt Đầu',
+                end_of_phase: 'Giao Đoạn Kết Thúc',
+                income: 'Thu Nhập',
+                expenses: 'Chi Phí',
+                life_phase_graph: 'Đồ Thị Giai Đoạn Sống',
+                create_lifephases_first: 'Hãy Tạo Giai Đoạn Sống Trước Tiên',
+                save_proceed: 'Lưu',
+                cancel_clear: 'Xóa',
+
+                //Add New Life Phase
+                new_lifephase: 'Giai Đoạn Cuộc Sống Mới',
+                //Income
+                dependent: 'Phụ Thuộc',
+                selfemployed: 'Tự Kinh Doanh',
+                rentingIncome: 'Thu Nhập cho Thuê',
+                capitalIncome: 'Thu Nhập Vốn',
+                pensionIncome: 'Thu Nhập Hưu Trí',
+                otherIncome: 'Thu Nhập Khác',
+                back: 'Trở Về',
+                
+                //Expenses
+                taxes: 'Thuế',
+                rent: 'Tiền Thuê',
+                consumption: 'Tiêu Hao',
+                Insurance: 'Bảo Hiểm',
+                interest: 'Lãi Suất',
+                socialSecurity: 'An Ninh Xã Hội',
+                maintenance: 'Bảo Trì',
+                otherCosts :'Chi Phí Khác',
+
+                //Summary
+                summary: 'Tóm Tắt',
+                save: 'Lưu',
+                cancel: 'Hủy Bỏ',
+                all_phases_successfully_set: "Mọi Giai Đoạn đã được thiết lập",
+
+                //Point of Freedom Page
+                pof: 'Điểm Tự Do Tài Chính',
+                inflationrate: "Tỷ Lệ Lạm Phát",
+                expectedgrowth: "Tăng Trưởng Dự Kiến",
+                pof_title: "Điểm Tự Do Tài Chính",
+                pof_achieved: "Điểm Tự Do Tài Chính đạt được lúc ",
+                pof_achieved_age: "tuổi",
+                recalculate_pof: "Tính Toán Lại Điểm Tự Do Tài Chính",
+
+                //Custom Asset
+                enter_custom_asset_allocation: "Phân Bổ Tài Sản Tùy Chỉnh",
+                precious_metals: "Kim Loại Quý ",
+                real_estate: "Bất Động Sản",
 
                 
                 income_costs: 'Thu Nhập và Chi Phí',
-                pof: 'Điểm Tự Do Tài Chính',
                 optimisation: 'Tối Ưu Hóa',
             }
         }
