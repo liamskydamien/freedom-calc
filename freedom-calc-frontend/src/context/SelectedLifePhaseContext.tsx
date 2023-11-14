@@ -1,22 +1,28 @@
-import React, {createContext, useState} from "react";
-import {LifePhase} from "../models/lifephases/LifePhase";
-import {LifePhaseContextType} from "../models/types/LifePhaseContextTypes";
-export const SelectedLifePhaseContext = createContext({} as LifePhaseContextType);
+import React, { createContext, useState } from "react";
+import { LifePhase } from "../models/lifephases/LifePhase";
+import { LifePhaseContextType } from "../models/types/LifePhaseContextTypes";
+export const SelectedLifePhaseContext = createContext(
+  {} as LifePhaseContextType
+);
 
 type SelectedLifePhaseContextProviderProps = {
-    children: React.ReactNode;
-}
+  children: React.ReactNode;
+};
 
-export const SelectedLifePhaseContextProvider : React.FC<SelectedLifePhaseContextProviderProps> = ({children}) => {
+export const SelectedLifePhaseContextProvider: React.FC<
+  SelectedLifePhaseContextProviderProps
+> = ({ children }) => {
+  const [selectedLifePhase, setSelectedLifePhase] = useState({} as LifePhase);
+  const value: LifePhaseContextType = {
+    selectedLifePhase,
+    setSelectedLifePhase,
+  };
 
-    const [selectedLifePhase, setSelectedLifePhase] = useState({} as LifePhase);
-    const value : LifePhaseContextType = { selectedLifePhase, setSelectedLifePhase }
-
-    return (
-        <SelectedLifePhaseContext.Provider value={value}>
-            {children}
-        </SelectedLifePhaseContext.Provider>
-    )
-}
+  return (
+    <SelectedLifePhaseContext.Provider value={value}>
+      {children}
+    </SelectedLifePhaseContext.Provider>
+  );
+};
 
 export default SelectedLifePhaseContextProvider;
