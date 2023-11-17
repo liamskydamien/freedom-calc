@@ -86,8 +86,9 @@ const AddNameAndAge: React.FC<AddNameAndAgeProps> = ({
               <div className="form-field">
                 <label className="form-label">{t("name_of_phase")}</label>
                 <input
-                  value={name}
+                  value={name === "" ? "" : name}
                   type="text"
+                  placeholder="0"
                   className="input max-w-full"
                   required
                   onChange={nameChangeHandler}
@@ -99,6 +100,7 @@ const AddNameAndAge: React.FC<AddNameAndAgeProps> = ({
                   <input
                     value={startAge}
                     type="number"
+                    placeholder="0"
                     className="input max-w-full"
                     disabled
                   />
@@ -106,7 +108,7 @@ const AddNameAndAge: React.FC<AddNameAndAgeProps> = ({
                 <div className="form-field">
                   <label className="form-label">{t("end_of_phase")}</label>
                   <input
-                    value={endAge}
+                    value={endAge === 0 ? "" : endAge}
                     type="number"
                     placeholder={expectedAge.toString()}
                     className="input max-w-full"

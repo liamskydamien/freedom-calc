@@ -90,7 +90,7 @@ const StartingCapitalGraph: React.FC<StartingCapitalGraph> = ({ t, data }) => {
     (_: any, index: React.SetStateAction<number>) => {
       setActiveIndex(index);
     },
-    [setActiveIndex]
+    [setActiveIndex],
   );
 
   return (

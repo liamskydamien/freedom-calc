@@ -28,10 +28,10 @@ const PassivaInputs: React.FC<PassivaInputProps> = ({
   const { liabilities, reservedEquity } = passivaStates;
 
   const liabilitiesGroup = passiva.find(
-    (asset) => asset.name === "liabilities"
+    (asset) => asset.name === "liabilities",
   ) as AssetGroup;
   const reservedEquityGroup = passiva.find(
-    (asset) => asset.name === "reservedEquity"
+    (asset) => asset.name === "reservedEquity",
   ) as AssetGroup;
 
   /**

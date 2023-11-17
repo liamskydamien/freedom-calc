@@ -1,14 +1,14 @@
-import {AssetGroup} from "../models/startingcapital/AssetGroup";
+import { AssetGroup } from "../models/startingcapital/AssetGroup";
 
 /**
  * Creates a pie chart from the assets
  * @param assets the assets to create the pie chart from
  */
-export const useCreatePieChart = (assets : AssetGroup[]) => {
-    return assets.map(asset => {
-        return {
-            name: asset.name,
-            value: asset.startingValue
-        }
-    });
-}
+export const useCreatePieChart = (assets: AssetGroup[]) => {
+  return assets.map((asset) => {
+    return {
+      name: asset.name,
+      value: asset.startingValue,
+    };
+  });
+};

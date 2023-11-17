@@ -38,22 +38,22 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
     activaStates;
 
   const cryptoCurrency = assets.find(
-    (asset) => asset.name === "crypto"
+    (asset) => asset.name === "crypto",
   ) as AssetGroup;
   const stockAsset = assets.find(
-    (asset) => asset.name === "stocks"
+    (asset) => asset.name === "stocks",
   ) as AssetGroup;
   const realestateAsset = assets.find(
-    (asset) => asset.name === "realestate"
+    (asset) => asset.name === "realestate",
   ) as AssetGroup;
   const liquidAsset = assets.find(
-    (asset) => asset.name === "cash"
+    (asset) => asset.name === "cash",
   ) as AssetGroup;
   const otherAsset = assets.find(
-    (asset) => asset.name === "other"
+    (asset) => asset.name === "other",
   ) as AssetGroup;
   const preciousMetalsAsset = assets.find(
-    (asset) => asset.name === "preciousMetals"
+    (asset) => asset.name === "preciousMetals",
   ) as AssetGroup;
 
   /**

@@ -1,21 +1,13 @@
-import { AssetGroup } from "../../models/startingcapital/AssetGroup";
-import { Income } from "../../models/lifephases/Income";
-import { Expenses } from "../../models/lifephases/Expenses";
-import { LifePhase } from "../../models/lifephases/LifePhase";
-import { InvestmentWeights } from "../../models/pof/InvestmentWeights";
 import {
   Bar,
   ComposedChart,
   Legend,
   Line,
-  LineChart,
   ReferenceDot,
   Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
-import { useCalculateLifeLine } from "../../hooks/useCalculateLifeLine";
-import useDarkmode from "../../hooks/useDarkmode";
 import { COLORS } from "../../constants/colors/colors";
 import { Point } from "../../models/Point";
 import React from "react";
@@ -37,7 +29,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
 }) => {
   return (
     <div className="card max-w-fit p-5">
-      <h1>Life Line Chart</h1>
+      <h1>{t('life_line_title')}</h1>
       <ComposedChart width={850} height={400} data={graph}>
         <XAxis dataKey="age" />
         <YAxis />
@@ -50,6 +42,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           stroke={theme === "light" ? COLORS.light.wealth : COLORS.dark.wealth}
           strokeWidth={3}
           connectNulls={true}
+          name={t("wealth")}
         />
         <Line
           dot={false}
@@ -58,6 +51,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           stroke={theme === "light" ? COLORS.light.costs : COLORS.dark.costs}
           strokeWidth={3}
           connectNulls={true}
+          name={t("costs")}
         />
         <ReferenceDot
           x={pof ? pof.x + startingAge : 0}

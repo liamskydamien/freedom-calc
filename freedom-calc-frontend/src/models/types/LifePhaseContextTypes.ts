@@ -1,6 +1,6 @@
-import {LifePhase} from "../lifephases/LifePhase";
+import { LifePhase } from "../lifephases/LifePhase";
 
 export type LifePhaseContextType = {
-    selectedLifePhase: LifePhase;
-    setSelectedLifePhase: (lifePhase: LifePhase) => void;
-}
+  selectedLifePhase: LifePhase;
+  setSelectedLifePhase: (lifePhase: LifePhase) => void;
+};

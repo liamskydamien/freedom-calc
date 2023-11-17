@@ -172,8 +172,9 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={singleStocks}
+                value={singleStocks === 0 ? "" : singleStocks}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={singleStocksChangeHandler}
               />
@@ -191,7 +192,8 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={fund}
+                value={fund === 0 ? "" : fund}
+                placeholder="0"
                 type="number"
                 className="input max-w-full"
                 onChange={fundChangeHandler}
@@ -209,7 +211,8 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={etf}
+                value={etf === 0 ? "" : etf}
+                placeholder="0"
                 type="number"
                 className="input max-w-full"
                 onChange={etfChangeHandler}
@@ -227,7 +230,8 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={derivative}
+                value={derivative === 0 ? "" : derivative}
+                placeholder="0"
                 type="number"
                 className="input max-w-full"
                 onChange={derivativeChangeHandler}
@@ -250,8 +254,9 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={activeCorporateParticipation}
+                value={activeCorporateParticipation === 0 ? "" : activeCorporateParticipation}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={activeCorporateParticipationChangeHandler}
               />
@@ -270,8 +275,9 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={passiveCorporateParticipation}
+                value={passiveCorporateParticipation === 0 ? "" : passiveCorporateParticipation}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={passiveCorporateParticipationChangeHandler}
               />
@@ -289,8 +295,9 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={otherStocks}
+                value={otherStocks === 0 ? "" : otherStocks}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherChangeHandler}
               />

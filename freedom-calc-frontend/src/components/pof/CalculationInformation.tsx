@@ -25,25 +25,25 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
   // Asset Allocation
   const [cash, setCash] = useState<number>(investmentAllocation.cash * 100);
   const [stocks, setStocks] = useState<number>(
-    investmentAllocation.stocks * 100
+    investmentAllocation.stocks * 100,
   );
   const [realEstate, setRealEstate] = useState<number>(
-    investmentAllocation.realestate * 100
+    investmentAllocation.realestate * 100,
   );
   const [preciousMetals, setPreciousMetals] = useState<number>(
-    investmentAllocation.preciousMetals * 100
+    investmentAllocation.preciousMetals * 100,
   );
   const [other, setOther] = useState<number>(investmentAllocation.other * 100);
   const [crypto, setCrypto] = useState<number>(
-    investmentAllocation.crypto * 100
+    investmentAllocation.crypto * 100,
   );
 
   // Expected Growth
   const [inflationRate, setInflationRate] = useState<number>(
-    expectedGrowth.inflation * 100
+    expectedGrowth.inflation * 100,
   );
   const [expectedGrowthRate, setExpectedGrowthRate] = useState<number>(
-    expectedGrowth.expectedReturn * 100
+    expectedGrowth.expectedReturn * 100,
   );
 
   /**
@@ -59,7 +59,7 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
    */
   const handleCalculate = () => {
     setExpectedGrowth(
-      new ExpectedGrowth(inflationRate / 100, expectedGrowthRate / 100)
+      new ExpectedGrowth(inflationRate / 100, expectedGrowthRate / 100),
     );
     const total = cash + stocks + realEstate + preciousMetals + other + crypto;
     if (total !== 100) {
@@ -72,8 +72,8 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
           realEstate / 100,
           preciousMetals / 100,
           other / 100,
-          crypto / 100
-        )
+          crypto / 100,
+        ),
       );
     }
   };

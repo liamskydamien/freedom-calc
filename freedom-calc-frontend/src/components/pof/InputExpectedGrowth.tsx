@@ -1,6 +1,4 @@
-import { InvestmentWeights } from "../../models/pof/InvestmentWeights";
 import React, { useState } from "react";
-import { ExpectedGrowth } from "../../models/pof/ExpectedGrowth";
 
 type InputExpectedGrowthProps = {
   t: any;
@@ -24,7 +22,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
    */
   const handleInflationRateChange = (event: { target: { value: string } }) => {
     setInflationRate(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
@@ -36,7 +34,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
     target: { value: string };
   }) => {
     setExpectedGrowthRate(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
@@ -50,14 +48,15 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
   return (
     <div className="card max-w-md">
       <div className="card-body">
-        <h1>{t("pof.input_expected_growth.title")}</h1>
+        <h1>{t("pof_title")}</h1>
         <div className="form-group">
           <label className="form-label">{t("inflationrate")}</label>
           <div className="form-control relative w-full">
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={inflationRate}
+              value={inflationRate === 0 ? "" : inflationRate}
+              placeholder="0"
               onChange={handleInflationRateChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -69,7 +68,8 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={expectedGrowthRate}
+              value={expectedGrowthRate === 0 ? "" : expectedGrowthRate}
+              placeholder="0"
               onChange={handleExpectedGrowthRateChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
