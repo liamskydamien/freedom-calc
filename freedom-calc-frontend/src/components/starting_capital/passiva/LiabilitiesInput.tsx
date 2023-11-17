@@ -103,8 +103,9 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
               />
             ) : (
               <input
-                value={objectRelatedLiabilities}
+                value={objectRelatedLiabilities === 0 ? "" : objectRelatedLiabilities}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={objectRelatedLiabilitiesChangeHandler}
               />
@@ -116,15 +117,17 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
             </label>
             {liabilitiesValid ? (
               <input
-                value={nonObjectRelatedLiabilities}
+                value={nonObjectRelatedLiabilities === 0 ? "" : nonObjectRelatedLiabilities}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 disabled={true}
               />
             ) : (
               <input
-                value={nonObjectRelatedLiabilities}
+                value={nonObjectRelatedLiabilities === 0 ? "" : nonObjectRelatedLiabilities}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={nonObjectRelatedLiabilitiesChangeHandler}
               />
@@ -141,8 +144,9 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
               />
             ) : (
               <input
-                value={otherLiabilities}
+                value={otherLiabilities === 0 ? "" : otherLiabilities}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherLiabilitiesChangeHandler}
               />

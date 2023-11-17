@@ -71,9 +71,10 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
               />
             ) : (
               <input
-                value={bitcoin}
+                value={bitcoin === 0 ? "" : bitcoin}
                 type="number"
                 className="input max-w-full"
+                placeholder="0"
                 onChange={bitcoinChangeHandler}
               />
             )}
@@ -89,8 +90,9 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
               />
             ) : (
               <input
-                value={ethereum}
+                value={ethereum === 0 ? "" : ethereum}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={ethereumChangeHandler}
               />
@@ -107,8 +109,9 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
               />
             ) : (
               <input
-                value={otherCryptos}
+                value={otherCryptos === 0 ? "" : otherCryptos}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherChangeHandler}
               />

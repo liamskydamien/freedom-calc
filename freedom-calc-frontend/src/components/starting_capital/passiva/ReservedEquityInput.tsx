@@ -97,8 +97,9 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           ) : (
             <input
-              value={reservedEquityForConsumption}
+              value={reservedEquityForConsumption === 0 ? "" : reservedEquityForConsumption}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={reservedEquityForConsumptionChangeHandler}
             />
@@ -110,15 +111,17 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
           </label>
           {liabilitiesValid ? (
             <input
-              value={reservedEquityForPensionProvision}
+              value={reservedEquityForPensionProvision === 0 ? "" : reservedEquityForPensionProvision}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               disabled={true}
             />
           ) : (
             <input
-              value={reservedEquityForPensionProvision}
+              value={reservedEquityForPensionProvision === 0 ? "" : reservedEquityForPensionProvision}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={reservedEquityForPensionProvisionChangeHandler}
             />
@@ -135,8 +138,9 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           ) : (
             <input
-              value={reservedEquityForOther}
+              value={reservedEquityForOther === 0 ? "" : reservedEquityForOther}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={reservedEquityForOtherChangeHandler}
             />

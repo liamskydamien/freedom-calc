@@ -172,9 +172,10 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={occupiedProperties}
+                value={occupiedProperties === 0 ? "" : occupiedProperties}
                 type="number"
                 className="input max-w-full"
+                placeholder="0"
                 onChange={occupiedPropertiesChangeHandler}
               />
             )}
@@ -190,8 +191,9 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={rentedProperties}
+                value={rentedProperties === 0 ? "" : rentedProperties}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={rentedPropertiesChangeHandler}
               />
@@ -208,9 +210,10 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={commercialProperties}
+                value={commercialProperties === 0 ? "" : commercialProperties}
                 type="number"
                 className="input max-w-full"
+                placeholder="0"
                 onChange={commercialPropertiesChangeHandler}
               />
             )}
@@ -229,9 +232,10 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={forest}
+                value={forest === 0 ? "" : forest}
                 type="number"
                 className="input max-w-full"
+                placeholder="0"
                 onChange={forestChangeHandler}
               />
             )}
@@ -247,8 +251,9 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={agriculturalLand}
+                value={agriculturalLand === 0 ? "" : agriculturalLand}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={agriculturalLandChangeHandler}
               />
@@ -266,8 +271,9 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={realEstateFunds}
+                value={realEstateFunds === 0 ? "" : realEstateFunds}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={realEstateFundsChangeHandler}
               />
@@ -285,8 +291,9 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
               />
             ) : (
               <input
-                value={otherRealEstate}
+                value={otherRealEstate === 0 ? "" : otherRealEstate}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherChangeHandler}
               />

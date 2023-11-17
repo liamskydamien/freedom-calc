@@ -136,8 +136,9 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
               />
             ) : (
               <input
-                value={checking}
+                value={checking === 0 ? "" : checking}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={checkingChangeHandler}
               />
@@ -154,8 +155,9 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
               />
             ) : (
               <input
-                value={savings}
+                value={savings === 0 ? "" : savings}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={savingsChangeHandler}
               />
@@ -172,8 +174,9 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
               />
             ) : (
               <input
-                value={otherLiquidAssets}
+                value={otherLiquidAssets === 0 ? "" : otherLiquidAssets}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherChangeHandler}
               />
@@ -191,8 +194,9 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
               />
             ) : (
               <input
-                value={gold}
+                value={gold === 0 ? "" : gold}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={goldChangeHandler}
               />
@@ -209,8 +213,9 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
               />
             ) : (
               <input
-                value={otherMetals}
+                value={otherMetals === 0 ? "" : otherMetals}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherMetalsChangeHandler}
               />

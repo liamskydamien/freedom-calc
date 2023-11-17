@@ -1,6 +1,4 @@
-import { InvestmentWeights } from "../../models/pof/InvestmentWeights";
 import React, { useState } from "react";
-import { ExpectedGrowth } from "../../models/pof/ExpectedGrowth";
 
 type InputExpectedGrowthProps = {
   t: any;
@@ -57,7 +55,8 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={inflationRate}
+              value={inflationRate === 0 ? "" : inflationRate}
+              placeholder="0"
               onChange={handleInflationRateChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -69,7 +68,8 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={expectedGrowthRate}
+              value={expectedGrowthRate === 0 ? "" : expectedGrowthRate}
+              placeholder="0"
               onChange={handleExpectedGrowthRateChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">

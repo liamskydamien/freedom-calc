@@ -1,5 +1,4 @@
-import { InvestmentWeights } from "../../models/pof/InvestmentWeights";
-import React, { useState } from "react";
+import React from "react";
 
 type InputAssetAllocationProps = {
   t: any;
@@ -93,7 +92,8 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={cash}
+              value={cash === 0 ? "" : cash}
+              placeholder="0"
               onChange={handleCashChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -105,7 +105,8 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={preciousMetals}
+              value={preciousMetals === 0 ? "" : preciousMetals}
+              placeholder="0"
               onChange={handlePreciousMetalsChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -117,7 +118,8 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={crypto}
+              value={crypto === 0 ? "" : crypto}
+              placeholder="0"
               onChange={handleCryptoChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -129,7 +131,8 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={realEstate}
+              value={realEstate === 0 ? "" : realEstate}
+              placeholder="0"
               onChange={handleRealEstateChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -141,7 +144,8 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={stocks}
+              value={stocks === 0 ? "" : stocks}
+              placeholder="0"
               onChange={handleStocksChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
@@ -153,7 +157,8 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
             <input
               type="number"
               className="input input-lg max-w-full pl-10"
-              value={other}
+              value={other === 0 ? "" : other}
+              placeholder="0"
               onChange={handleOtherChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">

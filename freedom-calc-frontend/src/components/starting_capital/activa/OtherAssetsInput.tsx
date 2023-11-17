@@ -118,8 +118,9 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
               />
             ) : (
               <input
-                value={art}
+                value={art === 0 ? "" : art}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={artChangeHandler}
               />
@@ -136,8 +137,9 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
               />
             ) : (
               <input
-                value={collectibles}
+                value={collectibles === 0 ? "" : collectibles}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={collectiblesChangeHandler}
               />
@@ -154,8 +156,9 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
               />
             ) : (
               <input
-                value={claims}
+                value={claims === 0 ? "" : claims}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={claimsChangeHandler}
               />
@@ -172,8 +175,9 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
               />
             ) : (
               <input
-                value={insurance}
+                value={insurance === 0 ? "" : insurance}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={insuranceChangeHandler}
               />
@@ -190,8 +194,9 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
               />
             ) : (
               <input
-                value={otherAssets}
+                value={otherAssets === 0 ? "" : otherAssets}
                 type="number"
+                placeholder="0"
                 className="input max-w-full"
                 onChange={otherAssetsChangeHandler}
               />

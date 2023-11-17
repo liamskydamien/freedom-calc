@@ -288,7 +288,8 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
                   className="input max-w-full"
                   type="number"
                   required={true}
-                  value={expectedAge}
+                  value={expectedAge  === 0 ? "" : expectedAge}
+                  placeholder="0"
                   onChange={expectedAgeChangeHandler}
                 ></input>
               </div>
