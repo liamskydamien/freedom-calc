@@ -75,7 +75,7 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
     // This will allow only numbers and empty string to be set
     if (value === "" || /^[0-9\b]+$/.test(value)) {
       setReservedEquityForPensionProvision(
-        value === "" ? 0 : parseFloat(value)
+        value === "" ? 0 : parseFloat(value),
       );
     }
   };

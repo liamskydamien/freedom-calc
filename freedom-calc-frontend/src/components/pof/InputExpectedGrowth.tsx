@@ -24,7 +24,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
    */
   const handleInflationRateChange = (event: { target: { value: string } }) => {
     setInflationRate(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
@@ -36,7 +36,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
     target: { value: string };
   }) => {
     setExpectedGrowthRate(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 

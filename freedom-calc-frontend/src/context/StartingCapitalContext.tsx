@@ -14,7 +14,7 @@ import {
 } from "../models/types/AssetContextTypes";
 
 export const StartingCapitalContext = createContext(
-  {} as StartingCapitalProviderState
+  {} as StartingCapitalProviderState,
 );
 
 type StartingCapitalProviderProps = {

@@ -31,7 +31,7 @@ const AddLifePhase: React.FC<AddLifePhaseProps> = ({
   const { phases, setPhases } = lifephase;
 
   const selectedLifePhaseContext: LifePhaseContextType = useContext(
-    SelectedLifePhaseContext
+    SelectedLifePhaseContext,
   );
   const setSelectedLifePhase: (phase: LifePhase) => void =
     selectedLifePhaseContext.setSelectedLifePhase;
@@ -42,7 +42,7 @@ const AddLifePhase: React.FC<AddLifePhaseProps> = ({
     name: string,
     endAge: any,
     income: Income,
-    expenses: Expenses
+    expenses: Expenses,
   ) => {
     const newPhase = new LifePhase(name, startAge, endAge, income, expenses);
     setPhases(new Phases([...phases.phase, newPhase]));

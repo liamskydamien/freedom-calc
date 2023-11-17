@@ -3,7 +3,7 @@
  * @param array The array to scale down
  */
 export const useScaleDownSize = (array: number[]) => {
-    return array.map((value) => {
-        return value / 1000;
-    });
-}
+  return array.map((value) => {
+    return value / 1000;
+  });
+};

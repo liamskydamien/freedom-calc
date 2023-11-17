@@ -28,7 +28,7 @@ const AddIncome: React.FC<AddIncomeProps> = ({
       rentingIncome,
       capitalIncome,
       pension,
-      otherIncome
+      otherIncome,
     );
     setIncome(income);
     setStatus("expense");
@@ -46,25 +46,25 @@ const AddIncome: React.FC<AddIncomeProps> = ({
 
   const dependentChangeHandler = (event: { target: { value: string } }) => {
     setDependent(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
   const selfemployedChangeHandler = (event: { target: { value: string } }) => {
     setSelfemployed(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
   const rentingIncomeChangeHandler = (event: { target: { value: string } }) => {
     setRentingIncome(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
   const capitalIncomeChangeHandler = (event: { target: { value: string } }) => {
     setCapitalIncome(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
@@ -74,7 +74,7 @@ const AddIncome: React.FC<AddIncomeProps> = ({
 
   const otherIncomeChangeHandler = (event: { target: { value: string } }) => {
     setOtherIncome(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 

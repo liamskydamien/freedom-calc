@@ -20,12 +20,12 @@ export const InputContextProvider: React.FC<InputContextProviderProps> = ({
 }) => {
   // Personal Data
   const [personalInformation, setPersonalInformation] = useState(
-    new PersonalInformation("", "", new Date(), 0, "female", "EUR €")
+    new PersonalInformation("", "", new Date(), 0, "female", "EUR €"),
   );
 
   // Starting Capital
   const [startingCapital, setStartingCapital] = useState(
-    new StartingCapital(ASSET_GROUPS, PASSIVA_GROUP)
+    new StartingCapital(ASSET_GROUPS, PASSIVA_GROUP),
   );
 
   // Life Phases

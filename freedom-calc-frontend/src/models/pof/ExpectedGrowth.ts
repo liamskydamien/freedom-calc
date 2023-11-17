@@ -1,9 +1,9 @@
 export class ExpectedGrowth {
-    inflation: number;
-    expectedReturn: number;
+  inflation: number;
+  expectedReturn: number;
 
-    constructor(inflation: number, expectedReturn: number) {
-        this.inflation = inflation;
-        this.expectedReturn = expectedReturn;
-    }
+  constructor(inflation: number, expectedReturn: number) {
+    this.inflation = inflation;
+    this.expectedReturn = expectedReturn;
+  }
 }

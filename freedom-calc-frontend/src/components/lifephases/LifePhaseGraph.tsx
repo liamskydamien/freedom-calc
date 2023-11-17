@@ -1,46 +1,53 @@
-import React, {useContext} from "react";
-import {Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis} from "recharts";
-import {InputContext} from "../../context/InputContext";
-import {useCreateBarChart} from "../../calculations/useCreateBarChart";
-import {COLORS} from "../../constants/colors/colors";
+import React, { useContext } from "react";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Legend,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from "recharts";
+import { InputContext } from "../../context/InputContext";
+import { useCreateBarChart } from "../../calculations/useCreateBarChart";
+import { COLORS } from "../../constants/colors/colors";
 
 type LifePhaseGraphProps = {
-    t: any
-}
+  t: any;
+};
 
-const LifePhaseGraph : React.FC<LifePhaseGraphProps> = ({t}) => {
+const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t }) => {
+  const lifePhases = useContext(InputContext);
 
-    const lifePhases = useContext(InputContext)
+  const data = useCreateBarChart(lifePhases.phases.phase);
 
-    const data = useCreateBarChart(lifePhases.phases.phase)
-
-    return (
-        <div className="card max-w-full">
-            <div className="card-body">
-                <div className="flex flex-row justify-between">
-                    <h1 className="text-xl font-bold">{t('life_phase_graph')}</h1>
-                </div>
-                <BarChart
-                    width={800}
-                    height={388}
-                    data={data}
-                    margin={{
-                        top: 20,
-                        right: 30,
-                        left: 20,
-                        bottom: 5
-                    }}
-                >
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Legend />
-                    <Bar dataKey="income" fill={COLORS.dark.wealth} />
-                    <Bar dataKey="expenses" fill={COLORS.dark.costs} />
-                </BarChart>
-            </div>
+  return (
+    <div className="card max-w-full">
+      <div className="card-body">
+        <div className="flex flex-row justify-between">
+          <h1 className="text-xl font-bold">{t("life_phase_graph")}</h1>
         </div>
-    )
-}
-export default LifePhaseGraph
+        <BarChart
+          width={800}
+          height={388}
+          data={data}
+          margin={{
+            top: 20,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Bar dataKey="income" fill={COLORS.dark.wealth} />
+          <Bar dataKey="expenses" fill={COLORS.dark.costs} />
+        </BarChart>
+      </div>
+    </div>
+  );
+};
+export default LifePhaseGraph;

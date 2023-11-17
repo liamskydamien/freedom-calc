@@ -54,7 +54,7 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
    */
   const handleRealEstateChange = (event: { target: { value: string } }) => {
     setRealEstate(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 
@@ -64,7 +64,7 @@ const InputAssetAllocation: React.FC<InputAssetAllocationProps> = ({
    */
   const handlePreciousMetalsChange = (event: { target: { value: string } }) => {
     setPreciousMetals(
-      event.target.value === "" ? 0 : parseFloat(event.target.value)
+      event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
   };
 

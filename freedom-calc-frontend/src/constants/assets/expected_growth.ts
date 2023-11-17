@@ -1,9 +1,9 @@
-import {ExpectedGrowth} from "../../models/pof/ExpectedGrowth";
+import { ExpectedGrowth } from "../../models/pof/ExpectedGrowth";
 
 /**
  * The expected growth is the expected inflation and return on investment.
  */
 export const EXPECTED_GROWTH: ExpectedGrowth = {
-    inflation: 0.02,
-    expectedReturn: 0.05
-}
+  inflation: 0.02,
+  expectedReturn: 0.05,
+};

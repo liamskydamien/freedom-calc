@@ -21,7 +21,7 @@ type PoFProps = {
 const PoF: React.FC<PoFProps> = ({ t }) => {
   const [expectedGrowth, setExpectedGrowth] = useState(EXPECTED_GROWTH);
   const [investmentAllocation, setInvestmentAllocation] = useState(
-    INVESTMENT_ALLOCATION
+    INVESTMENT_ALLOCATION,
   );
 
   const { theme } = useDarkmode();
@@ -35,7 +35,7 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
     personalInformation.expectedAge,
     expectedGrowth.inflation,
     investmentAllocation,
-    personalInformation.getAge()
+    personalInformation.getAge(),
   );
 
   return (
