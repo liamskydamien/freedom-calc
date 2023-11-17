@@ -30,11 +30,19 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
   const [currency, setCurrency] = useState(personalInformation.currency);
   const [gender, setGender] = useState(personalInformation.gender);
   const [valid, setValid] = useState(false);
-
+  const [birthDateString, setBirthDateString] = useState("");
   // Set up useEffect
   useEffect(() => {
     checkPersonalInformation() ? setValid(true) : setValid(false);
   }, []);
+
+  // Set up useEffect for birthDateString to birthDate conversion
+  useEffect(() => {
+    if (birthDateString !== "") {
+      const date = new Date(birthDateString);
+      setBirthDate(date);
+    }
+  }, [birthDateString]);
 
   // Set up event handlers
   /**
@@ -66,7 +74,7 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
    * @param event
    */
   const dateOfBirthChangeHandler = (event: { target: { value: any } }) => {
-    setBirthDate(new Date(event.target.value));
+    setBirthDateString(event.target.value);
   };
 
   /**
@@ -254,7 +262,7 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
                   className="input w-auto"
                   type="date"
                   required={true}
-                  value={birthDate.toISOString().slice(0, 10)}
+                  value={birthDateString}
                   disabled={true}
                 ></input>
               </div>
@@ -265,7 +273,7 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
                   className="input w-auto"
                   type="date"
                   required={true}
-                  value={birthDate.toISOString().slice(0, 10)}
+                  value={birthDateString}
                   onChange={dateOfBirthChangeHandler}
                 ></input>
               </div>
