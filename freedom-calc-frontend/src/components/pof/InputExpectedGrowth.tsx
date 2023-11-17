@@ -48,7 +48,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
   return (
     <div className="card max-w-md">
       <div className="card-body">
-        <h1>{t("pof.input_expected_growth.title")}</h1>
+        <h1>{t("pof_title")}</h1>
         <div className="form-group">
           <label className="form-label">{t("inflationrate")}</label>
           <div className="form-control relative w-full">

@@ -3,7 +3,6 @@ import {
   ComposedChart,
   Legend,
   Line,
-  LineChart,
   ReferenceDot,
   Tooltip,
   XAxis,
@@ -30,7 +29,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
 }) => {
   return (
     <div className="card max-w-fit p-5">
-      <h1>Life Line Chart</h1>
+      <h1>{t('life_line_title')}</h1>
       <ComposedChart width={850} height={400} data={graph}>
         <XAxis dataKey="age" />
         <YAxis />
@@ -43,6 +42,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           stroke={theme === "light" ? COLORS.light.wealth : COLORS.dark.wealth}
           strokeWidth={3}
           connectNulls={true}
+          name={t("wealth")}
         />
         <Line
           dot={false}
@@ -51,6 +51,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           stroke={theme === "light" ? COLORS.light.costs : COLORS.dark.costs}
           strokeWidth={3}
           connectNulls={true}
+          name={t("costs")}
         />
         <ReferenceDot
           x={pof ? pof.x + startingAge : 0}
