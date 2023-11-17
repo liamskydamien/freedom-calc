@@ -101,17 +101,19 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("taxes")}</label>
           <input
-            value={taxes}
+            value={taxes === 0 ? "" : taxes}
             type="number"
             className="input max-w-full"
+            placeholder="0"
             onChange={taxesChangeHandler}
           />
         </div>
         <div className="form-field">
           <label className="form-label">{t("rent")}</label>
           <input
-            value={rent}
+            value={rent === 0 ? "" : rent}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={rentChangeHandler}
           />
@@ -119,8 +121,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("consumption")}</label>
           <input
-            value={consumption}
+            value={consumption === 0 ? "" : consumption}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={consumptionChangeHandler}
           />
@@ -128,8 +131,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("insurance")}</label>
           <input
-            value={insurance}
+            value={insurance === 0 ? "" : insurance}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={insuranceChangeHandler}
           />
@@ -137,8 +141,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("interest")}</label>
           <input
-            value={interest}
+            value={interest === 0 ? "" : interest}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={interestChangeHandler}
           />
@@ -146,8 +151,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("socialSecurity")}</label>
           <input
-            value={socialSecurity}
+            value={socialSecurity === 0 ? "" : socialSecurity}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={socialSecurityChangeHandler}
           />
@@ -155,8 +161,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("maintenance")}</label>
           <input
-            value={maintenance}
+            value={maintenance === 0 ? "" : maintenance}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={maintenanceChangeHandler}
           />
@@ -164,8 +171,9 @@ const AddExpense: React.FC<AddExpenseProps> = ({
         <div className="form-field">
           <label className="form-label">{t("otherCosts")}</label>
           <input
-            value={otherCosts}
+            value={otherCosts === 0 ? "" : otherCosts}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={otherCostsChangeHandler}
           />

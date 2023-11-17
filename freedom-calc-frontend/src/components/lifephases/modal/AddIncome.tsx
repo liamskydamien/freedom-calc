@@ -85,8 +85,9 @@ const AddIncome: React.FC<AddIncomeProps> = ({
         <div className="form-field">
           <label className="form-label">{t("dependent")}</label>
           <input
-            value={dependent}
+            value={dependent === 0 ? "" : dependent}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={dependentChangeHandler}
           />
@@ -94,8 +95,9 @@ const AddIncome: React.FC<AddIncomeProps> = ({
         <div className="form-field">
           <label className="form-label">{t("selfemployed")}</label>
           <input
-            value={selfemployed}
+            value={selfemployed === 0 ? "" : selfemployed}
             type="number"
+            placeholder="0"
             className="input max-w-full"
             onChange={selfemployedChangeHandler}
           />
@@ -104,8 +106,9 @@ const AddIncome: React.FC<AddIncomeProps> = ({
           <label className="form-label">{t("rentingIncome")}</label>
           <div className="form-control">
             <input
-              value={rentingIncome}
+              value={rentingIncome === 0 ? "" : rentingIncome}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={rentingIncomeChangeHandler}
             />
@@ -115,8 +118,9 @@ const AddIncome: React.FC<AddIncomeProps> = ({
           <label className="form-label">{t("capitalIncome")}</label>
           <div className="form-control">
             <input
-              value={capitalIncome}
+              value={capitalIncome === 0 ? "" : capitalIncome}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={capitalIncomeChangeHandler}
             />
@@ -126,8 +130,9 @@ const AddIncome: React.FC<AddIncomeProps> = ({
           <label className="form-label">{t("pensionIncome")}</label>
           <div className="form-control">
             <input
-              value={pension}
+              value={pension === 0 ? "" : pension}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={pensionChangeHandler}
             />
