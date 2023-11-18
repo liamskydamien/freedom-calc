@@ -16,7 +16,7 @@ export const useCalculatePOF = (
     for (let i = 0; i < wealth.length; i++) {
       if (wealth[i] >= costs[i]) {
         pof = {
-          x: i,
+          x: i+1,
           y: costs[i],
         };
         break;
