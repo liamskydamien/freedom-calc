@@ -50,6 +50,7 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
           pof={pof}
           startingAge={personalInformation.getAge()}
           theme={theme}
+          currency={personalInformation.currency}
         />
         <AchievePOF t={t} pof={pof} />
       </div>

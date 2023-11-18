@@ -18,6 +18,7 @@ type GraphPoFProps = {
   pof: Point | null;
   graph: any[];
   startingAge: number;
+  currency: string;
 };
 
 const GraphPoF: React.FC<GraphPoFProps> = ({
@@ -26,6 +27,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
   pof,
   theme,
   startingAge,
+  currency,
 }) => {
   return (
     <div className="card max-w-full p-5">
@@ -33,10 +35,15 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
       <ResponsiveContainer width="100%" height={400}>
         <ComposedChart data={graph}>
           <XAxis dataKey="age" >
-            <Label value="Pages of my website" offset={0} position="insideBottom" />
+            <Label value={t('years')}
+                   offset={0}
+                   position="insideBottom" />
           </XAxis>
           <YAxis type="number">
-            <Label value="Pages of my website" offset={100} angle={-90} position="insideLeft" />
+            <Label value={t('in_1000') + " " + currency}
+                   offset={100}
+                   angle={-90}
+                   position="insideLeft" />
           </YAxis>
           <Bar dataKey="ciGraph" stackId="a" fill="#FF84d8" hide={true} />
           <Bar dataKey="wealth" stackId="a" fill="#8884d8" hide={true} />
