@@ -7,7 +7,7 @@ import {Point} from "../models/Point";
  */
 export function calculatePOF(wealth : number[], costs : number[]) : Point | null {
 
-    if (wealth.length !== costs.length) {
+    if (wealth.length !== costs.length || wealth.length === 0 || costs.length === 0) {
         return null;
     }
 
@@ -19,6 +19,9 @@ export function calculatePOF(wealth : number[], costs : number[]) : Point | null
                 return new Point(i, costs[i]);
             }
         }
+    }
+    else {
+        return new Point(0, costStart);
     }
     return null;
 }
