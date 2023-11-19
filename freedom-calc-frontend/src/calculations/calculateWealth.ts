@@ -36,7 +36,7 @@ export function calculateWealth(
 
     for (let year = 0; year < annualInvestments.length; year++) { // For each year
         const wealthGrowth :number = assetGrowth.reduce((a, b) => a.map((v, i) => v + b[i]))[year] - liabilitiesDeduction;
-        wealth.push(Number(wealthGrowth.toFixed(2))); // Add all asset growths together to get wealth
+        wealth.push(Number(wealthGrowth.toFixed(reductionFactor < 10000 ? 2 : 6))); // Add all asset growths together to get wealth
     }
 
   return wealth;

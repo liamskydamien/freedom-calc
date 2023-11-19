@@ -9,7 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import { InputContext } from "../../context/InputContext";
-import { useCreateBarChart } from "../../calculations/useCreateBarChart";
+import { useCreateBarChart } from "../../calculations/graphs/useCreateBarChart";
 import { COLORS } from "../../constants/colors/colors";
 
 type LifePhaseGraphProps = {

@@ -24,7 +24,7 @@ export function calculateCost(
 
     for (let year : number = 0; year < annualCosts.length; year++) { // For each year
         totalCosts -= (costWithInflation[year] / reductionFactor); // Subtract the annual costs from the total cost
-        remainingCosts.push(Number((totalCosts + (wealthToKeep / reductionFactor)).toFixed(2))); // Add the remaining cost to the array
+        remainingCosts.push(Number((totalCosts + (wealthToKeep / reductionFactor)).toFixed(reductionFactor < 10000 ? 2 : 6))); // Add the remaining cost to the array
     }
 
     return remainingCosts;

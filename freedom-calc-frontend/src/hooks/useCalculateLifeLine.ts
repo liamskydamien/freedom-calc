@@ -3,7 +3,7 @@ import { useCreateGraph } from "../calculations/utility/useCreateGraph";
 import { AssetGroup } from "../models/startingcapital/AssetGroup";
 import { LifePhase } from "../models/lifephases/LifePhase";
 import { InvestmentWeights } from "../models/pof/InvestmentWeights";
-import { useCalculateCIGraph } from "../calculations/useCalculateCIGraph";
+import { useCalculateCIGraph } from "../calculations/graphs/useCalculateCIGraph";
 import { CIGraph } from "../models/types/CIGraph";
 
 export const useCalculateLifeLine = (
