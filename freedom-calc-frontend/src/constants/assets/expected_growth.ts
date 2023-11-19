@@ -5,5 +5,6 @@ import { ExpectedGrowth } from "../../models/pof/ExpectedGrowth";
  */
 export const EXPECTED_GROWTH: ExpectedGrowth = {
   inflation: 0.02,
-  expectedReturn: 0.05,
+  expectedReturn: 4,
+  wealthToKeep: 0,
 };

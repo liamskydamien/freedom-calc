@@ -1,4 +1,4 @@
-export const useStretchArray = (array: number[], length: number[]) => {
+export const stretchArray = (array: number[], length: number[]) => {
   const stretchedArray: number[] = [];
   for (let i = 0; i < array.length; i++) {
     const stretch = length[i];

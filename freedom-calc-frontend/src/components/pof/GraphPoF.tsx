@@ -32,9 +32,9 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
   return (
     <div className="card max-w-full p-5">
       <h1>{t('life_line_title')}</h1>
-      <ResponsiveContainer width="100%" height={400}>
+      <ResponsiveContainer width={800} height={400}>
         <ComposedChart data={graph}>
-          <XAxis dataKey="age" >
+          <XAxis dataKey="name" >
             <Label value={t('years')}
                    offset={0}
                    position="insideBottom" />
@@ -45,8 +45,6 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
                    angle={-90}
                    position="insideLeft" />
           </YAxis>
-          <Bar dataKey="ciGraph" stackId="a" fill="#FF84d8" hide={true} />
-          <Bar dataKey="wealth" stackId="a" fill="#8884d8" hide={true} />
           <Line
               dot={false}
               type="monotone"
@@ -59,7 +57,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           <Line
               dot={false}
               type="monotone"
-              dataKey="costs"
+              dataKey="cost"
               stroke={theme === "light" ? COLORS.light.costs : COLORS.dark.costs}
               strokeWidth={3}
               connectNulls={true}
@@ -68,7 +66,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           {
               pof && pof.x > 0 && pof.y > 0 &&
               <ReferenceDot
-                  x={pof.x + startingAge}
+                  x={pof.x}
                   y={pof.y}
                   r={8}
                   fill={theme === "light" ? COLORS.light.pof : COLORS.dark.pof}

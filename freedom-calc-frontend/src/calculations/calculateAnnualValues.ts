@@ -1,5 +1,5 @@
 import {LifePhase} from "../models/lifephases/LifePhase";
-import {useStretchArray} from "./utility/useStretchArray";
+import {stretchArray} from "./utility/stretchArray";
 import {filterOutDefaultPhases} from "./utility/useFilterOutDefaultPhase";
 
 export type AnnualValues = {
@@ -22,12 +22,12 @@ export function calculateAnnualValues(lifephases : LifePhase[]) : AnnualValues {
         return lifephase.expenses.getTotalExpenses();
     });
 
-    const annualCosts = useStretchArray(
+    const annualCosts = stretchArray(
         annualCostEachPhase,
         timeBetweenEachPhase,
     );
 
-    const annualFC = useStretchArray(
+    const annualFC = stretchArray(
         freeCashflowPerPhase,
         timeBetweenEachPhase,
     );

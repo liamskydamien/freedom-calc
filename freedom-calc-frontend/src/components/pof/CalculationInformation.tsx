@@ -46,6 +46,10 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
     expectedGrowth.expectedReturn * 100,
   );
 
+  const [expectedWealthToKeep, setExpectedWealthToKeep] = useState<number>(
+    0,
+  );
+
   /**
    * Handles the change of the inflation rate
    */
@@ -55,11 +59,11 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
   };
 
   /**
-   * Handles the submit of the new values
+   * Handles to submit of the new values
    */
   const handleCalculate = () => {
     setExpectedGrowth(
-      new ExpectedGrowth(inflationRate / 100, expectedGrowthRate / 100),
+      new ExpectedGrowth(inflationRate / 100, expectedGrowthRate, expectedWealthToKeep),
     );
     const total = cash + stocks + realEstate + preciousMetals + other + crypto;
     if (total !== 100) {
@@ -87,6 +91,8 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
         setInflationRate={setInflationRate}
         inflationRate={inflationRate}
         handleShowAssetAllocation={handleShowAssetAllocation}
+        expectedWealthToKeep={expectedWealthToKeep}
+        setExpectedWealthToKeep={setExpectedWealthToKeep}
       />
       {showAssetAllocation && (
         <InputAssetAllocation
