@@ -43,7 +43,7 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
     expectedGrowth.inflation * 100,
   );
   const [expectedGrowthRate, setExpectedGrowthRate] = useState<number>(
-    expectedGrowth.expectedReturn * 100,
+    expectedGrowth.expectedReturn,
   );
 
   const [expectedWealthToKeep, setExpectedWealthToKeep] = useState<number>(
@@ -73,10 +73,10 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
         new InvestmentWeights(
           cash / 100,
           stocks / 100,
-          realEstate / 100,
           preciousMetals / 100,
-          other / 100,
+          realEstate / 100,
           crypto / 100,
+          other / 100,
         ),
       );
     }

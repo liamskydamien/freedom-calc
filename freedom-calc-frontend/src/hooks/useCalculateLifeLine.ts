@@ -26,8 +26,8 @@ export const useCalculateLifeLine = (
       investmentWeights,
       inflationRate,
       expectedReturn,
-      wealthToKeep,
-      ratio
+      ratio,
+      wealthToKeep
   )
 
   const { wealth, cost, pof } = lifeLine; // Destructure the lifeLine

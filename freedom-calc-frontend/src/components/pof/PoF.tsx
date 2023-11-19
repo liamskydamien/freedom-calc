@@ -51,7 +51,6 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
           t={t}
           graph={graph}
           pof={realPoF}
-          startingAge={personalInformation.getAge()}
           theme={theme}
           currency={personalInformation.currency}
         />

@@ -54,4 +54,21 @@ export class InvestmentWeights {
         throw new Error("Invalid asset group");
     }
   }
+
+  toString(): string {
+    return (
+      "cash: " +
+      this.cash +
+      " stocks: " +
+      this.stocks +
+      " preciousMetals: " +
+      this.preciousMetals +
+      " realestate: " +
+      this.realestate +
+      " crypto: " +
+      this.crypto +
+      " other: " +
+      this.other
+    );
+  }
 }

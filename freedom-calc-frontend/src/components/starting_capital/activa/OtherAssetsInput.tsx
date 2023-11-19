@@ -1,6 +1,7 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { useEffect, useState } from "react";
 import { OtherState } from "../../../models/types/AssetContextTypes";
+import {GROWTH_RATE} from "../../../constants/assets/growthrate";
 
 type OtherAssetsInputProps = {
   t: any;
@@ -32,6 +33,7 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
    */
   const updateOtherAssets = () => {
     other.startingValue = collectibles + art + claims + insurance + otherAssets;
+    other.growthRate = GROWTH_RATE.other;
   };
 
   /**

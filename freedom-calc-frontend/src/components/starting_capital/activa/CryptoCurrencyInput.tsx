@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { CryptoState } from "../../../models/types/AssetContextTypes";
+import {GROWTH_RATE} from "../../../constants/assets/growthrate";
 
 type CryptoCurrencyInputProps = {
   t: any;
@@ -29,6 +30,7 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
   }, [bitcoin, ethereum, otherCryptos]);
   const updateCryptoCurrency = () => {
     cryptoCurrency.startingValue = bitcoin + ethereum + otherCryptos;
+    cryptoCurrency.growthRate = GROWTH_RATE.crypto;
   };
 
   const bitcoinChangeHandler = (event: { target: { value: any } }) => {

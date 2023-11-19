@@ -61,6 +61,10 @@ function calculateIncreasePerAssetGroup(
     const growthRate : number = factorInExpectedIncreasePerYear(assetGroup.growthRate, expectedIncreasePerYear);  // Growth rate of the asset group
     let assetValue = assetGroup.startingValue / reductionFactor; // Set the asset value to the starting value of the asset group and reduce it by a specified factor
 
+    console.log("assetGroup: " + assetGroup.name);
+    console.log("growthRate: " + growthRate);
+    console.log("startingcapital: " + assetGroup.startingValue);
+
     for (let year = 0; year < annualInvestment.length; year++) {
         assetValue += assetValue >= 0 ? assetValue * growthRate : 0; // Calculate the asset value through the compound interest formula
         assetValue += (annualInvestment[year] / reductionFactor) * investmentWeight; // Calculate the asset value with the annual investment

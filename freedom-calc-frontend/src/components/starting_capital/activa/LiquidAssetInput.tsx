@@ -4,6 +4,7 @@ import {
   CashState,
   PreciousMetalsState,
 } from "../../../models/types/AssetContextTypes";
+import {GROWTH_RATE} from "../../../constants/assets/growthrate";
 
 type LiquidAssetsInput = {
   t: any;
@@ -37,6 +38,7 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
    */
   const updateCash = () => {
     cash.startingValue = savings + checking + otherLiquidAssets;
+    cash.growthRate = GROWTH_RATE.cash;
   };
 
   /**
@@ -44,6 +46,7 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
    */
   const updatePreciousMetals = () => {
     preciousMetals.startingValue = gold + otherMetals;
+    preciousMetals.growthRate = GROWTH_RATE.preciousMetals;
   };
 
   /**

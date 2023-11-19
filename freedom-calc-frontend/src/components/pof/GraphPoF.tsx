@@ -17,7 +17,6 @@ type GraphPoFProps = {
   theme: string;
   pof: Point | null;
   graph: any[];
-  startingAge: number;
   currency: string;
 };
 
@@ -26,7 +25,6 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
   graph,
   pof,
   theme,
-  startingAge,
   currency,
 }) => {
   return (

@@ -35,6 +35,13 @@ export function calculateLifeLine(
     wealthToKeep: number
 ) : LifeLine {
 
+    console.log("Received following inputs: ");
+    console.log("investmentWeights: " + investmentWeights);
+    console.log("inflationRate: " + inflationRate);
+    console.log("expectedReturn: " + expectedReturn);
+    console.log("reductionFactor: " + reductionFactor);
+    console.log("wealthToKeep: " + wealthToKeep);
+
     // Calculate Annual Values
     const {annualFC, annualCosts} = calculateAnnualValues(lifephases);
 
@@ -46,6 +53,10 @@ export function calculateLifeLine(
 
     // Calculate POF
     const pof = calculatePOF(wealth, cost);
+
+    console.log("wealth: " + wealth);
+    console.log("cost: " + cost);
+    console.log("pof: " + pof);
 
     return {
         wealth: wealth,

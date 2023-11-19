@@ -27,7 +27,6 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
   t,
   assets,
   setAssets,
-  valid,
 }) => {
   const [activeTab, setActiveTab] = useState(1);
 
