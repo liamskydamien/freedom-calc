@@ -1,6 +1,15 @@
 import {AssetGroup} from "../models/startingcapital/AssetGroup";
 import {InvestmentWeights} from "../models/pof/InvestmentWeights";
 
+/**
+ * Calculate the wealth
+ * @param assetGroups given asset groups
+ * @param liabilities given liabilities
+ * @param annualInvestments given annual investments
+ * @param investmentWeights given investment weights
+ * @param expectedIncreasePerYear given expected increase per year
+ * @param reductionFactor given reduction factor
+ */
 export function calculateWealth(
     assetGroups : AssetGroup[],
     liabilities : AssetGroup[],
@@ -14,7 +23,7 @@ export function calculateWealth(
     const liabilitiesDeduction : number = calculateLiabilityDeduction(liabilities, reductionFactor);
 
     assetGroups.forEach((assetGroup) => {
-        assetGrowth.push(
+        assetGrowth.push( // For each asset group
             calculateIncreasePerAssetGroup(
                 assetGroup,
                 annualInvestments,
@@ -25,9 +34,9 @@ export function calculateWealth(
         );
     });
 
-    for (let year = 0; year < annualInvestments.length; year++) {
+    for (let year = 0; year < annualInvestments.length; year++) { // For each year
         const wealthGrowth :number = assetGrowth.reduce((a, b) => a.map((v, i) => v + b[i]))[year] - liabilitiesDeduction;
-        wealth.push(Number(wealthGrowth.toFixed(2)));
+        wealth.push(Number(wealthGrowth.toFixed(2))); // Add all asset growths together to get wealth
     }
 
   return wealth;
