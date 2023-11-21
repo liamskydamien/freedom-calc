@@ -1,7 +1,5 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import {
-  ReservedEquityState,
-} from "../../../models/types/AssetContextTypes";
+import { ReservedEquityState } from "../../../models/types/AssetContextTypes";
 import React, { useEffect } from "react";
 
 type ReservedEquityInputProps = {
@@ -16,7 +14,7 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
   liabilitiesValid,
   reservedEquityState,
   reservedEquity,
-    currentCurrency,
+  currentCurrency,
   t,
 }) => {
   const {
@@ -110,8 +108,8 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           )}
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">
           {t("reserved_equity_for_pension_provision")}
@@ -143,8 +141,8 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           )}
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("reserved_equity_for_other")}</label>
         <div className="form-control relative w-full">
@@ -165,8 +163,8 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           )}
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
       </div>
     </div>

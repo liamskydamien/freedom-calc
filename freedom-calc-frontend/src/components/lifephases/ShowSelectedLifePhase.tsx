@@ -5,7 +5,10 @@ type ShowSelectedLifePhaseProps = {
   t: any;
   currentCurrency: string;
 };
-const ShowSelectedLifePhase: React.FC<ShowSelectedLifePhaseProps> = ({ t , currentCurrency}) => {
+const ShowSelectedLifePhase: React.FC<ShowSelectedLifePhaseProps> = ({
+  t,
+  currentCurrency,
+}) => {
   const { selectedLifePhase } = useContext(SelectedLifePhaseContext);
 
   /**
@@ -77,15 +80,15 @@ const ShowSelectedLifePhase: React.FC<ShowSelectedLifePhaseProps> = ({ t , curre
               </div>
               <div className="form-control relative w-full">
                 <input
-                    value={getIncome()}
-                    type="number"
-                    className="input input-lg max-w-full pl-10"
-                    readOnly
-                    disabled
+                  value={getIncome()}
+                  type="number"
+                  className="input input-lg max-w-full pl-10"
+                  readOnly
+                  disabled
                 />
                 <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+                  <h5 className="text-lg font-bold">{currentCurrency}</h5>
+                </span>
               </div>
             </div>
 
@@ -94,18 +97,18 @@ const ShowSelectedLifePhase: React.FC<ShowSelectedLifePhaseProps> = ({ t , curre
                 <p className="mb-0 mr-2">{t("expenses")}</p>
               </div>
               <div className="form-control relative w-full">
-              <input
-                value={getExpenses()}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                readOnly
-                disabled
-              />
+                <input
+                  value={getExpenses()}
+                  type="number"
+                  className="input input-lg max-w-full pl-10"
+                  readOnly
+                  disabled
+                />
                 <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-            </div>
+                  <h5 className="text-lg font-bold">{currentCurrency}</h5>
+                </span>
               </div>
+            </div>
           </div>
         ) : (
           <p>{t("no_lifephase_selected")}</p>

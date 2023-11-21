@@ -16,14 +16,14 @@ type NewLifePhaseModalProps = {
   t: any;
   expectedAge: number;
   valid: boolean;
-    currentCurrency: string;
+  currentCurrency: string;
 };
 const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
   addPhase,
   startAge,
   t,
   expectedAge,
-    currentCurrency
+  currentCurrency,
 }) => {
   const [income, setIncome] = useState(
     new Income(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
@@ -148,17 +148,17 @@ const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
                       <p className="mb-0 mr-5">{t("income")}</p>
                     </div>
                     <div className="form-control">
-                    <input
-                      value={income.getTotalIncome()}
-                      type="number"
-                      className="input pl-10"
-                      readOnly
-                      disabled
-                    /><span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+                      <input
+                        value={income.getTotalIncome()}
+                        type="number"
+                        className="input pl-10"
+                        readOnly
+                        disabled
+                      />
+                      <span className="absolute inset-y-0 left-3 inline-flex items-center">
+                        <h5 className="text-lg font-bold">{currentCurrency}</h5>
+                      </span>
                     </div>
-
                   </div>
 
                   <div className="flex justify-between">
@@ -167,15 +167,15 @@ const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
                     </div>
                     <div className="form-control">
                       <input
-                          value={expense.getTotalExpenses()}
-                          type="number"
-                          className="input pl-10"
-                          readOnly
-                          disabled
+                        value={expense.getTotalExpenses()}
+                        type="number"
+                        className="input pl-10"
+                        readOnly
+                        disabled
                       />
                       <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+                        <h5 className="text-lg font-bold">{currentCurrency}</h5>
+                      </span>
                     </div>
                   </div>
                 </div>

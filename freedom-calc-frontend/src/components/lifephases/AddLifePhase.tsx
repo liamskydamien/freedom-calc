@@ -28,7 +28,7 @@ const AddLifePhase: React.FC<AddLifePhaseProps> = ({
   lifephase,
   expectedAge,
   age,
-    currentCurrency
+  currentCurrency,
 }) => {
   const { phases, setPhases } = lifephase;
 
@@ -96,7 +96,7 @@ const AddLifePhase: React.FC<AddLifePhaseProps> = ({
         )}
       </div>
       <NewLifePhaseModal
-          currentCurrency={currentCurrency}
+        currentCurrency={currentCurrency}
         addPhase={addPhase}
         startAge={startAge}
         t={t}

@@ -9,7 +9,8 @@ type StartingCapitalDisplayProps = {
 };
 
 const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
-  t, currentCurrency
+  t,
+  currentCurrency,
 }) => {
   const { startingCapital } = useContext(InputContext);
   const { assetGroups, liabilities } = startingCapital;

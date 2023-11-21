@@ -21,7 +21,7 @@ const PassivaInputs: React.FC<PassivaInputProps> = ({
   valid,
   setPassiva,
   passiva,
-    currentCurrency,
+  currentCurrency,
   t,
 }) => {
   const [activeTab, setActiveTab] = useState(1);

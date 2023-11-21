@@ -6,9 +6,7 @@ import RealestateInput from "./RealEstateInput";
 import LiquidAssetInput from "./LiquidAssetInput";
 import OtherAssetsInput from "./OtherAssetsInput";
 import { StartingCapitalContext } from "../../../context/StartingCapitalContext";
-import {
-  ActivaState,
-} from "../../../models/types/AssetContextTypes";
+import { ActivaState } from "../../../models/types/AssetContextTypes";
 
 type ActivaInputProps = {
   t: any;
@@ -26,7 +24,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
   t,
   assets,
   setAssets,
-  currentCurrency
+  currentCurrency,
 }) => {
   const [activeTab, setActiveTab] = useState(1);
 

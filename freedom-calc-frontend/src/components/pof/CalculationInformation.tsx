@@ -19,7 +19,7 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
   investmentAllocation,
   setExpectedGrowth,
   expectedGrowth,
-  currentCurrency
+  currentCurrency,
 }) => {
   const [showAssetAllocation, setShowAssetAllocation] =
     React.useState<boolean>(false);

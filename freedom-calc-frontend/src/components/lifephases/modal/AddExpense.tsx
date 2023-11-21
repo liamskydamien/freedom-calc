@@ -14,7 +14,7 @@ const AddExpense: React.FC<AddExpenseProps> = ({
   setExpense,
   setStatus,
   expense,
-    currentCurrency
+  currentCurrency,
 }) => {
   const [taxes, setTaxes] = useState(expense.taxes);
   const [rent, setRent] = useState(expense.housing);
@@ -109,8 +109,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={taxesChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("rent")}</label>
         <div className="form-control relative w-full">
@@ -122,8 +122,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={rentChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("consumption")}</label>
         <div className="form-control relative w-full">
@@ -135,8 +135,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={consumptionChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("insurance")}</label>
         <div className="form-control relative w-full">
@@ -148,8 +148,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={insuranceChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("interest")}</label>
         <div className="form-control relative w-full">
@@ -161,8 +161,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={interestChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("socialSecurity")}</label>
         <div className="form-control relative w-full">
@@ -174,8 +174,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={socialSecurityChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("maintenance")}</label>
         <div className="form-control relative w-full">
@@ -187,8 +187,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={maintenanceChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("otherCosts")}</label>
         <div className="form-control relative w-full">
@@ -200,8 +200,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
             onChange={otherCostsChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <div className="flex gap-3">
           <button className="btn btn-primary" onClick={addExpenseHandler}>

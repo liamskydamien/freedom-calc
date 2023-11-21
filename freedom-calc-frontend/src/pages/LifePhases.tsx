@@ -7,7 +7,7 @@ import ShowSelectedLifePhase from "../components/lifephases/ShowSelectedLifePhas
 import { useNavigate } from "react-router";
 import { ProgressContext } from "../context/ProgressContext";
 import LifePhaseGraph from "../components/lifephases/LifePhaseGraph";
-import {getCurrencySymbol} from "../calculations/utility/getCurrencySymbol";
+import { getCurrencySymbol } from "../calculations/utility/getCurrencySymbol";
 
 const LifePhases = () => {
   const { t } = useTranslation();
@@ -106,7 +106,7 @@ const LifePhases = () => {
         </div>
       </SelectedLifePhaseContextProvider>
       <div>
-        <LifePhaseGraph t={t} currentCurrency={currentCurrency}/>
+        <LifePhaseGraph t={t} currentCurrency={currentCurrency} />
       </div>
     </div>
   );

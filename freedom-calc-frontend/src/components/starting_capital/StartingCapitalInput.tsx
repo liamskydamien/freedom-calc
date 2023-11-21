@@ -13,7 +13,10 @@ type StartingCapitalInputProps = {
   currentCurrency: string;
 };
 
-const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({ t, currentCurrency }) => {
+const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
+  t,
+  currentCurrency,
+}) => {
   // Import Hooks
   const navigate = useNavigate();
 

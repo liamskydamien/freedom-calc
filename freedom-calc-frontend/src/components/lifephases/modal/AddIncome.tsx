@@ -13,7 +13,7 @@ const AddIncome: React.FC<AddIncomeProps> = ({
   setIncome,
   setStatus,
   income,
-    currentCurrency
+  currentCurrency,
 }) => {
   const [dependent, setDependent] = useState(income.dependent);
   const [selfemployed, setSelfemployed] = useState(income.selfemployed);
@@ -93,8 +93,8 @@ const AddIncome: React.FC<AddIncomeProps> = ({
             onChange={dependentChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("selfemployed")}</label>
         <div className="form-control relative w-full">
@@ -106,8 +106,8 @@ const AddIncome: React.FC<AddIncomeProps> = ({
             onChange={selfemployedChangeHandler}
           />
           <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
         <label className="form-label">{t("rentingIncome")}</label>
         <div className="form-control relative w-full">

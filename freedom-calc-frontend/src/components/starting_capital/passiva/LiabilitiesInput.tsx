@@ -15,7 +15,7 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
   liabilitiesState,
   liabilities,
   t,
-    currentCurrency
+  currentCurrency,
 }) => {
   const {
     objectRelatedLiabilities,
@@ -91,89 +91,87 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("liabilities")}</h3>
-          <label className="form-label">
-            {t("object_related_liabilities")}
-          </label>
-          <div className="form-control relative w-full">
-            {liabilitiesValid ? (
-              <input
-                value={objectRelatedLiabilities}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={
-                  objectRelatedLiabilities === 0 ? "" : objectRelatedLiabilities
-                }
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={objectRelatedLiabilitiesChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <label className="form-label">
-            {t("non_object_related_liabilities")}
-          </label>
-          <div className="form-control relative w-full">
-            {liabilitiesValid ? (
-              <input
-                value={
-                  nonObjectRelatedLiabilities === 0
-                    ? ""
-                    : nonObjectRelatedLiabilities
-                }
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={
-                  nonObjectRelatedLiabilities === 0
-                    ? ""
-                    : nonObjectRelatedLiabilities
-                }
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={nonObjectRelatedLiabilitiesChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <label className="form-label">{t("other_liabilities")}</label>
-          <div className="form-control relative w-full">
-            {liabilitiesValid ? (
-              <input
-                value={otherLiabilities}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={otherLiabilities === 0 ? "" : otherLiabilities}
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={otherLiabilitiesChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
+        <label className="form-label">{t("object_related_liabilities")}</label>
+        <div className="form-control relative w-full">
+          {liabilitiesValid ? (
+            <input
+              value={objectRelatedLiabilities}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={
+                objectRelatedLiabilities === 0 ? "" : objectRelatedLiabilities
+              }
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={objectRelatedLiabilitiesChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <label className="form-label">
+          {t("non_object_related_liabilities")}
+        </label>
+        <div className="form-control relative w-full">
+          {liabilitiesValid ? (
+            <input
+              value={
+                nonObjectRelatedLiabilities === 0
+                  ? ""
+                  : nonObjectRelatedLiabilities
+              }
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={
+                nonObjectRelatedLiabilities === 0
+                  ? ""
+                  : nonObjectRelatedLiabilities
+              }
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={nonObjectRelatedLiabilitiesChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <label className="form-label">{t("other_liabilities")}</label>
+        <div className="form-control relative w-full">
+          {liabilitiesValid ? (
+            <input
+              value={otherLiabilities}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={otherLiabilities === 0 ? "" : otherLiabilities}
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={otherLiabilitiesChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
       </div>
+    </div>
   );
 };
 

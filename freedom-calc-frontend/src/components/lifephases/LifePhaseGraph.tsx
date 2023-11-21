@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import {
   Bar,
   BarChart,
-  CartesianGrid, Label,
+  CartesianGrid,
+  Label,
   Legend,
   Tooltip,
   XAxis,
@@ -17,7 +18,10 @@ type LifePhaseGraphProps = {
   currentCurrency: string;
 };
 
-const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t , currentCurrency}) => {
+const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({
+  t,
+  currentCurrency,
+}) => {
   const lifePhases = useContext(InputContext);
 
   const data = createBarChart(lifePhases.phases.phase);
@@ -25,10 +29,14 @@ const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t , currentCurrency}) =
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       return (
-          <div className="custom-tooltip">
-            <p className="income">{`${t('income')} ${payload[0].value} ${currentCurrency}`}</p>
-            <p className="costs">{`${t('expenses')} ${payload[0].value} ${currentCurrency}`}</p>
-          </div>
+        <div className="custom-tooltip">
+          <p className="income">{`${t("income")} ${
+            payload[0].value
+          } ${currentCurrency}`}</p>
+          <p className="costs">{`${t("expenses")} ${
+            payload[0].value
+          } ${currentCurrency}`}</p>
+        </div>
       );
     }
 
@@ -62,10 +70,14 @@ const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t , currentCurrency}) =
               position="insideLeft"
             />
           </YAxis>
-          <Tooltip content={CustomTooltip}/>
+          <Tooltip content={CustomTooltip} />
           <Legend />
-          <Bar dataKey="income" name={t('income')} fill={COLORS.dark.wealth} />
-          <Bar dataKey="expenses" name={t('expenses')} fill={COLORS.dark.costs} />
+          <Bar dataKey="income" name={t("income")} fill={COLORS.dark.wealth} />
+          <Bar
+            dataKey="expenses"
+            name={t("expenses")}
+            fill={COLORS.dark.costs}
+          />
         </BarChart>
       </div>
     </div>

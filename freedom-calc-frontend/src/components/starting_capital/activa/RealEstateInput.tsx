@@ -16,7 +16,7 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
   t,
   realestate,
   valid,
-    currentCurrency
+  currentCurrency,
 }) => {
   const {
     occupiedProperties,
@@ -164,167 +164,167 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("realestate")}</h3>
-          <label className="form-label">{t("occupied_properties")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={occupiedProperties}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={occupiedProperties === 0 ? "" : occupiedProperties}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                placeholder="0"
-                onChange={occupiedPropertiesChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <label className="form-label">{t("rented_properties")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={rentedProperties}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={rentedProperties === 0 ? "" : rentedProperties}
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={rentedPropertiesChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <label className="form-label">{t("commercial_properties")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={commercialProperties}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={commercialProperties === 0 ? "" : commercialProperties}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                placeholder="0"
-                onChange={commercialPropertiesChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <h3 className="text-sm font-bold mt-2">
-            {t("agricultural_land_forest")}
-          </h3>
-          <label className="form-label">{t("forest")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={forest}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={forest === 0 ? "" : forest}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                placeholder="0"
-                onChange={forestChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <label className="form-label">{t("agricultural_land")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={agriculturalLand}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={agriculturalLand === 0 ? "" : agriculturalLand}
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={agriculturalLandChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <h3 className="text-sm font-bold mt-2">{t("funds")}</h3>
-          <label className="form-label">{t("real_estate_funds")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={realEstateFunds}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={realEstateFunds === 0 ? "" : realEstateFunds}
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={realEstateFundsChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
-          <h3 className="text-sm font-bold mt-2">{t("other")}</h3>
-          <label className="form-label">{t("other")}</label>
-          <div className="form-control relative w-full">
-            {valid ? (
-              <input
-                value={otherRealEstate}
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                disabled={true}
-              />
-            ) : (
-              <input
-                value={otherRealEstate === 0 ? "" : otherRealEstate}
-                type="number"
-                placeholder="0"
-                className="input input-lg max-w-full pl-10"
-                onChange={otherChangeHandler}
-              />
-            )}
-            <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">{currentCurrency}</h5>
-            </span>
-          </div>
+        <label className="form-label">{t("occupied_properties")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={occupiedProperties}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={occupiedProperties === 0 ? "" : occupiedProperties}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              placeholder="0"
+              onChange={occupiedPropertiesChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <label className="form-label">{t("rented_properties")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={rentedProperties}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={rentedProperties === 0 ? "" : rentedProperties}
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={rentedPropertiesChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <label className="form-label">{t("commercial_properties")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={commercialProperties}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={commercialProperties === 0 ? "" : commercialProperties}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              placeholder="0"
+              onChange={commercialPropertiesChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <h3 className="text-sm font-bold mt-2">
+          {t("agricultural_land_forest")}
+        </h3>
+        <label className="form-label">{t("forest")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={forest}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={forest === 0 ? "" : forest}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              placeholder="0"
+              onChange={forestChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <label className="form-label">{t("agricultural_land")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={agriculturalLand}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={agriculturalLand === 0 ? "" : agriculturalLand}
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={agriculturalLandChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <h3 className="text-sm font-bold mt-2">{t("funds")}</h3>
+        <label className="form-label">{t("real_estate_funds")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={realEstateFunds}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={realEstateFunds === 0 ? "" : realEstateFunds}
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={realEstateFundsChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
+        </div>
+        <h3 className="text-sm font-bold mt-2">{t("other")}</h3>
+        <label className="form-label">{t("other")}</label>
+        <div className="form-control relative w-full">
+          {valid ? (
+            <input
+              value={otherRealEstate}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              disabled={true}
+            />
+          ) : (
+            <input
+              value={otherRealEstate === 0 ? "" : otherRealEstate}
+              type="number"
+              placeholder="0"
+              className="input input-lg max-w-full pl-10"
+              onChange={otherChangeHandler}
+            />
+          )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+            <h5 className="text-lg font-bold">{currentCurrency}</h5>
+          </span>
         </div>
       </div>
+    </div>
   );
 };
 export default RealEstateInput;
