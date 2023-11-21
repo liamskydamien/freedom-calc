@@ -1,6 +1,7 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { useEffect, useState } from "react";
 import { StockState } from "../../../models/types/AssetContextTypes";
+import {GROWTH_RATE} from "../../../constants/assets/growthrate";
 
 type StockInputProps = {
   t: any;
@@ -44,6 +45,7 @@ const StockInput: React.FC<StockInputProps> = ({
       activeCorporateParticipation +
       passiveCorporateParticipation +
       otherStocks;
+    stocks.growthRate = GROWTH_RATE.stocks;
   };
 
   /**

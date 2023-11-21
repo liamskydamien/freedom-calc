@@ -1,10 +1,6 @@
 import React, { createContext, useState } from "react";
 import { PersonalInformation } from "../models/personalinformation/PersonalInformation";
 import { StartingCapital } from "../models/startingcapital/StartingCapital";
-import { Phases } from "../models/lifephases/Phases";
-import { LifePhase } from "../models/lifephases/LifePhase";
-import { Income } from "../models/lifephases/Income";
-import { Expenses } from "../models/lifephases/Expenses";
 import { InputContextProviderState } from "../models/InputContextProviderState";
 import { ASSET_GROUPS, PASSIVA_GROUP } from "../constants/assets/asset_groups";
 import { LIFEPHASE } from "../constants/assets/lifephases";

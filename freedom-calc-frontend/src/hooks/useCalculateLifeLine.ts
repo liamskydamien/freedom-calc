@@ -1,32 +1,40 @@
-import { useGenerateWealthAndCost } from "../calculations/useGenerateWealthAndCost";
-import { useCreateGraph } from "../calculations/utility/useCreateGraph";
 import { AssetGroup } from "../models/startingcapital/AssetGroup";
 import { LifePhase } from "../models/lifephases/LifePhase";
 import { InvestmentWeights } from "../models/pof/InvestmentWeights";
-import { useCalculateCIGraph } from "../calculations/useCalculateCIGraph";
-import { CIGraph } from "../models/types/CIGraph";
+import {calculateLifeLine} from "../calculations/calculateLifeLine";
+import {createLifeLineGraph} from "../calculations/graphs/createLifeLineGraph";
+import {Point} from "../models/Point";
 
 export const useCalculateLifeLine = (
-  assetGroups: AssetGroup[],
+  assets: AssetGroup[],
+  liabilities: AssetGroup[],
   lifephases: LifePhase[],
-  timeframe: number,
   inflationRate: number,
+  expectedReturn: number,
+  wealthToKeep: number,
+  currency: string,
   investmentWeights: InvestmentWeights,
   startAge: number,
 ) => {
-  const lifeline = useGenerateWealthAndCost(
-    assetGroups,
-    lifephases,
-    timeframe,
-    startAge,
-    investmentWeights,
-    inflationRate,
-  );
-  const { pof, cost, wealth, freeCashflow } = lifeline;
-  const { ciGraph, wealthGraph }: CIGraph = useCalculateCIGraph(
-    freeCashflow,
-    wealth,
-  );
-  const graph = useCreateGraph(wealth, cost, ciGraph, wealthGraph, startAge);
-  return { pof, graph };
+
+  const ratio: number = currency === 'EUR €' ? 1000000 : 10000000;
+
+  const lifeLine = calculateLifeLine(
+      assets,
+      liabilities,
+      lifephases,
+      investmentWeights,
+      inflationRate,
+      expectedReturn,
+      ratio,
+      wealthToKeep
+  )
+
+  const { wealth, cost, pof } = lifeLine; // Destructure the lifeLine
+
+  const graph = createLifeLineGraph(wealth, cost, startAge); // Create the graph
+
+  const realPoF = pof ? new Point(pof.x + startAge, pof.y) : null; // Adjust the x value of the pof to the start age
+
+  return { graph, realPoF };
 };

@@ -8,4 +8,14 @@ export class AssetGroup {
     this.growthRate = growthRate;
     this.startingValue = startingValue;
   }
+  toString(): string {
+      return (
+      "AssetGroup: " +
+      this.name +
+      " with growth rate: " +
+      this.growthRate +
+      " and starting value: " +
+      this.startingValue
+      );
+  }
 }

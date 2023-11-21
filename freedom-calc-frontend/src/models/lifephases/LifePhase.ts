@@ -28,4 +28,19 @@ export class LifePhase {
   calculateTimeframe(): number {
     return this.toAge - this.fromAge;
   }
+
+  toString(): string {
+    return (
+      "LifePhase: " +
+      this.name +
+      " from " +
+      this.fromAge +
+      " to " +
+      this.toAge +
+      " with income: " +
+      this.income.getTotalIncome() +
+      " and expenses: " +
+      this.expenses.getTotalExpenses()
+    );
+  }
 }

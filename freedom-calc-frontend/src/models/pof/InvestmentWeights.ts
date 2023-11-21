@@ -25,13 +25,12 @@ export class InvestmentWeights {
 
   validate() {
     if (
-      this.cash +
+        Math.round(this.cash +
         this.stocks +
         this.preciousMetals +
         this.realestate +
         this.crypto +
-        this.other !==
-      1
+        this.other) !== 1
     ) {
       throw new Error("Investment weights must add up to 1");
     }
@@ -54,5 +53,22 @@ export class InvestmentWeights {
       default:
         throw new Error("Invalid asset group");
     }
+  }
+
+  toString(): string {
+    return (
+      "cash: " +
+      this.cash +
+      " stocks: " +
+      this.stocks +
+      " preciousMetals: " +
+      this.preciousMetals +
+      " realestate: " +
+      this.realestate +
+      " crypto: " +
+      this.crypto +
+      " other: " +
+      this.other
+    );
   }
 }

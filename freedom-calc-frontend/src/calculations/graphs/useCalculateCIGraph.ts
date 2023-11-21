@@ -1,14 +1,15 @@
-import { useScaleDownSize } from "./utility/useScaleDownSize";
-import { CIGraph } from "../models/types/CIGraph";
+import { useScaleDownSize } from "../utility/useScaleDownSize";
+import { CIGraph } from "../../models/types/CIGraph";
+
 /**
  * Calculate the cumulative income graph
  * @param data - The data to calculate the cumulative income graph from
  * @param wealth - The wealth data to scale the data down to
  */
-export const useCalculateCIGraph = (
+export function useCalculateCIGraph(
   data: number[],
   wealth: number[],
-): CIGraph => {
+): CIGraph {
   const normalizedData = useScaleDownSize(data);
   const ciGraph: number[] = [];
   const wealthGraph: number[] = wealth;
@@ -19,4 +20,4 @@ export const useCalculateCIGraph = (
     wealthGraph[i] -= total;
   }
   return { ciGraph, wealthGraph };
-};
+}

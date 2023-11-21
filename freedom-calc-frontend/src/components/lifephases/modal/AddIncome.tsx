@@ -142,8 +142,9 @@ const AddIncome: React.FC<AddIncomeProps> = ({
           <label className="form-label">{t("otherIncome")}</label>
           <div className="form-control">
             <input
-              value={otherIncome}
+              value={otherIncome === 0 ? "" : otherIncome}
               type="number"
+              placeholder="0"
               className="input max-w-full"
               onChange={otherIncomeChangeHandler}
             />

@@ -1,9 +1,9 @@
 import {
   Bar,
-  ComposedChart,
+  ComposedChart, Label,
   Legend,
   Line,
-  ReferenceDot,
+  ReferenceDot, ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -17,7 +17,7 @@ type GraphPoFProps = {
   theme: string;
   pof: Point | null;
   graph: any[];
-  startingAge: number;
+  currency: string;
 };
 
 const GraphPoF: React.FC<GraphPoFProps> = ({
@@ -25,44 +25,56 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
   graph,
   pof,
   theme,
-  startingAge,
+  currency,
 }) => {
   return (
-    <div className="card max-w-fit p-5">
+    <div className="card max-w-full p-5">
       <h1>{t('life_line_title')}</h1>
-      <ComposedChart width={850} height={400} data={graph}>
-        <XAxis dataKey="age" />
-        <YAxis />
-        <Bar dataKey="ciGraph" stackId="a" fill="#FF84d8" hide={true} />
-        <Bar dataKey="wealth" stackId="a" fill="#8884d8" hide={true} />
-        <Line
-          dot={false}
-          type="monotone"
-          dataKey="wealth"
-          stroke={theme === "light" ? COLORS.light.wealth : COLORS.dark.wealth}
-          strokeWidth={3}
-          connectNulls={true}
-          name={t("wealth")}
-        />
-        <Line
-          dot={false}
-          type="monotone"
-          dataKey="costs"
-          stroke={theme === "light" ? COLORS.light.costs : COLORS.dark.costs}
-          strokeWidth={3}
-          connectNulls={true}
-          name={t("costs")}
-        />
-        <ReferenceDot
-          x={pof ? pof.x + startingAge : 0}
-          y={pof ? pof.y : 0}
-          r={10}
-          fill={theme === "light" ? COLORS.light.pof : COLORS.dark.pof}
-          stroke="none"
-        />
-        <Tooltip />
-        <Legend />
-      </ComposedChart>
+      <ResponsiveContainer width={800} height={400}>
+        <ComposedChart data={graph}>
+          <XAxis dataKey="name" >
+            <Label value={t('years')}
+                   offset={0}
+                   position="insideBottom" />
+          </XAxis>
+          <YAxis type="number">
+            <Label value={t('in_1000') + " " + currency}
+                   offset={100}
+                   angle={-90}
+                   position="insideLeft" />
+          </YAxis>
+          <Line
+              dot={false}
+              type="monotone"
+              dataKey="wealth"
+              stroke={theme === "light" ? COLORS.light.wealth : COLORS.dark.wealth}
+              strokeWidth={3}
+              connectNulls={true}
+              name={t("wealth")}
+          />
+          <Line
+              dot={false}
+              type="monotone"
+              dataKey="cost"
+              stroke={theme === "light" ? COLORS.light.costs : COLORS.dark.costs}
+              strokeWidth={3}
+              connectNulls={true}
+              name={t("costs")}
+          />
+          {
+              pof && pof.x > 0 && pof.y > 0 &&
+              <ReferenceDot
+                  x={pof.x}
+                  y={pof.y}
+                  r={8}
+                  fill={theme === "light" ? COLORS.light.pof : COLORS.dark.pof}
+                  stroke="none"
+              />
+          }
+          <Tooltip />
+          <Legend verticalAlign="top" height={36}/>
+        </ComposedChart>
+      </ResponsiveContainer>
     </div>
   );
 };

@@ -20,16 +20,19 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
 
   const { theme } = useDarkmode();
 
-  const { personalInformation, startingCapital, phases } =
+  const { personalInformation, startingCapital, phases} =
     useContext(InputContext);
 
-  const { pof, graph } = useCalculateLifeLine(
-    startingCapital.assetGroups,
-    phases.phase,
-    personalInformation.expectedAge,
-    expectedGrowth.inflation,
-    investmentAllocation,
-    personalInformation.getAge(),
+  const { graph , realPoF} = useCalculateLifeLine(
+        startingCapital.assetGroups,
+        startingCapital.liabilities,
+        phases.phase,
+        expectedGrowth.inflation,
+        expectedGrowth.expectedReturn,
+        expectedGrowth.wealthToKeep,
+        personalInformation.currency,
+        investmentAllocation,
+        personalInformation.getAge(),
   );
 
   return (
@@ -47,11 +50,11 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
         <GraphPoF
           t={t}
           graph={graph}
-          pof={pof}
-          startingAge={personalInformation.getAge()}
+          pof={realPoF}
           theme={theme}
+          currency={personalInformation.currency}
         />
-        <AchievePOF t={t} pof={pof} />
+        <AchievePOF t={t} pof={realPoF} />
       </div>
     </div>
   );
