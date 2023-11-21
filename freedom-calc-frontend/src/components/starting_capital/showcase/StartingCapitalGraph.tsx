@@ -2,7 +2,7 @@ import React, { useCallback, useState } from "react";
 import { PieChart, Pie, Sector, Cell } from "recharts";
 import { COLORS } from "../../../constants/colors/colors";
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import { useCreatePieChart } from "../../../calculations/graphs/useCreatePieChart";
+import { createPieChart } from "../../../calculations/graphs/createPieChart";
 
 const renderActiveShape = (props: any) => {
   const RADIAN = Math.PI / 180;
@@ -83,7 +83,7 @@ type StartingCapitalGraph = {
 };
 
 const StartingCapitalGraph: React.FC<StartingCapitalGraph> = ({ t, data }) => {
-  const transformedData = useCreatePieChart(data);
+  const transformedData = createPieChart(data);
 
   const [activeIndex, setActiveIndex] = useState(0);
   const onPieEnter = useCallback(
