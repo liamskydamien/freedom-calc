@@ -18,7 +18,6 @@ type NewLifePhaseModalProps = {
   valid: boolean;
 };
 const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
-  valid,
   addPhase,
   startAge,
   t,

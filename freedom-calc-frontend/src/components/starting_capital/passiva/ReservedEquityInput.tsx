@@ -1,6 +1,5 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import {
-  LiabilitiesState,
   ReservedEquityState,
 } from "../../../models/types/AssetContextTypes";
 import { useEffect } from "react";
@@ -97,7 +96,11 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           ) : (
             <input
-              value={reservedEquityForConsumption === 0 ? "" : reservedEquityForConsumption}
+              value={
+                reservedEquityForConsumption === 0
+                  ? ""
+                  : reservedEquityForConsumption
+              }
               type="number"
               placeholder="0"
               className="input max-w-full"
@@ -111,7 +114,11 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
           </label>
           {liabilitiesValid ? (
             <input
-              value={reservedEquityForPensionProvision === 0 ? "" : reservedEquityForPensionProvision}
+              value={
+                reservedEquityForPensionProvision === 0
+                  ? ""
+                  : reservedEquityForPensionProvision
+              }
               type="number"
               placeholder="0"
               className="input max-w-full"
@@ -119,7 +126,11 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
             />
           ) : (
             <input
-              value={reservedEquityForPensionProvision === 0 ? "" : reservedEquityForPensionProvision}
+              value={
+                reservedEquityForPensionProvision === 0
+                  ? ""
+                  : reservedEquityForPensionProvision
+              }
               type="number"
               placeholder="0"
               className="input max-w-full"

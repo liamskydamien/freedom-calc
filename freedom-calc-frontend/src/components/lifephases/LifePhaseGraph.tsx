@@ -9,7 +9,7 @@ import {
   YAxis,
 } from "recharts";
 import { InputContext } from "../../context/InputContext";
-import { useCreateBarChart } from "../../calculations/graphs/useCreateBarChart";
+import { createBarChart } from "../../calculations/graphs/createBarChart";
 import { COLORS } from "../../constants/colors/colors";
 
 type LifePhaseGraphProps = {
@@ -19,7 +19,7 @@ type LifePhaseGraphProps = {
 const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t }) => {
   const lifePhases = useContext(InputContext);
 
-  const data = useCreateBarChart(lifePhases.phases.phase);
+  const data = createBarChart(lifePhases.phases.phase);
 
   return (
     <div className="card max-w-full">

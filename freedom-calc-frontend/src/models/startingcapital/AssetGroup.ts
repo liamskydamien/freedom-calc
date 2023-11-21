@@ -9,13 +9,13 @@ export class AssetGroup {
     this.startingValue = startingValue;
   }
   toString(): string {
-      return (
+    return (
       "AssetGroup: " +
       this.name +
       " with growth rate: " +
       this.growthRate +
       " and starting value: " +
       this.startingValue
-      );
+    );
   }
 }

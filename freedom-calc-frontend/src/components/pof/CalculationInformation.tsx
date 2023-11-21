@@ -46,9 +46,7 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
     expectedGrowth.expectedReturn,
   );
 
-  const [expectedWealthToKeep, setExpectedWealthToKeep] = useState<number>(
-    0,
-  );
+  const [expectedWealthToKeep, setExpectedWealthToKeep] = useState<number>(0);
 
   /**
    * Handles the change of the inflation rate
@@ -63,7 +61,11 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
    */
   const handleCalculate = () => {
     setExpectedGrowth(
-      new ExpectedGrowth(inflationRate / 100, expectedGrowthRate, expectedWealthToKeep),
+      new ExpectedGrowth(
+        inflationRate / 100,
+        expectedGrowthRate,
+        expectedWealthToKeep,
+      ),
     );
     const total = cash + stocks + realEstate + preciousMetals + other + crypto;
     if (total !== 100) {

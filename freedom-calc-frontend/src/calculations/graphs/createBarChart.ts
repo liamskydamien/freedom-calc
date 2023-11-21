@@ -5,7 +5,7 @@ import { filterOutDefaultPhases } from "../utility/useFilterOutDefaultPhase";
  * Creates a bar chart from the given data
  * @param data The data to create the bar chart from
  */
-export function useCreateBarChart (data: LifePhase[]) {
+export function createBarChart(data: LifePhase[]) {
   return filterOutDefaultPhases(data).map((lifePhase: LifePhase) => {
     return {
       name: lifePhase.name,

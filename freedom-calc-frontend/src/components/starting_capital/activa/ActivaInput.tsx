@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import CryptoCurrencyInput from "./CryptoCurrencyInput";
 import StockInput from "./StockInput";
@@ -8,8 +8,6 @@ import OtherAssetsInput from "./OtherAssetsInput";
 import { StartingCapitalContext } from "../../../context/StartingCapitalContext";
 import {
   ActivaState,
-  PassivaState,
-  StartingCapitalProviderState,
 } from "../../../models/types/AssetContextTypes";
 
 type ActivaInputProps = {
