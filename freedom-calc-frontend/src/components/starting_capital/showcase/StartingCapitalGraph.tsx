@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from "react";
-import { PieChart, Pie, Sector, Cell } from "recharts";
+import { PieChart, Pie, Sector } from "recharts";
 import { COLORS } from "../../../constants/colors/colors";
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { createPieChart } from "../../../calculations/graphs/createPieChart";
