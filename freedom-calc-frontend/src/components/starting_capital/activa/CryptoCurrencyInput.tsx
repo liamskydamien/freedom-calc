@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { CryptoState } from "../../../models/types/AssetContextTypes";
 import { GROWTH_RATE } from "../../../constants/assets/growthrate";
@@ -8,6 +8,7 @@ type CryptoCurrencyInputProps = {
   cryptoCurrency: AssetGroup;
   valid: boolean;
   cryptoStates: CryptoState;
+  currentCurrency: string;
 };
 
 const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
@@ -15,6 +16,7 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
   t,
   cryptoCurrency,
   valid,
+  currentCurrency
 }) => {
   const {
     bitcoin,
@@ -62,7 +64,7 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("crypto_currency")}</h3>
         <div>
-          <div className="form-field">
+          <div className="form-control relative w-full">
             <label className="form-label">{t("bitcoin")}</label>
             {valid ? (
               <input
@@ -80,8 +82,11 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
                 onChange={bitcoinChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
+          <div className="form-control relative w-full">
             <label className="form-label">{t("ethereum")}</label>
             {valid ? (
               <input
@@ -99,25 +104,32 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
                 onChange={ethereumChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("other")}</label>
+          <label className="form-label">{t("other")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={otherCryptos}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
+                //TODO: Like this!
               <input
                 value={otherCryptos === 0 ? "" : otherCryptos}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={otherChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ type OtherAssetsInputProps = {
   other: AssetGroup;
   valid: boolean;
   otherAssetStates: OtherState;
+  currentCurrency: string;
 };
 
 const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
@@ -15,6 +16,7 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
   t,
   other,
   valid,
+    currentCurrency
 }) => {
   const {
     collectibles,

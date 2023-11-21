@@ -1,5 +1,5 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { StockState } from "../../../models/types/AssetContextTypes";
 import { GROWTH_RATE } from "../../../constants/assets/growthrate";
 
@@ -8,6 +8,7 @@ type StockInputProps = {
   stocks: AssetGroup;
   valid: boolean;
   stockStates: StockState;
+  currentCurrency: string;
 };
 
 const StockInput: React.FC<StockInputProps> = ({
@@ -15,6 +16,7 @@ const StockInput: React.FC<StockInputProps> = ({
   t,
   stocks,
   valid,
+    currentCurrency
 }) => {
   const {
     singleStocks,

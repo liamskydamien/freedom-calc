@@ -1,12 +1,13 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { LiabilitiesState } from "../../../models/types/AssetContextTypes";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 type LiabilitiesInputProps = {
   t: any;
   liabilities: AssetGroup;
   liabilitiesValid: boolean;
   liabilitiesState: LiabilitiesState;
+  currentCurrency: string;
 };
 
 const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
@@ -14,6 +15,7 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
   liabilitiesState,
   liabilities,
   t,
+    currentCurrency
 }) => {
   const {
     objectRelatedLiabilities,

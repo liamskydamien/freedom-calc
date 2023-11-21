@@ -13,6 +13,7 @@ type LiquidAssetsInput = {
   valid: boolean;
   liquidAssetStates: CashState;
   preciousMetalsStates: PreciousMetalsState;
+  currentCurrency: string;
 };
 
 const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
@@ -22,6 +23,7 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
   cash,
   preciousMetals,
   valid,
+    currentCurrency
 }) => {
   const {
     savings,

@@ -1,5 +1,5 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { RealEstateState } from "../../../models/types/AssetContextTypes";
 import { GROWTH_RATE } from "../../../constants/assets/growthrate";
 
@@ -8,6 +8,7 @@ type RealEstateInput = {
   realestate: AssetGroup;
   valid: boolean;
   realEstateStates: RealEstateState;
+  currentCurrency: string;
 };
 
 const RealEstateInput: React.FC<RealEstateInput> = ({
@@ -15,6 +16,7 @@ const RealEstateInput: React.FC<RealEstateInput> = ({
   t,
   realestate,
   valid,
+    currentCurrency
 }) => {
   const {
     occupiedProperties,

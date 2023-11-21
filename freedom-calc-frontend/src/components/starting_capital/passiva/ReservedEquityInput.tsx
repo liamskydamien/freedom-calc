@@ -9,12 +9,14 @@ type ReservedEquityInputProps = {
   reservedEquity: AssetGroup;
   liabilitiesValid: boolean;
   reservedEquityState: ReservedEquityState;
+  currentCurrency: string;
 };
 
 const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
   liabilitiesValid,
   reservedEquityState,
   reservedEquity,
+    currentCurrency,
   t,
 }) => {
   const {
