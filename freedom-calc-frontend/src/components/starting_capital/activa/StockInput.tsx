@@ -1,7 +1,7 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { StockState } from "../../../models/types/AssetContextTypes";
-import {GROWTH_RATE} from "../../../constants/assets/growthrate";
+import { GROWTH_RATE } from "../../../constants/assets/growthrate";
 
 type StockInputProps = {
   t: any;
@@ -256,7 +256,11 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={activeCorporateParticipation === 0 ? "" : activeCorporateParticipation}
+                value={
+                  activeCorporateParticipation === 0
+                    ? ""
+                    : activeCorporateParticipation
+                }
                 type="number"
                 placeholder="0"
                 className="input max-w-full"
@@ -277,7 +281,11 @@ const StockInput: React.FC<StockInputProps> = ({
               />
             ) : (
               <input
-                value={passiveCorporateParticipation === 0 ? "" : passiveCorporateParticipation}
+                value={
+                  passiveCorporateParticipation === 0
+                    ? ""
+                    : passiveCorporateParticipation
+                }
                 type="number"
                 placeholder="0"
                 className="input max-w-full"

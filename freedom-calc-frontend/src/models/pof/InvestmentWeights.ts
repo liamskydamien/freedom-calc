@@ -25,12 +25,14 @@ export class InvestmentWeights {
 
   validate() {
     if (
-        Math.round(this.cash +
-        this.stocks +
-        this.preciousMetals +
-        this.realestate +
-        this.crypto +
-        this.other) !== 1
+      Math.round(
+        this.cash +
+          this.stocks +
+          this.preciousMetals +
+          this.realestate +
+          this.crypto +
+          this.other,
+      ) !== 1
     ) {
       throw new Error("Investment weights must add up to 1");
     }

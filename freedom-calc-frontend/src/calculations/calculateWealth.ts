@@ -1,5 +1,5 @@
-import {AssetGroup} from "../models/startingcapital/AssetGroup";
-import {InvestmentWeights} from "../models/pof/InvestmentWeights";
+import { AssetGroup } from "../models/startingcapital/AssetGroup";
+import { InvestmentWeights } from "../models/pof/InvestmentWeights";
 
 /**
  * Calculate the wealth
@@ -11,33 +11,40 @@ import {InvestmentWeights} from "../models/pof/InvestmentWeights";
  * @param reductionFactor given reduction factor
  */
 export function calculateWealth(
-    assetGroups : AssetGroup[],
-    liabilities : AssetGroup[],
-    annualInvestments : number[],
-    investmentWeights : InvestmentWeights,
-    expectedIncreasePerYear : number,
-    reductionFactor : number,
-) : number[] {
-    const wealth : number[] = [];
-    const assetGrowth : number[][] = [];
-    const liabilitiesDeduction : number = calculateLiabilityDeduction(liabilities, reductionFactor);
+  assetGroups: AssetGroup[],
+  liabilities: AssetGroup[],
+  annualInvestments: number[],
+  investmentWeights: InvestmentWeights,
+  expectedIncreasePerYear: number,
+  reductionFactor: number,
+): number[] {
+  const wealth: number[] = [];
+  const assetGrowth: number[][] = [];
+  const liabilitiesDeduction: number = calculateLiabilityDeduction(
+    liabilities,
+    reductionFactor,
+  );
 
-    assetGroups.forEach((assetGroup) => {
-        assetGrowth.push( // For each asset group
-            calculateIncreasePerAssetGroup(
-                assetGroup,
-                annualInvestments,
-                investmentWeights.getInvestmentWeight(assetGroup.name),
-                expectedIncreasePerYear,
-                reductionFactor,
-            ),
-        );
-    });
+  assetGroups.forEach((assetGroup) => {
+    assetGrowth.push(
+      // For each asset group
+      calculateIncreasePerAssetGroup(
+        assetGroup,
+        annualInvestments,
+        investmentWeights.getInvestmentWeight(assetGroup.name),
+        expectedIncreasePerYear,
+        reductionFactor,
+      ),
+    );
+  });
 
-    for (let year = 0; year < annualInvestments.length; year++) { // For each year
-        const wealthGrowth :number = assetGrowth.reduce((a, b) => a.map((v, i) => v + b[i]))[year] - liabilitiesDeduction;
-        wealth.push(Number(wealthGrowth.toFixed(reductionFactor < 10000 ? 2 : 6))); // Add all asset growths together to get wealth
-    }
+  for (let year = 0; year < annualInvestments.length; year++) {
+    // For each year
+    const wealthGrowth: number =
+      assetGrowth.reduce((a, b) => a.map((v, i) => v + b[i]))[year] -
+      liabilitiesDeduction;
+    wealth.push(Number(wealthGrowth.toFixed(reductionFactor < 10000 ? 2 : 6))); // Add all asset growths together to get wealth
+  }
 
   return wealth;
 }
@@ -51,25 +58,28 @@ export function calculateWealth(
  * @param reductionFactor given reduction factor
  */
 function calculateIncreasePerAssetGroup(
-    assetGroup : AssetGroup,
-    annualInvestment : number[],
-    investmentWeight : number,
-    expectedIncreasePerYear : number,
-    reductionFactor : number,
-) : number[] {
-    const assetGrowth : number[] = [];
-    const growthRate : number = factorInExpectedIncreasePerYear(assetGroup.growthRate, expectedIncreasePerYear);  // Growth rate of the asset group
-    let assetValue = assetGroup.startingValue / reductionFactor; // Set the asset value to the starting value of the asset group and reduce it by a specified factor
+  assetGroup: AssetGroup,
+  annualInvestment: number[],
+  investmentWeight: number,
+  expectedIncreasePerYear: number,
+  reductionFactor: number,
+): number[] {
+  const assetGrowth: number[] = [];
+  const growthRate: number = factorInExpectedIncreasePerYear(
+    assetGroup.growthRate,
+    expectedIncreasePerYear,
+  ); // Growth rate of the asset group
+  let assetValue = assetGroup.startingValue / reductionFactor; // Set the asset value to the starting value of the asset group and reduce it by a specified factor
 
-    console.log("assetGroup: " + assetGroup.name);
-    console.log("growthRate: " + growthRate);
-    console.log("startingcapital: " + assetGroup.startingValue);
+  console.log("assetGroup: " + assetGroup.name);
+  console.log("growthRate: " + growthRate);
+  console.log("startingcapital: " + assetGroup.startingValue);
 
-    for (let year = 0; year < annualInvestment.length; year++) {
-        assetValue += assetValue >= 0 ? assetValue * growthRate : 0; // Calculate the asset value through the compound interest formula
-        assetValue += (annualInvestment[year] / reductionFactor) * investmentWeight; // Calculate the asset value with the annual investment
-        assetGrowth.push(assetValue); // Push the asset value to the asset growth array
-    }
+  for (let year = 0; year < annualInvestment.length; year++) {
+    assetValue += assetValue >= 0 ? assetValue * growthRate : 0; // Calculate the asset value through the compound interest formula
+    assetValue += (annualInvestment[year] / reductionFactor) * investmentWeight; // Calculate the asset value with the annual investment
+    assetGrowth.push(assetValue); // Push the asset value to the asset growth array
+  }
 
   return assetGrowth;
 }
@@ -80,10 +90,9 @@ function calculateIncreasePerAssetGroup(
  * @param expectedIncreasePerYear given expected increase per year from the user
  */
 function factorInExpectedIncreasePerYear(
-    assetGrowth : number,
-    expectedIncreasePerYear : number,
-) : number {
-
+  assetGrowth: number,
+  expectedIncreasePerYear: number,
+): number {
   return assetGrowth * (expectedIncreasePerYear / 4); // Divided by 4 because the growth rate is based on a 4% increase per year
 }
 
@@ -93,14 +102,14 @@ function factorInExpectedIncreasePerYear(
  * @param reductionFactor given reduction factor
  */
 function calculateLiabilityDeduction(
-    liabilities : AssetGroup[],
-    reductionFactor : number,
-) : number {
-    let liabilityDeduction : number = 0;
+  liabilities: AssetGroup[],
+  reductionFactor: number,
+): number {
+  let liabilityDeduction: number = 0;
 
-    liabilities.forEach((liability) => {
-        liabilityDeduction += liability.startingValue / reductionFactor;
-    });
+  liabilities.forEach((liability) => {
+    liabilityDeduction += liability.startingValue / reductionFactor;
+  });
 
   return liabilityDeduction;
 }

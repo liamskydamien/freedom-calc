@@ -1,9 +1,9 @@
 import { AssetGroup } from "../models/startingcapital/AssetGroup";
 import { LifePhase } from "../models/lifephases/LifePhase";
 import { InvestmentWeights } from "../models/pof/InvestmentWeights";
-import {calculateLifeLine} from "../calculations/calculateLifeLine";
-import {createLifeLineGraph} from "../calculations/graphs/createLifeLineGraph";
-import {Point} from "../models/Point";
+import { calculateLifeLine } from "../calculations/calculateLifeLine";
+import { createLifeLineGraph } from "../calculations/graphs/createLifeLineGraph";
+import { Point } from "../models/Point";
 
 export const useCalculateLifeLine = (
   assets: AssetGroup[],
@@ -16,19 +16,18 @@ export const useCalculateLifeLine = (
   investmentWeights: InvestmentWeights,
   startAge: number,
 ) => {
-
-  const ratio: number = currency === 'EUR €' ? 1000000 : 10000000;
+  const ratio: number = currency === "EUR €" ? 1000000 : 10000000;
 
   const lifeLine = calculateLifeLine(
-      assets,
-      liabilities,
-      lifephases,
-      investmentWeights,
-      inflationRate,
-      expectedReturn,
-      ratio,
-      wealthToKeep
-  )
+    assets,
+    liabilities,
+    lifephases,
+    investmentWeights,
+    inflationRate,
+    expectedReturn,
+    ratio,
+    wealthToKeep,
+  );
 
   const { wealth, cost, pof } = lifeLine; // Destructure the lifeLine
 

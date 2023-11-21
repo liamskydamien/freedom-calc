@@ -17,8 +17,8 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
   setExpectedGrowthRate,
   handleShowAssetAllocation,
   t,
-    expectedWealthToKeep,
-    setExpectedWealthToKeep,
+  expectedWealthToKeep,
+  setExpectedWealthToKeep,
 }) => {
   /**
    * Handles the change of the inflation rate
@@ -48,7 +48,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
     setExpectedWealthToKeep(
       event.target.value === "" ? 0 : parseFloat(event.target.value),
     );
-  }
+  };
 
   /**
    * Handles the change of the expected growth rate
@@ -91,11 +91,11 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
           <label className="form-label">{t("wealth_to_keep")}</label>
           <div className="form-control relative w-full">
             <input
-                type="number"
-                className="input input-lg max-w-full pl-10"
-                value={expectedWealthToKeep === 0 ? "" : expectedWealthToKeep}
-                placeholder="0"
-                onChange={handleExpectedWealthToKeepChange}
+              type="number"
+              className="input input-lg max-w-full pl-10"
+              value={expectedWealthToKeep === 0 ? "" : expectedWealthToKeep}
+              placeholder="0"
+              onChange={handleExpectedWealthToKeepChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
               <h5 className="text-lg font-bold">%</h5>

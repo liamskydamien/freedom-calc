@@ -1,7 +1,7 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { OtherState } from "../../../models/types/AssetContextTypes";
-import {GROWTH_RATE} from "../../../constants/assets/growthrate";
+import { GROWTH_RATE } from "../../../constants/assets/growthrate";
 
 type OtherAssetsInputProps = {
   t: any;
