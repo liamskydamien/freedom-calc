@@ -64,20 +64,20 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("crypto_currency")}</h3>
         <div>
+          <label className="form-label">{t("bitcoin")}</label>
           <div className="form-control relative w-full">
-            <label className="form-label">{t("bitcoin")}</label>
             {valid ? (
               <input
                 value={bitcoin}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
               <input
                 value={bitcoin === 0 ? "" : bitcoin}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 placeholder="0"
                 onChange={bitcoinChangeHandler}
               />
@@ -86,13 +86,14 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
               <h5 className="text-lg font-bold">{currentCurrency}</h5>
             </span>
           </div>
+          <label className="form-label">{t("ethereum")}</label>
           <div className="form-control relative w-full">
-            <label className="form-label">{t("ethereum")}</label>
+
             {valid ? (
               <input
                 value={ethereum}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -100,7 +101,7 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
                 value={ethereum === 0 ? "" : ethereum}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={ethereumChangeHandler}
               />
             )}

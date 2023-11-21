@@ -165,13 +165,13 @@ const StockInput: React.FC<StockInputProps> = ({
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("stocks")}</h3>
         <div>
-          <div className="form-field">
-            <label className="form-label">{t("single_stocks")}</label>
+          <label className="form-label">{t("single_stocks")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={singleStocks}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -179,19 +179,22 @@ const StockInput: React.FC<StockInputProps> = ({
                 value={singleStocks === 0 ? "" : singleStocks}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={singleStocksChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
           <h3 className="text-sm font-bold mt-2">{t("stock_funds")}</h3>
-          <div className="form-field">
-            <label className="form-label">{t("fund")}</label>
+          <label className="form-label">{t("fund")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={fund}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -199,18 +202,21 @@ const StockInput: React.FC<StockInputProps> = ({
                 value={fund === 0 ? "" : fund}
                 placeholder="0"
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={fundChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("etf")}</label>
+          <label className="form-label">{t("etf")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={etf}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -218,18 +224,21 @@ const StockInput: React.FC<StockInputProps> = ({
                 value={etf === 0 ? "" : etf}
                 placeholder="0"
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={etfChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("derivative")}</label>
+          <label className="form-label">{t("derivative")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={derivative}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -237,23 +246,24 @@ const StockInput: React.FC<StockInputProps> = ({
                 value={derivative === 0 ? "" : derivative}
                 placeholder="0"
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={derivativeChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
           <h3 className="text-sm font-bold mt-2">
             {t("corporate_participation")}
           </h3>
-          <div className="form-field">
-            <label className="form-label">
-              {t("active_corporate_participation")}
-            </label>
+          <label className="form-label">{t("active_corporate_participation")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={activeCorporateParticipation}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -265,20 +275,23 @@ const StockInput: React.FC<StockInputProps> = ({
                 }
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={activeCorporateParticipationChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">
-              {t("passive_corporate_participation")}
-            </label>
+          <label className="form-label">
+            {t("passive_corporate_participation")}
+          </label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={passiveCorporateParticipation}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -290,19 +303,22 @@ const StockInput: React.FC<StockInputProps> = ({
                 }
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={passiveCorporateParticipationChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
           <h3 className="text-sm font-bold mt-2">{t("other")}</h3>
-          <div className="form-field">
-            <label className="form-label">{t("other")}</label>
+          <label className="form-label">{t("other")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={otherStocks}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -310,10 +326,13 @@ const StockInput: React.FC<StockInputProps> = ({
                 value={otherStocks === 0 ? "" : otherStocks}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={otherChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
       </div>
