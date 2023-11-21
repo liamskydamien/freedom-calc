@@ -13,4 +13,4 @@ const StartingCapital = () => {
   );
 };
 
-export default StartingCapital;
+export default StartingCapital

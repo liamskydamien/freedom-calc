@@ -9,6 +9,7 @@ type InputExpectedGrowthProps = {
   expectedGrowthRate: number;
   expectedWealthToKeep: number;
   setExpectedWealthToKeep: (expectedWealthToKeep: number) => void;
+  currentCurrency: string;
 };
 const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
   expectedGrowthRate,
@@ -19,6 +20,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
   t,
   expectedWealthToKeep,
   setExpectedWealthToKeep,
+  currentCurrency,
 }) => {
   /**
    * Handles the change of the inflation rate
@@ -98,7 +100,7 @@ const InputExpectedGrowth: React.FC<InputExpectedGrowthProps> = ({
               onChange={handleExpectedWealthToKeepChange}
             />
             <span className="absolute inset-y-0 left-3 inline-flex items-center">
-              <h5 className="text-lg font-bold">%</h5>
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
             </span>
           </div>
         </div>

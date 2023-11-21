@@ -7,6 +7,7 @@ import CalculationInformation from "./CalculationInformation";
 import useDarkmode from "../../hooks/useDarkmode";
 import { useCalculateLifeLine } from "../../hooks/useCalculateLifeLine";
 import { InputContext } from "../../context/InputContext";
+import {getCurrencySymbol} from "../../calculations/utility/getCurrencySymbol";
 
 type PoFProps = {
   t: any;
@@ -35,6 +36,8 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
     personalInformation.getAge(),
   );
 
+  const currentCurrency= getCurrencySymbol(personalInformation.currency);
+
   return (
     <div className="flex gap-2">
       <div>
@@ -44,6 +47,7 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
           t={t}
           investmentAllocation={investmentAllocation}
           setInvestmentAllocation={setInvestmentAllocation}
+          currentCurrency={currentCurrency}
         />
       </div>
       <div className="flex flex-col gap-2">
