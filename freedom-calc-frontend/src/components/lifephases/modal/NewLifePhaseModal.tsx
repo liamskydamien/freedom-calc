@@ -16,12 +16,14 @@ type NewLifePhaseModalProps = {
   t: any;
   expectedAge: number;
   valid: boolean;
+    currentCurrency: string;
 };
 const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
   addPhase,
   startAge,
   t,
   expectedAge,
+    currentCurrency
 }) => {
   const [income, setIncome] = useState(
     new Income(0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
@@ -87,6 +89,7 @@ const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
               income={income}
               setIncome={setIncome}
               setStatus={setStatus}
+              currentCurrency={currentCurrency}
             />
           ) : status === "expense" ? (
             <AddExpense
@@ -94,6 +97,7 @@ const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
               expense={expense}
               setStatus={setStatus}
               setExpense={setExpense}
+              currentCurrency={currentCurrency}
             />
           ) : (
             status === "summary" && (
@@ -141,28 +145,38 @@ const NewLifePhaseModal: React.FC<NewLifePhaseModalProps> = ({
 
                   <div className="flex justify-between">
                     <div className="flex mt-auto mb-auto">
-                      <p className="mb-0">{t("income")}</p>
+                      <p className="mb-0 mr-5">{t("income")}</p>
                     </div>
+                    <div className="form-control">
                     <input
                       value={income.getTotalIncome()}
                       type="number"
-                      className="input max-w-fit"
+                      className="input pl-10"
                       readOnly
                       disabled
-                    />
+                    /><span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
+                    </div>
+
                   </div>
 
                   <div className="flex justify-between">
                     <div className="flex mt-auto mb-auto">
-                      <p className="mb-0">{t("expenses")}</p>
+                      <p className="mb-0 mr-5">{t("expenses")}</p>
                     </div>
-                    <input
-                      value={expense.getTotalExpenses()}
-                      type="number"
-                      className="input max-w-fit"
-                      readOnly
-                      disabled
-                    />
+                    <div className="form-control">
+                      <input
+                          value={expense.getTotalExpenses()}
+                          type="number"
+                          className="input pl-10"
+                          readOnly
+                          disabled
+                      />
+                      <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
+                    </div>
                   </div>
                 </div>
                 <div className="flex gap-4">

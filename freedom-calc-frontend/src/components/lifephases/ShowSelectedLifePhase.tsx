@@ -3,8 +3,9 @@ import { SelectedLifePhaseContext } from "../../context/SelectedLifePhaseContext
 
 type ShowSelectedLifePhaseProps = {
   t: any;
+  currentCurrency: string;
 };
-const ShowSelectedLifePhase: React.FC<ShowSelectedLifePhaseProps> = ({ t }) => {
+const ShowSelectedLifePhase: React.FC<ShowSelectedLifePhaseProps> = ({ t , currentCurrency}) => {
   const { selectedLifePhase } = useContext(SelectedLifePhaseContext);
 
   /**

@@ -118,7 +118,6 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
                 disabled={true}
               />
             ) : (
-                //TODO: Like this!
               <input
                 value={otherCryptos === 0 ? "" : otherCryptos}
                 type="number"

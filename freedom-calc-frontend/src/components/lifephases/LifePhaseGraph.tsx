@@ -14,9 +14,10 @@ import { COLORS } from "../../constants/colors/colors";
 
 type LifePhaseGraphProps = {
   t: any;
+  currentCurrency: string;
 };
 
-const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t }) => {
+const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({ t , currentCurrency}) => {
   const lifePhases = useContext(InputContext);
 
   const data = createBarChart(lifePhases.phases.phase);

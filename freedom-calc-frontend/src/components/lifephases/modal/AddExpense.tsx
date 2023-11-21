@@ -6,6 +6,7 @@ type AddExpenseProps = {
   setExpense: any;
   setStatus: any;
   expense: Expenses;
+  currentCurrency: string;
 };
 
 const AddExpense: React.FC<AddExpenseProps> = ({
@@ -13,8 +14,8 @@ const AddExpense: React.FC<AddExpenseProps> = ({
   setExpense,
   setStatus,
   expense,
+    currentCurrency
 }) => {
-  //TODO: Integrate useRef do clear inputs
   const [taxes, setTaxes] = useState(expense.taxes);
   const [rent, setRent] = useState(expense.housing);
   const [consumption, setConsumption] = useState(expense.consumptions);
@@ -98,85 +99,109 @@ const AddExpense: React.FC<AddExpenseProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h2 className="text-sm font-bold pb-0">{t("expenses")}</h2>
-        <div className="form-field">
-          <label className="form-label">{t("taxes")}</label>
+        <label className="form-label">{t("taxes")}</label>
+        <div className="form-control relative w-full">
           <input
             value={taxes === 0 ? "" : taxes}
             type="number"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             placeholder="0"
             onChange={taxesChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("rent")}</label>
+        <label className="form-label">{t("rent")}</label>
+        <div className="form-control relative w-full">
           <input
             value={rent === 0 ? "" : rent}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={rentChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("consumption")}</label>
+        <label className="form-label">{t("consumption")}</label>
+        <div className="form-control relative w-full">
           <input
             value={consumption === 0 ? "" : consumption}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={consumptionChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("insurance")}</label>
+        <label className="form-label">{t("insurance")}</label>
+        <div className="form-control relative w-full">
           <input
             value={insurance === 0 ? "" : insurance}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={insuranceChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("interest")}</label>
+        <label className="form-label">{t("interest")}</label>
+        <div className="form-control relative w-full">
           <input
             value={interest === 0 ? "" : interest}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={interestChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("socialSecurity")}</label>
+        <label className="form-label">{t("socialSecurity")}</label>
+        <div className="form-control relative w-full">
           <input
             value={socialSecurity === 0 ? "" : socialSecurity}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={socialSecurityChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("maintenance")}</label>
+        <label className="form-label">{t("maintenance")}</label>
+        <div className="form-control relative w-full">
           <input
             value={maintenance === 0 ? "" : maintenance}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={maintenanceChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("otherCosts")}</label>
+        <label className="form-label">{t("otherCosts")}</label>
+        <div className="form-control relative w-full">
           <input
             value={otherCosts === 0 ? "" : otherCosts}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={otherCostsChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
         <div className="flex gap-3">
           <button className="btn btn-primary" onClick={addExpenseHandler}>

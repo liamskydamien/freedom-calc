@@ -6,14 +6,15 @@ type AddIncomeProps = {
   setIncome: any;
   setStatus: any;
   income: Income;
+  currentCurrency: string;
 };
 const AddIncome: React.FC<AddIncomeProps> = ({
   t,
   setIncome,
   setStatus,
   income,
+    currentCurrency
 }) => {
-  //TODO: Integrate useRef do clear inputs
   const [dependent, setDependent] = useState(income.dependent);
   const [selfemployed, setSelfemployed] = useState(income.selfemployed);
   const [rentingIncome, setRentingIncome] = useState(income.renting);
@@ -82,72 +83,90 @@ const AddIncome: React.FC<AddIncomeProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h2 className="text-sm font-bold pb-0">{t("income")}</h2>
-        <div className="form-field">
-          <label className="form-label">{t("dependent")}</label>
+        <label className="form-label">{t("dependent")}</label>
+        <div className="form-control relative w-full">
           <input
             value={dependent === 0 ? "" : dependent}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={dependentChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("selfemployed")}</label>
+        <label className="form-label">{t("selfemployed")}</label>
+        <div className="form-control relative w-full">
           <input
             value={selfemployed === 0 ? "" : selfemployed}
             type="number"
             placeholder="0"
-            className="input max-w-full"
+            className="input input-lg max-w-full pl-10"
             onChange={selfemployedChangeHandler}
           />
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("rentingIncome")}</label>
+        <label className="form-label">{t("rentingIncome")}</label>
+        <div className="form-control relative w-full">
           <div className="form-control">
             <input
               value={rentingIncome === 0 ? "" : rentingIncome}
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={rentingIncomeChangeHandler}
             />
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("capitalIncome")}</label>
+        <label className="form-label">{t("capitalIncome")}</label>
+        <div className="form-control relative w-full">
           <div className="form-control">
             <input
               value={capitalIncome === 0 ? "" : capitalIncome}
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={capitalIncomeChangeHandler}
             />
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("pensionIncome")}</label>
+        <label className="form-label">{t("pensionIncome")}</label>
+        <div className="form-control relative w-full">
           <div className="form-control">
             <input
               value={pension === 0 ? "" : pension}
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={pensionChangeHandler}
             />
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("otherIncome")}</label>
+        <label className="form-label">{t("otherIncome")}</label>
+        <div className="form-control relative w-full">
           <div className="form-control">
             <input
               value={otherIncome === 0 ? "" : otherIncome}
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={otherIncomeChangeHandler}
             />
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
         <div className="flex gap-3">
