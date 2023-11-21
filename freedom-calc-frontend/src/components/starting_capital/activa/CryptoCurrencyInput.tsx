@@ -63,7 +63,6 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("crypto_currency")}</h3>
-        <div>
           <label className="form-label">{t("bitcoin")}</label>
           <div className="form-control relative w-full">
             {valid ? (
@@ -134,7 +133,6 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -164,7 +164,6 @@ const StockInput: React.FC<StockInputProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("stocks")}</h3>
-        <div>
           <label className="form-label">{t("single_stocks")}</label>
           <div className="form-control relative w-full">
             {valid ? (
@@ -336,7 +335,6 @@ const StockInput: React.FC<StockInputProps> = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

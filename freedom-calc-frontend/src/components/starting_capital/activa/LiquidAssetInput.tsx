@@ -128,7 +128,6 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
   return (
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
-        <div>
           <h3 className="text-sm font-bold mt-2">{t("cash")}</h3>
           <label className="form-label">{t("checking")}</label>
           <div className="form-control relative w-full">
@@ -243,7 +242,6 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

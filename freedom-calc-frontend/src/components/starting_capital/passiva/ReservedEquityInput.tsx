@@ -2,7 +2,7 @@ import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import {
   ReservedEquityState,
 } from "../../../models/types/AssetContextTypes";
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 
 type ReservedEquityInputProps = {
   t: any;
@@ -85,15 +85,15 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("reserved_equity")}</h3>
-        <div className="form-field">
-          <label className="form-label">
-            {t("reserved_equity_for_consumption")}
-          </label>
+        <label className="form-label">
+          {t("reserved_equity_for_consumption")}
+        </label>
+        <div className="form-control relative w-full">
           {liabilitiesValid ? (
             <input
               value={reservedEquityForConsumption}
               type="number"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               disabled={true}
             />
           ) : (
@@ -105,15 +105,18 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
               }
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={reservedEquityForConsumptionChangeHandler}
             />
           )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">
-            {t("reserved_equity_for_pension_provision")}
-          </label>
+        <label className="form-label">
+          {t("reserved_equity_for_pension_provision")}
+        </label>
+        <div className="form-control relative w-full">
           {liabilitiesValid ? (
             <input
               value={
@@ -123,7 +126,7 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
               }
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               disabled={true}
             />
           ) : (
@@ -135,18 +138,21 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
               }
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={reservedEquityForPensionProvisionChangeHandler}
             />
           )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
-        <div className="form-field">
-          <label className="form-label">{t("reserved_equity_for_other")}</label>
+        <label className="form-label">{t("reserved_equity_for_other")}</label>
+        <div className="form-control relative w-full">
           {liabilitiesValid ? (
             <input
               value={reservedEquityForOther}
               type="number"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               disabled={true}
             />
           ) : (
@@ -154,10 +160,13 @@ const ReservedEquityInput: React.FC<ReservedEquityInputProps> = ({
               value={reservedEquityForOther === 0 ? "" : reservedEquityForOther}
               type="number"
               placeholder="0"
-              className="input max-w-full"
+              className="input input-lg max-w-full pl-10"
               onChange={reservedEquityForOtherChangeHandler}
             />
           )}
+          <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
         </div>
       </div>
     </div>

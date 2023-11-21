@@ -110,7 +110,6 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("other_assets")}</h3>
-        <div>
           <label className="form-label">{t("art")}</label>
           <div className="form-control relative w-full">
             {valid ? (
@@ -223,7 +222,6 @@ const OtherAssetsInput: React.FC<OtherAssetsInputProps> = ({
           </div>
         </div>
       </div>
-    </div>
   );
 };
 export default OtherAssetsInput;
