@@ -17,6 +17,7 @@ type ActivaInputProps = {
   valid: boolean;
   setActiva: (valid: boolean) => void;
   activaValid: boolean;
+  currentCurrency: string;
 };
 
 const ActivaInput: React.FC<ActivaInputProps> = ({
@@ -25,6 +26,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
   t,
   assets,
   setAssets,
+  currentCurrency
 }) => {
   const [activeTab, setActiveTab] = useState(1);
 
@@ -140,6 +142,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
             t={t}
             cash={liquidAsset}
             preciousMetals={preciousMetalsAsset}
+            currentCurrency={currentCurrency}
           />
         ) : activeTab === 2 ? (
           <RealestateInput
@@ -147,6 +150,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
             realEstateStates={realEstate}
             realestate={realestateAsset}
             valid={activaValid}
+            currentCurrency={currentCurrency}
           />
         ) : activeTab === 3 ? (
           <StockInput
@@ -154,6 +158,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
             stockStates={stock}
             stocks={stockAsset}
             valid={activaValid}
+            currentCurrency={currentCurrency}
           />
         ) : activeTab === 4 ? (
           <CryptoCurrencyInput
@@ -161,6 +166,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
             t={t}
             valid={activaValid}
             cryptoStates={crypto}
+            currentCurrency={currentCurrency}
           />
         ) : activeTab === 5 ? (
           <OtherAssetsInput
@@ -168,6 +174,7 @@ const ActivaInput: React.FC<ActivaInputProps> = ({
             otherAssetStates={other}
             other={otherAsset}
             valid={activaValid}
+            currentCurrency={currentCurrency}
           />
         ) : (
           <h2>{t("404")}</h2>

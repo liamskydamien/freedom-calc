@@ -38,7 +38,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
           </XAxis>
           <YAxis type="number">
             <Label
-              value={t("in_1000") + " " + currency}
+              value={t("in_1000000") + " " + currency}
               offset={100}
               angle={-90}
               position="insideLeft"

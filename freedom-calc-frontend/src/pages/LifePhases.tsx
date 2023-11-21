@@ -7,6 +7,7 @@ import ShowSelectedLifePhase from "../components/lifephases/ShowSelectedLifePhas
 import { useNavigate } from "react-router";
 import { ProgressContext } from "../context/ProgressContext";
 import LifePhaseGraph from "../components/lifephases/LifePhaseGraph";
+import {getCurrencySymbol} from "../calculations/utility/getCurrencySymbol";
 
 const LifePhases = () => {
   const { t } = useTranslation();
@@ -15,6 +16,8 @@ const LifePhases = () => {
 
   const { phases, setPhases, personalInformation } = useContext(InputContext);
   const [valid, setValid] = useState(false);
+
+  const currentCurrency = getCurrencySymbol(personalInformation.currency);
 
   /**
    * Checks if the user has entered a phase that ends at the expected age
@@ -60,8 +63,9 @@ const LifePhases = () => {
             expectedAge={personalInformation.expectedAge}
             age={personalInformation.getAge()}
             valid={valid}
+            currentCurrency={currentCurrency}
           />
-          <ShowSelectedLifePhase t={t} />
+          <ShowSelectedLifePhase t={t} currentCurrency={currentCurrency} />
           {valid ? (
             <div className="flex justify-center">
               <button
@@ -102,7 +106,7 @@ const LifePhases = () => {
         </div>
       </SelectedLifePhaseContextProvider>
       <div>
-        <LifePhaseGraph t={t} />
+        <LifePhaseGraph t={t} currentCurrency={currentCurrency}/>
       </div>
     </div>
   );

@@ -13,6 +13,7 @@ type LiquidAssetsInput = {
   valid: boolean;
   liquidAssetStates: CashState;
   preciousMetalsStates: PreciousMetalsState;
+  currentCurrency: string;
 };
 
 const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
@@ -22,6 +23,7 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
   cash,
   preciousMetals,
   valid,
+  currentCurrency
 }) => {
   const {
     savings,
@@ -126,15 +128,14 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
   return (
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
-        <div>
           <h3 className="text-sm font-bold mt-2">{t("cash")}</h3>
-          <div className="form-field">
-            <label className="form-label">{t("checking")}</label>
+          <label className="form-label">{t("checking")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={checking}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -142,18 +143,21 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
                 value={checking === 0 ? "" : checking}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={checkingChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("savings")}</label>
+          <label className="form-label">{t("savings")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={savings}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -161,18 +165,21 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
                 value={savings === 0 ? "" : savings}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={savingsChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("other")}</label>
+          <label className="form-label">{t("other")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={otherLiquidAssets}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -180,19 +187,22 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
                 value={otherLiquidAssets === 0 ? "" : otherLiquidAssets}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={otherChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
           <h3 className="text-sm font-bold mt-2">{t("preciousMetals")}</h3>
-          <div className="form-field">
-            <label className="form-label">{t("gold")}</label>
+          <label className="form-label">{t("gold")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={gold}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -200,18 +210,21 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
                 value={gold === 0 ? "" : gold}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={goldChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("other")}</label>
+          <label className="form-label">{t("other")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={otherMetals}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -219,14 +232,16 @@ const LiquidAssetInput: React.FC<LiquidAssetsInput> = ({
                 value={otherMetals === 0 ? "" : otherMetals}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={otherMetalsChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

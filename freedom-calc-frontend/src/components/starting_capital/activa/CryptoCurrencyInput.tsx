@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
 import { CryptoState } from "../../../models/types/AssetContextTypes";
 import { GROWTH_RATE } from "../../../constants/assets/growthrate";
@@ -8,6 +8,7 @@ type CryptoCurrencyInputProps = {
   cryptoCurrency: AssetGroup;
   valid: boolean;
   cryptoStates: CryptoState;
+  currentCurrency: string;
 };
 
 const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
@@ -15,6 +16,7 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
   t,
   cryptoCurrency,
   valid,
+  currentCurrency
 }) => {
   const {
     bitcoin,
@@ -61,33 +63,36 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
     <div className="mx-auto flex w-full max-w-sm flex-col gap-6">
       <div className="form-group">
         <h3 className="text-sm font-bold mt-2">{t("crypto_currency")}</h3>
-        <div>
-          <div className="form-field">
-            <label className="form-label">{t("bitcoin")}</label>
+          <label className="form-label">{t("bitcoin")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={bitcoin}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
               <input
                 value={bitcoin === 0 ? "" : bitcoin}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 placeholder="0"
                 onChange={bitcoinChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("ethereum")}</label>
+          <label className="form-label">{t("ethereum")}</label>
+          <div className="form-control relative w-full">
+
             {valid ? (
               <input
                 value={ethereum}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -95,18 +100,21 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
                 value={ethereum === 0 ? "" : ethereum}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={ethereumChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
-          <div className="form-field">
-            <label className="form-label">{t("other")}</label>
+          <label className="form-label">{t("other")}</label>
+          <div className="form-control relative w-full">
             {valid ? (
               <input
                 value={otherCryptos}
                 type="number"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 disabled={true}
               />
             ) : (
@@ -114,14 +122,16 @@ const CryptoCurrencyInput: React.FC<CryptoCurrencyInputProps> = ({
                 value={otherCryptos === 0 ? "" : otherCryptos}
                 type="number"
                 placeholder="0"
-                className="input max-w-full"
+                className="input input-lg max-w-full pl-10"
                 onChange={otherChangeHandler}
               />
             )}
+            <span className="absolute inset-y-0 left-3 inline-flex items-center">
+              <h5 className="text-lg font-bold">{currentCurrency}</h5>
+            </span>
           </div>
         </div>
       </div>
-    </div>
   );
 };
 

@@ -10,9 +10,10 @@ import { useNavigate } from "react-router";
 
 type StartingCapitalInputProps = {
   t: any;
+  currentCurrency: string;
 };
 
-const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({ t }) => {
+const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({ t, currentCurrency }) => {
   // Import Hooks
   const navigate = useNavigate();
 
@@ -109,6 +110,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({ t }) => {
             valid={valid}
             setActiva={setActivaSet}
             activaValid={activaSet}
+            currentCurrency={currentCurrency}
           />
         ) : (
           <PassivaInput
@@ -118,6 +120,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({ t }) => {
             valid={valid}
             setLiabilitiesValid={setPassivaSet}
             setPassiva={setPassiva}
+            currentCurrency={currentCurrency}
           />
         )}
       </StartingCapitalProvider>

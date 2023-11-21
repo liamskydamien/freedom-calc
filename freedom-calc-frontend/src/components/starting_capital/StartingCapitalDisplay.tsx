@@ -5,10 +5,11 @@ import BalanceSheet from "./showcase/BalanceSheet";
 
 type StartingCapitalDisplayProps = {
   t: any;
+  currentCurrency: string;
 };
 
 const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
-  t,
+  t, currentCurrency
 }) => {
   const { startingCapital } = useContext(InputContext);
   const { assetGroups, liabilities } = startingCapital;
@@ -53,6 +54,7 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
               t={t}
               assets={assetGroups}
               passiva={liabilities}
+              currrentCurrency={currentCurrency}
             />
           </div>
         )}

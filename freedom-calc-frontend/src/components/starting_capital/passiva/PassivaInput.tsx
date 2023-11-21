@@ -12,6 +12,7 @@ type PassivaInputProps = {
   passivaValid: boolean;
   setLiabilitiesValid: (valid: boolean) => void;
   setPassiva: (liabilites: AssetGroup[]) => void;
+  currentCurrency: string;
 };
 
 const PassivaInputs: React.FC<PassivaInputProps> = ({
@@ -20,6 +21,7 @@ const PassivaInputs: React.FC<PassivaInputProps> = ({
   valid,
   setPassiva,
   passiva,
+    currentCurrency,
   t,
 }) => {
   const [activeTab, setActiveTab] = useState(1);
@@ -82,6 +84,7 @@ const PassivaInputs: React.FC<PassivaInputProps> = ({
             liabilities={liabilitiesGroup}
             liabilitiesState={liabilities}
             liabilitiesValid={valid}
+            currentCurrency={currentCurrency}
           />
         ) : activeTab === 2 ? (
           <ReservedEquityInput
@@ -89,6 +92,7 @@ const PassivaInputs: React.FC<PassivaInputProps> = ({
             reservedEquity={reservedEquityGroup}
             liabilitiesValid={valid}
             reservedEquityState={reservedEquity}
+            currentCurrency={currentCurrency}
           />
         ) : (
           <h2>{t("404")}</h2>
