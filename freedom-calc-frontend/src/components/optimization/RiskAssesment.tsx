@@ -191,7 +191,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t, closeModal}) => {
                                     </label>
                                 </div>
                             </div>
-                            <h2 className="text-lg mb-1">{t('what_would_you_do_if_a_well-researched_investment_suddenly_dropped_20%_in_a_short_period')}</h2>
+                            <h2 className="text-lg mb-1">{t('suddendrop_in_a_short_period')}</h2>
                             <div id="group5" className="flex flex-col gap-3 justify-center align-text-top" onChange={handleGroup5}>
                                 <div className="flex gap-3">
                                     <input type="radio" value={1} className="radio radio-lg" name="group5" />
