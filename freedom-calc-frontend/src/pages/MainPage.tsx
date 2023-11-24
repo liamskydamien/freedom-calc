@@ -9,6 +9,7 @@ import { InputContextProvider } from "../context/InputContext";
 import StartingCapital from "./StartingCapital";
 import LifePhases from "./LifePhases";
 import PointOfFinancialFreedom from "./PointOfFinancialFreedom";
+import OptimizationPage from "./OptimizationPage";
 
 export const MainPage = () => {
   const [active, setActive] = useState(1);
@@ -26,7 +27,7 @@ export const MainPage = () => {
           return 3;
         case "/pof":
           return 4;
-        case "/optimisation":
+        case "/optimization":
           return 5;
         default:
           return 1;
@@ -72,11 +73,9 @@ export const MainPage = () => {
                 }
               />
               <Route
-                path="/optimisation"
+                path="/optimization"
                 element={
-                  <ProtectedRoute redirectTo="/pof" step="pof">
-                    <div>P5</div>
-                  </ProtectedRoute>
+                    <OptimizationPage />
                 }
               />
             </Routes>
