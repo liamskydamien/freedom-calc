@@ -1,11 +1,71 @@
 import "./RiskAssementStyles.css"
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 type RiskAssesmentProps = {
     t: any;
 }
 
 const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
+
+    const [group1, setGroup1] = useState(0);
+    const [group2, setGroup2] = useState(0);
+    const [group3, setGroup3] = useState(0);
+    const [group4, setGroup4] = useState(0);
+    const [group5, setGroup5] = useState(0);
+    const [valid, setValid] = useState(false);
+
+    useEffect(() => {
+        if(group1 !== 0 &&
+            group2 !== 0 &&
+            group3 !== 0 &&
+            group4 !== 0 &&
+            group5 !== 0) {
+            setValid(true);
+        } else {
+            setValid(false);
+        }
+    }, [group1, group2, group3, group4, group5]);
+
+    /**
+     * Value of group 1 answers
+     * @param e input event
+     */
+    const handleGroup1 = (e: any) => {
+        setGroup1(e.target.value);
+    }
+
+    /**
+     * Value of group 2 answers
+     * @param e input event
+     */
+    const handleGroup2 = (e: any) => {
+        setGroup2(e.target.value);
+    }
+
+    /**
+     * Value of group 3 answers
+     * @param e input event
+     */
+    const handleGroup3 = (e: any) => {
+        setGroup3(e.target.value);
+    }
+
+    /**
+     * Value of group 4 answers
+     * @param e input event
+     */
+    const handleGroup4 = (e: any) => {
+        setGroup4(e.target.value);
+    }
+
+    /**
+     * Value of group 5 answers
+     * @param e input event
+     */
+    const handleGroup5 = (e: any) => {
+        setGroup5(e.target.value);
+    }
+
     return (
         <div>
             <div className="assementModal">
@@ -13,7 +73,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                 <div className="flex gap-3 flex-col">
                     <div className="ml-4 mr-4">
                         <h2 className="text-lg mb-1">{t('how_would_you_describe_your_investment_experience')}</h2>
-                        <div id="group1" className="flex flex-col gap-3 justify-center align-text-top">
+                        <div id="group1" className="flex flex-col gap-3 justify-center align-text-top" onChange={handleGroup1}>
                             <div className="flex gap-3">
                                 <input type="radio" value={1} className="radio radio-lg" name="group1" />
                                 <label className="label">
@@ -42,7 +102,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                     </div>
                     <div className="ml-4 mr-4">
                         <h2 className="text-lg mb-1">{t('how_do_you_react_when_your_investments_decrease_in_value')}</h2>
-                        <div id="group2" className="flex flex-col gap-3 justify-center align-text-top">
+                        <div id="group2" className="flex flex-col gap-3 justify-center align-text-top" onChange={handleGroup2}>
                             <div className="flex gap-3">
                                 <input type="radio" value={1} className="radio radio-lg" name="group2" />
                                 <label className="label">
@@ -69,7 +129,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                             </div>
                         </div>
                             <h2 className="text-lg mb-1">{t('what_is_your_primary_goal_for_investing')}</h2>
-                            <div id="group3" className="flex flex-col gap-3 justify-center align-text-top">
+                            <div id="group3" className="flex flex-col gap-3 justify-center align-text-top" onChange={handleGroup3}>
                                 <div className="flex gap-3">
                                     <input type="radio" value={1} className="radio radio-lg" name="group3" />
                                     <label className="label">
@@ -96,7 +156,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                                 </div>
                             </div>
                             <h2 className="text-lg">{t('how_long_is_your_investment_horizon')}</h2>
-                            <div id="group4" className="flex flex-col gap-3 justify-center align-text-top">
+                            <div id="group4" className="flex flex-col gap-3 justify-center align-text-top" onChange={handleGroup4}>
                                 <div className="flex gap-3">
                                     <input type="radio" value={1} className="radio radio-lg" name="group4" />
                                     <label className="label">
@@ -123,7 +183,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                                 </div>
                             </div>
                             <h2 className="text-lg mb-1">{t('what_would_you_do_if_a_well-researched_investment_suddenly_dropped_20%_in_a_short_period')}</h2>
-                            <div id="group5" className="flex flex-col gap-3 justify-center align-text-top">
+                            <div id="group5" className="flex flex-col gap-3 justify-center align-text-top" onChange={handleGroup5}>
                                 <div className="flex gap-3">
                                     <input type="radio" value={1} className="radio radio-lg" name="group5" />
                                     <label className="label">
@@ -150,7 +210,13 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                                 </div>
                             </div>
                         </div>
-                <button className="btn btn-primary mt-2 max-w-full">{t('save')}</button>
+                    {
+                        valid ?
+                        <button className="btn btn-primary mt-2 max-w-full">{t('save')}</button>
+                            :
+                        <button className="btn btn-primary mt-2 max-w-full" disabled>{t('save')}</button>
+                    }
+
             </div>
         </div>
             <div className="darkBG">
