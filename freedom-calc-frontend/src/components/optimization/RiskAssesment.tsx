@@ -3,9 +3,10 @@ import React, {useEffect, useState} from "react";
 
 type RiskAssesmentProps = {
     t: any;
+    closeModal: (risk: number) => void;
 }
 
-const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
+const RiskAssesment : React.FC<RiskAssesmentProps> = ({t, closeModal}) => {
 
     const [group1, setGroup1] = useState(0);
     const [group2, setGroup2] = useState(0);
@@ -31,7 +32,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
      * @param e input event
      */
     const handleGroup1 = (e: any) => {
-        setGroup1(e.target.value);
+        setGroup1(parseInt(e.target.value));
     }
 
     /**
@@ -39,7 +40,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
      * @param e input event
      */
     const handleGroup2 = (e: any) => {
-        setGroup2(e.target.value);
+        setGroup2(parseInt(e.target.value));
     }
 
     /**
@@ -47,7 +48,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
      * @param e input event
      */
     const handleGroup3 = (e: any) => {
-        setGroup3(e.target.value);
+        setGroup3(parseInt(e.target.value));
     }
 
     /**
@@ -55,7 +56,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
      * @param e input event
      */
     const handleGroup4 = (e: any) => {
-        setGroup4(e.target.value);
+        setGroup4(parseInt(e.target.value));
     }
 
     /**
@@ -63,7 +64,15 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
      * @param e input event
      */
     const handleGroup5 = (e: any) => {
-        setGroup5(e.target.value);
+        setGroup5( parseInt(e.target.value));
+    }
+
+    /**
+     * Handles the submit of the form
+     */
+    const handleSubmit = () => {
+        const risk = (group1 + group2 + group3 + group4 + group5);
+        closeModal(risk);
     }
 
     return (
@@ -212,7 +221,7 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t}) => {
                         </div>
                     {
                         valid ?
-                        <button className="btn btn-primary mt-2 max-w-full">{t('save')}</button>
+                        <button className="btn btn-primary mt-2 max-w-full" onClick={handleSubmit}>{t('save')}</button>
                             :
                         <button className="btn btn-primary mt-2 max-w-full" disabled>{t('save')}</button>
                     }
