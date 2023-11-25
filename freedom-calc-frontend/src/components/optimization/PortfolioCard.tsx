@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import Portfolio from "./Portfolio";
+import {TEST_PORTFOLIO} from "../../constants/assets/portfolio";
 
 type PortfolioCardProps = {
     t: any
@@ -15,6 +16,8 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
     const handleTabChange = (tab: number) => {
         setActiveTab(tab)
     }
+
+    const portfolio = TEST_PORTFOLIO()
 
 
     return (
@@ -32,8 +35,12 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
                 <label htmlFor="tab-6" className="tab tab-bordered px-6">{t('risky_portfolio')}</label>
             </div>
             {
-                activeTab === 0 &&
-                <Portfolio t={t} />
+                activeTab === 0 ?
+                <Portfolio t={t} portfolio={portfolio} currency={"$"}/>
+                : activeTab === 1 ?
+                <Portfolio t={t} portfolio={portfolio} currency={"$"}/>
+                :
+                <Portfolio t={t} portfolio={portfolio} currency={"$"}/>
             }
         </div>
     )
