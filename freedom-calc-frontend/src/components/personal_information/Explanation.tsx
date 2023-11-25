@@ -5,7 +5,7 @@ type ExplanationProps = {
 }
 const Explanation : React.FC<ExplanationProps> = ({t}) => {
     return (
-        <div className="card max-w-full overflow-auto">
+        <div className="card max-w-full p-5 overflow-auto">
             <h1 className="text-xl font-bold">{t('explanation_title')}</h1>
             <p>{t('explanation_text_1')}</p>
             <p>{t('explanation_text_1')}</p>

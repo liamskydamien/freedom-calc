@@ -1,6 +1,7 @@
 import RiskAssesment from "../components/optimization/RiskAssesment";
 import {useTranslation} from "react-i18next";
 import {useState} from "react";
+import ShowcasePortfolio from "../components/optimization/ShowcasePortfolio";
 
 const OptimizationPage = () => {
 
@@ -19,6 +20,7 @@ const OptimizationPage = () => {
             {
                 modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
             }
+            <ShowcasePortfolio t={t} />
         </div>
     )
 }
