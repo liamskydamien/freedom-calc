@@ -67,7 +67,12 @@ export function calculateYearlyGrowth(portfolio: PortfolioClass){
  */
 export function calculatePortfolioGrowth(portfolio: PortfolioClass, income: number[]){
     const yearlyGrowth = calculateYearlyGrowth(portfolio);
-    return income.map((income, index) => {
-        return income * yearlyGrowth ** index;
-    });
+    let wealth = 0;
+    const portfolioGrowth = [];
+    for (let i = 0; i < income.length; i++) {
+        wealth += income[i];
+        wealth *= yearlyGrowth;
+        portfolioGrowth.push(wealth);
+    }
+    return portfolioGrowth;
 }

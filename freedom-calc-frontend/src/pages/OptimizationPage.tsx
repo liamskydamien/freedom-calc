@@ -25,13 +25,13 @@ const OptimizationPage = () => {
 
     const portfolios = [
         // TODO calculate portfolios
-        new PortfolioClass("your", 0.035, 0.3, stocks),
-        new PortfolioClass("secure", 0.025, 0.1, stocks),
-        new PortfolioClass("risky", 0.05, 0.2, stocks)
+        new PortfolioClass("your", 0.00325, 0.3, stocks),
+        new PortfolioClass("secure", 0.0025, 0.1, stocks),
+        new PortfolioClass("risky", 0.0045, 0.2, stocks)
         ];
 
-    const income = [100, 100, 100, 100, 100, 10, 0, 0, 0, 0]
-    const costs = [100, 90, 80, 70, 60, 50, 40, 30, 20, 10]
+    const income = [10, 10, 10, 10, 10,0.1, 0, 0, 0, 0]
+    const costs = [10, 90, 80, 70, 60, 50, 40, 30, 20, 10]
 
     const {portfolioChart, safestPOF, riskiestPOF, personalPOF} = createPortfolioChartAndPOF(portfolios, income, costs)
 

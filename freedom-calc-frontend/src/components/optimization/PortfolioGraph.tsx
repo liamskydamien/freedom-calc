@@ -48,7 +48,7 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                             dot={false}
                             type="monotone"
                             dataKey="personal"
-                            stroke={COLORS.light.costs}
+                            stroke="#8884d8"
                             strokeWidth={3}
                             connectNulls={true}
                             name={t("personal")}
