@@ -1,9 +1,11 @@
 import React from "react";
+import {PortfolioClass} from "../../models/optimization/PortfolioClass";
 
 type StockTableProps = {
     t: any
+    portfolio: PortfolioClass
 }
-const StockTable : React.FC<StockTableProps> = ({t}) => {
+const StockTable : React.FC<StockTableProps> = ({t, portfolio}) => {
     return (
         <div>
             <div className="flex w-full h-56 overflow-x-auto">
@@ -11,54 +13,26 @@ const StockTable : React.FC<StockTableProps> = ({t}) => {
                     <thead>
                     <tr>
                         <th>{t('stock')}</th>
-                        <th>{t('amount')}</th>
+                        <th>{t('rel_amount')}</th>
                         <th>{t('avg_return')}</th>
                         <th>{t('risk')}</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
+                    {
+                        portfolio.stocks
+                            .sort((a, b) => b.percent - a.percent )
+                            .map((stock, index) => {
+                            return (
+                                <tr key={index}>
+                                    <th>{stock.name}</th>
+                                    <td>{stock.percent}</td>
+                                    <td>{stock.mean}</td>
+                                    <td>{stock.variance}</td>
+                                </tr>
+                            )
+                        })
+                    }
                     </tbody>
                 </table>
             </div>

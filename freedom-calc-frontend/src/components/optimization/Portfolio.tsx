@@ -1,10 +1,13 @@
 import React from "react";
 import StockTable from "./StockTable";
+import {PortfolioClass} from "../../models/optimization/PortfolioClass";
 
 type PortfolioProps = {
     t: any
+    portfolio: PortfolioClass
+    currency: string
 }
-const Portfolio : React.FC<PortfolioProps> = ({t}) => {
+const Portfolio : React.FC<PortfolioProps> = ({t, portfolio, currency}) => {
     return (
         <div>
             <div className="flex flex-col gap-2  mb-4">
@@ -13,7 +16,7 @@ const Portfolio : React.FC<PortfolioProps> = ({t}) => {
                         {t('portfolio_growth')}
                     </p>
                     <p>
-                        % 5.0
+                        {portfolio.mean + " " + currency}
                     </p>
                 </div>
                 <div className="flex flex-row justify-between">
@@ -21,11 +24,11 @@ const Portfolio : React.FC<PortfolioProps> = ({t}) => {
                         {t('portfolio_risk')}
                     </p>
                     <p>
-                        % 5.0
+                        {portfolio.variance + " " + currency}
                     </p>
                 </div>
             </div>
-            <StockTable t={t}/>
+            <StockTable t={t} portfolio={portfolio}/>
         </div>
     )
 }
