@@ -27,22 +27,31 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                         <Line
                             dot={false}
                             type="monotone"
-                            dataKey="wealth"
+                            dataKey="safest"
                             stroke={
                                COLORS.light.wealth
                             }
                             strokeWidth={3}
                             connectNulls={true}
-                            name={t("wealth")}
+                            name={t("safest")}
                         />
                         <Line
                             dot={false}
                             type="monotone"
-                            dataKey="cost"
+                            dataKey="riskiest"
                             stroke={COLORS.light.costs}
                             strokeWidth={3}
                             connectNulls={true}
-                            name={t("costs")}
+                            name={t("riskiest")}
+                        />
+                        <Line
+                            dot={false}
+                            type="monotone"
+                            dataKey="personal"
+                            stroke={COLORS.light.costs}
+                            strokeWidth={3}
+                            connectNulls={true}
+                            name={t("personal")}
                         />
                         <Tooltip />
                         <Legend verticalAlign="top" height={36} />
