@@ -18,7 +18,7 @@ export function createPortfolioChartAndPOF(portfolios: PortfolioClass[], income:
     const safestPOF = calculatePOF(safestPortfolio, costs);
     const riskiestPOF = calculatePOF(riskiestPortfolio, costs);
 
-    const portfolioChart = createPortfolioChart([personalPortfolio, safestPortfolio, riskiestPortfolio]);
+    const portfolioChart = createPortfolioChart([personalPortfolio, safestPortfolio, riskiestPortfolio], costs);
 
 
     return {
@@ -33,8 +33,9 @@ export function createPortfolioChartAndPOF(portfolios: PortfolioClass[], income:
 /**
  * Creates a portfolio chart
  * @param portfolios the portfolios to create the chart from
+ * @param costs the costs of the user
  */
-export function createPortfolioChart(portfolios: number[][]){
+export function createPortfolioChart(portfolios: number[][], costs: number[]){
     const portfolioChart = [];
     const personalPortfolio = portfolios[0];
     const safestPortfolio = portfolios[1];
@@ -46,6 +47,7 @@ export function createPortfolioChart(portfolios: number[][]){
             personal: personalPortfolio[i],
             safest: safestPortfolio[i],
             riskiest: riskiestPortfolio[i],
+            costs: costs[i]
         });
     }
 
@@ -57,7 +59,7 @@ export function createPortfolioChart(portfolios: number[][]){
  * @param portfolio the portfolio to calculate the yearly growth of
  */
 export function calculateYearlyGrowth(portfolio: PortfolioClass){
-    return (1 + portfolio.mean) ** 52;
+    return (1 + portfolio.mean);
 }
 
 /**

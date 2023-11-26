@@ -39,7 +39,7 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                             dot={false}
                             type="monotone"
                             dataKey="riskiest"
-                            stroke={COLORS.light.costs}
+                            stroke="#82ca9d"
                             strokeWidth={3}
                             connectNulls={true}
                             name={t("riskiest")}
@@ -52,6 +52,15 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                             strokeWidth={3}
                             connectNulls={true}
                             name={t("personal")}
+                        />
+                        <Line
+                            dot={false}
+                            type="monotone"
+                            dataKey="costs"
+                            stroke={COLORS.light.costs}
+                            strokeWidth={3}
+                            connectNulls={true}
+                            name={t("costs")}
                         />
                         <Tooltip />
                         <Legend verticalAlign="top" height={36} />
