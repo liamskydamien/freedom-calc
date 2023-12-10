@@ -11,7 +11,7 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
     return (
             <div className="card max-w-full p-5">
                 <h1>{t("life_line_title")}</h1>
-                <ResponsiveContainer width={800} height={400}>
+                <ResponsiveContainer>
                     <ComposedChart data={graph}>
                         <XAxis dataKey="name">
                             <Label value={t("years")} offset={0} position="insideBottom" />
