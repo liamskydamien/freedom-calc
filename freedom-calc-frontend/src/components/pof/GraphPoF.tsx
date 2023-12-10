@@ -15,7 +15,6 @@ import React from "react";
 
 type GraphPoFProps = {
   t: any;
-  theme: string;
   pof: Point | null;
   graph: any[];
   currency: string;
@@ -25,7 +24,6 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
   t,
   graph,
   pof,
-  theme,
   currency,
 }) => {
   return (
@@ -49,7 +47,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
             type="monotone"
             dataKey="wealth"
             stroke={
-              theme === "light" ? COLORS.light.wealth : COLORS.dark.wealth
+              COLORS.light.wealth
             }
             strokeWidth={3}
             connectNulls={true}
@@ -59,7 +57,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
             dot={false}
             type="monotone"
             dataKey="cost"
-            stroke={theme === "light" ? COLORS.light.costs : COLORS.dark.costs}
+            stroke={COLORS.light.costs}
             strokeWidth={3}
             connectNulls={true}
             name={t("costs")}
@@ -69,7 +67,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
               x={pof.x}
               y={pof.y}
               r={8}
-              fill={theme === "light" ? COLORS.light.pof : COLORS.dark.pof}
+              fill={COLORS.light.pof}
               stroke="none"
             />
           )}
