@@ -8,6 +8,33 @@ type PortfolioGraphProps = {
     currency: string
 }
 const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) => {
+
+    const CustomTooltip = ({ active, payload, label } : any) => {
+        if (active && payload && payload.length) {
+            const lines = [
+                { text: `${t('safest')}: ${parseFloat(payload[0].value).toFixed(2)} ${currency}`, color: COLORS.dark.wealth },
+                { text: `${t('riskiest')}: ${parseFloat(payload[1].value).toFixed(2)} ${currency}`, color: "#82ca9d" },
+                { text: `${t('personal')}: ${parseFloat(payload[2].value).toFixed(2)} ${currency}`, color: "#8884d8" },
+                { text: `${t('costs')}: ${parseFloat(payload[3].value).toFixed(2)} ${currency}`, color: COLORS.dark.costs },
+            ];
+
+            return (
+                <div className="custom-tooltip card">
+                    <p className="label">{`${t('in_age')} ${label}`}</p>
+                    <p className="intro">
+                        {
+                            lines.map((line, i) =>
+                                <span key={i} style={{ color: line.color, display: 'block', marginLeft: '20px' }}>{line.text}<br /></span>
+                            )
+                        }
+                    </p>
+                    <p className="desc">{}</p>
+                </div>
+            );
+        }
+        return null;
+    };
+
     return (
             <div className="card max-w-full p-5">
                 <h1>{t("life_line_title")}</h1>
@@ -62,7 +89,7 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                             connectNulls={true}
                             name={t("costs")}
                         />
-                        <Tooltip />
+                        <Tooltip content={<CustomTooltip />}/>
                         <Legend verticalAlign="top" height={36} />
                     </ComposedChart>
                 </ResponsiveContainer>
