@@ -14,6 +14,8 @@ i18n
       en: {
         translation: {
           //Personal Information Page
+          title:"Life chart",
+          explaination:"The life chart calculation project is used to develop methods to calculate the financial freedom point by using Markowitz's Portfolio Theory. In this web application, the user can input their data(personal information, income) and their prediction so that when they go through five steps, they can know their predicted financial freedom point.",
           personal_information: "Personal Information",
           firstname: "First Name",
           type_here: "Type here",
@@ -196,6 +198,8 @@ i18n
       de: {
         translation: {
           //Personal Information Page
+          title:"",
+          explaination:"",
           personal_information: "Persönliche Informationen",
           firstname: "Vorname",
           type_here: "Hier eingeben",
@@ -381,6 +385,8 @@ i18n
       vn: {
         translation: {
           //Personal Information Page
+          title:"Biểu đồ dự đoán",
+          explaination:"Dự án biểu đồ dự đoán này được sự dụng để phát triển những phương thức tính toán điểm tự do tài chính bằng việc sự dụng lý thuyết Markowitz Porfolio. Trên cái website này, người dùng có thể nhập dữ liệu của họ (thông tin cá nhân, thu nhập) và những phỏng đoán để sau khi người dùng đã hoàn thành năm bước trên, họ có thể dự đoán cái điểm tự do tài chính",
           personal_information: "Thông Tin Cá Nhân",
           firstname: "Tên",
           type_here: "Nhập vào đây",
