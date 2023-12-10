@@ -13,6 +13,11 @@ i18n
     resources: {
       en: {
         translation: {
+
+          // other
+          in_age: "In age",
+          wealth: "Wealth",
+
           //Personal Information Page
           title:"Freedom Calc",
           explaination:"The life chart calculation project is used to develop methods to calculate the financial freedom point by using Markowitz's Portfolio Theory. In this web application, the user can input their data(personal information, income) and their prediction so that when they go through five steps, they can know their predicted financial freedom point.",
@@ -214,6 +219,11 @@ i18n
 
       de: {
         translation: {
+
+          // other
+          in_age: "Im Alter von",
+          wealth: "Vermögen",
+
           //Personal Information Page
           explaination:"Das Projekt zur Berechnung des Lebenscharts dient der Entwicklung von Methoden zur Berechnung des Punktes der finanziellen Freiheit unter Verwendung der Portfoliotheorie von Markowitz. In dieser Webanwendung kann der Benutzer seine Daten (persönliche Informationen, Einkommen) und seine Prognose eingeben, so dass er nach Durchlaufen von fünf Schritten seinen prognostizierten Punkt finanzieller Freiheit kennt.",
           personal_information: "Persönliche Informationen",
