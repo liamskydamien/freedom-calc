@@ -26,7 +26,6 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                             lines.map((line, i) =>
                                 <span key={i} style={{ color: line.color, display: 'block', marginLeft: '20px', marginRight: '20px' }}>{line.text}<br /></span>
                             )
-
                         }
                     </p>
                     <p className="desc">{}</p>
