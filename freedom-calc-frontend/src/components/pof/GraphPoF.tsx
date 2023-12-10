@@ -26,6 +26,32 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
   pof,
   currency,
 }) => {
+
+  const CustomTooltip = ({ active, payload, label } : any) => {
+    if (active && payload && payload.length) {
+      const lines = [
+        { text: `${t('wealth')}: ${parseFloat(payload[0].value).toFixed(2)} ${currency}`, color: COLORS.dark.wealth },
+        { text: `${t('costs')}: ${parseFloat(payload[1].value).toFixed(2)} ${currency}`, color: COLORS.dark.costs },
+      ];
+
+      return (
+          <div className="custom-tooltip card">
+            <p className="label">{`${t('in_age')} ${label}`}</p>
+            <p className="intro">
+              {
+                lines.map((line, i) =>
+                    <span key={i} style={{ color: line.color, display: 'block', marginLeft: '20px', marginRight: '20px' }}>{line.text}<br /></span>
+                )
+              }
+            </p>
+            <p className="desc">{}</p>
+          </div>
+      );
+    }
+    return null;
+  };
+
+
   return (
     <div className="card max-w-full p-5">
       <h1>{t("life_line_title")}</h1>
@@ -71,7 +97,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({
               stroke="none"
             />
           )}
-          <Tooltip />
+          <Tooltip content={<CustomTooltip />} />
           <Legend verticalAlign="top" height={36} />
         </ComposedChart>
       </ResponsiveContainer>
