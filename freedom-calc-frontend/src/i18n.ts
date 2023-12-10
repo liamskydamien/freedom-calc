@@ -217,98 +217,95 @@ i18n
           activa: "Vermögenswerte",
 
           //Liquid Assets
-          liquid_assets: "Flüssige Mittel",
-          cash: "Kasse",
-          checking: "Verfügbar",
-          savings: "Überprüfung",
+          liquid_assets: "Liquide Mittel",
+          cash: "Bargeld",
+          checking: "Girokonto",
+          savings: "Sparkonto",
           other: "Andere",
-          preciousMetals: "Edelmetall",
+          preciousMetals: "Edelmetalle",
           gold: "Gold",
 
           //Real Estatee
-          realestate: "Immobilie",
-          occupied_properties: "Bewohnte Grundstücke",
+          realestate: "Immobilien",
+          occupied_properties: "Bewohnte Immobilien",
           rented_properties: "Vermietete Immobilien",
           commercial_properties: "Gewerbeimmobilien",
-          agricultural_land_forest: "Landwirtschaftlicher Landwald",
+          agricultural_land_forest: "Landwirtschaftlich genutzte Fläche & Wald",
           forest: "Wald",
           agricultural_land: "Agrarland",
-          funds: "Mittel",
+          funds: "Fonds",
           real_estate_funds: "Immobilienfonds",
 
           //Stocks
           stocks: "Aktien",
           single_stocks: "Einzelne Aktien",
           stock_funds: "Aktienfonds",
-          fund: "Mittel",
-          etf: "ETF",
-          derivative: "Derivat",
-          corporate_participation: "Unternehmensbeteiligung",
+          fund: "Fonds",
+          etf: "ETFs",
+          derivative: "Derivate",
+          corporate_participation: "Unternehmensbeteiligungen",
           active_corporate_participation: "Aktive Unternehmensbeteiligung",
           passive_corporate_participation: "Passive Unternehmensbeteiligung",
 
           //Cryptocurrency
-          crypto_currency: "Kryptowährung",
+          crypto_currency: "Kryptowährungen",
           bitcoin: "Bitcoin",
           ethereum: "Ethereum",
 
           //Other Assets
-          other_assets: "Sonstige Vermögensgegenstände",
+          other_assets: "Sonstige Vermögenswerte",
           art: "Kunst",
           collectibles: "Sammlerstücke",
           claims: "Ansprüche",
-          insurance: "Versicherung",
+          insurance: "Versicherungen",
 
           //Liabilities
           passiva: "Verbindlichkeiten",
           object_related_liabilities: "Objektbezogene Verbindlichkeiten",
-          non_object_related_liabilities:
-            "Nicht objektbezogene Verbindlichkeiten",
+          non_object_related_liabilities: "Nicht objektbezogene Verbindlichkeiten",
           other_liabilities: "Sonstige Verbindlichkeiten",
 
           //Reserved Equity
           reserved_equity: "Reserviertes Eigenkapital",
-          reserved_equity_for_consumption:
-            "Reserviertes Eigenkapital für den Konsum",
-          reserved_equity_for_pension_provision:
-            "Reserviertes Eigenkapital für die Altersvorsorge",
-          reserved_equity_for_other: "Reserviertes Eigenkapital für Andere",
+          reserved_equity_for_consumption: "Reserviertes Eigenkapital für den Konsum",
+          reserved_equity_for_pension_provision: "Reserviertes Eigenkapital für die Altersvorsorge",
+          reserved_equity_for_other: "Reserviertes Eigenkapital für Privatverbrauch",
 
           //Balance Sheet
-          starting_capital_display: "Sparen Großbuchstabenanzeige ",
+          starting_capital_display: "Startkapital",
           liabilities: "Verbindlichkeiten",
           Active: "Vermögenswerte",
           balance_sheet: "Bilanz",
-          crypto: "Krypto",
+          crypto: "Kryptowährungen",
           reservedEquity: "Reserviertes Eigenkapital",
           total_capital: "Gesamtkapital",
 
           //Save
-          save_activa: "Vermögen Sichern",
-          save_passiva: "Sparen Verbindlichkeiten",
-          save_starting_capital: "Sparen Startkapital",
+          save_activa: "Aktiva Speichern",
+          save_passiva: "Passiva Speichern",
+          save_starting_capital: "Speichern",
 
           //Life Phases Page
           lifephases: "Lebensphasen",
           life_phases: "Lebensphasen",
-          no_life_phases: "Lebenspasen Nummer",
-          new_life_phase: "Neue Lebenspasen",
+          no_life_phases: "Keine Lebensphasen vorhanden",
+          new_life_phase: "Neue Lebenspase erstellen",
           selected_lifephase: "Ausgewählte Lebensphase",
-          name_of_phase: "Lebensphase Name",
-          start_of_phase: "Lebensphase Beginn",
-          end_of_phase: "Lebensphase Ende",
+          name_of_phase: "Name der Lebensphase",
+          start_of_phase: "Beginn der Lebensphase",
+          end_of_phase: "Ende der Lebensphase",
           income: "Einkommen",
-          expenses: "Kosten",
-          life_phase_graph: "Lebensphase Graph",
-          create_lifephases_first: "Erstellen Sie zunächst Lebensphasen",
+          expenses: "Ausgaben",
+          life_phase_graph: "Lebensphasen Graph",
+          create_lifephases_first: "Erstellen Sie zunächst eine Lebensphase",
           save_proceed: "Speichern",
-          cancel_clear: "Klären",
+          cancel_clear: "Zurücksetzen & Schließen",
 
           //Add New Life Phase
-          new_lifephase: "Neue Lebenspasen",
+          new_lifephase: "Neue Lebensphase erstellen",
           //Income
-          dependent: "Abhängig",
-          selfemployed: "Selbstständig",
+          dependent: "Abhängiges Einkommen",
+          selfemployed: "Selbstständiges Einkommen",
           rentingIncome: "Mieteinnahmen",
           capitalIncome: "Kapitaleinkommen",
           pensionIncome: "Renteneinkommen",
@@ -320,9 +317,9 @@ i18n
           rent: "Mieten",
           consumption: "Verbrauch",
           Insurance: "Versicherung",
-          interest: "Interesse",
-          socialSecurity: "Soziale Sicherheit",
-          maintenance: "Wartung",
+          interest: "Zinsen",
+          socialSecurity: "Sozial Versicherungen",
+          maintenance: "Instandhaltung",
           otherCosts: "Sonstige Kosten",
 
           //Summary
@@ -375,7 +372,6 @@ i18n
           sell_immidialty: "Sofort verkaufen, um weitere Verluste zu verhindern",
           wait_and_sell: "Warten und verkaufen, wenn sich die Situation nicht bessert",
           keep_it: "Behalten, weil ich an das langfristige Wachstum glaube",
-
         },
       },
       vn: {
