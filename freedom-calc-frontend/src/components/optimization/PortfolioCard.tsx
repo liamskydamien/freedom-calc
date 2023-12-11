@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import Portfolio from "./Portfolio";
 import {TEST_PORTFOLIO} from "../../constants/assets/portfolio";
+import StockBubble from "./StockPicker/StockBubble";
 
 type PortfolioCardProps = {
     t: any
@@ -33,6 +34,7 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
 
                 <input type="radio" id="tab-6" name="tab-2" className="tab-toggle" onClick={() => handleTabChange(2)}/>
                 <label htmlFor="tab-6" className="tab tab-bordered px-4">{t('risky_portfolio')}</label>
+                <StockBubble name={"AAPL"} removeStock={() => {}}/>
             </div>
             {
                 activeTab === 0 ?
