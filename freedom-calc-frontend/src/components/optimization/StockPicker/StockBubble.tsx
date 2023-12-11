@@ -1,13 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import {FaCross} from "react-icons/fa";
 import {ImCross} from "react-icons/im";
+import {SelectedStocksContext} from "../../../context/SelectedStocksContext";
 
 export type StockBubbleProps = {
     name: string,
-    removeStock: (name: string) => void
 }
 
-const StockBubble : React.FC<StockBubbleProps> = ({name, removeStock})  => {
+const StockBubble : React.FC<StockBubbleProps> = ({name})  => {
+    const {removeStock} = useContext(SelectedStocksContext)
     return (
         <div>
             <span className="badge badge-primary">
