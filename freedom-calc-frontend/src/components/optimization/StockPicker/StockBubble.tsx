@@ -1,5 +1,4 @@
 import React, {useContext} from "react";
-import {FaCross} from "react-icons/fa";
 import {ImCross} from "react-icons/im";
 import {SelectedStocksContext} from "../../../context/SelectedStocksContext";
 
