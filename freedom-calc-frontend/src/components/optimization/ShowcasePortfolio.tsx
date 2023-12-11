@@ -1,5 +1,6 @@
 import React from "react";
 import PortfolioCard from "./PortfolioCard";
+import SelectedStocksProvider from "../../context/SelectedStocksContext";
 
 type ShowcasePortfolioProps = {
     t: any
@@ -7,7 +8,9 @@ type ShowcasePortfolioProps = {
 const ShowcasePortfolio : React.FC<ShowcasePortfolioProps> = ({t}) => {
     return (
         <div>
-            <PortfolioCard t={t} />
+            <SelectedStocksProvider>
+                <PortfolioCard t={t} />
+            </SelectedStocksProvider>
         </div>
     )
 }
