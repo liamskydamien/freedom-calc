@@ -40,7 +40,7 @@ export const MainPage = () => {
   return (
     <div>
       <Header />
-      <div className="ml-10 mr-10 mt-3 mb-5">
+      <div className="ml-2 mr-2 mt-3 mb-5">
         <ProgressContextProvider>
           <InputContextProvider>
             <Routes>
