@@ -8,7 +8,7 @@ const StockPicker = () => {
     const {selectedStocks, notSelectedStocks, addStock} = useContext(SelectedStocksContext);
     return (
         <div>
-            <div className="flex flex-row justify-between">
+            <div className="flex flex-row justify-between mb-2">
                 <h2 className="text-lg">{t('selected_stocks')}</h2>
                 <div className="dropdown">
                     <label className="btn btn-solid-primary" tabIndex={0}>
@@ -25,7 +25,7 @@ const StockPicker = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-row gap-2 overflow-x-auto pb-1">
+            <div className="flex flex-row gap-2 overflow-x-auto pb-2">
                 {
                     selectedStocks.map((stock, index) => <StockBubble key={index} stock={stock}/>)
                 }
