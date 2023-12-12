@@ -23,7 +23,7 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
 
 
     return (
-        <div className="card p-5 flex-col justify-center max-h-max">
+        <div className="card p-2 flex-col justify-center max-h-max max-w-lg">
             <h1 className="text-lg ">{t('portfolio')}</h1>
             <StockPicker />
             <div className="tabs">
