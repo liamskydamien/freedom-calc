@@ -8,9 +8,7 @@ type ShowcasePortfolioProps = {
 const ShowcasePortfolio : React.FC<ShowcasePortfolioProps> = ({t}) => {
     return (
         <div>
-            <SelectedStocksProvider>
-                <PortfolioCard t={t} />
-            </SelectedStocksProvider>
+            <PortfolioCard t={t} />
         </div>
     )
 }

@@ -5,6 +5,7 @@ import ShowcasePortfolio from "../components/optimization/ShowcasePortfolio";
 import PortfolioGraph from "../components/optimization/PortfolioGraph";
 import {PortfolioClass, Stock} from "../models/optimization/PortfolioClass";
 import {createPortfolioChartAndPOF} from "../calculations/graphs/createPortfolioChart";
+import SelectedStocksProvider from "../context/SelectedStocksContext";
 
 const OptimizationPage = () => {
 
@@ -38,13 +39,15 @@ const OptimizationPage = () => {
 
     return (
         <div>
-            {
-                modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
-            }
-            <div className="flex flex-row gap-2">
-                <ShowcasePortfolio t={t} />
-                <PortfolioGraph t={t} graph={portfolioChart} currency={"$"} />
-            </div>
+            <SelectedStocksProvider>
+                {
+                    modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
+                }
+                <div className="flex flex-row gap-2">
+                    <ShowcasePortfolio t={t} />
+                    <PortfolioGraph t={t} graph={portfolioChart} currency={"$"} />
+                </div>
+            </SelectedStocksProvider>
         </div>
     )
 }
