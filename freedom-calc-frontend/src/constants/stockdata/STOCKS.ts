@@ -7,9 +7,8 @@ const STOCKS :string[] = [
     ];
 
 
-export const stockTickerToName: string[][]  =   [
+export const unselectedStocks: string[][]  =   [
     ["VIC", "Vingroup"],
-    ["VJC", "VietJet"],
     ["SSI", "SSI Securities"],
     ["HVN", "Vietnam Airlines"],
     ["HSG", "Hoa Sen"],
@@ -20,8 +19,6 @@ export const stockTickerToName: string[][]  =   [
     ["TLG", "Thien Long"],
     ["VPB", "VP Bank"],
     ["EVF", "EVN"],
-    ["VNM", "Vinamilk"],
-    ["VGI.VN", "Viettel Investment"],
     ["BIC", "Vietnam Building Insurance"],
     ["HAX", "Hang Xanh Automobile"],
     ["SIE", "Siemens"],
@@ -30,31 +27,38 @@ export const stockTickerToName: string[][]  =   [
     ["PAH3.DE", "Porsche"],
     ["MBG.DE", "Mercedes-Benz Group"],
     ["BMW", "Bayerische Motoren Werke"],
-    ["VOW3", "Volkswagen"],
     ["DHL", "Deutsche Post"],
     ["ADS", "Adidas"],
     ["CON", "Continental"],
     ["PUM", "PUMA"],
-    ["AFX", "Carl Zeiss Meditec"],
     ["S92", "SMA Solar Technology"],
     ["VGI.DE", "Bayer Aktiengesellschaft"],
     ["NDX1", "Nordex"],
-    ["NVDA", "NVIDIA"],
     ["V", "Visa"],
     ["MA", "Mastercard"],
     ["ORCL", "Oracle"],
     ["KO", "The Coca-Cola"],
     ["CRM", "Salesforce"],
     ["MBG.US", "Netflix"],
-    ["AMD", "Advanced Micro Devices"],
     ["INTC", "Intel Corporation"],
-    ["DIS", "The Walt Disney Company"],
     ["NKE", "Nike"],
     ["CAT", "Caterpillar"],
     ["UPS", "United Parcel Service"],
     ["BA", "The Boeing Company"],
-    ["DB", "Deutsche Bank"]
 ];
+
+export const preSelectedStocks: string[][]  =   [
+    ["AMD", "Advanced Micro Devices"],
+    ["VJC", "VietJet"],
+    ["DB", "Deutsche Bank"],
+    ["DIS", "The Walt Disney Company"],
+    ["VOW3", "Volkswagen"],
+    ["VNM", "Vinamilk"],
+    ["VGI.VN", "Viettel Investment"],
+    ["AFX", "Carl Zeiss Meditec"],
+    ["NVDA", "NVIDIA"],
+];
+
 
 
 export default STOCKS;

@@ -1,5 +1,5 @@
 import {createContext, useState} from "react";
-import {stockTickerToName} from "../constants/stockdata/STOCKS";
+import {preSelectedStocks, unselectedStocks} from "../constants/stockdata/STOCKS";
 
 type SelectedStocksContextType = {
     selectedStocks: string[][]
@@ -10,8 +10,8 @@ type SelectedStocksContextType = {
 export const SelectedStocksContext = createContext<SelectedStocksContextType>({} as SelectedStocksContextType);
 
 const SelectedStocksProvider = ({children}: any) => {
-    const [selectedStocks, setSelectedStocks] = useState<string[][]>([])
-    const [notSelectedStocks, setNotSelectedStocks] = useState<string[][]>(stockTickerToName)
+    const [selectedStocks, setSelectedStocks] = useState<string[][]>(preSelectedStocks)
+    const [notSelectedStocks, setNotSelectedStocks] = useState<string[][]>(unselectedStocks)
 
     const addStock = (stock : string[]) => {
         setSelectedStocks([...selectedStocks, stock])
