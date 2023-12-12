@@ -8,25 +8,27 @@ const StockPicker = () => {
     const {selectedStocks, notSelectedStocks, addStock} = useContext(SelectedStocksContext);
     return (
         <div>
-            <h2 className="text-lg mb-2">{t('your_stocks')}</h2>
+            <div className="flex flex-row justify-between">
+                <h2 className="text-lg">{t('selected_stocks')}</h2>
+                <div className="dropdown">
+                    <label className="btn btn-solid-primary" tabIndex={0}>
+                        <h2
+                            className="text-sm">{t('add_more_stocks')}
+                        </h2>
+                    </label>
+                    <div className="dropdown-menu overflow-y-scroll max-h-48">
+                        {
+                            notSelectedStocks.sort().map(
+                                (stock, index) => <a key={index} onClick={() => addStock(stock)}
+                                                     className="dropdown-item text-sm">{stock[0] + " - " + stock[1]}</a>)
+                        }
+                    </div>
+                </div>
+            </div>
             <div className="flex flex-row gap-2 overflow-x-auto pb-1">
                 {
                     selectedStocks.map((stock, index) => <StockBubble key={index} stock={stock}/>)
                 }
-            </div>
-            <div className="dropdown">
-                <label className="btn btn-solid-primary my-2" tabIndex={0}>
-                    <h2
-                        className="text-lg">{t('add_more_stocks')}
-                    </h2>
-                </label>
-                <div className="dropdown-menu overflow-y-scroll max-h-48">
-                    {
-                        notSelectedStocks.sort().map(
-                            (stock, index) => <a key={index} onClick={() => addStock(stock)}
-                                                 className="dropdown-item text-sm">{stock[0] + " - " + stock[1]}</a>)
-                    }
-                </div>
             </div>
         </div>
     )
