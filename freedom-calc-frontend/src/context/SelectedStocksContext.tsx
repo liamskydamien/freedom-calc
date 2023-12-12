@@ -1,26 +1,26 @@
 import {createContext, useState} from "react";
-import STOCKS from "../constants/stockdata/STOCKS";
+import {stockTickerToName} from "../constants/stockdata/STOCKS";
 
 type SelectedStocksContextType = {
-    selectedStocks: string[]
-    notSelectedStocks: string[]
-    addStock: (name: string) => void
-    removeStock: (name: string) => void
+    selectedStocks: string[][]
+    notSelectedStocks: string[][]
+    addStock: (stock: string[]) => void
+    removeStock: (stock: string[]) => void
 }
 export const SelectedStocksContext = createContext<SelectedStocksContextType>({} as SelectedStocksContextType);
 
 const SelectedStocksProvider = ({children}: any) => {
-    const [selectedStocks, setSelectedStocks] = useState<string[]>([])
-    const [notSelectedStocks, setNotSelectedStocks] = useState<string[]>(STOCKS)
+    const [selectedStocks, setSelectedStocks] = useState<string[][]>([])
+    const [notSelectedStocks, setNotSelectedStocks] = useState<string[][]>(stockTickerToName)
 
-    const addStock = (name: string) => {
-        setSelectedStocks([...selectedStocks, name])
-        setNotSelectedStocks(notSelectedStocks.filter(stock => stock !== name))
+    const addStock = (stock : string[]) => {
+        setSelectedStocks([...selectedStocks, stock])
+        setNotSelectedStocks(notSelectedStocks.filter(filteredStock => filteredStock !== stock))
     }
 
-    const removeStock = (name: string) => {
-        setNotSelectedStocks([...notSelectedStocks, name])
-        setSelectedStocks(selectedStocks.filter(stock => stock !== name))
+    const removeStock = (stock: string[]) => {
+        setNotSelectedStocks([...notSelectedStocks, stock])
+        setSelectedStocks(selectedStocks.filter(filteredStock => filteredStock !== stock))
     }
 
     return (
