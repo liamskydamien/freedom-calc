@@ -1,11 +1,11 @@
 import RiskAssesment from "../components/optimization/RiskAssesment";
 import {useTranslation} from "react-i18next";
 import {useState} from "react";
-import ShowcasePortfolio from "../components/optimization/ShowcasePortfolio";
 import PortfolioGraph from "../components/optimization/PortfolioGraph";
 import {PortfolioClass, Stock} from "../models/optimization/PortfolioClass";
 import {createPortfolioChartAndPOF} from "../calculations/graphs/createPortfolioChart";
 import SelectedStocksProvider from "../context/SelectedStocksContext";
+import PortfolioCard from "../components/optimization/PortfolioCard";
 
 const OptimizationPage = () => {
 
@@ -44,7 +44,7 @@ const OptimizationPage = () => {
                     modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
                 }
                 <div className="flex flex-row gap-2">
-                    <ShowcasePortfolio t={t} />
+                    <PortfolioCard t={t} />
                     <PortfolioGraph t={t} graph={portfolioChart} currency={"$"} />
                 </div>
             </SelectedStocksProvider>
