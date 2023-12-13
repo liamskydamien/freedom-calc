@@ -2,6 +2,8 @@ import {useTranslation} from "react-i18next";
 import PortfolioGraph from "../PortfolioGraph";
 import {useState} from "react";
 import RadarChartPortfolio from "./RadarChartPortfolio";
+import PortfoliosPies from "./PortfoliosPies";
+import PieChartPortfolio from "./PieChartPortfolio";
 type PortfolioVisualizationProps = {
     graph: any
     currency: string
@@ -23,12 +25,10 @@ const PortfolioVisualization : React.FC<PortfolioVisualizationProps> = ({graph, 
                 <label htmlFor="tab-11" className="tab tab-bordered px-6">Tab 3</label>
             </div>
             {
-                activeTab === 0 ?
-                    <PortfolioGraph t={t} graph={graph} currency={currency} />
-                : activeTab === 1 ?
-                    <RadarChartPortfolio />
-                :
-                    <h1>Not created</h1>
+                activeTab === 0 ?   <PortfolioGraph t={t} graph={graph} currency={currency} />
+                : activeTab === 1 ? <RadarChartPortfolio />
+                : activeTab === 2 ? <PieChartPortfolio />
+                : <></>
             }
         </div>
     )
