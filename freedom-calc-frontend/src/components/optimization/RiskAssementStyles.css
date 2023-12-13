@@ -21,3 +21,7 @@
     height: 80%;
     overflow: auto; /* Hide scrollbars */
 }
+
+.assementModal::-webkit-scrollbar {
+    display: none; /* Safari and Chrome browsers */
+}

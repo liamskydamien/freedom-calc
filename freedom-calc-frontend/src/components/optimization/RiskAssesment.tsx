@@ -1,5 +1,8 @@
 import "./RiskAssementStyles.css"
-import React, {useEffect, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
+import StockPicker from "./StockPicker/StockPicker";
+import StockPickerAssesment from "./StockPicker/StockPickerAssesment";
+import {SelectedStocksContext} from "../../context/SelectedStocksContext";
 
 type RiskAssesmentProps = {
     t: any;
@@ -15,17 +18,21 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t, closeModal}) => {
     const [group5, setGroup5] = useState(0);
     const [valid, setValid] = useState(false);
 
+    const {selectedStocks} = useContext(SelectedStocksContext);
+
     useEffect(() => {
         if(group1 !== 0 &&
             group2 !== 0 &&
             group3 !== 0 &&
             group4 !== 0 &&
-            group5 !== 0) {
+            group5 !== 0 &&
+            selectedStocks.length >= 10
+        ) {
             setValid(true);
         } else {
             setValid(false);
         }
-    }, [group1, group2, group3, group4, group5]);
+    }, [group1, group2, group3, group4, group5, selectedStocks]);
 
     /**
      * Value of group 1 answers
@@ -219,11 +226,12 @@ const RiskAssesment : React.FC<RiskAssesmentProps> = ({t, closeModal}) => {
                                 </div>
                             </div>
                         </div>
+                    <StockPickerAssesment />
                     {
                         valid ?
-                        <button className="btn btn-primary mt-2 max-w-full" onClick={handleSubmit}>{t('save')}</button>
+                        <button className="btn btn-primary mt-2 mb-3 ml-2 mr-2" onClick={handleSubmit}>{t('save')}</button>
                             :
-                        <button className="btn btn-primary mt-2 max-w-full" disabled>{t('save')}</button>
+                        <button className="btn btn-primary mt-2 mb-3 ml-2 mr-2" disabled>{t('save')}</button>
                     }
 
             </div>
