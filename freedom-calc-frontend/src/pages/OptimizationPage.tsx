@@ -6,6 +6,7 @@ import {PortfolioClass, Stock} from "../models/optimization/PortfolioClass";
 import {createPortfolioChartAndPOF} from "../calculations/graphs/createPortfolioChart";
 import SelectedStocksProvider from "../context/SelectedStocksContext";
 import PortfolioCard from "../components/optimization/PortfolioCard";
+import PortfolioVisualization from "../components/optimization/PortfolioVisualization/PortfolioVisualization";
 
 const OptimizationPage = () => {
 
@@ -45,7 +46,7 @@ const OptimizationPage = () => {
                 }
                 <div className="flex flex-row gap-2">
                     <PortfolioCard t={t} />
-                    <PortfolioGraph t={t} graph={portfolioChart} currency={"$"} />
+                    <PortfolioVisualization graph={portfolioChart} currency={"$"} />
                 </div>
             </SelectedStocksProvider>
         </div>

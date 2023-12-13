@@ -36,9 +36,9 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
     };
 
     return (
-            <div className="card max-w-full p-5">
+            <div className="max-w-full">
                 <h1>{t("life_line_title")}</h1>
-                <ResponsiveContainer>
+                <ResponsiveContainer maxHeight={400}>
                     <ComposedChart data={graph}>
                         <XAxis dataKey="name">
                             <Label value={t("years")} offset={0} position="insideBottom" />
