@@ -27,14 +27,14 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
             <h1 className="text-lg ">{t('portfolio')}</h1>
             <StockPicker />
             <div className="tabs max-w-full ml-auto mr-auto">
-                <input type="radio" id="tab-4" name="tab-2" className="tab-toggle" defaultChecked
+                <input type="radio" id="tab-4" name="tab-3" className="tab-toggle" defaultChecked
                        onClick={() => handleTabChange(0)} />
                 <label htmlFor="tab-4" className="tab tab-bordered px-4">{t('your_portfolio')}</label>
 
-                <input type="radio" id="tab-5" name="tab-2" className="tab-toggle" onClick={() => handleTabChange(1)} />
+                <input type="radio" id="tab-5" name="tab-3" className="tab-toggle" onClick={() => handleTabChange(1)} />
                 <label htmlFor="tab-5" className="tab tab-bordered px-4">{t('secure_portfolio')}</label>
 
-                <input type="radio" id="tab-6" name="tab-2" className="tab-toggle" onClick={() => handleTabChange(2)}/>
+                <input type="radio" id="tab-6" name="tab-3" className="tab-toggle" onClick={() => handleTabChange(2)}/>
                 <label htmlFor="tab-6" className="tab tab-bordered px-4">{t('risky_portfolio')}</label>
             </div>
             {
