@@ -10,21 +10,18 @@ const PieChartPortfolio = () => {
         { name: "Group F", value: 189 }
     ];
     return (
-        <ResponsiveContainer>
             <PieChart>
                 <Pie
                     dataKey="value"
                     startAngle={180}
                     endAngle={0}
                     data={data}
-                    cy={200}
+                    cy={100}
                     outerRadius={125}
                     fill="#8884d8"
                     label
                 />
-                <Legend/>
             </PieChart>
-        </ResponsiveContainer>
     );
 }
 
