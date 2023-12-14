@@ -23,13 +23,24 @@ const OptimizationPage = () => {
     const stocks : Stock[] = [
         // TODO delete this
         new Stock("AAPL", 0.5, 0.1, 0.1),
+        new Stock("MSFT", 0.5, 0.1, 0.1),
+        new Stock("GOOG", 0.5, 0.1, 0.1),
+        new Stock("AMZN", 0.5, 0.1, 0.1),
         ];
+
+    const stocks2 : Stock[] = [
+        // TODO delete this
+        new Stock("AAPL", 0.5, 0.1, 0.1),
+        new Stock("MSFT", 0.5, 0.1, 0.1),
+        new Stock("GOOG", 0.5, 0.1, 0.1),
+        new Stock("AMZN", 0.5, 0.1, 0.0),
+    ];
 
     const portfolios = [
         // TODO calculate portfolios
-        new PortfolioClass("your", 0.0425, 0.3, stocks),
-        new PortfolioClass("secure", 0.03, 0.1, stocks),
-        new PortfolioClass("risky", 0.08, 0.2, stocks)
+        new PortfolioClass("personal", 0.0425, 0.03, stocks),
+        new PortfolioClass("secure", 0.03, 0.01, stocks),
+        new PortfolioClass("risky", 0.08, 0.04, stocks2)
         ];
 
     const income = [0,2,5,7,10,12,15,20,23,28,32,35,40,42,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -46,7 +57,7 @@ const OptimizationPage = () => {
                 }
                 <div className="flex flex-row gap-2">
                     <PortfolioCard t={t} />
-                    <PortfolioVisualization graph={portfolioChart} currency={"$"} />
+                    <PortfolioVisualization portfolios={portfolios} graph={portfolioChart} currency={"$"} />
                 </div>
             </SelectedStocksProvider>
         </div>

@@ -11,7 +11,7 @@ const RadarChartPortfolio : React.FC<RadarChartPortfolioProps> = ({data}) => {
             <RadarChart outerRadius={150} data={data}>
                 <PolarGrid />
                 <PolarAngleAxis dataKey="subject" />
-                <PolarRadiusAxis angle={30} domain={[0, 150]} />
+                <PolarRadiusAxis angle={30}/>
                 <Radar name="Riskiest" dataKey="riskiest" stroke="#8884d8" fill="#8884d8" fillOpacity={0.6} />
                 <Radar name="Safest" dataKey="safest" stroke="#82ca9d" fill="#FA0000" fillOpacity={0.6} />
                 <Radar name="Personal" dataKey="personal" stroke="#82ca9d" fill="#82ca9d" fillOpacity={0.6} />

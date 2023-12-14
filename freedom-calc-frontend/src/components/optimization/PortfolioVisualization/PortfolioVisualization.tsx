@@ -1,16 +1,23 @@
 import {useTranslation} from "react-i18next";
 import PortfolioGraph from "../PortfolioGraph";
-import {useState} from "react";
+import React, {useContext, useState} from "react";
 import RadarChartPortfolio from "./RadarChartPortfolio";
 import PortfoliosPies from "./PortfoliosPies";
 import PieChartPortfolio from "./PieChartPortfolio";
+import {createRadarChart} from "../../../calculations/graphs/createRadarChart";
+import portfolio from "../Portfolio";
+import {SelectedStocksContext} from "../../../context/SelectedStocksContext";
+import {PortfolioClass} from "../../../models/optimization/PortfolioClass";
 type PortfolioVisualizationProps = {
     graph: any
-    currency: string
+    currency: string,
+    portfolios: PortfolioClass[]
 }
-const PortfolioVisualization : React.FC<PortfolioVisualizationProps> = ({graph, currency}) => {
+const PortfolioVisualization : React.FC<PortfolioVisualizationProps> = ({portfolios,graph, currency}) => {
     const { t } = useTranslation()
     const [activeTab, setActiveTab] = useState(0);
+    const {selectedStocks} = useContext(SelectedStocksContext)
+    const radarChartData = createRadarChart(portfolios, 4)
     return (
         <div className="card max-w-full p-5">
             <h1 className="text-lg">{t("portfolio_visualization")}</h1>
@@ -26,7 +33,7 @@ const PortfolioVisualization : React.FC<PortfolioVisualizationProps> = ({graph, 
             </div>
             {
                 activeTab === 0 ?   <PortfolioGraph t={t} graph={graph} currency={currency} />
-                : activeTab === 1 ? <RadarChartPortfolio />
+                : activeTab === 1 ? <RadarChartPortfolio data={radarChartData} />
                 : activeTab === 2 ? <PortfoliosPies />
                 : <></>
             }
