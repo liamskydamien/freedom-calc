@@ -1,4 +1,4 @@
-import {Pie, PieChart, ResponsiveContainer} from "recharts";
+import {Legend, Pie, PieChart, ResponsiveContainer} from "recharts";
 
 const PieChartPortfolio = () => {
     const data = [
@@ -18,10 +18,11 @@ const PieChartPortfolio = () => {
                     endAngle={0}
                     data={data}
                     cy={200}
-                    outerRadius={150}
+                    outerRadius={125}
                     fill="#8884d8"
                     label
                 />
+                <Legend/>
             </PieChart>
         </ResponsiveContainer>
     );
