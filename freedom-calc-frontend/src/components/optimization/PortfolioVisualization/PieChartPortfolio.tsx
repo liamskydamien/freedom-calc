@@ -10,7 +10,7 @@ const PieChartPortfolio = () => {
         { name: "Group F", value: 189 }
     ];
     return (
-            <PieChart>
+            <PieChart width={250} height={220}>
                 <Pie
                     dataKey="value"
                     startAngle={180}

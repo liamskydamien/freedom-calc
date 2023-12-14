@@ -27,7 +27,7 @@ const PortfolioVisualization : React.FC<PortfolioVisualizationProps> = ({graph, 
             {
                 activeTab === 0 ?   <PortfolioGraph t={t} graph={graph} currency={currency} />
                 : activeTab === 1 ? <RadarChartPortfolio />
-                : activeTab === 2 ? <PieChartPortfolio />
+                : activeTab === 2 ? <PortfoliosPies />
                 : <></>
             }
         </div>

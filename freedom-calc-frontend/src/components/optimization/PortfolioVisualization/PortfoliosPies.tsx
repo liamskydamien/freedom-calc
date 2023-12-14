@@ -1,8 +1,9 @@
 import PieChartPortfolio from "./PieChartPortfolio";
+import {ResponsiveContainer} from "recharts";
 
 const PortfoliosPies = () => {
     return (
-        <div className="max-w-full flex">
+        <div className="flex flex-row gap-2">
             <PieChartPortfolio />
             <PieChartPortfolio />
             <PieChartPortfolio />
