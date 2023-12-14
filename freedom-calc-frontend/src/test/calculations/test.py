@@ -76,7 +76,7 @@ for file in files:
 # cov_df = pd.DataFrame(covariances, columns=['Stock 1', 'Stock 2', 'Covariance of Stock'])
 # cov_df.to_csv('freedom-calc-frontend\src\constants\stockdata\covariances.csv', index=False)
 
-# Calculate the correlation of 'Close Price' between each pair of DataFrames
+# # Calculate the correlation of 'Close Price' between each pair of DataFrames
 # correlations = []
 # for i in range(len(dfs)):
 #     for j in range(i+1, len(dfs)):
@@ -91,22 +91,39 @@ correlations = correlations_df.iloc[:, 2].values  # Select the third column
 
 std_devs_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
 std_devs = std_devs_df.iloc[:, 2].values  # Select the third column
-
 # Create a correlation matrix from the correlation values
 correlation_matrix = np.zeros((30, 30))
 correlation_matrix[np.triu_indices(30, 1)] = correlations
 correlation_matrix += correlation_matrix.T - np.diag(correlation_matrix.diagonal())
 
-# Number of stocks
-n = len(std_devs)
+# Read expected returns from CSV file
+expected_returns_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
+expected_returns = expected_returns_df.iloc[:, 1].values  # Select the third column
 
-# Initialize weights (for example, equal weights)
-weights = np.repeat(1/n, n)  # replace with your actual weights
+# List of indices of the 10 specific stocks
+indices = input("Enter the indices of the 10 stocks separated by space: ").split()
+indices = [int(index) for index in indices]
 
-# Calculate portfolio variance
+# Select the standard deviations and correlations of the 10 stocks
+std_devs = std_devs[indices]
+correlation_matrix = correlation_matrix[np.ix_(indices, indices)]
+
+# Weights of the 10 specific stocks
+weights = input("Enter the weights of the 10 stocks separated by space: ").split()
+weights = [float(weight) for weight in weights]
+
+# Select the expected returns of the 10 stocks
+expected_returns = expected_returns[indices]
+
+n = len(std_devs)  
+
 portfolio_variance = 0
 for i in range(n):
     for j in range(n):
         portfolio_variance += weights[i] * weights[j] * std_devs[i] * std_devs[j] * correlation_matrix[i, j]
 
+# Calculate portfolio expected return
+portfolio_expected_return = np.dot(weights, expected_returns)
+
 print('Portfolio Variance:', portfolio_variance)
+print('Portfolio Expected Return:', portfolio_expected_return)
