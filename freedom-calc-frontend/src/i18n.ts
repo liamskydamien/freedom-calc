@@ -13,6 +13,12 @@ i18n
     resources: {
       en: {
         translation: {
+          selected_stocks: "Selected Stocks",
+          add_more_stocks: "Add More Stocks",
+          pof_per_portfolio: "PoF per Portfolio",
+          portfolio_comparison: "Portfolio Comparison",
+          portfolio_visualization: "Portfolio Visualisation",
+          select_atleast_10_stocks: "Select at least 10 stocks",
 
           // other
           in_age: "In age",
@@ -220,6 +226,13 @@ i18n
       de: {
         translation: {
 
+          selected_stocks: "Ausgewählte Aktien",
+          add_more_stocks: "Füge mehr Aktien hinzu",
+          pof_per_portfolio: "PoF pro Portfolio",
+          portfolio_comparison: "Portfolio Vergleich",
+          portfolio_visualization: "Portfolio Visualisierung",
+          select_atleast_10_stocks: "Wähle mindestens 10 Aktien aus",
+
           // other
           in_age: "Im Alter von",
           wealth: "Vermögen",
@@ -422,6 +435,59 @@ i18n
       },
       vn: {
         translation: {
+
+          how_risk_affine_are_you: "Bạn thích rủi ro đến mức nào?",
+          how_would_you_describe_your_investment_experience: "Bạn sẽ mô tả kinh nghiệm đầu tư của mình như thế nào?",
+          no_experience: "Không có kinh nghiệm",
+          some_experience: "Một số kinh nghiệm đầu tư",
+          experienced: "Kinh nghiệm từ các khoản đầu tư đơn giản",
+          highly_experienced: "Rất kinh nghiệm qua các khoản đầu tư phức tạp",
+          how_do_you_react_when_your_investments_decrease_in_value: "Bạn phản ứng như thế nào khi các khoản đầu tư của mình giảm giá trị?",
+          become_anxious_sell: "Lo lắng và bán đi",
+          concerned_wait: "Lo lắng, nhưng tôi chờ trước khi bán",
+          hold_onto_my_investments: "Tôi giữ lại các khoản đầu tư của mình",
+          buy_more: "Tôi xem đây là cơ hội để mua thêm",
+          what_is_your_primary_goal_for_investing: "Mục tiêu chính của bạn khi đầu tư là gì?",
+          preserving_capital: "Bảo toàn vốn",
+          balance_between_growth_preservance: "Cân bằng giữa tăng trưởng và bảo toàn",
+          growth_but_no_large_losses: "Tăng trưởng, nhưng tôi không muốn có những tổn thất lớn",
+          maximize_growth: "Tối đa hóa tăng trưởng, ngay cả khi tôi phải chấp nhận tổn thất",
+          how_long_is_your_investment_horizon: "Chu kỳ đầu tư của bạn là bao lâu?",
+          less_than_2_years: "Ít hơn 2 năm",
+          between_2_and_5_years: "Từ 2 đến 5 năm",
+          between_5_and_10_years: "Từ 5 đến 10 năm",
+          more_than_10_years: "Hơn 10 năm",
+          suddendrop_in_a_short_period: "Bạn sẽ làm gì nếu các khoản đầu tư của mình đột ngột giảm 20% giá trị?",
+          sell_immidialty: "Bán ngay lập tức để ngăn chặn thêm tổn thất",
+          wait_and_sell: "Chờ đợi và bán nếu tình hình không cải thiện",
+          keep_it: "Giữ lại vì tôi tin vào tăng trưởng lâu dài",
+          your_portfolio: "Danh mục đầu tư cá nhân",
+          secure_portfolio: "Danh mục đầu tư an toàn",
+          risky_portfolio: "Danh mục đầu tư rủi ro",
+          portfolio: "Danh mục đầu tư",
+          portfolio_growth: "Tăng trưởng Trung bình Tổng (Mean)",
+          portfolio_risk: "Rủi ro Tổng (Độ lệch chuẩn)",
+          stock: "Cổ phiếu",
+          rel_amount: "Tỉ lệ trong danh mục",
+          avg_return: "Tăng trưởng trung bình",
+          risk: "Rủi ro",
+          life_line_title: "PoF của danh mục đầu tư",
+          safest: "An toàn nhất",
+          riskiest: "Rủi ro nhất",
+          personal: "Cá nhân hóa",
+          costs: "Chi phí",
+          in_1000000: "trong 1.000.000",
+
+          in_age: "Ở tuổi",
+          wealth: "Tài sản",
+
+          selected_stocks: "Cổ phiếu đã chọn",
+          add_more_stocks: "Thêm cổ phiếu",
+          pof_per_portfolio: "PoF cho mỗi danh mục đầu tư",
+          portfolio_comparison: "So sánh danh mục đầu tư",
+          portfolio_visualization: "Trực quan hóa danh mục đầu tư",
+          select_atleast_10_stocks: "Chọn ít nhất 10 cổ phiếu",
+
           //Personal Information Page
           title:"Biểu đồ dự đoán",
           explaination:"Dự án biểu đồ dự đoán này được sự dụng để phát triển những phương thức tính toán điểm tự do tài chính bằng việc sự dụng lý thuyết Markowitz Porfolio. Trên cái website này, người dùng có thể nhập dữ liệu của họ (thông tin cá nhân, thu nhập) và những phỏng đoán để sau khi người dùng đã hoàn thành năm bước trên, họ có thể dự đoán cái điểm tự do tài chính",
@@ -573,34 +639,6 @@ i18n
 
           income_costs: "Thu Nhập và Chi Phí",
           optimisation: "Tối Ưu Hóa",
-
-          //Optimisation Page
-          how_risk_affine_are_you: "Bạn có mạo hiểm đến mức nào?",
-          how_would_you_describe_your_investment_experience: "Bạn sẽ mô tả kinh nghiệm đầu tư của mình như thế nào?",
-          no_experience: "Không có kinh nghiệm",
-          some_experience: "Có một số kinh nghiệm đầu tư",
-          experienced: "Có kinh nghiệm thông qua các khoản đầu tư đơn giản",
-          highly_experienced: "Rất nhiều kinh nghiệm thông qua các khoản đầu tư phức tạp",
-          how_do_you_react_when_your_investments_decrease_in_value: "Bạn phản ứng như thế nào khi giá trị đầu tư của bạn giảm?",
-          become_anxious_sell: "Lo lắng và bán ra",
-          concerned_wait: "Lo ngại, nhưng tôi sẽ chờ trước khi bán",
-          hold_onto_my_investments: "Tôi giữ nguyên khoản đầu tư",
-          buy_more: "Tôi thấy đây là cơ hội để mua thêm",
-          what_is_your_primary_goal_for_investing: "Mục tiêu chính của bạn khi đầu tư là gì?",
-          preserving_capital: "Bảo toàn vốn",
-          balance_between_growth_preservance: "Cân bằng giữa tăng trưởng và bảo toàn",
-          growth_but_no_large_losses: "Tăng trưởng, nhưng tôi không muốn rủi ro lớn",
-          maximize_growth: "Tối đa hóa tăng trưởng, dù phải chấp nhận rủi ro",
-          how_long_is_your_investment_horizon: "Chu kỳ đầu tư của bạn dài bao lâu?",
-          less_than_2_years: "Ít hơn 2 năm",
-          between_2_and_5_years: "Từ 2 đến 5 năm",
-          between_5_and_10_years: "Từ 5 đến 10 năm",
-          more_than_10_years: "Hơn 10 năm",
-          suddendrop_in_a_short_period: "Bạn sẽ làm gì nếu giá trị đầu tư của bạn đột ngột giảm 20%?",
-          sell_immidialty: "Bán ngay để ngăn chặn thêm tổn thất",
-          wait_and_sell: "Chờ đợi và bán nếu tình hình không cải thiện",
-          keep_it: "Giữ lại, vì tôi tin vào sự tăng trưởng lâu dài",
-
         },
       },
     },
