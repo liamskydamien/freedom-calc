@@ -26,9 +26,9 @@ In this comprehensive financial planning tool, users embark on a detailed and pe
 
 4. **Formula Representation**:
     - Costs(x) and Wealth(x) are represented by complex formulas incorporating various factors like inflation, inheritance, asset growth rates, and investment factors.
-    $ Costs(x) = \text{TotalCost} - \left( \sum_{i = \text{Current Age}}^{x} \left[ \text{Cost}(x) \right]^{(1 + \text{Inflation Rate})} \right) + \text{Inheritance} $
-    $ Wealth(x) = \text{Starting Capital} + \left( \sum_{i = \text{Current Age}}^{x} \left[ \text{Free Cashflow}(x) \right]^{(1 + \text{Interest Rate})} \right) $
-    $ \text{POF} = \text{Costs}(x) - \text{Wealth}(x) $
+    $$ Costs(x) = \text{TotalCost} - \left( \sum_{i = \text{Current Age}}^{x} \left[ \text{Cost}(x) \right]^{(1 + \text{Inflation Rate})} \right) + \text{Inheritance} $$
+    $$ Wealth(x) = \text{Starting Capital} + \left( \sum_{i = \text{Current Age}}^{x} \left[ \text{Free Cashflow}(x) \right]^{(1 + \text{Interest Rate})} \right) $$
+    $$ \text{POF} = \text{Costs}(x) - \text{Wealth}(x) $$
 
 5. **Variable Adjustments for POF**:
     - Users can tweak variables like inflation rate, inheritance, asset growth rates, and investment factors of free cashflow, offering control over their financial planning.
