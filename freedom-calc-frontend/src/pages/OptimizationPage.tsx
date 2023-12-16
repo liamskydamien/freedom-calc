@@ -1,10 +1,12 @@
 import RiskAssesment from "../components/optimization/RiskAssesment";
 import {useTranslation} from "react-i18next";
 import {useState} from "react";
-import ShowcasePortfolio from "../components/optimization/ShowcasePortfolio";
 import PortfolioGraph from "../components/optimization/PortfolioGraph";
 import {PortfolioClass, Stock} from "../models/optimization/PortfolioClass";
 import {createPortfolioChartAndPOF} from "../calculations/graphs/createPortfolioChart";
+import SelectedStocksProvider from "../context/SelectedStocksContext";
+import PortfolioCard from "../components/optimization/PortfolioCard";
+import PortfolioVisualization from "../components/optimization/PortfolioVisualization/PortfolioVisualization";
 
 const OptimizationPage = () => {
 
@@ -21,13 +23,24 @@ const OptimizationPage = () => {
     const stocks : Stock[] = [
         // TODO delete this
         new Stock("AAPL", 0.5, 0.1, 0.1),
+        new Stock("MSFT", 0.5, 0.1, 0.1),
+        new Stock("GOOG", 0.5, 0.1, 0.1),
+        new Stock("AMZN", 0.5, 0.1, 0.1),
         ];
+
+    const stocks2 : Stock[] = [
+        // TODO delete this
+        new Stock("AAPL", 0.5, 0.1, 0.1),
+        new Stock("MSFT", 0.5, 0.1, 0.1),
+        new Stock("GOOG", 0.5, 0.1, 0.1),
+        new Stock("AMZN", 0.5, 0.1, 0.0),
+    ];
 
     const portfolios = [
         // TODO calculate portfolios
-        new PortfolioClass("your", 0.0425, 0.3, stocks),
-        new PortfolioClass("secure", 0.03, 0.1, stocks),
-        new PortfolioClass("risky", 0.08, 0.2, stocks)
+        new PortfolioClass("personal", 0.0425, 0.03, stocks),
+        new PortfolioClass("secure", 0.03, 0.01, stocks),
+        new PortfolioClass("risky", 0.08, 0.04, stocks2)
         ];
 
     const income = [0,2,5,7,10,12,15,20,23,28,32,35,40,42,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -38,13 +51,15 @@ const OptimizationPage = () => {
 
     return (
         <div>
-            {
-                modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
-            }
-            <div className="flex flex-row gap-2">
-                <ShowcasePortfolio t={t} />
-                <PortfolioGraph t={t} graph={portfolioChart} currency={"$"} />
-            </div>
+            <SelectedStocksProvider>
+                {
+                    modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
+                }
+                <div className="flex flex-row gap-2">
+                    <PortfolioCard t={t} />
+                    <PortfolioVisualization portfolios={portfolios} graph={portfolioChart} currency={"$"} />
+                </div>
+            </SelectedStocksProvider>
         </div>
     )
 }

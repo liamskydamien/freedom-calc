@@ -19,8 +19,6 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
     INVESTMENT_ALLOCATION,
   );
 
-  const { theme } = useDarkmode();
-
   const { personalInformation, startingCapital, phases } =
     useContext(InputContext);
 
@@ -55,7 +53,6 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
           t={t}
           graph={graph}
           pof={realPoF}
-          theme={theme}
           currency={personalInformation.currency}
         />
         <AchievePOF t={t} pof={realPoF} />
