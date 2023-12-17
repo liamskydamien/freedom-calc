@@ -13,6 +13,7 @@ i18n
     resources: {
       en: {
         translation: {
+          optimize: "Optimize",
           selected_stocks: "Selected Stocks",
           add_more_stocks: "Add More Stocks",
           pof_per_portfolio: "PoF per Portfolio",
@@ -225,7 +226,7 @@ i18n
 
       de: {
         translation: {
-
+          optimize: "Optimieren",
           selected_stocks: "Ausgewählte Aktien",
           add_more_stocks: "Füge mehr Aktien hinzu",
           pof_per_portfolio: "PoF pro Portfolio",
@@ -435,7 +436,7 @@ i18n
       },
       vn: {
         translation: {
-
+          optimize: "Tối ưu hóa",
           how_risk_affine_are_you: "Bạn thích rủi ro đến mức nào?",
           how_would_you_describe_your_investment_experience: "Bạn sẽ mô tả kinh nghiệm đầu tư của mình như thế nào?",
           no_experience: "Không có kinh nghiệm",

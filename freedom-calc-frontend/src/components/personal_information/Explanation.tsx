@@ -1,4 +1,5 @@
 import React from "react";
+import GuideDocument from "./Guide/GuideDocument";
 
 type ExplanationProps = {
     t: any
@@ -7,8 +8,7 @@ type ExplanationProps = {
 const Explanation : React.FC<ExplanationProps> = ({t}) => {
     return (
         <div className="card max-w-full p-5 overflow-auto">
-            <h1 className="text-4xl font-bold">{t("title")}</h1>
-            <p className="text-left text-xl">{t("explaination")}</p>
+            <GuideDocument />
         </div>
     )
 }
