@@ -23,7 +23,7 @@ export class InvestmentWeights {
     this.validate();
   }
 
-  validate() {
+  validate(): boolean {
     if (
       Math.round(
         this.cash +
@@ -35,6 +35,9 @@ export class InvestmentWeights {
       ) !== 1
     ) {
       throw new Error("Investment weights must add up to 1");
+    }
+    else {
+      return true;
     }
   }
 
