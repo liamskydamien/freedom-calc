@@ -4,6 +4,7 @@ import { ExpectedGrowth } from "../../models/pof/ExpectedGrowth";
 import React, { useState } from "react";
 import InputAssetAllocation from "./InputAssetAllocation";
 import { INVESTMENT_ALLOCATION } from "../../constants/assets/investment_allocation";
+import {useNavigate} from "react-router";
 
 type CalculationInformationProps = {
   t: any;
@@ -23,6 +24,8 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
 }) => {
   const [showAssetAllocation, setShowAssetAllocation] =
     React.useState<boolean>(false);
+
+  const navigate = useNavigate();
 
   // Asset Allocation
   const [cash, setCash] = useState<number>(investmentAllocation.cash * 100);
@@ -87,46 +90,56 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
   };
 
   return (
-    <div className="flex flex-col gap-2">
-      <InputExpectedGrowth
-        t={t}
-        setExpectedGrowthRate={setExpectedGrowthRate}
-        expectedGrowthRate={expectedGrowthRate}
-        setInflationRate={setInflationRate}
-        inflationRate={inflationRate}
-        handleShowAssetAllocation={handleShowAssetAllocation}
-        expectedWealthToKeep={expectedWealthToKeep}
-        setExpectedWealthToKeep={setExpectedWealthToKeep}
-        currentCurrency={currentCurrency}
-      />
-      {showAssetAllocation && (
-        <InputAssetAllocation
-          t={t}
-          stocks={stocks}
-          other={other}
-          preciousMetals={preciousMetals}
-          crypto={crypto}
-          realEstate={realEstate}
-          cash={cash}
-          setCash={setCash}
-          setStocks={setStocks}
-          setRealEstate={setRealEstate}
-          setPreciousMetals={setPreciousMetals}
-          setOther={setOther}
-          setCrypto={setCrypto}
+      <div className="flex flex-col gap-2">
+        <InputExpectedGrowth
+            t={t}
+            setExpectedGrowthRate={setExpectedGrowthRate}
+            expectedGrowthRate={expectedGrowthRate}
+            setInflationRate={setInflationRate}
+            inflationRate={inflationRate}
+            handleShowAssetAllocation={handleShowAssetAllocation}
+            expectedWealthToKeep={expectedWealthToKeep}
+            setExpectedWealthToKeep={setExpectedWealthToKeep}
+            currentCurrency={currentCurrency}
         />
-      )}
-      <div className="card max-w-md">
-        <button
-          className="btn btn-primary max-w-full"
-          onClick={() => {
-            handleCalculate();
-          }}
-        >
-          {t("recalculate_pof")}
-        </button>
+        {showAssetAllocation && (
+            <InputAssetAllocation
+                t={t}
+                stocks={stocks}
+                other={other}
+                preciousMetals={preciousMetals}
+                crypto={crypto}
+                realEstate={realEstate}
+                cash={cash}
+                setCash={setCash}
+                setStocks={setStocks}
+                setRealEstate={setRealEstate}
+                setPreciousMetals={setPreciousMetals}
+                setOther={setOther}
+                setCrypto={setCrypto}
+            />
+        )}
+        <div className="card max-w-md">
+          <button
+              className="btn btn-primary max-w-full"
+              onClick={() => {
+                handleCalculate();
+              }}
+          >
+            {t("recalculate_pof")}
+          </button>
+        </div>
+        <div className="card max-w-md">
+          <button
+              className="btn btn-success max-w-full"
+              onClick={() => {
+               navigate("/optimization");
+              }}
+          >
+            {t("optimize")}
+          </button>
+        </div>
       </div>
-    </div>
   );
 };
 export default CalculationInformation;
