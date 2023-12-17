@@ -4,10 +4,10 @@ import React, { useContext, useState } from "react";
 import { EXPECTED_GROWTH } from "../../constants/assets/expected_growth";
 import { INVESTMENT_ALLOCATION } from "../../constants/assets/investment_allocation";
 import CalculationInformation from "./CalculationInformation";
-import useDarkmode from "../../hooks/useDarkmode";
 import { useCalculateLifeLine } from "../../hooks/useCalculateLifeLine";
 import { InputContext } from "../../context/InputContext";
 import { getCurrencySymbol } from "../../calculations/utility/getCurrencySymbol";
+import {calculateInvestmentAllocation} from "../../calculations/utility/calculateInvestmentAllocation";
 
 type PoFProps = {
   t: any;
@@ -15,12 +15,12 @@ type PoFProps = {
 
 const PoF: React.FC<PoFProps> = ({ t }) => {
   const [expectedGrowth, setExpectedGrowth] = useState(EXPECTED_GROWTH);
-  const [investmentAllocation, setInvestmentAllocation] = useState(
-    INVESTMENT_ALLOCATION,
-  );
-
   const { personalInformation, startingCapital, phases } =
     useContext(InputContext);
+
+  const [investmentAllocation, setInvestmentAllocation] = useState(
+        calculateInvestmentAllocation(startingCapital.assetGroups),
+  );
 
   const { graph, realPoF } = useCalculateLifeLine(
     startingCapital.assetGroups,

@@ -108,7 +108,6 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
       updateProgressPersonal();
       navigate("/starting_capital");
     } else {
-      //TODO: Add error Modal
       alert("Please check your input!");
     }
   };
