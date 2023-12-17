@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd
+from scipy.optimize import minimize
 
 files = ['freedom-calc-frontend\src\constants\stockdata\_germany\cleaned_german_adidas_AG__ADS_stocks.csv',
         'freedom-calc-frontend\src\constants\stockdata\_germany\cleaned_german_Bayer_Aktiengesellschaft_VGI_stocks.csv',
@@ -91,6 +92,7 @@ correlations = correlations_df.iloc[:, 2].values  # Select the third column
 
 std_devs_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
 std_devs = std_devs_df.iloc[:, 2].values  # Select the third column
+
 # Create a correlation matrix from the correlation values
 correlation_matrix = np.zeros((30, 30))
 correlation_matrix[np.triu_indices(30, 1)] = correlations
@@ -98,7 +100,7 @@ correlation_matrix += correlation_matrix.T - np.diag(correlation_matrix.diagonal
 
 # Read expected returns from CSV file
 expected_returns_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
-expected_returns = expected_returns_df.iloc[:, 1].values  # Select the third column
+expected_returns = expected_returns_df.iloc[:, 1].values  # Select the second column
 
 # List of indices of the 10 specific stocks
 indices = input("Enter the indices of the 10 stocks separated by space: ").split()
@@ -108,22 +110,31 @@ indices = [int(index) for index in indices]
 std_devs = std_devs[indices]
 correlation_matrix = correlation_matrix[np.ix_(indices, indices)]
 
-# Weights of the 10 specific stocks
-weights = input("Enter the weights of the 10 stocks separated by space: ").split()
-weights = [float(weight) for weight in weights]
-
 # Select the expected returns of the 10 stocks
 expected_returns = expected_returns[indices]
 
-n = len(std_devs)  
+# Calculate the minimum and maximum expected returns
+min_return = np.min(expected_returns)
+max_return = np.max(expected_returns)
 
-portfolio_variance = 0
-for i in range(n):
-    for j in range(n):
-        portfolio_variance += weights[i] * weights[j] * std_devs[i] * std_devs[j] * correlation_matrix[i, j]
+print("The range of feasible target returns for the portfolio is between", min_return, "and", max_return)
 
-# Calculate portfolio expected return
-portfolio_expected_return = np.dot(weights, expected_returns)
+# Define the objective function (portfolio variance)
+def objective(w):
+    return w.T @ np.diag(std_devs) @ correlation_matrix @ np.diag(std_devs) @ w
 
-print('Portfolio Variance:', portfolio_variance)
-print('Portfolio Expected Return:', portfolio_expected_return)
+# Define the target return
+mu_0 = -0.2008571428571427  # replace with your target return
+
+# Define the equality constraints
+constraints = ({'type': 'eq', 'fun': lambda w: w.T @ expected_returns - mu_0},
+               {'type': 'eq', 'fun': lambda w: np.sum(w) - 1})
+
+# Define the initial guess for the optimizer
+w0 = np.array([1/len(indices)]*len(indices))
+
+# Perform the optimization
+result = minimize(objective, w0, constraints=constraints)
+
+# Print the optimal portfolio weights rounded to 4 decimal places
+print("Optimal portfolio weights:", [format(w, '.4f') for w in result.x])
