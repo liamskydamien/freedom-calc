@@ -7,6 +7,7 @@ import {createPortfolioChartAndPOF} from "../calculations/graphs/createPortfolio
 import SelectedStocksProvider from "../context/SelectedStocksContext";
 import PortfolioCard from "../components/optimization/PortfolioCard";
 import PortfolioVisualization from "../components/optimization/PortfolioVisualization/PortfolioVisualization";
+import { useFetchPortfolio } from "../hooks/useFetchPortfolio";
 
 const OptimizationPage = () => {
 
@@ -19,6 +20,11 @@ const OptimizationPage = () => {
         setIsOpen(false);
         console.log(risk);
     }
+
+    const stocksTest : string[] = [ "AMD", "UPS", "DB", "DIS", "VOW3", "INTC", "V", "AFX", "NVDA"];
+    const target_std_dev = 100;
+
+    const {portfolio, isLoading, isError} = useFetchPortfolio(stocksTest, target_std_dev);
 
     const stocks : Stock[] = [
         // TODO delete this
@@ -38,9 +44,9 @@ const OptimizationPage = () => {
 
     const portfolios = [
         // TODO calculate portfolios
-        new PortfolioClass("personal", 0.0425, 0.03, stocks),
-        new PortfolioClass("secure", 0.03, 0.01, stocks),
-        new PortfolioClass("risky", 0.08, 0.04, stocks2)
+        new PortfolioClass( 0.0425, 0.03, stocks),
+        new PortfolioClass(0.03, 0.01, stocks),
+        new PortfolioClass( 0.08, 0.04, stocks2)
         ];
 
     const income = [0,2,5,7,10,12,15,20,23,28,32,35,40,42,0,0,0,0,0,0,0,0,0,0,0,0]
@@ -53,7 +59,27 @@ const OptimizationPage = () => {
         <div>
             <SelectedStocksProvider>
                 {
-                    modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
+                    isLoading ? <div>Loading...</div>
+                    : isError ? <div>Error</div>
+                    : portfolio ?
+                      <div>
+                        <h1>{portfolio.mean}</h1>
+                        <h1>{portfolio.std}</h1>
+                            {
+                                portfolio.portfolio?.map((stock) => {
+                                    return <div key={stock.index}>
+                                        <h1>{stock.index}</h1>
+                                        <h1>{stock.weight}</h1>
+                                        <h1>{stock.mean}</h1>
+                                        <h1>{stock.std}</h1>
+                                    </div>
+                                })
+                            }
+                          </div>
+                    : <></>
+                }
+                {
+                    // modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
                 }
                 <div className="flex flex-row gap-2">
                     <PortfolioCard t={t} />
