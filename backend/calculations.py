@@ -14,41 +14,12 @@ class OptimizeView(View):
 # # User inputs
 # indices = input("Enter the indices of at least 10 stock(s) separated by space: ").split()
 # while len(indices) < 10:
-#     print("Please enter at least 10 stocks.")
+#     print("Please enter at least 10 portfolio.")
 #     indices = input("Enter the indices of at least 10 stock(s) separated by space: ").split()
 # indices = [int(index) for index in indices]
 # target_std_dev = float(input("Enter the target standard deviation: "))
 
-# Read correlations, standard deviations, and expected returns from CSV files
-correlations_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\correlations.csv')
-correlations = correlations_df.iloc[:, 2].values  # Select the third column
-std_devs_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
-std_devs = std_devs_df.iloc[:, 2].values  # Select the third column
-expected_returns_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
-expected_returns = expected_returns_df.iloc[:, 1].values  # Select the second column
 
-# Create a correlation matrix from the correlation values
-correlation_matrix = np.zeros((30, 30))
-correlation_matrix[np.triu_indices(30, 1)] = correlations
-correlation_matrix += correlation_matrix.T - np.diag(correlation_matrix.diagonal())
-
-# Select the standard deviations, correlations, and expected returns of the specific stocks
-std_devs = std_devs[indices]
-correlation_matrix = correlation_matrix[np.ix_(indices, indices)]
-expected_returns = expected_returns[indices]
-
-# Calculate the covariance matrix
-variances = np.square(std_devs)
-cov_matrix = np.outer(variances, variances) * correlation_matrix
-
-# Define the optimization problem
-weights = cp.Variable(len(indices))
-portfolio_return = expected_returns.T @ weights
-objective = cp.Maximize(portfolio_return)
-constraints = [cp.sum(weights) == 1, cp.norm(np.sqrt(variances) * weights) <= target_std_dev, weights >= 0]
-
-problem = cp.Problem(objective, constraints)
-result = problem.solve()
 
 def check_problem_status(problem):
     if problem.status in ["infeasible", "unbounded"]:
@@ -136,7 +107,7 @@ def check_problem_status(problem):
 # })
 # result_df.to_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv', index=False)
 
-#Calculate the variance of 'Close Price' for each DataFrame
+#Calculate the std of 'Close Price' for each DataFrame
 # variances = [df['Close Price'].var() for df in dfs]
 # var_df = pd.DataFrame(variances, columns=['Variance of Close Price'])
 # var_df.to_csv('freedom-calc-frontend\src\constants\stockdata\_variances.csv', index=False)
@@ -158,11 +129,11 @@ def check_problem_status(problem):
 #         correlations.append((files[i], files[j], corr))
 # corr_df = pd.DataFrame(correlations, columns=['Stock 1', 'Stock 2', 'Correlation of Stock'])
 # corr_df.to_csv('freedom-calc-frontend\src\constants\stockdata\correlations.csv', index=False)
-    
+
 # User inputs
 indices = input("Enter the indices of at least 10 stock(s) separated by space: ").split()
 while len(indices) < 10:
-    print("Please enter at least 10 stocks.")
+    print("Please enter at least 10 portfolio.")
     indices = input("Enter the indices of at least 10 stock(s) separated by space: ").split()
 indices = [int(index) for index in indices]
 target_std_dev = float(input("Enter the target standard deviation: "))
@@ -180,7 +151,7 @@ correlation_matrix = np.zeros((30, 30))
 correlation_matrix[np.triu_indices(30, 1)] = correlations
 correlation_matrix += correlation_matrix.T - np.diag(correlation_matrix.diagonal())
 
-# Select the standard deviations, correlations, and expected returns of the specific stocks
+# Select the standard deviations, correlations, and expected returns of the specific portfolio
 std_devs = std_devs[indices]
 correlation_matrix = correlation_matrix[np.ix_(indices, indices)]
 expected_returns = expected_returns[indices]
