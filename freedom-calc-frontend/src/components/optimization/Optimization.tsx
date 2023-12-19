@@ -35,10 +35,6 @@ const {portfolio: riskiestPortfolio,
   isLoading: riskiestLoading,
   isError: riskiestError} = useFetchPortfolio(selectIndex, 100);
 
-  useEffect(() => {
-    setPersonalPortfolio(personalPortfolio);
-  }, []);
-
 const closeModal = (risk: number) => {
   setRisk(risk);
   setIsOpen(false);
@@ -57,7 +53,7 @@ const portfolios = [
 const income = [0,2,5,7,10,12,15,20,23,28,32,35,40,42,0,0,0,0,0,0,0,0,0,0,0,0]
 const costs = [100, 98, 95, 93, 90, 88, 85, 80, 77, 72, 68, 65, 60, 58, 55, 52, 48, 43, 40, 38, 34, 30, 27, 24, 20, 15]
 
-const {portfolioChart, safestPOF, riskiestPOF, personalPOF} = createPortfolioChartAndPOF(portfolios, income, costs)
+//const {portfolioChart, safestPOF, riskiestPOF, personalPOF} = createPortfolioChartAndPOF(portfolios, income, costs)
 
 
 return (
@@ -66,8 +62,6 @@ return (
         modalIsOpen && <RiskAssesment t={t} closeModal={closeModal}/>
       }
       <div className="flex flex-row gap-2">
-        <PortfolioCard t={t} />
-        <PortfolioVisualization portfolios={portfolios} graph={portfolioChart} currency={"$"} />
       </div>
   </div>
 )

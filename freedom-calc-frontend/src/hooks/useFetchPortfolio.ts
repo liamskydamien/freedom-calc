@@ -3,7 +3,7 @@ import axios from "axios";
 import { PortfolioClass } from "../models/optimization/PortfolioClass";
 
 export const useFetchPortfolio = (stocks: string[], target_std: number) => {
-  const [portfolio, setPortfolio] = useState<PortfolioClass>({} as PortfolioClass);
+  const [portfolio, setPortfolio] = useState<PortfolioClass[]>([] as PortfolioClass[]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<String>("");
 

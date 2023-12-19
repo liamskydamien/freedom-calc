@@ -4,11 +4,13 @@ import {TEST_PORTFOLIO} from "../../constants/assets/portfolio";
 import StockBubble from "./StockPicker/StockBubble";
 import {SelectedStocksContext} from "../../context/SelectedStocksContext";
 import StockPicker from "./StockPicker/StockPicker";
+import { PortfolioClass } from "../../models/optimization/PortfolioClass";
 
 type PortfolioCardProps = {
     t: any
+    portfolios : PortfolioClass[]
 }
-const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
+const PortfolioCard : React.FC<PortfolioCardProps> = ({t, portfolios}) => {
 
     const [activeTab, setActiveTab] = useState(0)
     /**
@@ -18,9 +20,6 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
     const handleTabChange = (tab: number) => {
         setActiveTab(tab)
     }
-
-    const portfolio = TEST_PORTFOLIO()
-
 
     return (
         <div className="card p-2 flex-col justify-center max-h-max max-w-lg">
@@ -39,11 +38,11 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t}) => {
             </div>
             {
                 activeTab === 0 ?
-                    <Portfolio t={t} portfolio={portfolio} currency={"$"}/>
+                    <Portfolio t={t} portfolio={portfolios[0]} currency={"$"}/>
                     : activeTab === 1 ?
-                        <Portfolio t={t} portfolio={portfolio} currency={"$"}/>
+                        <Portfolio t={t} portfolio={portfolios[1]} currency={"$"}/>
                         :
-                        <Portfolio t={t} portfolio={portfolio} currency={"$"}/>
+                        <Portfolio t={t} portfolio={portfolios[2]} currency={"$"}/>
             }
         </div>
     )
