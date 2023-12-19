@@ -7,9 +7,9 @@ export function createRadarChart(portfolios: PortfolioClass[], selectedStocks: n
     radarChart.push({
         subject: "Return",
         fullMark: 0.1,
-        riskiest: portfolios[2].mean,
-        safest: portfolios[1].mean,
-        personal: portfolios[0].mean
+        riskiest: portfolios[2].mean * 1000,
+        safest: portfolios[1].mean * 1000,
+        personal: portfolios[0].mean *1000
     });
     radarChart.push({
         subject: "Risk",
@@ -21,9 +21,9 @@ export function createRadarChart(portfolios: PortfolioClass[], selectedStocks: n
     radarChart.push({
         subject: "Diversification",
         fullMark: 0.1,
-        riskiest: portfolios[2].portfolio.filter(stock => stock.weight > 0).length / selectedStocks / 10,
-        safest: portfolios[1].portfolio.filter(stock => stock.weight > 0).length / selectedStocks / 10,
-        personal: portfolios[0].portfolio.filter(stock => stock.weight > 0).length / selectedStocks / 10
+        riskiest: portfolios[2].portfolio.filter(stock => stock.weight > 0).length / selectedStocks * 100,
+        safest: portfolios[1].portfolio.filter(stock => stock.weight > 0).length / selectedStocks * 100,
+        personal: portfolios[0].portfolio.filter(stock => stock.weight > 0).length / selectedStocks * 100
     });
     return radarChart;
 }

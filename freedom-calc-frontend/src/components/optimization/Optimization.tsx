@@ -1,5 +1,5 @@
 import { useTranslation } from "react-i18next";
-import { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useFetchPortfolio } from "../../hooks/useFetchPortfolio";
 import { createPortfolioChartAndPOF } from "../../calculations/graphs/createPortfolioChart";
 import RiskAssesment from "./RiskAssesment";
@@ -8,6 +8,7 @@ import PortfolioVisualization from "./PortfolioVisualization/PortfolioVisualizat
 import { SelectedStocksContext } from "../../context/SelectedStocksContext";
 import { PortfolioClass, Stock } from "../../models/optimization/PortfolioClass";
 import { InputContext } from "../../context/InputContext";
+import { calculateCost } from "../../calculations/calculateCost";
 
 type OptimizationProps = {
   risk: number
@@ -21,7 +22,7 @@ type PortfolioChart = {
 }
 const Optimization : React.FC<OptimizationProps> = ({risk}) => {
   const { t } = useTranslation();
-  const {personalInformation} = useContext(InputContext)
+  const {personalInformation, phases} = useContext(InputContext)
   const [portfolioChartState, setPortfolioChartState] = useState<PortfolioChart>({} as PortfolioChart);
   const [loading, setLoading] = useState(true);
 
@@ -30,34 +31,12 @@ const Optimization : React.FC<OptimizationProps> = ({risk}) => {
 
   const {portfolio, isLoading, isError} = useFetchPortfolio(stocksTest, target_std_dev);
 
-  const stocks : Stock[] = [
-    // TODO delete this
-    new Stock("AAPL", 0.5, 0.1, 0.1),
-    new Stock("MSFT", 0.5, 0.1, 0.1),
-    new Stock("GOOG", 0.5, 0.1, 0.1),
-    new Stock("AMZN", 0.5, 0.1, 0.1),
-  ];
-
-  const stocks2 : Stock[] = [
-    // TODO delete this
-    new Stock("AAPL", 0.5, 0.1, 0.1),
-    new Stock("MSFT", 0.5, 0.1, 0.1),
-    new Stock("GOOG", 0.5, 0.1, 0.1),
-    new Stock("AMZN", 0.5, 0.1, 0.0),
-  ];
-
-  const portfolios = [
-    // TODO calculate portfolios
-    new PortfolioClass( 0.0425, 0.03, stocks),
-    new PortfolioClass(0.03, 0.01, stocks),
-    new PortfolioClass( 0.08, 0.04, stocks2)
-  ];
-
-  const income = [0,2,5,7,10,12,15,20,23,28,32,35,40,42,0,0,0,0,0,0,0,0,0,0,0,0]
-  const costs = [100, 98, 95, 93, 90, 88, 85, 80, 77, 72, 68, 65, 60, 58, 55, 52, 48, 43, 40, 38, 34, 30, 27, 24, 20, 15]
-
   useEffect(() => {
     console.log("Portfolio: ", portfolio);
+    const income = phases.getPhases().length !== 0? phases.getPhases().map((phase) => {return phase.calculateNetIncome()}) : [100,100,100,100,100];
+    const costs =  phases.getPhases().length !== 0? calculateCost(phases.getPhases().map((phase) => {return phase.expenses.getTotalExpenses()}), 0.02, 1, 0): [];
+    console.log("Income: ", income);
+    console.log("Costs: ", costs);
     if (portfolio.length === 0) return;
     const {portfolioChart} = createPortfolioChartAndPOF(portfolio, income, costs)
     console.log("PortfolioChart: ", portfolioChart);
