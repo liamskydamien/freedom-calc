@@ -13,9 +13,17 @@ type OptimizationProps = {
   risk: number
 }
 
+type PortfolioChart = {
+  portfolioChart: any
+  safestPOF: any
+  riskiestPOF: any
+  personalPOF: any
+}
 const Optimization : React.FC<OptimizationProps> = ({risk}) => {
   const { t } = useTranslation();
   const {personalInformation} = useContext(InputContext)
+  const [portfolioChartState, setPortfolioChartState] = useState<PortfolioChart>({} as PortfolioChart);
+  const [loading, setLoading] = useState(true);
 
   const stocksTest : string[] = [ "AMD", "UPS", "DB", "DIS", "VOW3", "INTC", "V", "AFX", "NVDA"];
   const target_std_dev = 100;
@@ -48,11 +56,14 @@ const Optimization : React.FC<OptimizationProps> = ({risk}) => {
   const income = [0,2,5,7,10,12,15,20,23,28,32,35,40,42,0,0,0,0,0,0,0,0,0,0,0,0]
   const costs = [100, 98, 95, 93, 90, 88, 85, 80, 77, 72, 68, 65, 60, 58, 55, 52, 48, 43, 40, 38, 34, 30, 27, 24, 20, 15]
 
-
   useEffect(() => {
-
+    console.log("Portfolio: ", portfolio);
+    if (portfolio.length === 0) return;
+    const {portfolioChart} = createPortfolioChartAndPOF(portfolio, income, costs)
+    console.log("PortfolioChart: ", portfolioChart);
+    setPortfolioChartState({portfolioChart, safestPOF: {}, riskiestPOF: {}, personalPOF: {}});
+    setLoading(false);
   }, [portfolio]);
-  const {portfolioChart, safestPOF, riskiestPOF, personalPOF} = createPortfolioChartAndPOF(portfolios, income, costs)
 
   return (
   <div>
@@ -62,7 +73,11 @@ const Optimization : React.FC<OptimizationProps> = ({risk}) => {
           : portfolio ?
             <div className="flex flex-row gap-2">
               <PortfolioCard t={t} portfolios={portfolio} currency={personalInformation.currency} />
-              <PortfolioVisualization portfolios={portfolio} graph={portfolioChart} currency={personalInformation.currency} />
+              {
+                loading ? <div className="spinner-circle max-w-2xl max-h-2xl ml-auto mr-auto mt-40 mb-40"></div>
+                  :
+                  <PortfolioVisualization portfolios={portfolio} graph={portfolioChartState.portfolioChart} currency={personalInformation.currency} />
+              }
             </div>
             : <div>Portfolio is undefined</div>
     }
