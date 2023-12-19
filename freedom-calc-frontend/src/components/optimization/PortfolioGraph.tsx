@@ -40,7 +40,7 @@ const PortfolioGraph : React.FC<PortfolioGraphProps> = ({t, graph, currency}) =>
                 <h1>{t("life_line_title")}</h1>
                 <ResponsiveContainer maxHeight={400}>
                     <ComposedChart data={graph}>
-                        <XAxis dataKey="name">
+                        <XAxis dataKey="index">
                             <Label value={t("years")} offset={0} position="insideBottom" />
                         </XAxis>
                         <YAxis type="number">

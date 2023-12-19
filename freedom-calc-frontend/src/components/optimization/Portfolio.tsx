@@ -19,7 +19,7 @@ const Portfolio : React.FC<PortfolioProps> = ({t, portfolio, currency}) => {
                         {t('portfolio_growth')}
                     </p>
                     <p>
-                        {portfolio.mean + " " + currency}
+                        {(portfolio.mean * 100).toPrecision(2) + " % (CAGR)"}
                     </p>
                 </div>
                 <div className="flex flex-row justify-between">
@@ -27,20 +27,20 @@ const Portfolio : React.FC<PortfolioProps> = ({t, portfolio, currency}) => {
                         {t('portfolio_risk')}
                     </p>
                     <p>
-                        {portfolio.variance + " " + currency}
+                        {portfolio.std + " " + currency}
                     </p>
                 </div>
             </div>
             <StockTable t={t} portfolio={portfolio} />
             {
                 /*<div className="tabs tabs-boxed gap-1">
-                <input type="radio" id="tab-13" name="tab-5" className="tab-toggle" defaultChecked onClick={() => {setActiveTab(0)}}/>
+                <input type="radio" id="tab-13" index="tab-5" className="tab-toggle" defaultChecked onClick={() => {setActiveTab(0)}}/>
                 <label htmlFor="tab-13" className="tab">{t('table')}</label>
 
-                <input type="radio" id="tab-14" name="tab-5" className="tab-toggle" onClick={() => {setActiveTab(1)}}/>
+                <input type="radio" id="tab-14" index="tab-5" className="tab-toggle" onClick={() => {setActiveTab(1)}}/>
                 <label htmlFor="tab-14" className="tab">{t('pie_chart')}</label>
 
-                <input type="radio" id="tab-15" name="tab-5" className="tab-toggle" onClick={() => {setActiveTab(2)}}/>
+                <input type="radio" id="tab-15" index="tab-5" className="tab-toggle" onClick={() => {setActiveTab(2)}}/>
                 <label htmlFor="tab-15" className="tab">{t('radar')}</label>
             </div>
             <div className="max-w-full">

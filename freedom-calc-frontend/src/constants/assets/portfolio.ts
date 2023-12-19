@@ -8,6 +8,6 @@ export const TEST_PORTFOLIO = () : PortfolioClass => {
         new Stock("AMZN", 0.4, 0.5, 0.25)
     ];
 
-    return new PortfolioClass("Test Portfolio", 0.25, 0.25, stocks);
+    return new PortfolioClass(0.25, 0.25, stocks);
 
 }

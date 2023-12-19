@@ -20,15 +20,15 @@ const StockTable : React.FC<StockTableProps> = ({t, portfolio}) => {
                     </thead>
                     <tbody>
                     {
-                        portfolio.stocks
-                            .sort((a, b) => b.percent - a.percent )
+                        portfolio.portfolio
+                            .sort((a, b) => b.weight - a.weight )
                             .map((stock, index) => {
                             return (
                                 <tr key={index}>
-                                    <th>{stock.name}</th>
-                                    <td>{stock.percent}</td>
-                                    <td>{stock.mean}</td>
-                                    <td>{stock.variance}</td>
+                                    <th>{stock.index}</th>
+                                    <td>{(stock.weight * 100).toPrecision(3) + " %"}</td>
+                                    <td>{(stock.mean * 100).toPrecision(3) + " %"}</td>
+                                    <td>{stock.std}</td>
                                 </tr>
                             )
                         })
