@@ -26,8 +26,8 @@ const StockTable : React.FC<StockTableProps> = ({t, portfolio}) => {
                             return (
                                 <tr key={index}>
                                     <th>{stock.index}</th>
-                                    <td>{stock.weight}</td>
-                                    <td>{stock.mean}</td>
+                                    <td>{(stock.weight * 100).toPrecision(3) + " %"}</td>
+                                    <td>{(stock.mean * 100).toPrecision(3) + " %"}</td>
                                     <td>{stock.std}</td>
                                 </tr>
                             )

@@ -1,17 +1,19 @@
 import {useTranslation} from "react-i18next";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import {PortfolioClass, Stock} from "../models/optimization/PortfolioClass";
 import {createPortfolioChartAndPOF} from "../calculations/graphs/createPortfolioChart";
 import SelectedStocksProvider from "../context/SelectedStocksContext";
 import PortfolioCard from "../components/optimization/PortfolioCard";
 import PortfolioVisualization from "../components/optimization/PortfolioVisualization/PortfolioVisualization";
 import { useFetchPortfolio } from "../hooks/useFetchPortfolio";
+import { InputContext } from "../context/InputContext";
 
 const OptimizationPage = () => {
 
     const { t } = useTranslation();
     const [modalIsOpen, setIsOpen] = useState(true);
     const [risk, setRisk] = useState(0);
+    const {personalInformation} = useContext(InputContext)
 
     const closeModal = (risk: number) => {
         setRisk(risk);
@@ -68,8 +70,8 @@ const OptimizationPage = () => {
                   : isError ? <div>Error</div>
                   : portfolio ?
                 <div className="flex flex-row gap-2">
-                    <PortfolioCard t={t} portfolios={portfolio} />
-                    <PortfolioVisualization portfolios={portfolio} graph={portfolioChart} currency={"$"} />
+                    <PortfolioCard t={t} portfolios={portfolio} currency={personalInformation.currency} />
+                    <PortfolioVisualization portfolios={portfolio} graph={portfolioChart} currency={personalInformation.currency} />
                 </div>
                     : <div>Portfolio is undefined</div>
                 }

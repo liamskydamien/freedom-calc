@@ -9,8 +9,9 @@ import { PortfolioClass } from "../../models/optimization/PortfolioClass";
 type PortfolioCardProps = {
     t: any
     portfolios : PortfolioClass[]
+    currency: string
 }
-const PortfolioCard : React.FC<PortfolioCardProps> = ({t, portfolios}) => {
+const PortfolioCard : React.FC<PortfolioCardProps> = ({t, portfolios, currency}) => {
 
     const [activeTab, setActiveTab] = useState(0)
     /**
@@ -38,11 +39,11 @@ const PortfolioCard : React.FC<PortfolioCardProps> = ({t, portfolios}) => {
             </div>
             {
                 activeTab === 0 ?
-                    <Portfolio t={t} portfolio={portfolios[0]} currency={"$"}/>
+                    <Portfolio t={t} portfolio={portfolios[0]} currency={currency}/>
                     : activeTab === 1 ?
-                        <Portfolio t={t} portfolio={portfolios[1]} currency={"$"}/>
+                        <Portfolio t={t} portfolio={portfolios[1]} currency={currency}/>
                         :
-                        <Portfolio t={t} portfolio={portfolios[2]} currency={"$"}/>
+                        <Portfolio t={t} portfolio={portfolios[2]} currency={currency}/>
             }
         </div>
     )

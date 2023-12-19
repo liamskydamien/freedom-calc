@@ -19,7 +19,7 @@ const Portfolio : React.FC<PortfolioProps> = ({t, portfolio, currency}) => {
                         {t('portfolio_growth')}
                     </p>
                     <p>
-                        {portfolio.mean + " " + currency}
+                        {(portfolio.mean * 100).toPrecision(2) + " % (CAGR)"}
                     </p>
                 </div>
                 <div className="flex flex-row justify-between">
