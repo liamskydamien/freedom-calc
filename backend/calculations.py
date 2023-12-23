@@ -3,77 +3,57 @@ from django.views import View
 import numpy as np
 import pandas as pd
 import cvxpy as cp
-import json
+# import json
+# from django.urls import path
+# from .views import OptimizeView
 
-class OptimizeView(View):
-    def post(self, request):
-        data = json.loads(request.body)
-        indices = [int(index) for index in data.get('indices')]
-        target_std_dev = float(data.get('target_std_dev'))
+# urlpatterns = [
+#     path('optimize', OptimizeView.as_view(), name='optimize'),
+# ]
 
-# # User inputs
-# indices = input("Enter the indices of at least 10 stock(s) separated by space: ").split()
-# while len(indices) < 10:
-#     print("Please enter at least 10 stocks.")
-#     indices = input("Enter the indices of at least 10 stock(s) separated by space: ").split()
-# indices = [int(index) for index in indices]
-# target_std_dev = float(input("Enter the target standard deviation: "))
+# class OptimizeView(View):
+#     def post(self, request):
+#         data = json.loads(request.body)
+#         indices = [int(index) for index in data.get('indices')]
+#         target_std_dev = float(data.get('target_std_dev') or 0)
 
-# Read correlations, standard deviations, and expected returns from CSV files
-correlations_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\correlations.csv')
-correlations = correlations_df.iloc[:, 2].values  # Select the third column
-std_devs_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
-std_devs = std_devs_df.iloc[:, 2].values  # Select the third column
-expected_returns_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
-expected_returns = expected_returns_df.iloc[:, 1].values  # Select the second column
+# # Read correlations, standard deviations, and expected returns from CSV files
+#         correlations_df = pd.read_csv('backend\stockdata\correlations.csv')
+#         correlations = correlations_df.iloc[:, 2].values  # Select the third column
+#         std_devs_df = pd.read_csv('backend\stockdata\mean_return_rate.csv')
+#         std_devs = std_devs_df.iloc[:, 2].values  # Select the third column
+#         expected_returns_df = pd.read_csv('backend\stockdata\mean_return_rate.csv')
+#         expected_returns = expected_returns_df.iloc[:, 1].values  # Select the second column
 
-# Create a correlation matrix from the correlation values
-correlation_matrix = np.zeros((30, 30))
-correlation_matrix[np.triu_indices(30, 1)] = correlations
-correlation_matrix += correlation_matrix.T - np.diag(correlation_matrix.diagonal())
+#         # Create a correlation matrix from the correlation values
+#         correlation_matrix = np.zeros((30, 30))
+#         correlation_matrix[np.triu_indices(30, 1)] = correlations
+#         correlation_matrix += correlation_matrix.T - np.diag(correlation_matrix.diagonal())
 
-# Select the standard deviations, correlations, and expected returns of the specific stocks
-std_devs = std_devs[indices]
-correlation_matrix = correlation_matrix[np.ix_(indices, indices)]
-expected_returns = expected_returns[indices]
+#         # Select the standard deviations, correlations, and expected returns of the specific stocks
+#         std_devs = std_devs[indices]
+#         correlation_matrix = correlation_matrix[np.ix_(indices, indices)]
+#         expected_returns = expected_returns[indices]
 
-# Calculate the covariance matrix
-variances = np.square(std_devs)
-cov_matrix = np.outer(variances, variances) * correlation_matrix
+#         # Calculate the covariance matrix
+#         variances = np.square(std_devs)
+#         cov_matrix = np.outer(variances, variances) * correlation_matrix
 
-# Define the optimization problem
-weights = cp.Variable(len(indices))
-portfolio_return = expected_returns.T @ weights
-objective = cp.Maximize(portfolio_return)
-constraints = [cp.sum(weights) == 1, cp.norm(np.sqrt(variances) * weights) <= target_std_dev, weights >= 0]
+#         # Define the optimization problem
+#         weights = cp.Variable(len(indices))
+#         portfolio_return = expected_returns.T @ weights
+#         objective = cp.Maximize(portfolio_return)
+#         constraints = [cp.sum(weights) == 1, cp.norm(np.sqrt(variances) * weights) <= target_std_dev, weights >= 0]
 
-problem = cp.Problem(objective, constraints)
-result = problem.solve()
+#         problem = cp.Problem(objective, constraints)
+#         result = problem.solve()
 
-def check_problem_status(problem):
-    if problem.status in ["infeasible", "unbounded"]:
-        return JsonResponse({"error": "The problem does not have a solution."})
-    else:
-        optimal_weights = weights.value
-        return JsonResponse({"weights": optimal_weights.tolist()})
-
-# # Check if the problem has a solution
-# if problem.status in ["infeasible", "unbounded"]:
-#     print("The problem does not have a solution.")
-# else:
-#     # Get the optimal weights
-#     optimal_weights = weights.value
-
-#     # Print the optimal weights
-#     for index, weight in zip(indices, optimal_weights):
-#         print(f'Stock {index}: {weight}')
-
-# if problem.status in ["infeasible", "unbounded"]:
-#     return JsonResponse({"error": "The problem does not have a solution."})
-# else:
-#     optimal_weights = weights.value
-#     return JsonResponse({"weights": optimal_weights.tolist()})
-
+#         def check_problem_status(problem):
+#             if problem.status in ["infeasible", "unbounded"]:
+#                 return JsonResponse({"error": "The problem does not have a solution."})
+#             else:
+#                 optimal_weights = weights.value
+#                 return JsonResponse({"weights": optimal_weights.tolist()})
 
 # files = ['freedom-calc-frontend\src\constants\stockdata\_germany\cleaned_german_adidas_AG__ADS_stocks.csv',
 #         'freedom-calc-frontend\src\constants\stockdata\_germany\cleaned_german_Bayer_Aktiengesellschaft_VGI_stocks.csv',
@@ -105,28 +85,17 @@ def check_problem_status(problem):
 #         'freedom-calc-frontend\src\constants\stockdata\_usa\cleaned_american_The_Walt_Disney_Company_DIS_stocks.csv',
 #         'freedom-calc-frontend\src\constants\stockdata\_usa\cleaned_american_United_Parcel_Service_UPS_stocks.csv',
 #         'freedom-calc-frontend\src\constants\stockdata\_usa\cleaned_american_VISA__V_stocks.csv',]
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Becamex_BCM_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Inmexpharm_IMP_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_PV_GAS_GAS_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_SSI_securities__SSI_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Thien_Long_TLG_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_VietJet_VJC_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Vietnam_Airlines__HVN_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Vietnam_Builiding_Insurance_BIC_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Viettel_Invesment_VGI_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Vinamilk_VNM_stocks.csv',
-#         # 'freedom-calc-frontend\src\constants\stockdata\_vietnam\cleaned_Vingroup_VIC_stocks.csv']
 # dfs = []
 
 # # Loop through the files and read each one into a DataFrame
 # for file in files:
-#     df = pd.read_csv(file)
+    # df = pd.read_csv(file)
 
-#     df['Percentage Change'] = df['Percentage Change'].str.replace('%', '').astype(float)
-#     df['Close Price'] = df['Close Price'].astype(float)
+    # df['Percentage Change'] = df['Percentage Change'].str.replace('%', '').astype(float)
+    # df['Close Price'] = df['Close Price'].astype(float)
 
-#     # Append the DataFrame to the list
-#     dfs.append(df)
+    # # Append the DataFrame to the list
+    # dfs.append(df)
 
 # Calculate the mean and standard deviation of 'Percentage Change' for each DataFrame
 # means = [df['Percentage Change'].mean() for df in dfs]
@@ -144,9 +113,9 @@ def check_problem_status(problem):
 # Calculate the covariance of 'Close Price' between each pair of DataFrames
 # covariances = []
 # for i in range(len(dfs)):
-#     for j in range(i+1, len(dfs)):
-#         cov = np.cov(dfs[i]['Close Price'], dfs[j]['Close Price'])[0][1]
-#         covariances.append((files[i], files[j], cov))
+    # for j in range(i+1, len(dfs)):
+    #     cov = np.cov(dfs[i]['Close Price'], dfs[j]['Close Price'])[0][1]
+    #     covariances.append((files[i], files[j], cov))
 # cov_df = pd.DataFrame(covariances, columns=['Stock 1', 'Stock 2', 'Covariance of Stock'])
 # cov_df.to_csv('freedom-calc-frontend\src\constants\stockdata\covariances.csv', index=False)
 
@@ -168,11 +137,11 @@ indices = [int(index) for index in indices]
 target_std_dev = float(input("Enter the target standard deviation: "))
 
 # Read correlations, standard deviations, and expected returns from CSV files
-correlations_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\correlations.csv')
+correlations_df = pd.read_csv('backend\stockdata\correlations.csv')
 correlations = correlations_df.iloc[:, 2].values  # Select the third column
-std_devs_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
+std_devs_df = pd.read_csv('backend\stockdata\mean_return_rate.csv')
 std_devs = std_devs_df.iloc[:, 2].values  # Select the third column
-expected_returns_df = pd.read_csv('freedom-calc-frontend\src\constants\stockdata\mean_return_rate.csv')
+expected_returns_df = pd.read_csv('backend\stockdata\mean_return_rate.csv')
 expected_returns = expected_returns_df.iloc[:, 1].values  # Select the second column
 
 # Create a correlation matrix from the correlation values
