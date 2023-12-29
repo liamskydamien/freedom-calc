@@ -12,7 +12,6 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
   t,
   currentCurrency,
 }) => {
-
   const { startingCapital } = useContext(InputContext);
   const [active, setActive] = useState(1);
 
@@ -49,10 +48,7 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
             <h2 className="text-lg font-bold text-left">
               {t("balance_sheet")}
             </h2>
-            <BalanceSheet
-              t={t}
-              currrentCurrency={currentCurrency}
-            />
+            <BalanceSheet t={t} currrentCurrency={currentCurrency} />
           </div>
         )}
         {active === 2 && (

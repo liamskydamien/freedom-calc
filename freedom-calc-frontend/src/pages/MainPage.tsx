@@ -72,12 +72,7 @@ export const MainPage = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route
-                path="/optimization"
-                element={
-                    <OptimizationPage />
-                }
-              />
+              <Route path="/optimization" element={<OptimizationPage />} />
             </Routes>
           </InputContextProvider>
         </ProgressContextProvider>

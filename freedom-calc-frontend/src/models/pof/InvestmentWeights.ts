@@ -33,9 +33,17 @@ export class InvestmentWeights {
           this.crypto +
           this.other,
       ) !== 1
-    )
-    {
-      if (Math.round(this.cash + this.stocks + this.preciousMetals + this.realestate + this.crypto + this.other) === 0) {
+    ) {
+      if (
+        Math.round(
+          this.cash +
+            this.stocks +
+            this.preciousMetals +
+            this.realestate +
+            this.crypto +
+            this.other,
+        ) === 0
+      ) {
         this.cash = 0.2;
         this.stocks = 0.2;
         this.preciousMetals = 0.2;
@@ -43,12 +51,10 @@ export class InvestmentWeights {
         this.crypto = 0.2;
         this.other = 0;
         return true;
-      }
-      else {
+      } else {
         throw new Error("Investment weights don't add up to 100%");
       }
-    }
-    else {
+    } else {
       return true;
     }
   }

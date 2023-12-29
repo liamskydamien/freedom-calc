@@ -6,16 +6,12 @@ type BalanceSheetProps = {
   t: any;
   currrentCurrency: string;
 };
-const BalanceSheet: React.FC<BalanceSheetProps> = ({
-  t,
-  currrentCurrency,
-}) => {
-
-  const {startingCapital} = useContext(InputContext)
-  const { assetGroups : assets, liabilities : passiva } = startingCapital;
+const BalanceSheet: React.FC<BalanceSheetProps> = ({ t, currrentCurrency }) => {
+  const { startingCapital } = useContext(InputContext);
+  const { assetGroups: assets, liabilities: passiva } = startingCapital;
   useEffect(() => {
-      console.log("Context has updated")
-  }, [InputContext, assets, passiva, startingCapital])
+    console.log("Context has updated");
+  }, [InputContext, assets, passiva, startingCapital]);
 
   return (
     <div>
@@ -42,7 +38,9 @@ const BalanceSheet: React.FC<BalanceSheetProps> = ({
         <div className="divider"></div>
         <div className="flex flex-row justify-between">
           <h2 className="text-lg font-bold">{t("total_capital")}</h2>
-          <p className="text-lg">{startingCapital.getTotalCapital() + " " + currrentCurrency}</p>
+          <p className="text-lg">
+            {startingCapital.getTotalCapital() + " " + currrentCurrency}
+          </p>
         </div>
       </div>
       <div></div>

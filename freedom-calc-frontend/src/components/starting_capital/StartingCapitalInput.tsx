@@ -23,7 +23,8 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
 
   const { progress, updateProgress } = useContext(ProgressContext);
 
-  const { startingCapital, setStartingCapital }: InputContextProviderState = useContext(InputContext);
+  const { startingCapital, setStartingCapital }: InputContextProviderState =
+    useContext(InputContext);
   const [active, setActive] = useState(1);
   const [assets, setAssets] = useState(startingCapital.assetGroups);
   const [passiva, setPassiva] = useState(startingCapital.liabilities);
@@ -55,7 +56,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
   const submitAssets = (assets: AssetGroup[]) => {
     setAssets(assets);
     upddateStartingCapital();
-  }
+  };
 
   /**
    * Submits the passiva to the context
@@ -63,7 +64,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
   const submitPassiva = (passiva: AssetGroup[]) => {
     setPassiva(passiva);
     upddateStartingCapital();
-  }
+  };
 
   /**
    * Update the progress of the personal information
