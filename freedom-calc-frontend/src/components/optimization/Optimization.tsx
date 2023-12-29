@@ -6,6 +6,7 @@ import PortfolioCard from "./PortfolioCard";
 import PortfolioVisualization from "./PortfolioVisualization/PortfolioVisualization";
 import { InputContext } from "../../context/InputContext";
 import { calculateCost } from "../../calculations/calculateCost";
+import { SelectedStocksContext } from "../../context/SelectedStocksContext";
 
 type OptimizationProps = {
   risk: number
@@ -18,6 +19,8 @@ type PortfolioChart = {
   personalPOF: any
 }
 const Optimization : React.FC<OptimizationProps> = ({risk}) => {
+  const {selectedStocks} = useContext(SelectedStocksContext);
+
   const { t } = useTranslation();
   const {personalInformation, phases} = useContext(InputContext)
   const [portfolioChartState, setPortfolioChartState] = useState<PortfolioChart>({} as PortfolioChart);
@@ -26,20 +29,20 @@ const Optimization : React.FC<OptimizationProps> = ({risk}) => {
   const stocksTest : string[] = [ "AMD", "UPS", "DB", "DIS", "VOW3", "INTC", "V", "AFX", "NVDA"];
   const target_std_dev = 100;
 
-  const {portfolio, isLoading, isError} = useFetchPortfolio(stocksTest, target_std_dev);
+  const {portfolio, isLoading, isError, refetch} = useFetchPortfolio(stocksTest, target_std_dev);
 
   useEffect(() => {
-    console.log("Portfolio: ", portfolio);
     const income = phases.getPhases().length !== 0? phases.getPhases().map((phase) => {return phase.calculateNetIncome()}) : [100,100,100,100,100];
     const costs =  phases.getPhases().length !== 0? calculateCost(phases.getPhases().map((phase) => {return phase.expenses.getTotalExpenses()}), 0.02, 1, 0): [];
-    console.log("Income: ", income);
-    console.log("Costs: ", costs);
     if (portfolio.length === 0) return;
     const {portfolioChart} = createPortfolioChartAndPOF(portfolio, income, costs)
-    console.log("PortfolioChart: ", portfolioChart);
     setPortfolioChartState({portfolioChart, safestPOF: {}, riskiestPOF: {}, personalPOF: {}});
     setLoading(false);
   }, [portfolio]);
+
+  useEffect(() => {
+    selectedStocks.length >= 10 && refetch();
+  }, [selectedStocks]);
 
   return (
   <div>

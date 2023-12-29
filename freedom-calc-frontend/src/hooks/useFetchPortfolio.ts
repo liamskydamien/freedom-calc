@@ -21,6 +21,9 @@ export const useFetchPortfolio = (stocks: string[], target_std: number) => {
     },
   };
 
+  /**
+   * Fetches the portfolio from the backend
+   */
   const fetchData = async () => {
     setIsLoading(true);
     try {
@@ -40,11 +43,14 @@ export const useFetchPortfolio = (stocks: string[], target_std: number) => {
     fetchData().then(r => console.log("Fetched data successfully"));
   }, []);
 
+  /**
+   * Refetches the portfolio from the backend
+   */
   const refetch = () => {
     setIsLoading(true);
     fetchData().then(r => setIsLoading(false));
   };
 
-  return { portfolio, isLoading, isError };
+  return { portfolio, isLoading, isError, refetch };
 };
 
