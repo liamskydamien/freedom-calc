@@ -49,7 +49,7 @@ const LifePhases = () => {
    * Updates the progress context to indicate that the user has entered life phases
    */
   const updateLifePhaseProgress = () => {
-    progress.lifephases = true;
+    progress.setLifephases(true);
     updateProgress(progress);
   };
 
