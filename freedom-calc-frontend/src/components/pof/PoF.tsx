@@ -40,6 +40,7 @@ const PoF: React.FC<PoFProps> = ({ t }) => {
     <div className="flex gap-2">
       <div>
         <CalculationInformation
+          originalInvestmentAllocation={calculateInvestmentAllocation(startingCapital.assetGroups)}
           expectedGrowth={expectedGrowth}
           setExpectedGrowth={setExpectedGrowth}
           t={t}

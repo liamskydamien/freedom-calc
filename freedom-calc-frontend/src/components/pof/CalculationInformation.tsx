@@ -13,6 +13,7 @@ type CalculationInformationProps = {
   expectedGrowth: ExpectedGrowth;
   setExpectedGrowth: (expectedGrowth: ExpectedGrowth) => void;
   currentCurrency: string;
+  originalInvestmentAllocation: InvestmentWeights;
 };
 const CalculationInformation: React.FC<CalculationInformationProps> = ({
   t,
@@ -21,6 +22,7 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
   setExpectedGrowth,
   expectedGrowth,
   currentCurrency,
+  originalInvestmentAllocation
 }) => {
   const [showAssetAllocation, setShowAssetAllocation] =
     React.useState<boolean>(false);
@@ -57,9 +59,18 @@ const CalculationInformation: React.FC<CalculationInformationProps> = ({
    * Handles the change of the inflation rate
    */
   const handleShowAssetAllocation = () => {
-    setInvestmentAllocation(INVESTMENT_ALLOCATION);
+    returnToOriginal();
     setShowAssetAllocation(!showAssetAllocation);
   };
+
+  const returnToOriginal = () => {
+    setCash(originalInvestmentAllocation.cash * 100);
+    setStocks(originalInvestmentAllocation.stocks * 100);
+    setRealEstate(originalInvestmentAllocation.realestate * 100);
+    setPreciousMetals(originalInvestmentAllocation.preciousMetals * 100);
+    setOther(originalInvestmentAllocation.other * 100);
+    setCrypto(originalInvestmentAllocation.crypto * 100);
+  }
 
   /**
    * Handles to submit of the new values
