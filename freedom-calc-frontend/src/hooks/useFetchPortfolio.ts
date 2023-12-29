@@ -40,7 +40,7 @@ export const useFetchPortfolio = (stocks: string[], target_std: number) => {
   };
 
   useEffect(() => {
-    fetchData().then((r) => console.log("Fetched data successfully"));
+    fetchData().then(() => console.log("Fetched data successfully"));
   }, []);
 
   /**

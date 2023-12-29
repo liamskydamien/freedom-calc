@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { InputContext } from "../../context/InputContext";
 import StartingCapitalGraph from "./showcase/StartingCapitalGraph";
 import BalanceSheet from "./showcase/BalanceSheet";
@@ -55,7 +55,6 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
           <div className="flex flex-col justify-center">
             <h2 className="text-lg font-bold text-left">{t("activa")}</h2>
             <StartingCapitalGraph
-              t={t}
               data={startingCapital ? startingCapital.assetGroups : []}
             />
           </div>
@@ -64,7 +63,6 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
           <div className="flex flex-col justify-center">
             <h2 className="text-lg font-bold text-left">{t("passiva")}</h2>
             <StartingCapitalGraph
-              t={t}
               data={startingCapital ? startingCapital.liabilities : []}
             />
           </div>

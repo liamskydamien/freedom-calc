@@ -1,4 +1,4 @@
-import { Legend, Pie, PieChart, ResponsiveContainer } from "recharts";
+import { Pie, PieChart } from "recharts";
 
 const PieChartPortfolio = () => {
   const data = [

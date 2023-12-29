@@ -1,6 +1,5 @@
 import "./RiskAssementStyles.css";
 import React, { useContext, useEffect, useState } from "react";
-import StockPicker from "./StockPicker/StockPicker";
 import StockPickerAssesment from "./StockPicker/StockPickerAssesment";
 import { SelectedStocksContext } from "../../context/SelectedStocksContext";
 
@@ -75,7 +74,7 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
   };
 
   /**
-   * Handles the submit of the form
+   * Handles the submition of the form
    */
   const handleSubmit = () => {
     const risk = group1 + group2 + group3 + group4 + group5;

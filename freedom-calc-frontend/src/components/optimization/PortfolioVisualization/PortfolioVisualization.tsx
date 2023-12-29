@@ -3,9 +3,7 @@ import PortfolioGraph from "../PortfolioGraph";
 import React, { useContext, useState } from "react";
 import RadarChartPortfolio from "./RadarChartPortfolio";
 import PortfoliosPies from "./PortfoliosPies";
-import PieChartPortfolio from "./PieChartPortfolio";
 import { createRadarChart } from "../../../calculations/graphs/createRadarChart";
-import portfolio from "../Portfolio";
 import { SelectedStocksContext } from "../../../context/SelectedStocksContext";
 import { PortfolioClass } from "../../../models/optimization/PortfolioClass";
 type PortfolioVisualizationProps = {

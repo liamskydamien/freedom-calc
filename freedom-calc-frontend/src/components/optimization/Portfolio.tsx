@@ -1,8 +1,6 @@
 import React from "react";
 import StockTable from "./StockTable";
 import { PortfolioClass } from "../../models/optimization/PortfolioClass";
-import PieChartPortfolio from "./PortfolioVisualization/PieChartPortfolio";
-import RadarChartPortfolio from "./PortfolioVisualization/RadarChartPortfolio";
 
 type PortfolioProps = {
   t: any;

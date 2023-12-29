@@ -1,5 +1,4 @@
 import PieChartPortfolio from "./PieChartPortfolio";
-import { ResponsiveContainer } from "recharts";
 
 const PortfoliosPies = () => {
   return (

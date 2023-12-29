@@ -2,7 +2,6 @@ import AchievePOF from "./AchievePOF";
 import GraphPoF from "./GraphPoF";
 import React, { useContext, useState } from "react";
 import { EXPECTED_GROWTH } from "../../constants/assets/expected_growth";
-import { INVESTMENT_ALLOCATION } from "../../constants/assets/investment_allocation";
 import CalculationInformation from "./CalculationInformation";
 import { useCalculateLifeLine } from "../../hooks/useCalculateLifeLine";
 import { InputContext } from "../../context/InputContext";

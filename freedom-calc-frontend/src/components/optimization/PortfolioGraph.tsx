@@ -3,7 +3,6 @@ import {
   Label,
   Legend,
   Line,
-  ReferenceDot,
   ResponsiveContainer,
   Tooltip,
   XAxis,

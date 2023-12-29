@@ -1,8 +1,5 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import Portfolio from "./Portfolio";
-import { TEST_PORTFOLIO } from "../../constants/assets/portfolio";
-import StockBubble from "./StockPicker/StockBubble";
-import { SelectedStocksContext } from "../../context/SelectedStocksContext";
 import StockPicker from "./StockPicker/StockPicker";
 import { PortfolioClass } from "../../models/optimization/PortfolioClass";
 
