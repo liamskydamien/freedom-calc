@@ -13,6 +13,7 @@ i18n
     resources: {
       en: {
         translation: {
+          provisions: "Provisions",
           optimize: "Optimize",
           selected_stocks: "Selected Stocks",
           add_more_stocks: "Add More Stocks",
@@ -233,6 +234,7 @@ i18n
 
       de: {
         translation: {
+          provisions: "Provisionen",
           optimize: "Optimieren",
           selected_stocks: "Ausgewählte Aktien",
           add_more_stocks: "Füge mehr Aktien hinzu",
@@ -458,6 +460,7 @@ i18n
       },
       vn: {
         translation: {
+          provisions: "Cung cấp",
           optimize: "Tối ưu hóa",
           how_risk_affine_are_you: "Bạn thích rủi ro đến mức nào?",
           how_would_you_describe_your_investment_experience:
