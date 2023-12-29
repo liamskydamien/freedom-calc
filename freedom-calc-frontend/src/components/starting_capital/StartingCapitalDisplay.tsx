@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { InputContext } from "../../context/InputContext";
 import StartingCapitalGraph from "./showcase/StartingCapitalGraph";
 import BalanceSheet from "./showcase/BalanceSheet";
@@ -12,9 +12,8 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
   t,
   currentCurrency,
 }) => {
-  const { startingCapital } = useContext(InputContext);
-  const { assetGroups, liabilities } = startingCapital;
 
+  const { startingCapital } = useContext(InputContext);
   const [active, setActive] = useState(1);
 
   return (
@@ -51,10 +50,7 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
               {t("balance_sheet")}
             </h2>
             <BalanceSheet
-              totalCapital={startingCapital.getTotalCapital()}
               t={t}
-              assets={assetGroups}
-              passiva={liabilities}
               currrentCurrency={currentCurrency}
             />
           </div>

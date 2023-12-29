@@ -2,11 +2,8 @@ import { useTranslation } from "react-i18next";
 import React, { useContext, useEffect, useState } from "react";
 import { useFetchPortfolio } from "../../hooks/useFetchPortfolio";
 import { createPortfolioChartAndPOF } from "../../calculations/graphs/createPortfolioChart";
-import RiskAssesment from "./RiskAssesment";
 import PortfolioCard from "./PortfolioCard";
 import PortfolioVisualization from "./PortfolioVisualization/PortfolioVisualization";
-import { SelectedStocksContext } from "../../context/SelectedStocksContext";
-import { PortfolioClass, Stock } from "../../models/optimization/PortfolioClass";
 import { InputContext } from "../../context/InputContext";
 import { calculateCost } from "../../calculations/calculateCost";
 

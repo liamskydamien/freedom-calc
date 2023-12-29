@@ -7,6 +7,7 @@ import StartingCapitalProvider from "../../context/StartingCapitalContext";
 import PassivaInput from "./passiva/PassivaInput";
 import { ProgressContext } from "../../context/ProgressContext";
 import { useNavigate } from "react-router";
+import { AssetGroup } from "../../models/startingcapital/AssetGroup";
 
 type StartingCapitalInputProps = {
   t: any;
@@ -22,8 +23,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
 
   const { progress, updateProgress } = useContext(ProgressContext);
 
-  const { startingCapital, setStartingCapital }: InputContextProviderState =
-    useContext(InputContext);
+  const { startingCapital, setStartingCapital }: InputContextProviderState = useContext(InputContext);
   const [active, setActive] = useState(1);
   const [assets, setAssets] = useState(startingCapital.assetGroups);
   const [passiva, setPassiva] = useState(startingCapital.liabilities);
@@ -40,11 +40,30 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
     }
   }, [activaSet, passivaSet]);
 
+  /**
+   * Submits the data to the context
+   */
   const submitHandler = () => {
     upddateStartingCapital();
     updateProgressStartingCapital();
     navigate("/lifephases");
   };
+
+  /**
+   * Submits the assets to the context
+   */
+  const submitAssets = (assets: AssetGroup[]) => {
+    setAssets(assets);
+    upddateStartingCapital();
+  }
+
+  /**
+   * Submits the passiva to the context
+   */
+  const submitPassiva = (passiva: AssetGroup[]) => {
+    setPassiva(passiva);
+    upddateStartingCapital();
+  }
 
   /**
    * Update the progress of the personal information
@@ -109,7 +128,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
           <ActivaInput
             t={t}
             assets={assets}
-            setAssets={setAssets}
+            setAssets={submitAssets}
             valid={valid}
             setActiva={setActivaSet}
             activaValid={activaSet}
@@ -122,7 +141,7 @@ const StartingCapitalInput: React.FC<StartingCapitalInputProps> = ({
             passiva={passiva}
             valid={valid}
             setLiabilitiesValid={setPassivaSet}
-            setPassiva={setPassiva}
+            setPassiva={submitPassiva}
             currentCurrency={currentCurrency}
           />
         )}

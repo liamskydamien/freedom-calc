@@ -1,20 +1,22 @@
 import { AssetGroup } from "../../../models/startingcapital/AssetGroup";
-import React from "react";
+import React, { useContext, useEffect } from "react";
+import { InputContext } from "../../../context/InputContext";
 
 type BalanceSheetProps = {
   t: any;
-  assets: AssetGroup[];
-  passiva: AssetGroup[];
-  totalCapital: number;
   currrentCurrency: string;
 };
 const BalanceSheet: React.FC<BalanceSheetProps> = ({
-  totalCapital,
   t,
-  assets,
-  passiva,
   currrentCurrency,
 }) => {
+
+  const {startingCapital} = useContext(InputContext)
+  const { assetGroups : assets, liabilities : passiva } = startingCapital;
+  useEffect(() => {
+      console.log("Context has updated")
+  }, [InputContext, assets, passiva, startingCapital])
+
   return (
     <div>
       <div>
@@ -40,7 +42,7 @@ const BalanceSheet: React.FC<BalanceSheetProps> = ({
         <div className="divider"></div>
         <div className="flex flex-row justify-between">
           <h2 className="text-lg font-bold">{t("total_capital")}</h2>
-          <p className="text-lg">{totalCapital + " " + currrentCurrency}</p>
+          <p className="text-lg">{startingCapital.getTotalCapital() + " " + currrentCurrency}</p>
         </div>
       </div>
       <div></div>
