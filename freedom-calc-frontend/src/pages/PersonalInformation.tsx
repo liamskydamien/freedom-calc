@@ -9,7 +9,7 @@ const PersonalInformation = () => {
     <>
       <div className="flex flex-row gap-2">
         <InputPersonalInformation t={t} />
-        <Explanation t={t}/>
+        <Explanation t={t} />
       </div>
     </>
   );

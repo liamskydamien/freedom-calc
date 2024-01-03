@@ -1,5 +1,5 @@
 /**
- * Creates a graph for the life line graph
+ * Creates a graph for the lifeline graph
  * @param wealth user's wealth
  * @param cost user's cost
  * @param startAge user's start age

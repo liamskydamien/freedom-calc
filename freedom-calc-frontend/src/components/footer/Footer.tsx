@@ -1,4 +1,5 @@
 import Stepper from "./Stepper";
+import React from "react";
 
 type FooterProps = {
   active: number;
