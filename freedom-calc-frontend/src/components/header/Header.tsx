@@ -1,21 +1,21 @@
 import { useEffect, useState } from "react";
 import i18n from "../../i18n"; // Use the correct path
-import { MdLanguage } from "react-icons/md";
+import { MdLanguage, MdOutlineNightsStay, MdSunny } from "react-icons/md";
 import { Languages } from "../../constants/languages/languages";
-import FreedomCalcLogo from "../../assets/pictures/logo.png";
+import FreedomCalcLogo from "../../assets/pictures/logo.png"
 
 const Header = () => {
   const [language, setLanguage] = useState("en");
   useEffect(() => {
     i18n
       .changeLanguage(language)
-      .then(() => console.log("Language changed to " + language));
+      .then((r) => console.log("Language changed to " + language));
   }, [language]);
 
   return (
     <div className="navbar rounded-lg">
       <div className="navbar-start flex flex-row">
-        <img src={FreedomCalcLogo} alt="Logo" className="max-h-20" />
+        <img src={FreedomCalcLogo} alt="Logo" className="max-h-20"/>
         <a className="navbar-item text-xl font-bold">Freedom Calc</a>
       </div>
       <div className="navbar-end">

@@ -20,49 +20,37 @@ type GraphPoFProps = {
   currency: string;
 };
 
-const GraphPoF: React.FC<GraphPoFProps> = ({ t, graph, pof, currency }) => {
-  const CustomTooltip = ({ active, payload, label }: any) => {
+const GraphPoF: React.FC<GraphPoFProps> = ({
+  t,
+  graph,
+  pof,
+  currency,
+}) => {
+
+  const CustomTooltip = ({ active, payload, label } : any) => {
     if (active && payload && payload.length) {
       const lines = [
-        {
-          text: `${t("wealth")}: ${parseFloat(payload[0].value).toFixed(
-            2,
-          )} ${currency}`,
-          color: COLORS.dark.wealth,
-        },
-        {
-          text: `${t("costs")}: ${parseFloat(payload[1].value).toFixed(
-            2,
-          )} ${currency}`,
-          color: COLORS.dark.costs,
-        },
+        { text: `${t('wealth')}: ${parseFloat(payload[0].value).toFixed(2)} ${currency}`, color: COLORS.dark.wealth },
+        { text: `${t('costs')}: ${parseFloat(payload[1].value).toFixed(2)} ${currency}`, color: COLORS.dark.costs },
       ];
 
       return (
-        <div className="custom-tooltip card">
-          <p className="label">{`${t("in_age")} ${label}`}</p>
-          <p className="intro">
-            {lines.map((line, i) => (
-              <span
-                key={i}
-                style={{
-                  color: line.color,
-                  display: "block",
-                  marginLeft: "20px",
-                  marginRight: "20px",
-                }}
-              >
-                {line.text}
-                <br />
-              </span>
-            ))}
-          </p>
-          <p className="desc">{}</p>
-        </div>
+          <div className="custom-tooltip card">
+            <p className="label">{`${t('in_age')} ${label}`}</p>
+            <p className="intro">
+              {
+                lines.map((line, i) =>
+                    <span key={i} style={{ color: line.color, display: 'block', marginLeft: '20px', marginRight: '20px' }}>{line.text}<br /></span>
+                )
+              }
+            </p>
+            <p className="desc">{}</p>
+          </div>
       );
     }
     return null;
   };
+
 
   return (
     <div className="card max-w-full p-5">
@@ -84,7 +72,9 @@ const GraphPoF: React.FC<GraphPoFProps> = ({ t, graph, pof, currency }) => {
             dot={false}
             type="monotone"
             dataKey="wealth"
-            stroke={COLORS.light.wealth}
+            stroke={
+              COLORS.light.wealth
+            }
             strokeWidth={3}
             connectNulls={true}
             name={t("wealth")}

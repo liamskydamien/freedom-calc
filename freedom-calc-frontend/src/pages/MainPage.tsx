@@ -72,11 +72,12 @@ export const MainPage = () => {
                   </ProtectedRoute>
                 }
               />
-              <Route path="/optimization" element={
-                <ProtectedRoute redirectTo={"/pof"} step={"pof"}>
-                  <OptimizationPage />
-                </ProtectedRoute>
-                } />
+              <Route
+                path="/optimization"
+                element={
+                    <OptimizationPage />
+                }
+              />
             </Routes>
           </InputContextProvider>
         </ProgressContextProvider>

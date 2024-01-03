@@ -13,6 +13,8 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
   currentCurrency,
 }) => {
   const { startingCapital } = useContext(InputContext);
+  const { assetGroups, liabilities } = startingCapital;
+
   const [active, setActive] = useState(1);
 
   return (
@@ -48,13 +50,20 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
             <h2 className="text-lg font-bold text-left">
               {t("balance_sheet")}
             </h2>
-            <BalanceSheet t={t} currrentCurrency={currentCurrency} />
+            <BalanceSheet
+              totalCapital={startingCapital.getTotalCapital()}
+              t={t}
+              assets={assetGroups}
+              passiva={liabilities}
+              currrentCurrency={currentCurrency}
+            />
           </div>
         )}
         {active === 2 && (
           <div className="flex flex-col justify-center">
             <h2 className="text-lg font-bold text-left">{t("activa")}</h2>
             <StartingCapitalGraph
+              t={t}
               data={startingCapital ? startingCapital.assetGroups : []}
             />
           </div>
@@ -63,6 +72,7 @@ const StartingCapitalDisplay: React.FC<StartingCapitalDisplayProps> = ({
           <div className="flex flex-col justify-center">
             <h2 className="text-lg font-bold text-left">{t("passiva")}</h2>
             <StartingCapitalGraph
+              t={t}
               data={startingCapital ? startingCapital.liabilities : []}
             />
           </div>

@@ -148,39 +148,6 @@ const LiabilitiesInput: React.FC<LiabilitiesInputProps> = ({
             <h5 className="text-lg font-bold">{currentCurrency}</h5>
           </span>
         </div>
-        <label className="form-label">
-          {t("provisions")}
-        </label>
-        <div className="form-control relative w-full">
-          {liabilitiesValid ? (
-            <input
-              value={
-                provisions === 0
-                  ? ""
-                  : provisions
-              }
-              type="number"
-              placeholder="0"
-              className="input input-lg max-w-full pl-10"
-              disabled={true}
-            />
-          ) : (
-            <input
-              value={
-                provisions === 0
-                  ? ""
-                  : provisions
-              }
-              type="number"
-              placeholder="0"
-              className="input input-lg max-w-full pl-10"
-              onChange={provisionsChangeHandler}
-            />
-          )}
-          <span className="absolute inset-y-0 left-3 inline-flex items-center">
-            <h5 className="text-lg font-bold">{currentCurrency}</h5>
-          </span>
-        </div>
         <label className="form-label">{t("other_liabilities")}</label>
         <div className="form-control relative w-full">
           {liabilitiesValid ? (
