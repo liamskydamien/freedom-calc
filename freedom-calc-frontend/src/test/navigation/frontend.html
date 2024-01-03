@@ -10,6 +10,9 @@
 <body>
     <h1>Portfolio Optimization</h1>
 
+    <label for="selectedStockTable">Choose a stock table (1 for gmstock, 2 for usstock, 3 for vnstock):</label>
+    <input type="text" id="selectedStockTable" placeholder="e.g., 1">
+
     <label for="selectedIds">Enter at least 10 specific Ids separated by space:</label>
     <input type="text" id="selectedIds" placeholder="e.g., 1 2 3 4 5">
 
@@ -22,12 +25,14 @@
     <script>
         function optimizePortfolio() {
             const selectedIds = document.getElementById('selectedIds').value.split(' ');
+            const selectedStockTable = document.getElementById('selectedStockTable').value;
 
             // Other input values go here
 
             const requestData = {
-                // selected_ids: selectedIds,
-                selected_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                selected_stock_table: selectedStockTable,
+                selected_ids: selectedIds,
+                // selected_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 host: 'localhost',
                 port: '5432',
                 database: 'TiChuts',

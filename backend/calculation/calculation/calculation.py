@@ -70,6 +70,42 @@ def hello_world():
 def risk_constraint(weights, target_risk, returns, cov_matrix):
     return target_risk - calculate_portfolio_metrics(weights, returns, cov_matrix)[1]
 
+# Function to get database credentials
+def get_database_credentials():
+    host = "localhost"
+    port = "5432"
+    database = "TiChuts"
+    user = "postgres"
+    password = "1"
+    return host, port, database, user, password
+
+# def choose_stock_table():
+#     while True:
+#         stock_table_choice = input("Choose a stock table (1 for gmstock, 2 for usstock, 3 for vnstock): ")
+
+#         if stock_table_choice in ["1", "2", "3"]:
+#             # Map the user's choice to the corresponding stock table
+#             stock_table_mapping = {
+#                 "1": "gmstock",
+#                 "2": "usstock",
+#                 "3": "vnstock"
+#             }
+#             selected_stock_table = stock_table_mapping[stock_table_choice]
+#             return selected_stock_table
+#         else:
+#             print("Invalid choice. Please enter 1, 2, or 3.")
+
+# def get_user_input():
+#     while True:
+#         selected_ids = input("Enter at least 10 specific Ids separated by space: ").split()
+
+#         if len(selected_ids) >= 10 and all(id.isdigit() for id in selected_ids):
+#             # Convert input to integers
+#             selected_ids = [int(id) for id in selected_ids]
+#             return selected_ids
+#         else:
+#             print("Please enter at least 10 valid numeric Ids separated by space.")
+    
 # Flask route for portfolio optimization
 @app.route('/optimize-portfolio', methods=['GET', 'POST'])
 def optimize_portfolio():
@@ -78,6 +114,7 @@ def optimize_portfolio():
         data = request.get_json()
 
         # Extract data
+        selected_stock_table = data['selected_stock_table']
         selected_ids = data['selected_ids']
         host = data['host']
         port = data['port']
@@ -85,17 +122,16 @@ def optimize_portfolio():
         user = data['user']
         password = data['password']
         target_risk_option = data['target_risk_option']
-        percentage = data['percentage'] if 'percentage' in data else None
+        percentage = data.get('percentage')  # Use get to handle cases where 'percentage' is not present
 
         # Construct the connection string
         connection_string = f"host={host} port={port} dbname={database} user={user} password={password}"
 
         # Fetch stock data from the selected stock table
-        stock_data = fetch_stock_data(selected_ids, connection_string, ["Id", "Change"], "usstock")
+        stock_data = fetch_stock_data(selected_ids, connection_string, ["Id", "Change"], selected_stock_table)
 
         # Check if data retrieval is successful
         if stock_data is not None and len(stock_data) >= 10:
-            # Separate data by Id for expected returns and covariance matrix calculation
             expected_returns = stock_data.groupby('Id')['Change'].mean().values
             covariance_matrix = stock_data.groupby('Id')['Change'].std().values
 
@@ -118,7 +154,7 @@ def optimize_portfolio():
                 target_risk = min_portfolio_risk
                 print(f"You chose the lowest risk: {target_risk:.4f}")
             elif user_choice == "3":
-                percentage = float(percentage)
+                percentage = float(percentage) if percentage is not None else 0.0
                 target_risk = min_portfolio_risk + (percentage / 100) * (max_portfolio_risk - min_portfolio_risk)
                 print(f"You chose a risk based on percentage: {target_risk:.4f}")
             else:
@@ -157,6 +193,7 @@ def optimize_portfolio():
                             "error": "Data retrieval failed or insufficient data. Please check your inputs and try again."})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
