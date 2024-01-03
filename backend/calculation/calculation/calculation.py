@@ -8,6 +8,8 @@ from psycopg2 import sql
 
 app = Flask(__name__)
 CORS(app)
+
+
 # Function to connect to PostgreSQL and fetch data
 def fetch_stock_data(ids, connection_string, column_names, stock_table):
     try:
@@ -40,30 +42,42 @@ def fetch_stock_data(ids, connection_string, column_names, stock_table):
         print(f"Error: {e}")
         return None
 
+
 # Function to calculate portfolio returns and risks
 def calculate_portfolio_metrics(weights, returns, cov_matrix):
     portfolio_return = np.sum(weights * returns)
     portfolio_risk = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights)))
     return portfolio_return, portfolio_risk
 
+
 # Objective function for optimization (minimize negative of portfolio return)
 def objective_function(weights, returns, cov_matrix):
     return -calculate_portfolio_metrics(weights, returns, cov_matrix)[0]
+
 
 # Function to calculate historical portfolio risk (volatility)
 def calculate_portfolio_volatility(weights, cov_matrix):
     portfolio_volatility = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights)))
     return portfolio_volatility
 
+
 # Function to calculate the range of portfolio risks based on simulations
 def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
     simulated_weights = np.random.dirichlet(np.ones(len(cov_matrix)), size=num_simulations)
-    portfolio_volatilities = np.array([calculate_portfolio_volatility(weights, cov_matrix) for weights in simulated_weights])
+    portfolio_volatilities = np.array(
+        [calculate_portfolio_volatility(weights, cov_matrix) for weights in simulated_weights])
     return np.min(portfolio_volatilities), np.max(portfolio_volatilities)
+
 
 # Function to enforce target risk constraint
 def risk_constraint(weights, target_risk, returns, cov_matrix):
     return target_risk - calculate_portfolio_metrics(weights, returns, cov_matrix)[1]
+
+
+@app.route('/')
+def hello_world():
+    return 'Hello World!'
+
 
 # Flask route for portfolio optimization
 @app.route('/optimize-portfolio', methods=['POST'])
@@ -124,7 +138,8 @@ def optimize_portfolio():
                               args=(expected_returns, np.diag(covariance_matrix)),
                               method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
                               constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
-                                           {'type': 'eq', 'fun': risk_constraint, 'args': (target_risk, expected_returns, np.diag(covariance_matrix))}])
+                                           {'type': 'eq', 'fun': risk_constraint,
+                                            'args': (target_risk, expected_returns, np.diag(covariance_matrix))}])
 
             # Check if optimization was successful
             if result.success:
@@ -132,7 +147,8 @@ def optimize_portfolio():
                 optimized_weights = result.x
 
                 # Calculate optimized portfolio metrics
-                optimized_return, optimized_risk = calculate_portfolio_metrics(optimized_weights, expected_returns, np.diag(covariance_matrix))
+                optimized_return, optimized_risk = calculate_portfolio_metrics(optimized_weights, expected_returns,
+                                                                               np.diag(covariance_matrix))
 
                 # Return optimized portfolio data
                 response = {
@@ -144,11 +160,14 @@ def optimize_portfolio():
 
                 return jsonify(response)
             else:
-                return jsonify({"success": False, "error": "Optimization failed. Please review constraints or try a different approach."})
+                return jsonify({"success": False,
+                                "error": "Optimization failed. Please review constraints or try a different approach."})
         else:
-            return jsonify({"success": False, "error": "Data retrieval failed or insufficient data. Please check your inputs and try again."})
+            return jsonify({"success": False,
+                            "error": "Data retrieval failed or insufficient data. Please check your inputs and try again."})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
 
 if __name__ == '__main__':
     app.run(debug=True)
