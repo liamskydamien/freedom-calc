@@ -26,7 +26,8 @@
             // Other input values go here
 
             const requestData = {
-                selected_ids: selectedIds,
+                // selected_ids: selectedIds,
+                selected_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
                 host: 'localhost',
                 port: '5432',
                 database: 'TiChuts',
@@ -37,7 +38,7 @@
             };
 
             fetch('http://127.0.0.1:5000/optimize-portfolio', {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
                 },
