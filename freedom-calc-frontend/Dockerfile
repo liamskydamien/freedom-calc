@@ -27,4 +27,3 @@ EXPOSE 80
 
 # Starten von Nginx im Vordergrund
 CMD ["nginx", "-g", "daemon off;"]
-
