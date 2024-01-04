@@ -4,9 +4,6 @@ import { ExpectedGrowth } from "../../models/pof/ExpectedGrowth";
 import React, { useContext, useState } from "react";
 import InputAssetAllocation from "./InputAssetAllocation";
 import { useNavigate } from "react-router";
-import {
-  chromeOS
-} from "../../../../../../AppData/Local/Programs/Python/Python311/Lib/site-packages/nbclassic/static/components/codemirror/src/util/browser";
 import { ProgressContext } from "../../context/ProgressContext";
 
 type CalculationInformationProps = {
