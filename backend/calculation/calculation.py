@@ -64,7 +64,37 @@ def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
 
 @app.route('/')
 def hello_world():
-    return 'Hello World!'
+    host = "db"  # oder die entsprechende Adresse Ihres Servers
+    dbname = "stocks"
+    user = "stockUser"
+    password = "stocks"
+
+    # SQL-Abfrage
+    query = "SELECT * FROM meine_tabelle;"
+
+    # Verbindungsaufbau
+    try:
+        conn = psycopg2.connect(
+            host=host,
+            dbname=dbname,
+            user=user,
+            password=password
+        )
+
+        # Cursor erstellen und Abfrage ausführen
+        with conn.cursor() as cursor:
+            cursor.execute(query)
+
+            # Alle Zeilen abrufen
+            rows = cursor.fetchall()
+
+        # Schließen der Verbindung
+        conn.close()
+
+        return jsonify(rows)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+
 
 # Function to enforce target risk constraint
 def risk_constraint(weights, target_risk, returns, cov_matrix):

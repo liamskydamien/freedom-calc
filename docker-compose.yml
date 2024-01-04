@@ -12,3 +12,16 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5000:5000"
+  db:
+    image: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: stocks
+      POSTGRES_USER: stockUser
+      POSTGRES_PASSWORD: stocks
+    ports:
+      - "5432:5432"
+volumes:
+  postgres_data:
