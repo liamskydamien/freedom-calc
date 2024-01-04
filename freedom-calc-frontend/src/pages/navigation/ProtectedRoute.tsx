@@ -1,4 +1,4 @@
-import React, { ReactNode, useContext } from "react";
+import React, { useContext } from "react";
 import { ProgressContext } from "../../context/ProgressContext";
 import { Navigate } from "react-router";
 

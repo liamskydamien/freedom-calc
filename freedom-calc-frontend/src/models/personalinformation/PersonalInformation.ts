@@ -22,10 +22,6 @@ export class PersonalInformation {
     this.currency = currency;
   }
 
-  getFullName(): string {
-    return this.firstName + " " + this.lastName;
-  }
-
   getAge(): number {
     let today = new Date();
     let age = today.getFullYear() - this.birthDate.getFullYear();

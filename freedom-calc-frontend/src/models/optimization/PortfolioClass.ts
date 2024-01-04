@@ -1,26 +1,24 @@
 export class PortfolioClass {
-    name: string;
-    mean: number;
-    variance: number;
-    stocks: Stock[];
-    constructor(name: string, mean: number, variance: number, stocks: Stock[]) {
-        this.name = name;
-        this.mean = mean;
-        this.variance = variance;
-        this.stocks = stocks;
-    }
+  mean: number;
+  std: number;
+  portfolio: Stock[];
+  constructor(mean: number, variance: number, stocks: Stock[]) {
+    this.mean = mean;
+    this.std = variance;
+    this.portfolio = stocks;
+  }
 }
 
 export class Stock {
-    name: string;
-    mean: number;
-    variance: number;
-    percent: number;
+  index: string;
+  mean: number;
+  std: number;
+  weight: number;
 
-    constructor(name: string, mean: number, variance: number, percent: number) {
-        this.name = name;
-        this.mean = mean;
-        this.variance = variance;
-        this.percent = percent;
-    }
+  constructor(name: string, mean: number, variance: number, percent: number) {
+    this.index = name;
+    this.mean = mean;
+    this.std = variance;
+    this.weight = percent;
+  }
 }
