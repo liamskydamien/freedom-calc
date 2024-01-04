@@ -105,7 +105,7 @@ def get_database_credentials():
 #             return selected_ids
 #         else:
 #             print("Please enter at least 10 valid numeric Ids separated by space.")
-    
+
 # Flask route for portfolio optimization
 @app.route('/optimize-portfolio', methods=['GET', 'POST'])
 def optimize_portfolio():
@@ -196,4 +196,4 @@ def optimize_portfolio():
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
