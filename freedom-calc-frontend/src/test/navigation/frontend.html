@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio Optimization</title>
+</head>
+
+<body>
+    <h1>Portfolio Optimization</h1>
+
+    <label for="selectedStockTable">Choose a stock table (1 for gmstock, 2 for usstock, 3 for vnstock):</label>
+    <input type="text" id="selectedStockTable" placeholder="e.g., 1">
+
+    <label for="selectedIds">Enter at least 10 specific Ids separated by space:</label>
+    <input type="text" id="selectedIds" placeholder="e.g., 1 2 3 4 5">
+
+    <!-- Other input fields go here -->
+
+    <button onclick="optimizePortfolio()">Optimize Portfolio</button>
+
+    <div id="result"></div>
+
+    <script>
+        function optimizePortfolio() {
+            const selectedIds = document.getElementById('selectedIds').value.split(' ');
+            const selectedStockTable = document.getElementById('selectedStockTable').value;
+
+            // Other input values go here
+
+            const requestData = {
+                selected_stock_table: selectedStockTable,
+                selected_ids: selectedIds,
+                // selected_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+                host: 'localhost',
+                port: '5432',
+                database: 'TiChuts',
+                user: 'postgres',
+                password: '1',
+                target_risk_option: '2',  // Example: 1 for highest risk, 2 for lowest risk
+                // percentage: 10  // Uncomment this line if you choose option 3 and provide a percentage
+            };
+
+            fetch('http://127.0.0.1:5000/optimize-portfolio', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(requestData),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        document.getElementById('result').innerHTML = `
+                        <p>Optimized Weights: ${data.optimized_weights.join(', ')}</p>
+                        <p>Optimized Portfolio Return: ${data.optimized_return.toFixed(4)}</p>
+                        <p>Optimized Portfolio Risk: ${data.optimized_risk.toFixed(4)}</p>
+                    `;
+                    } else {
+                        document.getElementById('result').innerHTML = `<p>Error: ${data.error}</p>`;
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        }
+    </script>
+</body>
+
+</html>

@@ -78,10 +78,11 @@ const renderActiveShape = (props: any) => {
 };
 
 type StartingCapitalGraph = {
+  t: any;
   data: AssetGroup[];
 };
 
-const StartingCapitalGraph: React.FC<StartingCapitalGraph> = ({ data }) => {
+const StartingCapitalGraph: React.FC<StartingCapitalGraph> = ({ t, data }) => {
   const transformedData = createPieChart(data);
 
   const [activeIndex, setActiveIndex] = useState(0);

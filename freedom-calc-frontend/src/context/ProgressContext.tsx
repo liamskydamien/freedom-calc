@@ -1,6 +1,9 @@
 import React, {
   createContext,
+  JSXElementConstructor,
+  ReactElement,
   ReactNode,
+  ReactPortal,
   useState,
 } from "react";
 import { Progress } from "../models/Progress";

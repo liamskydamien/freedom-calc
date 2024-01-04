@@ -26,32 +26,25 @@ const LifePhaseGraph: React.FC<LifePhaseGraphProps> = ({
 
   const data = createBarChart(lifePhases.phases.phase);
 
-  const CustomTooltip = ({ active, payload, label }: any) => {
+  const CustomTooltip = ({ active, payload, label } : any) => {
     if (active && payload && payload.length) {
       const lines = [
-        {
-          text: `${t("income")}: ${parseFloat(payload[0].value).toFixed(2)}`,
-          color: COLORS.dark.wealth,
-        },
-        {
-          text: `${t("expenses")}: ${parseFloat(payload[1].value).toFixed(2)}`,
-          color: COLORS.dark.costs,
-        },
+        { text: `${t('income')}: ${parseFloat(payload[0].value).toFixed(2)}`, color: COLORS.dark.wealth },
+        { text: `${t('expenses')}: ${parseFloat(payload[1].value).toFixed(2)}`, color: COLORS.dark.costs },
       ];
 
       return (
-        <div className="custom-tooltip card flex-col justify-center">
-          <p className="label">{`${label}`}</p>
-          <p className="intro">
-            {lines.map((line, i) => (
-              <span key={i} style={{ color: line.color, margin: 20 }}>
-                {line.text}
-                <br />
-              </span>
-            ))}
-          </p>
-          <p className="desc">{}</p>
-        </div>
+          <div className="custom-tooltip card flex-col justify-center">
+            <p className="label">{`${label}`}</p>
+            <p className="intro">
+              {
+                lines.map((line, i) =>
+                    <span key={i} style={{ color: line.color, margin: 20}}>{line.text}<br /></span>
+                )
+              }
+            </p>
+            <p className="desc">{}</p>
+          </div>
       );
     }
     return null;

@@ -1,10 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { InputContext } from "../../context/InputContext";
 import { InputContextProviderState } from "../../models/InputContextProviderState";
 import { PersonalInformation } from "../../models/personalinformation/PersonalInformation";
 import { useNavigate } from "react-router";
 import { ProgressContext } from "../../context/ProgressContext";
-import { Progress } from "../../models/Progress";
 
 type InputPersonalInformationProps = {
   t: any;
@@ -21,7 +20,7 @@ const InputPersonalInformation: React.FC<InputPersonalInformationProps> = ({
     personalInformation,
     setPersonalInformation,
   }: InputContextProviderState = useContext(InputContext);
-  const { progress, updateProgress } = useContext(ProgressContext);
+  const { progress, updateProgress }: any = useContext(ProgressContext);
   const [firstName, setFirstName] = useState(personalInformation.firstName);
   const [lastName, setLastName] = useState(personalInformation.lastName);
   const [birthDate, setBirthDate] = useState(personalInformation.birthDate);

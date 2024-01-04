@@ -21,4 +21,7 @@ export class StartingCapital {
     return total - totalDept;
   }
 
+  getLiabilities(): AssetGroup[] {
+    return this.liabilities;
+  }
 }

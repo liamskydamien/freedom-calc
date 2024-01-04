@@ -1,7 +1,6 @@
 import { useTranslation } from "react-i18next";
 import "./custom_styles/stepper.css";
 import React from "react";
-import { useNavigate } from "react-router";
 
 // Define the shape of the props
 type StepperProps = {
@@ -10,7 +9,7 @@ type StepperProps = {
 
 const Stepper: React.FC<StepperProps> = ({ active }) => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
+
   const setStep = (step: number) => {
     if (active === step) {
       return "step-active";
@@ -22,7 +21,7 @@ const Stepper: React.FC<StepperProps> = ({ active }) => {
   };
   return (
     <ol className="steps steps-vertical lg:steps-horizontal">
-      <li className={`step step-primary ${setStep(1)} overflow-hidden`} onClick={() => {navigate("/")}}>
+      <li className={`step step-primary ${setStep(1)} overflow-hidden`}>
         {setStep(1) === "step-active" ? (
           <div>
             <div className="step-circle">1</div>
@@ -49,7 +48,7 @@ const Stepper: React.FC<StepperProps> = ({ active }) => {
         )}
         <h3 className="stepTitle">{t("personal_information")}</h3>
       </li>
-      <li className={`step step-primary ${setStep(2)} overflow-hidden`} onClick={() => {navigate("/starting_capital")}}>
+      <li className={`step step-primary ${setStep(2)} overflow-hidden`}>
         {setStep(2) === "step-active" ? (
           <div>
             <div className="step-circle">2</div>
@@ -76,7 +75,7 @@ const Stepper: React.FC<StepperProps> = ({ active }) => {
         )}
         <h3 className="stepTitle">{t("starting_capital")}</h3>
       </li>
-      <li className={`step step-primary ${setStep(3)} overflow-hidden`} onClick={() => {navigate("/lifephases")}}>
+      <li className={`step step-primary ${setStep(3)} overflow-hidden`}>
         {setStep(3) === "step-active" ? (
           <div>
             <div className="step-circle">3</div>
@@ -103,7 +102,7 @@ const Stepper: React.FC<StepperProps> = ({ active }) => {
         )}
         <h3 className="stepTitle">{t("lifephases")}</h3>
       </li>
-      <li className={`step step-primary ${setStep(4)} overflow-hidden`} onClick={() => {navigate("/pof")}}>
+      <li className={`step step-primary ${setStep(4)} overflow-hidden`}>
         {setStep(4) === "step-active" ? (
           <div>
             <div className="step-circle">4</div>
@@ -130,7 +129,7 @@ const Stepper: React.FC<StepperProps> = ({ active }) => {
         )}
         <h3 className="stepTitle">{t("pof")}</h3>
       </li>
-      <li className={`step step-primary ${setStep(5)} overflow-hidden`} onClick={() => {navigate("/optimization")}}>
+      <li className={`step step-primary ${setStep(5)} overflow-hidden`}>
         {setStep(5) === "step-active" ? (
           <div>
             <div className="step-circle">5</div>

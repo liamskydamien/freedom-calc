@@ -13,7 +13,6 @@ i18n
     resources: {
       en: {
         translation: {
-          provisions: "Provisions",
           optimize: "Optimize",
           selected_stocks: "Selected Stocks",
           add_more_stocks: "Add More Stocks",
@@ -27,9 +26,8 @@ i18n
           wealth: "Wealth",
 
           //Personal Information Page
-          title: "Freedom Calc",
-          explaination:
-            "The life chart calculation project is used to develop methods to calculate the financial freedom point by using Markowitz's Portfolio Theory. In this web application, the user can input their data(personal information, income) and their prediction so that when they go through five steps, they can know their predicted financial freedom point.",
+          title:"Freedom Calc",
+          explaination:"The life chart calculation project is used to develop methods to calculate the financial freedom point by using Markowitz's Portfolio Theory. In this web application, the user can input their data(personal information, income) and their prediction so that when they go through five steps, they can know their predicted financial freedom point.",
           personal_information: "Personal Information",
           firstname: "First Name",
           type_here: "Type here",
@@ -182,33 +180,27 @@ i18n
 
           //Optimisation Page
           how_risk_affine_are_you: "How risk affine are you?",
-          how_would_you_describe_your_investment_experience:
-            "How would you describe your investment experience?",
+          how_would_you_describe_your_investment_experience: "How would you describe your investment experience?",
           no_experience: "No experience",
           some_experience: "Some investment experience",
           experienced: "Experienced through simple investments",
           highly_experienced: "Highly experienced through complex investments",
-          how_do_you_react_when_your_investments_decrease_in_value:
-            "How do you react when your investments decrease in value?",
+          how_do_you_react_when_your_investments_decrease_in_value: "How do you react when your investments decrease in value?",
           become_anxious_sell: "Become anxious and sell",
           concerned_wait: "Concerned, but I wait before I sell",
           hold_onto_my_investments: "I hold onto my investments",
           buy_more: "I see an opportunity to buy more",
-          what_is_your_primary_goal_for_investing:
-            "What is your primary goal for investing?",
+          what_is_your_primary_goal_for_investing: "What is your primary goal for investing?",
           preserving_capital: "Preserving my capital",
-          balance_between_growth_preservance:
-            "A balance between growth and preservation",
+          balance_between_growth_preservance: "A balance between growth and preservation",
           growth_but_no_large_losses: "Growth, but I want no large losses",
           maximize_growth: "Maximize growth, even when I have to except losses",
-          how_long_is_your_investment_horizon:
-            "How long is your investment horizon?",
+          how_long_is_your_investment_horizon: "How long is your investment horizon?",
           less_than_2_years: "Less than 2 years",
           between_2_and_5_years: "Between 2 and 5 years",
           between_5_and_10_years: "Between 5 and 10 years",
           more_than_10_years: "More than 10 years",
-          suddendrop_in_a_short_period:
-            "What would you do if your investments suddendly drop in 20% value?",
+          suddendrop_in_a_short_period: "What would you do if your investments suddendly drop in 20% value?",
           sell_immidialty: "Sell immidialty to prevent further losses",
           wait_and_sell: "Wait and sell if the situation does not improve",
           keep_it: "Keep it, because I believe in the long-term growth",
@@ -234,7 +226,6 @@ i18n
 
       de: {
         translation: {
-          provisions: "Provisionen",
           optimize: "Optimieren",
           selected_stocks: "Ausgewählte Aktien",
           add_more_stocks: "Füge mehr Aktien hinzu",
@@ -248,8 +239,7 @@ i18n
           wealth: "Vermögen",
 
           //Personal Information Page
-          explaination:
-            "Das Projekt zur Berechnung des Lebenscharts dient der Entwicklung von Methoden zur Berechnung des Punktes der finanziellen Freiheit unter Verwendung der Portfoliotheorie von Markowitz. In dieser Webanwendung kann der Benutzer seine Daten (persönliche Informationen, Einkommen) und seine Prognose eingeben, so dass er nach Durchlaufen von fünf Schritten seinen prognostizierten Punkt finanzieller Freiheit kennt.",
+          explaination:"Das Projekt zur Berechnung des Lebenscharts dient der Entwicklung von Methoden zur Berechnung des Punktes der finanziellen Freiheit unter Verwendung der Portfoliotheorie von Markowitz. In dieser Webanwendung kann der Benutzer seine Daten (persönliche Informationen, Einkommen) und seine Prognose eingeben, so dass er nach Durchlaufen von fünf Schritten seinen prognostizierten Punkt finanzieller Freiheit kennt.",
           personal_information: "Persönliche Informationen",
           firstname: "Vorname",
           type_here: "Hier eingeben",
@@ -316,18 +306,14 @@ i18n
           //Liabilities
           passiva: "Verbindlichkeiten",
           object_related_liabilities: "Objektbezogene Verbindlichkeiten",
-          non_object_related_liabilities:
-            "Nicht objektbezogene Verbindlichkeiten",
+          non_object_related_liabilities: "Nicht objektbezogene Verbindlichkeiten",
           other_liabilities: "Sonstige Verbindlichkeiten",
 
           //Reserved Equity
           reserved_equity: "Reserviertes Eigenkapital",
-          reserved_equity_for_consumption:
-            "Reserviertes Eigenkapital für den Konsum",
-          reserved_equity_for_pension_provision:
-            "Reserviertes Eigenkapital für die Altersvorsorge",
-          reserved_equity_for_other:
-            "Reserviertes Eigenkapital für Privatverbrauch",
+          reserved_equity_for_consumption: "Reserviertes Eigenkapital für den Konsum",
+          reserved_equity_for_pension_provision: "Reserviertes Eigenkapital für die Altersvorsorge",
+          reserved_equity_for_other: "Reserviertes Eigenkapital für Privatverbrauch",
 
           //Balance Sheet
           starting_capital_display: "Startkapital",
@@ -406,39 +392,29 @@ i18n
 
           //Optimisation Page
           how_risk_affine_are_you: "Wie risikoaffin sind Sie?",
-          how_would_you_describe_your_investment_experience:
-            "Wie würden Sie Ihre Anlageerfahrung beschreiben?",
+          how_would_you_describe_your_investment_experience: "Wie würden Sie Ihre Anlageerfahrung beschreiben?",
           no_experience: "Keine Erfahrung",
           some_experience: "Einige Anlageerfahrung",
           experienced: "Erfahren durch einfache Investitionen",
           highly_experienced: "Hocherfahren durch komplexe Investitionen",
-          how_do_you_react_when_your_investments_decrease_in_value:
-            "Wie reagieren Sie, wenn Ihre Investitionen an Wert verlieren?",
+          how_do_you_react_when_your_investments_decrease_in_value: "Wie reagieren Sie, wenn Ihre Investitionen an Wert verlieren?",
           become_anxious_sell: "Werden ängstlich und verkaufen",
           concerned_wait: "Besorgt, aber ich warte bevor ich verkaufe",
           hold_onto_my_investments: "Ich halte an meinen Investitionen fest",
           buy_more: "Ich sehe eine Gelegenheit, mehr zu kaufen",
-          what_is_your_primary_goal_for_investing:
-            "Was ist Ihr primäres Anlageziel?",
+          what_is_your_primary_goal_for_investing: "Was ist Ihr primäres Anlageziel?",
           preserving_capital: "Mein Kapital erhalten",
-          balance_between_growth_preservance:
-            "Ein Gleichgewicht zwischen Wachstum und Erhaltung",
-          growth_but_no_large_losses:
-            "Wachstum, aber ich möchte keine großen Verluste",
-          maximize_growth:
-            "Wachstum maximieren, auch wenn ich Verluste hinnehmen muss",
-          how_long_is_your_investment_horizon:
-            "Wie lang ist Ihr Anlagehorizont?",
+          balance_between_growth_preservance: "Ein Gleichgewicht zwischen Wachstum und Erhaltung",
+          growth_but_no_large_losses: "Wachstum, aber ich möchte keine großen Verluste",
+          maximize_growth: "Wachstum maximieren, auch wenn ich Verluste hinnehmen muss",
+          how_long_is_your_investment_horizon: "Wie lang ist Ihr Anlagehorizont?",
           less_than_2_years: "Weniger als 2 Jahre",
           between_2_and_5_years: "Zwischen 2 und 5 Jahren",
           between_5_and_10_years: "Zwischen 5 und 10 Jahren",
           more_than_10_years: "Mehr als 10 Jahre",
-          suddendrop_in_a_short_period:
-            "Was würden Sie tun, wenn Ihre Investitionen plötzlich um 20% an Wert verlieren?",
-          sell_immidialty:
-            "Sofort verkaufen, um weitere Verluste zu verhindern",
-          wait_and_sell:
-            "Warten und verkaufen, wenn sich die Situation nicht bessert",
+          suddendrop_in_a_short_period: "Was würden Sie tun, wenn Ihre Investitionen plötzlich um 20% an Wert verlieren?",
+          sell_immidialty: "Sofort verkaufen, um weitere Verluste zu verhindern",
+          wait_and_sell: "Warten und verkaufen, wenn sich die Situation nicht bessert",
           keep_it: "Behalten, weil ich an das langfristige Wachstum glaube",
           your_portfolio: "Personalisiertes Portfolio",
           secure_portfolio: "Sicheres Portfolio",
@@ -460,38 +436,29 @@ i18n
       },
       vn: {
         translation: {
-          provisions: "Cung cấp",
           optimize: "Tối ưu hóa",
           how_risk_affine_are_you: "Bạn thích rủi ro đến mức nào?",
-          how_would_you_describe_your_investment_experience:
-            "Bạn sẽ mô tả kinh nghiệm đầu tư của mình như thế nào?",
+          how_would_you_describe_your_investment_experience: "Bạn sẽ mô tả kinh nghiệm đầu tư của mình như thế nào?",
           no_experience: "Không có kinh nghiệm",
           some_experience: "Một số kinh nghiệm đầu tư",
           experienced: "Kinh nghiệm từ các khoản đầu tư đơn giản",
           highly_experienced: "Rất kinh nghiệm qua các khoản đầu tư phức tạp",
-          how_do_you_react_when_your_investments_decrease_in_value:
-            "Bạn phản ứng như thế nào khi các khoản đầu tư của mình giảm giá trị?",
+          how_do_you_react_when_your_investments_decrease_in_value: "Bạn phản ứng như thế nào khi các khoản đầu tư của mình giảm giá trị?",
           become_anxious_sell: "Lo lắng và bán đi",
           concerned_wait: "Lo lắng, nhưng tôi chờ trước khi bán",
           hold_onto_my_investments: "Tôi giữ lại các khoản đầu tư của mình",
           buy_more: "Tôi xem đây là cơ hội để mua thêm",
-          what_is_your_primary_goal_for_investing:
-            "Mục tiêu chính của bạn khi đầu tư là gì?",
+          what_is_your_primary_goal_for_investing: "Mục tiêu chính của bạn khi đầu tư là gì?",
           preserving_capital: "Bảo toàn vốn",
-          balance_between_growth_preservance:
-            "Cân bằng giữa tăng trưởng và bảo toàn",
-          growth_but_no_large_losses:
-            "Tăng trưởng, nhưng tôi không muốn có những tổn thất lớn",
-          maximize_growth:
-            "Tối đa hóa tăng trưởng, ngay cả khi tôi phải chấp nhận tổn thất",
-          how_long_is_your_investment_horizon:
-            "Chu kỳ đầu tư của bạn là bao lâu?",
+          balance_between_growth_preservance: "Cân bằng giữa tăng trưởng và bảo toàn",
+          growth_but_no_large_losses: "Tăng trưởng, nhưng tôi không muốn có những tổn thất lớn",
+          maximize_growth: "Tối đa hóa tăng trưởng, ngay cả khi tôi phải chấp nhận tổn thất",
+          how_long_is_your_investment_horizon: "Chu kỳ đầu tư của bạn là bao lâu?",
           less_than_2_years: "Ít hơn 2 năm",
           between_2_and_5_years: "Từ 2 đến 5 năm",
           between_5_and_10_years: "Từ 5 đến 10 năm",
           more_than_10_years: "Hơn 10 năm",
-          suddendrop_in_a_short_period:
-            "Bạn sẽ làm gì nếu các khoản đầu tư của mình đột ngột giảm 20% giá trị?",
+          suddendrop_in_a_short_period: "Bạn sẽ làm gì nếu các khoản đầu tư của mình đột ngột giảm 20% giá trị?",
           sell_immidialty: "Bán ngay lập tức để ngăn chặn thêm tổn thất",
           wait_and_sell: "Chờ đợi và bán nếu tình hình không cải thiện",
           keep_it: "Giữ lại vì tôi tin vào tăng trưởng lâu dài",
@@ -523,9 +490,8 @@ i18n
           select_atleast_10_stocks: "Chọn ít nhất 10 cổ phiếu",
 
           //Personal Information Page
-          title: "Biểu đồ dự đoán",
-          explaination:
-            "Dự án biểu đồ dự đoán này được sự dụng để phát triển những phương thức tính toán điểm tự do tài chính bằng việc sự dụng lý thuyết Markowitz Porfolio. Trên cái website này, người dùng có thể nhập dữ liệu của họ (thông tin cá nhân, thu nhập) và những phỏng đoán để sau khi người dùng đã hoàn thành năm bước trên, họ có thể dự đoán cái điểm tự do tài chính",
+          title:"Biểu đồ dự đoán",
+          explaination:"Dự án biểu đồ dự đoán này được sự dụng để phát triển những phương thức tính toán điểm tự do tài chính bằng việc sự dụng lý thuyết Markowitz Porfolio. Trên cái website này, người dùng có thể nhập dữ liệu của họ (thông tin cá nhân, thu nhập) và những phỏng đoán để sau khi người dùng đã hoàn thành năm bước trên, họ có thể dự đoán cái điểm tự do tài chính",
           personal_information: "Thông Tin Cá Nhân",
           firstname: "Tên",
           type_here: "Nhập vào đây",
