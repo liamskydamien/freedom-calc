@@ -70,7 +70,7 @@ def hello_world():
     password = "stocks"
 
     # SQL-Abfrage
-    query = "SELECT * FROM meine_tabelle;"
+    query = "SELECT * FROM gmtable;"
 
     # Verbindungsaufbau
     try:

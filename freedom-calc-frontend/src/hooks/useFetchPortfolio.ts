@@ -6,13 +6,14 @@ export const useFetchPortfolio = (stocks: string[], target_std: number) => {
   const [portfolio, setPortfolio] = useState<PortfolioClass[]>(
     [] as PortfolioClass[],
   );
+  const url = "https://2eb6de2b-f10e-418d-ba6f-9b9d7a4885ac.mock.pstmn.io";
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<String>("");
 
-  const options = {
+  const options  = {
     method: "post",
     maxBodyLength: Infinity,
-    url: "https://2eb6de2b-f10e-418d-ba6f-9b9d7a4885ac.mock.pstmn.io/optimized",
+    url: `${url}/optimized`,
     headers: {
       "Content-Type": "application/json",
     },
@@ -28,6 +29,7 @@ export const useFetchPortfolio = (stocks: string[], target_std: number) => {
   const fetchData = async () => {
     setIsLoading(true);
     try {
+      // @ts-ignore
       const response = await axios.request(options);
       setPortfolio(response.data);
       setIsLoading(false);
