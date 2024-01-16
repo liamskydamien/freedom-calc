@@ -2,6 +2,7 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import numpy as np
 import pandas as pd
+import time
 from scipy.optimize import minimize
 import psycopg2
 from psycopg2 import sql
@@ -63,6 +64,28 @@ def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
     return np.min(portfolio_volatilities), np.max(portfolio_volatilities)
 
 @app.route('/')
+def wait_for_db():
+    while True:
+        try:
+            conn = psycopg2.connect(
+                dbname="stocks",
+                user="stockUser",
+                password="stocks",
+                host="db"  # Use the service name defined in docker-compose.yml
+            )
+            # Optionally, check if a specific table exists
+            cursor = conn.cursor()
+            cursor.execute("SELECT to_regclass('public.gmtable');")  # Replace 'gmtable' with your table name
+            if cursor.fetchone()[0] is not None:
+                print("Database and table are ready!")
+                cursor.close()
+                conn.close()
+                break
+            cursor.close()
+            conn.close()
+        except psycopg2.OperationalError as e:
+            print("Waiting for database to be ready...")
+            time.sleep(5)
 def hello_world():
     host = "db"  # oder die entsprechende Adresse Ihres Servers
     dbname = "stocks"

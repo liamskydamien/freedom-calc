@@ -9,17 +9,17 @@
 --INSERT INTO meine_tabelle (spalte1, spalte2) VALUES ('Wert1', 123), ('Wert2', 456);
 
 -- Create gmstock table
-CREATE TABLE IF NOT EXISTS public.gmstock (
+CREATE TABLE IF NOT EXISTS gmstock (
     "Id" numeric NOT NULL,
     "Exchange date" date NOT NULL,
     "Close price" numeric NOT NULL,
     "Change" numeric
 );
 
-ALTER TABLE IF EXISTS public.gmstock OWNER to stocks;
+
 
 -- Insert data into gmstock
-INSERT INTO public.gmstock ("Id", "Exchange date", "Close price", "Change")
+INSERT INTO gmstock ("Id", "Exchange date", "Close price", "Change")
 VALUES 
 (1,2023-11-20,147.64,-0.006),
 (1,2023-11-13,148.46,0.135),
@@ -230,7 +230,7 @@ VALUES
 (1,2019-12-09,104.69,0.008),
 (1,2019-12-02,103.81,-0.003),
 (1,2019-11-25,104.10,0.020),
-(1,2019-11-18,102.02,),
+(1,2019-11-18,102.02,0.020),
 (2,2023-11-20,139.92,0.020),
 (2,2023-11-13,137.22,0.017),
 (2,2023-11-06,134.86,0.043),
@@ -3173,15 +3173,15 @@ VALUES
 (15,2019-11-18,12.07,);
    
 -- Create gmtable table
-CREATE TABLE IF NOT EXISTS public.gmtable (
+CREATE TABLE IF NOT EXISTS gmtable (
      "Id" numeric NOT NULL,
     "Name" text NOT NULL
 );
 
-ALTER TABLE IF EXISTS public.gmtable OWNER to stocks;
+
 
 -- Insert data into gmtable
-INSERT INTO public.gmtable ("Id", "Name")
+INSERT INTO gmtable ("Id", "Name")
 VALUES 
 (1,SIE),
 (2,SAP),
@@ -3200,17 +3200,15 @@ VALUES
 (15,NDX1);
 
 -- Create usstock table
-CREATE TABLE IF NOT EXISTS public.usstock (
+CREATE TABLE IF NOT EXISTS usstock (
     "Id" numeric NOT NULL,
     "Exchange date" date NOT NULL,
     "Close price" numeric NOT NULL,
     "Change" numeric
 );
 
-ALTER TABLE IF EXISTS public.usstock OWNER to stocks;
-
 -- Insert data into usstock table
-INSERT INTO public.ustable ("Id", "Exchange date", "Close price", "Change")
+INSERT INTO ustable ("Id", "Exchange date", "Close price", "Change")
 VALUES 
 (1,2023-11-20,504.09,0.023),
 (1,2023-11-13,492.98,0.020),
@@ -6364,15 +6362,14 @@ VALUES
 (15,2019-11-18,6.98,);
 
 -- Create ustable 
-CREATE TABLE IF NOT EXISTS public.ustable
+CREATE TABLE IF NOT EXISTS ustable
 (
     "Id" numeric NOT NULL,
     "Name" text COLLATE pg_catalog."default" NOT NULL
 )
-ALTER TABLE IF EXISTS public.ustable OWNER to stocks;
 
 -- Insert data into ustable
-INSERT INTO public.ustable ("Id", "Name")
+INSERT INTO ustable ("Id", "Name")
 VALUES 
 (1,NVDA),
 (2,V),
@@ -6391,17 +6388,17 @@ VALUES
 (15,DB);
 
 -- Create vnstock 
-CREATE TABLE IF NOT EXISTS public.vnstock
+CREATE TABLE IF NOT EXISTS vnstock
 (
     "Id" numeric NOT NULL,
     "Exchange Date" date NOT NULL,
     "Close price" numeric NOT NULL,
     "Change" numeric
 )
-ALTER TABLE IF EXISTS public.vnstock OWNER to stocks;
+
 
 -- Insert data into vnstock
-INSERT INTO public.vnstock ("Id", "Exchange date", "Close price", "Change")
+INSERT INTO vnstock ("Id", "Exchange date", "Close price", "Change")
 VALUES
 (1,20/11/2023,42700,-0.047),
 (1,13/11/2023,44800,0.064),
@@ -9573,15 +9570,15 @@ VALUES
 (16,21/11/2019,78154,);
 
 -- Create vntable 
-CREATE TABLE IF NOT EXISTS public.vntable
+CREATE TABLE IF NOT EXISTS vntable
 (
     "Id" numeric NOT NULL,
     "Name" text COLLATE pg_catalog."default" NOT NULL
 )
-ALTER TABLE IF EXISTS public.vntable OWNER to stocks;
+
 
 -- Insert data into vntable
-INSERT INTO public.vntable ("Id", "Name")
+INSERT INTO vntable ("Id", "Name")
 VALUES 
 (1,VIC),
 (2,VJC),
