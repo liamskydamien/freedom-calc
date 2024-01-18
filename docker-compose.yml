@@ -19,7 +19,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: stocks
-      POSTGRES_USER: stockUser
+      POSTGRES_USER: stockuser
       POSTGRES_PASSWORD: stocks
     ports:
       - "5432:5432"

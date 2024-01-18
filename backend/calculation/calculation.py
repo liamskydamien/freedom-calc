@@ -65,12 +65,13 @@ def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
 @app.route('/')
 def hello_world():
     host = "db"  # oder die entsprechende Adresse Ihres Servers
+    port = "5432"
     dbname = "stocks"
-    user = "stockUser"
+    user = "stockuser"
     password = "stocks"
 
     # SQL-Abfrage
-    query = "SELECT * FROM gmtable;"
+    query = "SELECT * FROM meine_tabelle;"
 
     # Verbindungsaufbau
     try:
@@ -78,7 +79,8 @@ def hello_world():
             host=host,
             dbname=dbname,
             user=user,
-            password=password
+            password=password,
+            port=port
         )
 
         # Cursor erstellen und Abfrage ausführen
