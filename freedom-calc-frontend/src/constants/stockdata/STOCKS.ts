@@ -1,3 +1,5 @@
+import { StockClass } from "../../models/optimization/StockClass";
+
 const STOCKS: string[] = [
   "VIC",
   "VJC",
@@ -96,4 +98,59 @@ export const preSelectedStocks: string[][] = [
   ["NVDA", "NVIDIA"],
 ];
 
-export default STOCKS;
+
+export const vnStocks: StockClass[] = [
+    {id: 1, ticker: 'VIC', name:'Vingroup'},
+    {id: 2, ticker: 'VJC', name:'Vietjet Air'},
+    {id: 3, ticker: 'SSI', name:'SSI Securities'},
+    {id: 4, ticker: 'HVN', name:'Vietnam Airlines'},
+    {id: 5, ticker: 'HSG', name:'Hoa Sen'},
+    {id: 6, ticker: 'BCM', name:'Becamex'},
+    {id: 7, ticker: 'ABT', name:'Bentre Aquaproduct Import'},
+    {id: 8, ticker: 'IMP', name:'Inmexpharm'},
+    {id: 9, ticker: 'GAS', name:'PV GAS'},
+    {id: 10, ticker: 'TLG', name:'Thien Long'},
+    {id: 11, ticker: 'VPB', name:'VP Bank'},
+    {id: 12, ticker: 'EVF', name:'EVN'},
+    {id: 13, ticker: 'VNM', name:'Vinamilk'},
+    {id: 14, ticker: 'VGI', name:'Vincom Retail'},
+    {id: 15, ticker: 'BIC', name:'Vietnam Building Insurance'},
+    {id: 16, ticker: 'HAX', name:'Hang Xanh Automobile'},
+]
+
+export const deStocks: StockClass[] = [
+  {id: 1, ticker: 'SIE', name:'Siemens'},
+  {id: 2, ticker: 'SAP', name:'SAP SE'},
+  {id: 3, ticker: 'LHA', name:'Deutsche Lufthansa'},
+  {id: 4, ticker: 'PAH3.DE', name:'Porsche'},
+  {id: 5, ticker: 'MBG', name:'Mercedes-Benz Group'},
+  {id: 6, ticker: 'BMW', name:'Bayerische Motoren Werke'},
+  {id: 7, ticker: 'VOW3', name:'Volkswagen'},
+  {id: 8, ticker: 'DHL', name:'Deutsche Post'},
+  {id: 9, ticker: 'ADS', name:'Adidas'},
+  {id: 10, ticker: 'CON', name:'Continental'},
+  {id: 11, ticker: 'PUM', name:'PUMA'},
+  {id: 12, ticker: 'AFX', name:'Carl Zeiss Meditec'},
+  {id: 13, ticker: 'S92', name:'SMA Solar Technology'},
+  {id: 14, ticker: 'VGI', name:'Bayer Aktiengesellschaft'},
+  {id: 15, ticker: 'NDX1', name:'Nordex'},
+]
+
+export const usStocks: StockClass[] = [
+    {id: 1, ticker: 'NVDA', name:'NVIDIA'},
+    {id: 2, ticker: 'V', name:'Visa'},
+    {id: 3, ticker: 'MA', name:'Mastercard'},
+    {id: 4, ticker: 'ORCL', name:'Oracle'},
+    {id: 5, ticker: 'KO', name:'The Coca-Cola'},
+    {id: 6, ticker: 'CRM', name:'Salesforce'},
+    {id: 7, ticker: 'MBG.US', name:'Netflix'},
+    {id: 8, ticker: 'AMD', name:'Advanced Micro Devices'},
+    {id: 9, ticker: 'INTC', name:'Intel Corporation'},
+    {id: 10, ticker: 'DIS', name:'The Walt Disney Company'},
+    {id: 11, ticker: 'NKE', name:'Nike'},
+    {id: 12, ticker: 'CAT', name:'Caterpillar'},
+    {id: 13, ticker: 'UPS', name:'United Parcel Service'},
+    {id: 14, ticker: 'BA', name:'The Boeing Company'},
+    {id: 15, ticker: 'DB', name:'Deutsche Bank'},
+]
+
