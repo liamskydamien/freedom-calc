@@ -14,11 +14,11 @@ const Portfolio: React.FC<PortfolioProps> = ({ t, portfolio, currency }) => {
       <div className="flex flex-col gap-2  mb-4">
         <div className="flex flex-row justify-between mt-4">
           <p>{t("portfolio_growth")}</p>
-          <p>{(portfolio.mean * 100).toPrecision(2) + " % (CAGR)"}</p>
+          <p>{(portfolio.optimized_return * 100).toPrecision(2) + " % (CAGR)"}</p>
         </div>
         <div className="flex flex-row justify-between">
           <p>{t("portfolio_risk")}</p>
-          <p>{portfolio.std}</p>
+          <p>{portfolio.optimized_risk}</p>
         </div>
       </div>
       <StockTable t={t} portfolio={portfolio} />

@@ -180,7 +180,7 @@ def optimize_portfolio():
                 optimized_weights_lowest_risk, expected_returns, np.diag(covariance_matrix))
             optimized_return_percentage_risk, optimized_risk_percentage_risk = calculate_portfolio_metrics(
                 optimized_weights_percentage_risk, expected_returns, np.diag(covariance_matrix))
-            
+
             asset_means = stock_data.groupby('id')['change'].mean().to_dict()
             # Extract standard deviation values for each selected id
             std_dev_values = stock_data.groupby('id')['change'].std().to_dict()
@@ -195,7 +195,7 @@ def optimize_portfolio():
     },
     "highest_risk": {
         "optimized_results": [
-            {"id": id_, "weight": weight, "mean": asset_means[id_], "std dev": std_dev_values[id_]}
+            {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
             for id_, weight in zip(optimized_ids, optimized_weights_highest_risk)
         ],
         "optimized_return": float(optimized_return_highest_risk),
@@ -203,7 +203,7 @@ def optimize_portfolio():
     },
     "lowest_risk": {
         "optimized_results": [
-            {"id": id_, "weight": weight, "mean": asset_means[id_], "std dev": std_dev_values[id_]}
+            {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
             for id_, weight in zip(optimized_ids, optimized_weights_lowest_risk)
         ],
         "optimized_return": float(optimized_return_lowest_risk),
@@ -211,7 +211,7 @@ def optimize_portfolio():
     },
     "percentage_risk": {
         "optimized_results": [
-            {"id": id_, "weight": weight, "mean": asset_means[id_], "std dev": std_dev_values[id_]}
+            {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
             for id_, weight in zip(optimized_ids, optimized_weights_percentage_risk)
         ],
         "optimized_return": float(optimized_return_percentage_risk),

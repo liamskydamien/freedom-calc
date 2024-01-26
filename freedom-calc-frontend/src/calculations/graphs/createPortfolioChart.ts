@@ -63,7 +63,7 @@ export function createPortfolioChart(portfolios: number[][], costs: number[]) {
  * @param portfolio the portfolio to calculate the yearly growth of
  */
 export function calculateYearlyGrowth(portfolio: PortfolioClass) {
-  return 1 + portfolio.mean;
+  return 1 + portfolio.optimized_return;
 }
 
 /**

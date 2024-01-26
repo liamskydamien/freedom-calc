@@ -19,7 +19,7 @@ type PortfolioChart = {
   personalPOF: any;
 };
 const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
-  const { selectedStocks } = useContext(SelectedStocksContext);
+  const { selectedStocks, stockGroup } = useContext(SelectedStocksContext);
 
   const { t } = useTranslation();
   const { personalInformation, phases } = useContext(InputContext);
@@ -27,22 +27,17 @@ const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
     useState<PortfolioChart>({} as PortfolioChart);
   const [loading, setLoading] = useState(true);
 
-  const stocksTest: string[] = [
-    "AMD",
-    "UPS",
-    "DB",
-    "DIS",
-    "VOW3",
-    "INTC",
-    "V",
-    "AFX",
-    "NVDA",
-  ];
-  const target_std_dev = 100;
+  /**
+   * Returns an array of the selected stocks' ids
+   */
+  function getIds(): number[] {
+    return selectedStocks.map((stock) => stock.id);
+  }
 
   const { portfolio, isLoading, isError, refetch } = useFetchPortfolio(
-    stocksTest,
-    target_std_dev,
+    getIds(),
+    50,
+    stockGroup
   );
 
   useEffect(() => {
@@ -87,7 +82,7 @@ const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
       {isLoading ? (
         <div className="spinner-circle max-w-2xl max-h-2xl ml-auto mr-auto mt-40 mb-40"></div>
       ) : isError ? (
-        <div>Error</div>
+        {isError}
       ) : portfolio ? (
         <div className="flex flex-row gap-2">
           <PortfolioCard
