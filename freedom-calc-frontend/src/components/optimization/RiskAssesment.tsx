@@ -2,6 +2,7 @@ import "./RiskAssementStyles.css";
 import React, { useContext, useEffect, useState } from "react";
 import StockPickerAssesment from "./StockPicker/StockPickerAssesment";
 import { SelectedStocksContext } from "../../context/SelectedStocksContext";
+import StockPicker from "./StockPicker/StockPicker";
 
 type RiskAssesmentProps = {
   t: any;
@@ -367,7 +368,7 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
               </div>
             </div>
           </div>
-          <StockPickerAssesment />
+          <StockPicker />
           {valid ? (
             <button
               className="btn btn-primary mt-2 mb-3 ml-2 mr-2"
