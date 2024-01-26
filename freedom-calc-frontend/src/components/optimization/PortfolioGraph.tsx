@@ -9,7 +9,8 @@ import {
   YAxis,
 } from "recharts";
 import { COLORS } from "../../constants/colors/colors";
-import React from "react";
+import React, { useContext } from "react";
+import { SelectedStocksContext } from "../../context/SelectedStocksContext";
 
 type PortfolioGraphProps = {
   t: any;
@@ -21,6 +22,9 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
   graph,
   currency,
 }) => {
+
+  const {selectedStocks} = useContext(SelectedStocksContext);
+
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const lines = [
@@ -79,59 +83,66 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
   return (
     <div className="max-w-full">
       <h1>{t("life_line_title")}</h1>
-      <ResponsiveContainer maxHeight={400}>
-        <ComposedChart data={graph}>
-          <XAxis dataKey="index">
-            <Label value={t("years")} offset={0} position="insideBottom" />
-          </XAxis>
-          <YAxis type="number">
-            <Label
-              value={t("in_1000000") + " " + currency}
-              offset={100}
-              angle={-90}
-              position="insideLeft"
+      {
+        selectedStocks.length < 10 ? (
+          <div className="text-red-500 h-96">
+            {t("select_at_least_10_stocks")}
+          </div>
+        ) :
+        <ResponsiveContainer maxHeight={400}>
+          <ComposedChart data={graph}>
+            <XAxis dataKey="index">
+              <Label value={t("years")} offset={0} position="insideBottom" />
+            </XAxis>
+            <YAxis type="number">
+              <Label
+                value={t("in_1000000") + " " + currency}
+                offset={100}
+                angle={-90}
+                position="insideLeft"
+              />
+            </YAxis>
+            <Line
+              dot={false}
+              type="monotone"
+              dataKey="safest"
+              stroke={COLORS.light.wealth}
+              strokeWidth={3}
+              connectNulls={true}
+              name={t("safest")}
             />
-          </YAxis>
-          <Line
-            dot={false}
-            type="monotone"
-            dataKey="safest"
-            stroke={COLORS.light.wealth}
-            strokeWidth={3}
-            connectNulls={true}
-            name={t("safest")}
-          />
-          <Line
-            dot={false}
-            type="monotone"
-            dataKey="riskiest"
-            stroke="#82ca9d"
-            strokeWidth={3}
-            connectNulls={true}
-            name={t("riskiest")}
-          />
-          <Line
-            dot={false}
-            type="monotone"
-            dataKey="personal"
-            stroke="#8884d8"
-            strokeWidth={3}
-            connectNulls={true}
-            name={t("personal")}
-          />
-          <Line
-            dot={false}
-            type="monotone"
-            dataKey="costs"
-            stroke={COLORS.light.costs}
-            strokeWidth={3}
-            connectNulls={true}
-            name={t("costs")}
-          />
-          <Tooltip content={<CustomTooltip />} />
-          <Legend verticalAlign="top" height={36} />
-        </ComposedChart>
-      </ResponsiveContainer>
+            <Line
+              dot={false}
+              type="monotone"
+              dataKey="riskiest"
+              stroke="#82ca9d"
+              strokeWidth={3}
+              connectNulls={true}
+              name={t("riskiest")}
+            />
+            <Line
+              dot={false}
+              type="monotone"
+              dataKey="personal"
+              stroke="#8884d8"
+              strokeWidth={3}
+              connectNulls={true}
+              name={t("personal")}
+            />
+            <Line
+              dot={false}
+              type="monotone"
+              dataKey="costs"
+              stroke={COLORS.light.costs}
+              strokeWidth={3}
+              connectNulls={true}
+              name={t("costs")}
+            />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend verticalAlign="top" height={36} />
+          </ComposedChart>
+        </ResponsiveContainer>
+      }
     </div>
   );
 };
