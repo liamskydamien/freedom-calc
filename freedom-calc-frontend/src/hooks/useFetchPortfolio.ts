@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { PortfolioClass } from "../models/optimization/PortfolioClass";
 
-export const useFetchPortfolio = (stocks: string[], target_std: number) => {
+export const useFetchPortfolio = (stocks: number[], target_std: number, market: string) => {
   const [portfolio, setPortfolio] = useState<PortfolioClass[]>(
     [] as PortfolioClass[],
   );
-  const url = "https://2eb6de2b-f10e-418d-ba6f-9b9d7a4885ac.mock.pstmn.io";
+  const url = "backend:5000/optimize-portfolio";
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [isError, setIsError] = useState<String>("");
 
@@ -18,8 +18,9 @@ export const useFetchPortfolio = (stocks: string[], target_std: number) => {
       "Content-Type": "application/json",
     },
     data: {
-      indices: stocks,
-      target_std_dev: target_std,
+      selected_stock_table: market,
+      selected_ids: stocks,
+      percentage: target_std
     },
   };
 
