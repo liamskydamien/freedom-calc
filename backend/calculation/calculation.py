@@ -9,10 +9,17 @@ from psycopg2 import sql
 app = Flask(__name__)
 CORS(app)
 # Function to connect to PostgreSQL and fetch data
-def fetch_stock_data(ids, connection_string, column_names, stock_table):
+def fetch_stock_data(ids, connection_string, stock_table):
+    column_names = ["id", "change"]  # Specify the columns you want to retrieve
     try:
+        conn = psycopg2.connect(
+            host=db_credentials["host"],
+            dbname=db_credentials["database"],
+            user=db_credentials["user"],
+            password=db_credentials["password"],
+            port=db_credentials["port"]
+        )
         # Connect to the PostgreSQL database
-        conn = psycopg2.connect(connection_string)
         cursor = conn.cursor()
 
         # Build the SQL query with specific Ids, correct column names, and selected stock table
@@ -40,6 +47,7 @@ def fetch_stock_data(ids, connection_string, column_names, stock_table):
         print(f"Error: {e}")
         return None
 
+
 # Function to calculate portfolio returns and risks
 def calculate_portfolio_metrics(weights, returns, cov_matrix):
     portfolio_return = np.sum(weights * returns)
@@ -62,13 +70,16 @@ def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
         [calculate_portfolio_volatility(weights, cov_matrix) for weights in simulated_weights])
     return np.min(portfolio_volatilities), np.max(portfolio_volatilities)
 
+db_credentials = {
+    "host": "db",
+    "port": "5432",
+    "database": "stocks",
+    "user": "stockuser",
+    "password": "stocks"
+}
+
 @app.route('/')
 def hello_world():
-    host = "db"  # oder die entsprechende Adresse Ihres Servers
-    port = "5432"
-    dbname = "stocks"
-    user = "stockuser"
-    password = "stocks"
 
     # SQL-Abfrage
     query = "SELECT * FROM vnstock;"
@@ -76,11 +87,11 @@ def hello_world():
     # Verbindungsaufbau
     try:
         conn = psycopg2.connect(
-            host=host,
-            dbname=dbname,
-            user=user,
-            password=password,
-            port=port
+            host=db_credentials["host"],
+            dbname=db_credentials["database"],
+            user=db_credentials["user"],
+            password=db_credentials["password"],
+            port=db_credentials["port"]
         )
 
         # Cursor erstellen und Abfrage ausführen
@@ -102,41 +113,7 @@ def hello_world():
 def risk_constraint(weights, target_risk, returns, cov_matrix):
     return target_risk - calculate_portfolio_metrics(weights, returns, cov_matrix)[1]
 
-# Function to get database credentials
-def get_database_credentials():
-    host = "localhost"
-    port = "5432"
-    database = "TiChuts"
-    user = "postgres"
-    password = "1"
-    return host, port, database, user, password
 
-# def choose_stock_table():
-#     while True:
-#         stock_table_choice = input("Choose a stock table (1 for gmstock, 2 for usstock, 3 for vnstock): ")
-
-#         if stock_table_choice in ["1", "2", "3"]:
-#             # Map the user's choice to the corresponding stock table
-#             stock_table_mapping = {
-#                 "1": "gmstock",
-#                 "2": "usstock",
-#                 "3": "vnstock"
-#             }
-#             selected_stock_table = stock_table_mapping[stock_table_choice]
-#             return selected_stock_table
-#         else:
-#             print("Invalid choice. Please enter 1, 2, or 3.")
-
-# def get_user_input():
-#     while True:
-#         selected_ids = input("Enter at least 10 specific Ids separated by space: ").split()
-
-#         if len(selected_ids) >= 10 and all(id.isdigit() for id in selected_ids):
-#             # Convert input to integers
-#             selected_ids = [int(id) for id in selected_ids]
-#             return selected_ids
-#         else:
-#             print("Please enter at least 10 valid numeric Ids separated by space.")
 
 # Flask route for portfolio optimization
 @app.route('/optimize-portfolio', methods=['GET', 'POST'])
@@ -148,19 +125,12 @@ def optimize_portfolio():
         # Extract data
         selected_stock_table = data['selected_stock_table']
         selected_ids = data['selected_ids']
-        host = data['host']
-        port = data['port']
-        database = data['database']
-        user = data['user']
-        password = data['password']
         target_risk_option = data['target_risk_option']
         percentage = data.get('percentage')  # Use get to handle cases where 'percentage' is not present
 
-        # Construct the connection string
-        connection_string = f"host={host} port={port} dbname={database} user={user} password={password}"
+        ## Fetch stock data from the selected stock table
+        stock_data = fetch_stock_data(selected_ids, selected_stock_table)
 
-        # Fetch stock data from the selected stock table
-        stock_data = fetch_stock_data(selected_ids, connection_string, ["Id", "Change"], selected_stock_table)
 
         # Check if data retrieval is successful
         if stock_data is not None and len(stock_data) >= 10:
@@ -215,7 +185,7 @@ def optimize_portfolio():
                     "optimized_return": float(optimized_return),
                     "optimized_risk": float(optimized_risk)
                 }
-
+                conn.close()
                 return jsonify(response)
             else:
                 return jsonify({"success": False,
