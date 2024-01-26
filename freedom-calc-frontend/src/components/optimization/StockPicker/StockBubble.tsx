@@ -1,9 +1,10 @@
 import React, { useContext } from "react";
 import { ImCross } from "react-icons/im";
 import { SelectedStocksContext } from "../../../context/SelectedStocksContext";
+import { StockClass } from "../../../models/optimization/StockClass";
 
 export type StockBubbleProps = {
-  stock: string[];
+  stock: StockClass;
 };
 
 const StockBubble: React.FC<StockBubbleProps> = ({ stock }) => {
@@ -11,7 +12,7 @@ const StockBubble: React.FC<StockBubbleProps> = ({ stock }) => {
   return (
     <div>
       <span className="badge badge-primary">
-        {stock[0]}
+        {stock.ticker}
         <ImCross
           onClick={() => removeStock(stock)}
           className="ml-2 hover:cursor-pointer"

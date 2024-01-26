@@ -18,7 +18,7 @@ const Portfolio: React.FC<PortfolioProps> = ({ t, portfolio, currency }) => {
         </div>
         <div className="flex flex-row justify-between">
           <p>{t("portfolio_risk")}</p>
-          <p>{portfolio.std + " " + currency}</p>
+          <p>{portfolio.std}</p>
         </div>
       </div>
       <StockTable t={t} portfolio={portfolio} />
