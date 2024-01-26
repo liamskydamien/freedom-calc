@@ -8,11 +8,56 @@ from psycopg2 import sql
 
 app = Flask(__name__)
 CORS(app)
-# Function to connect to PostgreSQL and fetch data
-def fetch_stock_data(ids, connection_string, column_names, stock_table):
+
+db_credentials = {
+    "host": "db",
+    "port": "5432",
+    "database": "stocks",
+    "user": "stockuser",
+    "password": "stocks"
+}
+
+@app.route('/')
+def hello_world():
+
+    # SQL-Abfrage
+    query = "SELECT * FROM vnstock;"
+
+    # Verbindungsaufbau
     try:
+        conn = psycopg2.connect(
+            host=db_credentials["host"],
+            dbname=db_credentials["database"],
+            user=db_credentials["user"],
+            password=db_credentials["password"],
+            port=db_credentials["port"]
+        )
+
+        # Cursor erstellen und Abfrage ausführen
+        with conn.cursor() as cursor:
+            cursor.execute(query)
+
+            # Alle Zeilen abrufen
+            rows = cursor.fetchall()
+
+        # Schließen der Verbindung
+        conn.close()
+
+        return jsonify(rows)
+    except Exception as e:
+        return jsonify({"success": False, "error": str(e)})
+# Function to connect to PostgreSQL and fetch data
+def fetch_stock_data(ids, stock_table):
+    column_names = ["id", "change"]  # Specify the columns you want to retrieve
+    try:
+        conn = psycopg2.connect(
+            host=db_credentials["host"],
+            dbname=db_credentials["database"],
+            user=db_credentials["user"],
+            password=db_credentials["password"],
+            port=db_credentials["port"]
+        )
         # Connect to the PostgreSQL database
-        conn = psycopg2.connect(connection_string)
         cursor = conn.cursor()
 
         # Build the SQL query with specific Ids, correct column names, and selected stock table
@@ -62,84 +107,12 @@ def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
         [calculate_portfolio_volatility(weights, cov_matrix) for weights in simulated_weights])
     return np.min(portfolio_volatilities), np.max(portfolio_volatilities)
 
-@app.route('/')
-def hello_world():
-    host = "db"  # oder die entsprechende Adresse Ihres Servers
-    port = "5432"
-    dbname = "stocks"
-    user = "stockuser"
-    password = "stocks"
-
-    # SQL-Abfrage
-    query = "SELECT * FROM vnstock;"
-
-    # Verbindungsaufbau
-    try:
-        conn = psycopg2.connect(
-            host=host,
-            dbname=dbname,
-            user=user,
-            password=password,
-            port=port
-        )
-
-        # Cursor erstellen und Abfrage ausführen
-        with conn.cursor() as cursor:
-            cursor.execute(query)
-
-            # Alle Zeilen abrufen
-            rows = cursor.fetchall()
-
-        # Schließen der Verbindung
-        conn.close()
-
-        return jsonify(rows)
-    except Exception as e:
-        return jsonify({"success": False, "error": str(e)})
-
-
 # Function to enforce target risk constraint
 def risk_constraint(weights, target_risk, returns, cov_matrix):
     return target_risk - calculate_portfolio_metrics(weights, returns, cov_matrix)[1]
 
-# Function to get database credentials
-def get_database_credentials():
-    host = "localhost"
-    port = "5432"
-    database = "TiChuts"
-    user = "postgres"
-    password = "1"
-    return host, port, database, user, password
-
-# def choose_stock_table():
-#     while True:
-#         stock_table_choice = input("Choose a stock table (1 for gmstock, 2 for usstock, 3 for vnstock): ")
-
-#         if stock_table_choice in ["1", "2", "3"]:
-#             # Map the user's choice to the corresponding stock table
-#             stock_table_mapping = {
-#                 "1": "gmstock",
-#                 "2": "usstock",
-#                 "3": "vnstock"
-#             }
-#             selected_stock_table = stock_table_mapping[stock_table_choice]
-#             return selected_stock_table
-#         else:
-#             print("Invalid choice. Please enter 1, 2, or 3.")
-
-# def get_user_input():
-#     while True:
-#         selected_ids = input("Enter at least 10 specific Ids separated by space: ").split()
-
-#         if len(selected_ids) >= 10 and all(id.isdigit() for id in selected_ids):
-#             # Convert input to integers
-#             selected_ids = [int(id) for id in selected_ids]
-#             return selected_ids
-#         else:
-#             print("Please enter at least 10 valid numeric Ids separated by space.")
-
 # Flask route for portfolio optimization
-@app.route('/optimize-portfolio', methods=['GET', 'POST'])
+@app.route('/optimize-portfolio', methods=['POST'])
 def optimize_portfolio():
     try:
         # Get data from frontend
@@ -148,81 +121,108 @@ def optimize_portfolio():
         # Extract data
         selected_stock_table = data['selected_stock_table']
         selected_ids = data['selected_ids']
-        host = data['host']
-        port = data['port']
-        database = data['database']
-        user = data['user']
-        password = data['password']
-        target_risk_option = data['target_risk_option']
-        percentage = data.get('percentage')  # Use get to handle cases where 'percentage' is not present
+        percentage = data['percentage']
 
-        # Construct the connection string
-        connection_string = f"host={host} port={port} dbname={database} user={user} password={password}"
-
-        # Fetch stock data from the selected stock table
-        stock_data = fetch_stock_data(selected_ids, connection_string, ["Id", "Change"], selected_stock_table)
+        ## Fetch stock data from the selected stock table
+        stock_data = fetch_stock_data(selected_ids, selected_stock_table)
 
         # Check if data retrieval is successful
         if stock_data is not None and len(stock_data) >= 10:
-            expected_returns = stock_data.groupby('Id')['Change'].mean().values
-            covariance_matrix = stock_data.groupby('Id')['Change'].std().values
+            expected_returns = stock_data.groupby('id')['change'].mean().values
+            covariance_matrix = stock_data.groupby('id')['change'].std().values
 
             # Calculate and display the range of portfolio risks based on simulations
             min_portfolio_risk, max_portfolio_risk = calculate_portfolio_risk_range(np.diag(covariance_matrix))
             print(f"Range of Portfolio Risks (Volatility): [{min_portfolio_risk:.4f}, {max_portfolio_risk:.4f}]")
 
-            # User input: Target portfolio risk options
-            print("\nChoose a target portfolio risk option:")
-            print("1. Highest risk in the range")
-            print("2. Lowest risk in the range")
-            print("3. Number between the highest and lowest (determined by percentage)")
+            # Calculate the target risk based on the percentage
+            percentage = float(percentage) if percentage is not None else 0.0
+            target_risk = min_portfolio_risk + (percentage / 100) * (max_portfolio_risk - min_portfolio_risk)
+            print(f"You chose a risk based on percentage: {target_risk:.4f}")
 
-            user_choice = target_risk_option
+            # Perform optimization for highest risk
+            result_highest_risk = minimize(objective_function, np.ones(len(expected_returns)) / len(expected_returns),
+                                           args=(expected_returns, np.diag(covariance_matrix)),
+                                           method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
+                                           constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
+                                                        {'type': 'eq', 'fun': risk_constraint,
+                                                         'args': (max_portfolio_risk, expected_returns, np.diag(covariance_matrix))}])
 
-            if user_choice == "1":
-                target_risk = max_portfolio_risk
-                print(f"You chose the highest risk: {target_risk:.4f}")
-            elif user_choice == "2":
-                target_risk = min_portfolio_risk
-                print(f"You chose the lowest risk: {target_risk:.4f}")
-            elif user_choice == "3":
-                percentage = float(percentage) if percentage is not None else 0.0
-                target_risk = min_portfolio_risk + (percentage / 100) * (max_portfolio_risk - min_portfolio_risk)
-                print(f"You chose a risk based on percentage: {target_risk:.4f}")
-            else:
-                print("Invalid choice. Please enter 1, 2, or 3.")
+            # Perform optimization for lowest risk
+            result_lowest_risk = minimize(objective_function, np.ones(len(expected_returns)) / len(expected_returns),
+                                          args=(expected_returns, np.diag(covariance_matrix)),
+                                          method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
+                                          constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
+                                                       {'type': 'eq', 'fun': risk_constraint,
+                                                        'args': (min_portfolio_risk, expected_returns, np.diag(covariance_matrix))}])
 
-            # Perform optimization
-            result = minimize(objective_function, np.ones(len(expected_returns)) / len(expected_returns),
-                              args=(expected_returns, np.diag(covariance_matrix)),
-                              method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
-                              constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
-                                           {'type': 'eq', 'fun': risk_constraint,
-                                            'args': (target_risk, expected_returns, np.diag(covariance_matrix))}])
+            # Perform optimization for risk based on percentage
+            result_percentage_risk = minimize(objective_function, np.ones(len(expected_returns)) / len(expected_returns),
+                                              args=(expected_returns, np.diag(covariance_matrix)),
+                                              method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
+                                              constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
+                                                           {'type': 'eq', 'fun': risk_constraint,
+                                                            'args': (target_risk, expected_returns, np.diag(covariance_matrix))}])
 
-            # Check if optimization was successful
-            if result.success:
-                # Extract optimized weights
-                optimized_weights = result.x
+            # Check if optimizations were successful
+        if result_highest_risk.success and result_lowest_risk.success and result_percentage_risk.success:
+            # Extract optimized weights and corresponding ids for all three cases
+            optimized_weights_highest_risk = result_highest_risk.x
+            optimized_weights_lowest_risk = result_lowest_risk.x
+            optimized_weights_percentage_risk = result_percentage_risk.x
 
-                # Calculate optimized portfolio metrics
-                optimized_return, optimized_risk = calculate_portfolio_metrics(optimized_weights, expected_returns,
-                                                                               np.diag(covariance_matrix))
-                # Return optimized portfolio data
-                response = {
-                    "success": True,
-                    "optimized_weights": optimized_weights.tolist(),
-                    "optimized_return": float(optimized_return),
-                    "optimized_risk": float(optimized_risk)
-                }
+            optimized_ids = list(selected_ids)  # Assuming selected_ids is a list of ids
 
-                return jsonify(response)
-            else:
-                return jsonify({"success": False,
-                                "error": "Optimization failed. Please review constraints or try a different approach."})
+            # Calculate optimized portfolio metrics for all three cases
+            optimized_return_highest_risk, optimized_risk_highest_risk = calculate_portfolio_metrics(
+                optimized_weights_highest_risk, expected_returns, np.diag(covariance_matrix))
+            optimized_return_lowest_risk, optimized_risk_lowest_risk = calculate_portfolio_metrics(
+                optimized_weights_lowest_risk, expected_returns, np.diag(covariance_matrix))
+            optimized_return_percentage_risk, optimized_risk_percentage_risk = calculate_portfolio_metrics(
+                optimized_weights_percentage_risk, expected_returns, np.diag(covariance_matrix))
+            
+            asset_means = stock_data.groupby('id')['change'].mean().to_dict()
+            # Extract standard deviation values for each selected id
+            std_dev_values = stock_data.groupby('id')['change'].std().to_dict()
+
+            # Return results for all three cases with ids
+            response = {
+    "success": True,
+    "user_chosen_percentage": float(percentage),
+    "range_of_risks": {
+        "min_portfolio_risk": float(min_portfolio_risk),
+        "max_portfolio_risk": float(max_portfolio_risk)
+    },
+    "highest_risk": {
+        "optimized_results": [
+            {"id": id_, "weight": weight, "mean": asset_means[id_], "std dev": std_dev_values[id_]}
+            for id_, weight in zip(optimized_ids, optimized_weights_highest_risk)
+        ],
+        "optimized_return": float(optimized_return_highest_risk),
+        "optimized_risk": float(optimized_risk_highest_risk)
+    },
+    "lowest_risk": {
+        "optimized_results": [
+            {"id": id_, "weight": weight, "mean": asset_means[id_], "std dev": std_dev_values[id_]}
+            for id_, weight in zip(optimized_ids, optimized_weights_lowest_risk)
+        ],
+        "optimized_return": float(optimized_return_lowest_risk),
+        "optimized_risk": float(optimized_risk_lowest_risk)
+    },
+    "percentage_risk": {
+        "optimized_results": [
+            {"id": id_, "weight": weight, "mean": asset_means[id_], "std dev": std_dev_values[id_]}
+            for id_, weight in zip(optimized_ids, optimized_weights_percentage_risk)
+        ],
+        "optimized_return": float(optimized_return_percentage_risk),
+        "optimized_risk": float(optimized_risk_percentage_risk)
+    }
+}
+
+            return jsonify(response)
         else:
             return jsonify({"success": False,
-                            "error": "Data retrieval failed or insufficient data. Please check your inputs and try again."})
+                            "error": "Optimization failed for one or more cases. Please review constraints or try a different approach."})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
 
