@@ -236,6 +236,7 @@ i18n
           personal: "Personal",
           costs: "Costs",
           in_1000000: "in 1.000.000",
+          in_10000000: "in 1.000.000.000",
         },
       },
 
@@ -245,6 +246,8 @@ i18n
           germany: "Deutschland",
           vietnam: "Vietnam",
           usa: "USA",
+
+          in_10000000: "in 1.000.000.000",
 
           provisions: "Provisionen",
           optimize: "Optimieren",
@@ -474,6 +477,7 @@ i18n
       vn: {
         translation: {
 
+          in_10000000: "trong 1.000.000.000",
           germany: "Đức",
           vietnam: "Việt Nam",
           usa: "Mỹ",

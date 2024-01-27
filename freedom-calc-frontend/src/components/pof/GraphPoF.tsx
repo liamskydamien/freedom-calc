@@ -21,6 +21,11 @@ type GraphPoFProps = {
 };
 
 const GraphPoF: React.FC<GraphPoFProps> = ({ t, graph, pof, currency }) => {
+
+  function getMeasurements() {
+    return currency === "EUR €" ? "in_1000000" : "in_10000000";
+  }
+
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const lines = [
@@ -74,7 +79,7 @@ const GraphPoF: React.FC<GraphPoFProps> = ({ t, graph, pof, currency }) => {
           </XAxis>
           <YAxis type="number">
             <Label
-              value={t("in_1000000") + " " + currency}
+              value={t(getMeasurements()) + " " + currency}
               offset={100}
               angle={-90}
               position="insideLeft"

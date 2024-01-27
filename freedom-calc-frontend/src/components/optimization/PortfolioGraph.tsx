@@ -25,6 +25,10 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
 
   const {selectedStocks} = useContext(SelectedStocksContext);
 
+  function getMeasurements() {
+    return currency === "EUR €" ? "in_1000000" : "in_10000000";
+  }
+
   const CustomTooltip = ({ active, payload, label }: any) => {
     if (active && payload && payload.length) {
       const lines = [
@@ -98,7 +102,7 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
             </XAxis>
             <YAxis type="number">
               <Label
-                value={t("in_1000000") + " " + currency}
+                value={t(getMeasurements()) + " " + currency}
                 offset={100}
                 angle={-90}
                 position="insideLeft"
