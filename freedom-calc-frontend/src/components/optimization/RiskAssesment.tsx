@@ -26,7 +26,7 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
       group3 !== 0 &&
       group4 !== 0 &&
       group5 !== 0 &&
-      selectedStocks.length >= 10
+      selectedStocks.length > 9
     ) {
       setValid(true);
     } else {
@@ -85,7 +85,7 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
 
   return (
     <div>
-      <div className="assementModal">
+      <div className="assementModal bg-backgroundPrimary">
         <h1 className="text-2xl font-bold mt-2 mb-4">
           {t("how_risk_affine_are_you")}
         </h1>

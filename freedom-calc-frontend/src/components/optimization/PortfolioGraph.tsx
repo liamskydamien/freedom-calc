@@ -32,19 +32,19 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
           text: `${t("safest")}: ${parseFloat(payload[0].value).toFixed(
             2,
           )} ${currency}`,
-          color: COLORS.dark.wealth,
+          color: "#8A98FD",
         },
         {
           text: `${t("riskiest")}: ${parseFloat(payload[1].value).toFixed(
             2,
           )} ${currency}`,
-          color: "#82ca9d",
+          color: "#82CA9D",
         },
         {
           text: `${t("personal")}: ${parseFloat(payload[2].value).toFixed(
             2,
           )} ${currency}`,
-          color: "#8884d8",
+          color: "#D69144",
         },
         /*
         {
@@ -108,7 +108,7 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
               dot={false}
               type="monotone"
               dataKey="safest"
-              stroke={COLORS.light.wealth}
+              stroke="#8A98FD"
               strokeWidth={3}
               connectNulls={true}
               name={t("safest")}
@@ -117,7 +117,7 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
               dot={false}
               type="monotone"
               dataKey="riskiest"
-              stroke="#82ca9d"
+              stroke="#82CA9D"
               strokeWidth={3}
               connectNulls={true}
               name={t("riskiest")}
@@ -126,7 +126,7 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
               dot={false}
               type="monotone"
               dataKey="personal"
-              stroke="#8884d8"
+              stroke="#D69144"
               strokeWidth={3}
               connectNulls={true}
               name={t("personal")}

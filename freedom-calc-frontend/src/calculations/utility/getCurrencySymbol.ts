@@ -10,6 +10,8 @@ export function getCurrencySymbol(currency: string): string {
       return "$";
     case "GBP £":
       return "£";
+    case "VND ₫":
+      return "₫";
     default:
       return "";
   }
