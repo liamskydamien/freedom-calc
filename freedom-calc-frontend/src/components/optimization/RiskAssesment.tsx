@@ -2,6 +2,7 @@ import "./RiskAssementStyles.css";
 import React, { useContext, useEffect, useState } from "react";
 import StockPickerAssesment from "./StockPicker/StockPickerAssesment";
 import { SelectedStocksContext } from "../../context/SelectedStocksContext";
+import StockPicker from "./StockPicker/StockPicker";
 
 type RiskAssesmentProps = {
   t: any;
@@ -77,7 +78,8 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
    * Handles the submition of the form
    */
   const handleSubmit = () => {
-    const risk = group1 + group2 + group3 + group4 + group5;
+    const value = group1 + group2 + group3 + group4 + group5;
+    const risk = (value - 5)  * (100 / 15);
     closeModal(risk);
   };
 
@@ -87,7 +89,7 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
         <h1 className="text-2xl font-bold mt-2 mb-4">
           {t("how_risk_affine_are_you")}
         </h1>
-        <div className="flex gap-3 flex-col">
+        <div className="flex gap-10 flex-col">
           <div className="ml-4 mr-4">
             <h2 className="text-lg mb-1">
               {t("how_would_you_describe_your_investment_experience")}
@@ -199,6 +201,8 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
                 </label>
               </div>
             </div>
+            </div>
+          <div className="ml-4 mr-4">
             <h2 className="text-lg mb-1">
               {t("what_is_your_primary_goal_for_investing")}
             </h2>
@@ -256,6 +260,8 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
                 </label>
               </div>
             </div>
+          </div>
+        <div className="ml-4 mr-4">
             <h2 className="text-lg">
               {t("how_long_is_your_investment_horizon")}
             </h2>
@@ -313,6 +319,8 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
                 </label>
               </div>
             </div>
+        </div>
+          <div className="ml-4 mr-4">
             <h2 className="text-lg mb-1">
               {t("suddendrop_in_a_short_period")}
             </h2>
@@ -367,7 +375,7 @@ const RiskAssesment: React.FC<RiskAssesmentProps> = ({ t, closeModal }) => {
               </div>
             </div>
           </div>
-          <StockPickerAssesment />
+          <StockPicker />
           {valid ? (
             <button
               className="btn btn-primary mt-2 mb-3 ml-2 mr-2"

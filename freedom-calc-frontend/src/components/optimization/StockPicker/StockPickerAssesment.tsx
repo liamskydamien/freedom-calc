@@ -41,7 +41,7 @@ const StockPickerAssesment = () => {
                 onClick={() => addStock(stock)}
                 className="dropdown-item text-sm"
               >
-                {stock[0] + " - " + stock[1]}
+                {stock.ticker + " - " + stock.name}
               </a>
             ))}
           </div>

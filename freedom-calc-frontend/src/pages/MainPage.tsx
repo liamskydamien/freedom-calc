@@ -10,6 +10,7 @@ import StartingCapital from "./StartingCapital";
 import LifePhases from "./LifePhases";
 import PointOfFinancialFreedom from "./PointOfFinancialFreedom";
 import OptimizationPage from "./OptimizationPage";
+import TestPage from "./TestPage";
 
 export const MainPage = () => {
   const [active, setActive] = useState(1);
@@ -77,6 +78,9 @@ export const MainPage = () => {
                   <OptimizationPage />
                 </ProtectedRoute>
                 } />
+              <Route path="/test" element={
+                <TestPage />
+              } />
             </Routes>
           </InputContextProvider>
         </ProgressContextProvider>

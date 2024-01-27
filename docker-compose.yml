@@ -1,11 +1,5 @@
 version: '3'
 services:
-  frontend:
-    build:
-      context: ./freedom-calc-frontend
-      dockerfile: Dockerfile
-    ports:
-      - "8080:80"
   backend:
     build:
       context: ./backend
@@ -23,5 +17,13 @@ services:
       POSTGRES_PASSWORD: stocks
     ports:
       - "5432:5432"
+  frontend:
+    build:
+      context: ./freedom-calc-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
 volumes:
   postgres_data:

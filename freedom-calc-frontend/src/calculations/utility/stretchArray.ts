@@ -8,3 +8,4 @@ export const stretchArray = (array: number[], length: number[]) => {
   }
   return stretchedArray;
 };
+
