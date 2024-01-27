@@ -10,11 +10,6 @@ const PersonalInformation = () => {
   return (
     <>
       <div className="flex flex-row gap-2">
-        <button onClick={() => {
-          navigate("/test");
-        }}>
-          Test
-        </button>
         <InputPersonalInformation t={t} />
         <Explanation t={t} />
       </div>

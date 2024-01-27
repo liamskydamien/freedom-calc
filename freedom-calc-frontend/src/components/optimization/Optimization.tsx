@@ -36,7 +36,7 @@ const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
 
   const { portfolio, isLoading, isError, refetch } = useFetchPortfolio(
     getIds(),
-    50,
+    risk,
     stockGroup
   );
 
@@ -44,7 +44,7 @@ const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
     const income =
       phases.getPhases().length !== 0
         ? phases.getPhases().map((phase) => {
-            return phase.calculateNetIncome();
+            return phase.calculateNetIncome() >= 0 ? phase.calculateNetIncome() : 0;
           })
         : [100, 100, 100, 100, 100];
     const costs =
@@ -53,7 +53,7 @@ const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
             phases.getPhases().map((phase) => {
               return phase.expenses.getTotalExpenses();
             }),
-            0.02,
+            0.00,
             1,
             0,
           )
@@ -63,6 +63,7 @@ const Optimization: React.FC<OptimizationProps> = ({ risk }) => {
       portfolio,
       income,
       costs,
+      phases
     );
     setPortfolioChartState({
       portfolioChart,

@@ -21,22 +21,22 @@ const RadarChartPortfolio: React.FC<RadarChartPortfolioProps> = ({ data }) => {
         <Radar
           name="Riskiest"
           dataKey="riskiest"
-          stroke="#8884d8"
-          fill="#8884d8"
+          stroke="#82CA9D"
+          fill="#82CA9D"
           fillOpacity={0.6}
         />
         <Radar
           name="Safest"
           dataKey="safest"
-          stroke="#82ca9d"
-          fill="#FA0000"
+          stroke="#8A98FD"
+          fill="#8A98FD"
           fillOpacity={0.6}
         />
         <Radar
           name="Personal"
           dataKey="personal"
-          stroke="#82ca9d"
-          fill="#82ca9d"
+          stroke="#D69144"
+          fill="#D69144"
           fillOpacity={0.6}
         />
         <Legend />

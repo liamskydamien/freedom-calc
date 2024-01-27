@@ -10,32 +10,29 @@ export function createRadarChart(
   radarChart.push({
     subject: "Return",
     fullMark: 0.1,
-    riskiest: portfolios[2].optimized_return * 1000,
-    safest: portfolios[1].optimized_return * 1000,
-    personal: portfolios[0].optimized_return * 1000,
+    riskiest: portfolios[2].optimized_return,
+    safest: portfolios[1].optimized_return,
+    personal: portfolios[0].optimized_return,
   });
   radarChart.push({
     subject: "Risk",
     fullMark: 0.1,
-    riskiest: portfolios[2].optimized_risk,
-    safest: portfolios[1].optimized_risk,
-    personal: portfolios[0].optimized_risk,
+    riskiest: portfolios[2].optimized_risk / 10,
+    safest: portfolios[1].optimized_risk / 10,
+    personal: portfolios[0].optimized_risk / 10,
   });
   radarChart.push({
     subject: "Diversification",
     fullMark: 0.1,
     riskiest:
       (portfolios[2].optimized_results.filter((stock) => stock.weight > 0).length /
-        selectedStocks) *
-      100,
+        selectedStocks) / 10,
     safest:
       (portfolios[1].optimized_results.filter((stock) => stock.weight > 0).length /
-        selectedStocks) *
-      100,
+        selectedStocks) / 10,
     personal:
       (portfolios[0].optimized_results.filter((stock) => stock.weight > 0).length /
-        selectedStocks) *
-      100,
+        selectedStocks) / 10,
   });
   return radarChart;
 }

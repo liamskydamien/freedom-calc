@@ -46,12 +46,14 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
           )} ${currency}`,
           color: "#8884d8",
         },
+        /*
         {
           text: `${t("costs")}: ${parseFloat(payload[3].value).toFixed(
             2,
           )} ${currency}`,
           color: COLORS.dark.costs,
         },
+         */
       ];
 
       return (
@@ -82,7 +84,7 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
 
   return (
     <div className="max-w-full">
-      <h1>{t("life_line_title")}</h1>
+      <h1>{t("pof_per_portfolio")}</h1>
       {
         selectedStocks.length < 10 ? (
           <div className="text-red-500 h-96">
@@ -91,7 +93,7 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
         ) :
         <ResponsiveContainer maxHeight={400}>
           <ComposedChart data={graph}>
-            <XAxis dataKey="index">
+            <XAxis dataKey="name">
               <Label value={t("years")} offset={0} position="insideBottom" />
             </XAxis>
             <YAxis type="number">
@@ -129,7 +131,9 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
               connectNulls={true}
               name={t("personal")}
             />
-            <Line
+            {
+              /*
+              <Line
               dot={false}
               type="monotone"
               dataKey="costs"
@@ -138,6 +142,8 @@ const PortfolioGraph: React.FC<PortfolioGraphProps> = ({
               connectNulls={true}
               name={t("costs")}
             />
+               */
+            }
             <Tooltip content={<CustomTooltip />} />
             <Legend verticalAlign="top" height={36} />
           </ComposedChart>

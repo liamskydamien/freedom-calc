@@ -13,11 +13,19 @@ i18n
     resources: {
       en: {
         translation: {
+
+          germany: "Germany",
+          vietnam: "Vietnam",
+          usa: "USA",
+
+          years: "Years",
+          life_line_title: "Portfolio Growth",
+
           provisions: "Provisions",
           optimize: "Optimize",
           selected_stocks: "Selected Stocks",
           add_more_stocks: "Add More Stocks",
-          pof_per_portfolio: "PoF per Portfolio",
+          pof_per_portfolio: "Portfolio Growth with your savings",
           portfolio_comparison: "Portfolio Comparison",
           portfolio_visualization: "Portfolio Visualisation",
           select_atleast_10_stocks: "Select at least 10 stocks",
@@ -214,7 +222,7 @@ i18n
           keep_it: "Keep it, because I believe in the long-term growth",
 
           your_portfolio: "Your Portfolio",
-          secure_portfolio: "Secure Portfolio",
+          secure_portfolio: "Safest Portfolio",
           risky_portfolio: "Risky Portfolio",
           portfolio: "Portfolios",
           portfolio_growth: "Total Average Growth (Mean)",
@@ -223,9 +231,8 @@ i18n
           rel_amount: "Relative Amount",
           avg_return: "Average Growth",
           risk: "Risk",
-          life_line_title: "Portfolios and their PoF",
           safest: "Safest",
-          riskiest: "Riskiest",
+          riskiest: "Risky",
           personal: "Personal",
           costs: "Costs",
           in_1000000: "in 1.000.000",
@@ -234,11 +241,16 @@ i18n
 
       de: {
         translation: {
+
+          germany: "Deutschland",
+          vietnam: "Vietnam",
+          usa: "USA",
+
           provisions: "Provisionen",
           optimize: "Optimieren",
           selected_stocks: "Ausgewählte Aktien",
           add_more_stocks: "Füge mehr Aktien hinzu",
-          pof_per_portfolio: "PoF pro Portfolio",
+          pof_per_portfolio: "Portfoliowachstum mit Ihren Ersparnissen",
           portfolio_comparison: "Portfolio Vergleich",
           portfolio_visualization: "Portfolio Visualisierung",
           select_atleast_10_stocks: "Wähle mindestens 10 Aktien aus",
@@ -450,16 +462,24 @@ i18n
           rel_amount: "Anteil im Portfolio",
           avg_return: "Durchnittliches Wachstum",
           risk: "Risiko",
-          life_line_title: "PoF der Portfolios",
-          safest: "Sicherstes",
-          riskiest: "Riskantestes",
+          life_line_title: "Portfolio Wachstum",
+          safest: "Sicheres",
+          riskiest: "Riskantes",
           personal: "Personalisiertes",
           costs: "Kosten",
           in_1000000: "in 1.000.000",
+          years: "Jahre",
         },
       },
       vn: {
         translation: {
+
+          germany: "Đức",
+          vietnam: "Việt Nam",
+          usa: "Mỹ",
+
+          years: "Năm",
+
           provisions: "Cung cấp",
           optimize: "Tối ưu hóa",
           how_risk_affine_are_you: "Bạn thích rủi ro đến mức nào?",
@@ -505,7 +525,7 @@ i18n
           rel_amount: "Tỉ lệ trong danh mục",
           avg_return: "Tăng trưởng trung bình",
           risk: "Rủi ro",
-          life_line_title: "PoF của danh mục đầu tư",
+          life_line_title: "Tăng trưởng danh mục đầu tư",
           safest: "An toàn nhất",
           riskiest: "Rủi ro nhất",
           personal: "Cá nhân hóa",
@@ -517,7 +537,7 @@ i18n
 
           selected_stocks: "Cổ phiếu đã chọn",
           add_more_stocks: "Thêm cổ phiếu",
-          pof_per_portfolio: "PoF cho mỗi danh mục đầu tư",
+          pof_per_portfolio: "Tăng trưởng danh mục đầu tư với tiền tiết kiệm của bạn",
           portfolio_comparison: "So sánh danh mục đầu tư",
           portfolio_visualization: "Trực quan hóa danh mục đầu tư",
           select_atleast_10_stocks: "Chọn ít nhất 10 cổ phiếu",

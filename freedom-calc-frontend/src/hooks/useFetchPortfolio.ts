@@ -50,7 +50,7 @@ export const useFetchPortfolio = (stocks: number[], target_std: number, market: 
           },
           data: postData });
       setReturnPortfolio(response.data);
-      setPortfolio([response.data.highest_risk, response.data.lowest_risk, response.data.percentage_risk])
+      setPortfolio([response.data.percentage_risk, response.data.lowest_risk, response.data.highest_risk])
       setIsLoading(false);
     } catch (error: any) {
       setIsError(error.toString());

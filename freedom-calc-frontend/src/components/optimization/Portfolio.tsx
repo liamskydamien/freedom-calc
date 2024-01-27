@@ -8,7 +8,6 @@ type PortfolioProps = {
   currency: string;
 };
 const Portfolio: React.FC<PortfolioProps> = ({ t, portfolio, currency }) => {
-  const [activeTab, setActiveTab] = React.useState(0);
   return (
     <div>
       <div className="flex flex-col gap-2  mb-4">
