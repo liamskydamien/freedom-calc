@@ -7,6 +7,10 @@ export class PortfolioClass {
     this.optimized_risk = variance;
     this.optimized_results = stocks;
   }
+
+  toString(): string {
+    return `PortfolioClass: ${this.optimized_return}, ${this.optimized_risk}, ${this.optimized_results}`;
+  }
 }
 
 export class Stock {

@@ -1,5 +1,5 @@
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask_cors import CORS, cross_origin
 import numpy as np
 import pandas as pd
 from scipy.optimize import minimize
@@ -17,9 +17,9 @@ db_credentials = {
     "password": "stocks"
 }
 
+
 @app.route('/')
 def hello_world():
-
     # SQL-Abfrage
     query = "SELECT * FROM vnstock;"
 
@@ -46,6 +46,8 @@ def hello_world():
         return jsonify(rows)
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
+
 # Function to connect to PostgreSQL and fetch data
 def fetch_stock_data(ids, stock_table):
     column_names = ["id", "change"]  # Specify the columns you want to retrieve
@@ -85,20 +87,24 @@ def fetch_stock_data(ids, stock_table):
         print(f"Error: {e}")
         return None
 
+
 # Function to calculate portfolio returns and risks
 def calculate_portfolio_metrics(weights, returns, cov_matrix):
     portfolio_return = np.sum(weights * returns)
     portfolio_risk = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights)))
     return portfolio_return, portfolio_risk
 
+
 # Objective function for optimization (minimize negative of portfolio return)
 def objective_function(weights, returns, cov_matrix):
     return -calculate_portfolio_metrics(weights, returns, cov_matrix)[0]
+
 
 # Function to calculate historical portfolio risk (volatility)
 def calculate_portfolio_volatility(weights, cov_matrix):
     portfolio_volatility = np.sqrt(np.dot(weights.T, np.dot(cov_matrix, weights)))
     return portfolio_volatility
+
 
 # Function to calculate the range of portfolio risks based on simulations
 def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
@@ -107,12 +113,15 @@ def calculate_portfolio_risk_range(cov_matrix, num_simulations=10000):
         [calculate_portfolio_volatility(weights, cov_matrix) for weights in simulated_weights])
     return np.min(portfolio_volatilities), np.max(portfolio_volatilities)
 
+
 # Function to enforce target risk constraint
 def risk_constraint(weights, target_risk, returns, cov_matrix):
     return target_risk - calculate_portfolio_metrics(weights, returns, cov_matrix)[1]
 
+
 # Flask route for portfolio optimization
 @app.route('/optimize-portfolio', methods=['POST'])
+@cross_origin()
 def optimize_portfolio():
     try:
         # Get data from frontend
@@ -146,7 +155,8 @@ def optimize_portfolio():
                                            method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
                                            constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
                                                         {'type': 'eq', 'fun': risk_constraint,
-                                                         'args': (max_portfolio_risk, expected_returns, np.diag(covariance_matrix))}])
+                                                         'args': (max_portfolio_risk, expected_returns,
+                                                                  np.diag(covariance_matrix))}])
 
             # Perform optimization for lowest risk
             result_lowest_risk = minimize(objective_function, np.ones(len(expected_returns)) / len(expected_returns),
@@ -154,15 +164,18 @@ def optimize_portfolio():
                                           method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
                                           constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
                                                        {'type': 'eq', 'fun': risk_constraint,
-                                                        'args': (min_portfolio_risk, expected_returns, np.diag(covariance_matrix))}])
+                                                        'args': (min_portfolio_risk, expected_returns,
+                                                                 np.diag(covariance_matrix))}])
 
             # Perform optimization for risk based on percentage
-            result_percentage_risk = minimize(objective_function, np.ones(len(expected_returns)) / len(expected_returns),
+            result_percentage_risk = minimize(objective_function,
+                                              np.ones(len(expected_returns)) / len(expected_returns),
                                               args=(expected_returns, np.diag(covariance_matrix)),
                                               method='SLSQP', bounds=[(0, None) for _ in range(len(expected_returns))],
                                               constraints=[{'type': 'eq', 'fun': lambda weights: np.sum(weights) - 1},
                                                            {'type': 'eq', 'fun': risk_constraint,
-                                                            'args': (target_risk, expected_returns, np.diag(covariance_matrix))}])
+                                                            'args': (target_risk, expected_returns,
+                                                                     np.diag(covariance_matrix))}])
 
             # Check if optimizations were successful
         if result_highest_risk.success and result_lowest_risk.success and result_percentage_risk.success:
@@ -187,37 +200,37 @@ def optimize_portfolio():
 
             # Return results for all three cases with ids
             response = {
-    "success": True,
-    "user_chosen_percentage": float(percentage),
-    "range_of_risks": {
-        "min_portfolio_risk": float(min_portfolio_risk),
-        "max_portfolio_risk": float(max_portfolio_risk)
-    },
-    "highest_risk": {
-        "optimized_results": [
-            {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
-            for id_, weight in zip(optimized_ids, optimized_weights_highest_risk)
-        ],
-        "optimized_return": float(optimized_return_highest_risk),
-        "optimized_risk": float(optimized_risk_highest_risk)
-    },
-    "lowest_risk": {
-        "optimized_results": [
-            {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
-            for id_, weight in zip(optimized_ids, optimized_weights_lowest_risk)
-        ],
-        "optimized_return": float(optimized_return_lowest_risk),
-        "optimized_risk": float(optimized_risk_lowest_risk)
-    },
-    "percentage_risk": {
-        "optimized_results": [
-            {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
-            for id_, weight in zip(optimized_ids, optimized_weights_percentage_risk)
-        ],
-        "optimized_return": float(optimized_return_percentage_risk),
-        "optimized_risk": float(optimized_risk_percentage_risk)
-    }
-}
+                "success": True,
+                "user_chosen_percentage": float(percentage),
+                "range_of_risks": {
+                    "min_portfolio_risk": float(min_portfolio_risk),
+                    "max_portfolio_risk": float(max_portfolio_risk)
+                },
+                "highest_risk": {
+                    "optimized_results": [
+                        {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
+                        for id_, weight in zip(optimized_ids, optimized_weights_highest_risk)
+                    ],
+                    "optimized_return": float(optimized_return_highest_risk),
+                    "optimized_risk": float(optimized_risk_highest_risk)
+                },
+                "lowest_risk": {
+                    "optimized_results": [
+                        {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
+                        for id_, weight in zip(optimized_ids, optimized_weights_lowest_risk)
+                    ],
+                    "optimized_return": float(optimized_return_lowest_risk),
+                    "optimized_risk": float(optimized_risk_lowest_risk)
+                },
+                "percentage_risk": {
+                    "optimized_results": [
+                        {"id": id_, "weight": weight, "mean": asset_means[id_], "std_dev": std_dev_values[id_]}
+                        for id_, weight in zip(optimized_ids, optimized_weights_percentage_risk)
+                    ],
+                    "optimized_return": float(optimized_return_percentage_risk),
+                    "optimized_risk": float(optimized_risk_percentage_risk)
+                }
+            }
 
             return jsonify(response)
         else:
@@ -225,6 +238,11 @@ def optimize_portfolio():
                             "error": "Optimization failed for one or more cases. Please review constraints or try a different approach."})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)})
+
+
+@app.route('/test')
+def test():
+    return jsonify({"success": True, "message": "Hello World!"})
 
 
 if __name__ == '__main__':
